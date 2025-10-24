@@ -1,0 +1,239 @@
+admin@strtk5-7260-01:~$
+admin@strtk5-7260-01:~$ sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi
+Warning: 'sonic_installer' command is deprecated and will be removed in the future
+Please use 'sonic-installer' instead
+Downloading image...
+...99%, 936 MB, 56400 KB/s, 0 seconds left...    
+Image SONiC-OS-20250505.08 is already installed. Setting it as default...
+Command: sync
+
+Command: sync
+
+Command: sync
+
+Command: sleep 3
+
+Done
+admin@strtk5-7260-01:~$ sudo sonic_installer list
+Warning: 'sonic_installer' command is deprecated and will be removed in the future
+Please use 'sonic-installer' instead
+Current: SONiC-OS-20250505.08
+Next: SONiC-OS-20250505.08
+Available: 
+SONiC-OS-20250505.08
+admin@strtk5-7260-01:~$ show ip bgp sum
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 4200065100 vrf-id 0
+BGP table version 19204
+RIB entries 12808, using 1639424 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V          AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  ----------  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.33      4  4200064600       3212       3213     19204      0       0  00:06:34             6400  ARISTA01T1
+10.0.0.35      4  4200064600       3212       3212     19204      0       0  00:06:35             6400  ARISTA02T1
+10.0.0.37      4  4200064600       3213       3212     19204      0       0  00:06:36             6400  ARISTA03T1
+10.0.0.39      4  4200064600       3213       3214     19204      0       0  00:06:35             6400  ARISTA04T1
+
+Total number of neighbors 4
+admin@strtk5-7260-01:~$ show ip int
+Interface       Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP
+--------------  --------  -------------------  ------------  --------------  -------------
+Loopback0                 10.1.0.32/32         up/up         N/A             N/A
+PortChannel101            10.0.0.32/31         up/up         ARISTA01T1      10.0.0.33
+PortChannel102            10.0.0.34/31         up/up         ARISTA02T1      10.0.0.35
+PortChannel103            10.0.0.36/31         up/up         ARISTA03T1      10.0.0.37
+PortChannel104            10.0.0.38/31         up/up         ARISTA04T1      10.0.0.39
+Vlan1000                  192.168.0.1/21       up/up         N/A             N/A
+                          192.169.0.1/22                     N/A             N/A
+docker0                   240.127.1.1/24       up/down       N/A             N/A
+eth0                      10.212.69.35/27      up/up         N/A             N/A
+lo                        127.0.0.1/16         up/up         N/A             N/A
+admin@strtk5-7260-01:~$ show int portchannel
+Flags: A - active, I - inactive, Up - up, Dw - Down, N/A - not available,
+       S - selected, D - deselected, * - not synced
+  No.  Team Dev        Protocol     Ports
+-----  --------------  -----------  ---------------------------
+  101  PortChannel101  LACP(A)(Up)  Ethernet52(S) Ethernet48(S)
+  102  PortChannel102  LACP(A)(Up)  Ethernet60(S) Ethernet56(S)
+  103  PortChannel103  LACP(A)(Up)  Ethernet64(S) Ethernet68(S)
+  104  PortChannel104  LACP(A)(Up)  Ethernet76(S) Ethernet72(S)
+admin@strtk5-7260-01:~$ sudo warm-reboot -vvv
+Tue Jul 15 05:26:00 AM UTC 2025 Starting warm-reboot
+Tue Jul 15 05:26:01 AM UTC 2025 Saving counters folder before warmboot...
+Tue Jul 15 05:26:07 AM UTC 2025 Loading kernel without secure boot
+Tue Jul 15 05:26:08 AM UTC 2025 Starting lag_keepalive to send LACPDUs ...
+ERROR: There are port channels/peer devices that failed the probe: ['PortChannel102', 'PortChannel104', 'PortChannel101', 'PortChannel103']
+Tue Jul 15 05:26:18 AM UTC 2025 Warning: Retry count feature support unknown for one or more neighbor devices; assuming that it's not available
+Tue Jul 15 05:26:18 AM UTC 2025 Pausing orchagent ...
+Tue Jul 15 05:26:18 AM UTC 2025 Collecting logs to check ssd health before warm-reboot...
+Tue Jul 15 05:26:18 AM UTC 2025 Stopping lldp ...
+Tue Jul 15 05:26:21 AM UTC 2025 Stopped lldp
+Tue Jul 15 05:26:21 AM UTC 2025 Stopping radv ...
+Tue Jul 15 05:26:22 AM UTC 2025 Stopped radv
+Tue Jul 15 05:26:22 AM UTC 2025 Stopping bgp ...
+Tue Jul 15 05:26:27 AM UTC 2025 Stopped bgp
+Tue Jul 15 05:26:27 AM UTC 2025 Stopping swss ...
+Tue Jul 15 05:26:29 AM UTC 2025 Stopped swss
+Tue Jul 15 05:26:29 AM UTC 2025 Initialize pre-shutdown ...
+Tue Jul 15 05:26:29 AM UTC 2025 Requesting pre-shutdown ...
+Tue Jul 15 05:26:29 AM UTC 2025 Waiting for pre-shutdown ...
+Tue Jul 15 05:26:29 AM UTC 2025 Pre-shutdown succeeded, state: pre-shutdown-succeeded ...
+Tue Jul 15 05:26:29 AM UTC 2025 Stopping teamd ...
+Tue Jul 15 05:26:30 AM UTC 2025 Stopped teamd
+Tue Jul 15 05:26:30 AM UTC 2025 Stopping syncd ...
+Tue Jul 15 05:26:42 AM UTC 2025 Stopped syncd
+Tue Jul 15 05:26:42 AM UTC 2025 Backing up database ...
+                                               Successfully copied 10.1MB to /host/warmboot
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+Tue Jul 15 05:26:51 AM UTC 2025 Enabling Watchdog before warm-reboot
+Watchdog armed for 180 seconds
+Tue Jul 15 05:26:52 AM UTC 2025 Rebooting with /sbin/kexec -e to SONiC-OS-20250505.08 ...
+1
+Tue Jul 15 05:26:52 AM UTC 2025 Backup shutdown logs to /host/logs_before_reboot
+client_loop: send disconnect: Broken pipe
+v-cshekar@strtk5-serv-01:~$ 
+v-cshekar@strtk5-serv-01:~$ ssh admin@10.212.69.35
+admin@10.212.69.35's password: 
+Linux strtk5-7260-01 6.1.0-29-2-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.123-1 (2025-01-02) x86_64
+You are on
+  ____   ___  _   _ _  ____
+ / ___| / _ \| \ | (_)/ ___|
+ \___ \| | | |  \| | | |
+  ___) | |_| | |\  | | |___
+ |____/ \___/|_| \_|_|\____|
+
+-- Software for Open Networking in the Cloud --
+
+Unauthorized access and/or use are prohibited.
+All access and/or use are subject to monitoring.
+
+Help:      https://sonic-net.github.io/SONiC/
+Wiki:      https://microsoft.sharepoint.com/teams/WAG/AzureNetworking/Wiki/SONiC.aspx
+On-Call:   https://portal.microsofticm.com/imp/v3/oncall/current?serviceId=10045&teamIds=26162
+Dashboard: https://aka.ms/sonic-dri
+Contact:   sonicdev@microsoft.com
+
+admin@strtk5-7260-01:~$ 
+admin@strtk5-7260-01:~$ show version
+
+SONiC Software Version: SONiC.20250505.08
+SONiC OS Version: 12
+Distribution: Debian 12.11
+Kernel: 6.1.0-29-2-amd64
+Build commit: ad833fc6c1
+Build date: Sun Jul 13 05:55:26 UTC 2025
+Built by: azureuser@3d05d8d0c000000
+
+Platform: x86_64-arista_7260cx3_64
+HwSKU: Arista-7260CX3-D108C8
+ASIC: broadcom
+ASIC Count: 1
+Serial Number: JPA2312P0CG
+Model Number: DCS-7260CX3-64
+Hardware Revision: 03.00
+Uptime: 05:29:23 up 2 min,  1 user,  load average: 1.58, 0.87, 0.35
+Date: Tue 15 Jul 2025 05:29:23
+
+Docker images:
+REPOSITORY                 TAG           IMAGE ID       SIZE
+docker-mux                 20250505.08   5356179fd981   366MB
+docker-mux                 latest        5356179fd981   366MB
+docker-macsec              20250505.08   672abe5d3861   347MB
+docker-macsec              latest        672abe5d3861   347MB
+docker-eventd              20250505.08   3eeb8129667c   314MB
+docker-eventd              latest        3eeb8129667c   314MB
+docker-sonic-telemetry     20250505.08   8545908a045b   408MB
+docker-sonic-telemetry     latest        8545908a045b   408MB
+docker-dhcp-server         20250505.08   9c9179d42156   337MB
+docker-dhcp-server         latest        9c9179d42156   337MB
+docker-gbsyncd-broncos     20250505.08   5467fd2f6d3c   367MB
+docker-gbsyncd-broncos     latest        5467fd2f6d3c   367MB
+docker-gbsyncd-credo       20250505.08   aa8513faf0fc   341MB
+docker-gbsyncd-credo       latest        aa8513faf0fc   341MB
+docker-sonic-gnmi          20250505.08   a01c0b547c46   408MB
+docker-sonic-gnmi          latest        a01c0b547c46   408MB
+docker-orchagent           20250505.08   4314ced6bc30   356MB
+docker-orchagent           latest        4314ced6bc30   356MB
+docker-dhcp-relay          20250505.08   e0091e2447b5   325MB
+docker-dhcp-relay          latest        e0091e2447b5   325MB
+docker-fpm-frr             20250505.08   7316e189b476   386MB
+docker-fpm-frr             latest        7316e189b476   386MB
+docker-dash-ha             20250505.08   8a4c001cc1de   357MB
+docker-dash-ha             latest        8a4c001cc1de   357MB
+docker-syncd-brcm          20250505.08   49dd97ae1cd5   799MB
+docker-syncd-brcm          latest        49dd97ae1cd5   799MB
+docker-snmp                20250505.08   8022c5910131   358MB
+docker-snmp                latest        8022c5910131   358MB
+docker-platform-monitor    20250505.08   86d71f14d65a   446MB
+docker-platform-monitor    latest        86d71f14d65a   446MB
+docker-teamd               20250505.08   d65bb3c1b065   344MB
+docker-teamd               latest        d65bb3c1b065   344MB
+docker-sysmgr              20250505.08   0e5f5cf2416f   326MB
+docker-sysmgr              latest        0e5f5cf2416f   326MB
+docker-router-advertiser   20250505.08   61b42e68ef4b   314MB
+docker-router-advertiser   latest        61b42e68ef4b   314MB
+docker-sonic-restapi       20250505.08   15778163b3b0   333MB
+docker-sonic-restapi       latest        15778163b3b0   333MB
+docker-lldp                20250505.08   8820cde67495   360MB
+docker-lldp                latest        8820cde67495   360MB
+docker-gnmi-watchdog       20250505.08   2ce19321888e   314MB
+docker-gnmi-watchdog       latest        2ce19321888e   314MB
+docker-database            20250505.08   5b0f1c7d50a2   321MB
+docker-database            latest        5b0f1c7d50a2   321MB
+docker-dummyk8s            20250505.08   2085bbf84e5b   314MB
+docker-dummyk8s            latest        2085bbf84e5b   314MB
+docker-sonic-bmp           20250505.08   6b77d1c13f0b   315MB
+docker-sonic-bmp           latest        6b77d1c13f0b   315MB
+docker-bmp-watchdog        20250505.08   42a48f7599e0   314MB
+docker-bmp-watchdog        latest        42a48f7599e0   314MB
+docker-auditd-watchdog     20250505.08   b3fce996b065   314MB
+docker-auditd-watchdog     latest        b3fce996b065   314MB
+docker-acms                20250505.08   b5496d9d8682   365MB
+docker-acms                latest        b5496d9d8682   365MB
+docker-auditd              20250505.08   7c1b1a45bafc   314MB
+docker-auditd              latest        7c1b1a45bafc   314MB
+k8s.gcr.io/pause           3.5           ed210e3e4a5b   683kB
+
+admin@strtk5-7260-01:~$ 
+admin@strtk5-7260-01:~$ 
+admin@strtk5-7260-01:~$ uptime
+ 05:32:11 up 5 min,  1 user,  load average: 1.32, 1.41, 0.67
+admin@strtk5-7260-01:~$ 
+admin@strtk5-7260-01:~$ show ip bgp sum
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 4200065100 vrf-id 0
+BGP table version 3
+RIB entries 5, using 640 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V          AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down    State/PfxRcd    NeighborName
+-----------  ---  ----------  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.33      4  4200064600          0          0         0      0       0  never      Active          ARISTA01T1
+10.0.0.35      4  4200064600          0          0         0      0       0  never      Active          ARISTA02T1
+10.0.0.37      4  4200064600          0          0         0      0       0  never      Active          ARISTA03T1
+10.0.0.39      4  4200064600          0          0         0      0       0  never      Active          ARISTA04T1
+
+Total number of neighbors 4
+admin@strtk5-7260-01:~$ 
+admin@strtk5-7260-01:~$  show ip int
+Interface       Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP
+--------------  --------  -------------------  ------------  --------------  -------------
+Loopback0                 10.1.0.32/32         up/up         N/A             N/A
+PortChannel101            10.0.0.32/31         up/down       ARISTA01T1      10.0.0.33
+PortChannel102            10.0.0.34/31         up/down       ARISTA02T1      10.0.0.35
+PortChannel103            10.0.0.36/31         up/down       ARISTA03T1      10.0.0.37
+PortChannel104            10.0.0.38/31         up/down       ARISTA04T1      10.0.0.39
+Vlan1000                  192.168.0.1/21       up/up         N/A             N/A
+                          192.169.0.1/22                     N/A             N/A
+docker0                   240.127.1.1/24       up/down       N/A             N/A
+eth0                      10.212.69.35/27      up/up         N/A             N/A
+lo                        127.0.0.1/16         up/up         N/A             N/A
+admin@strtk5-7260-01:~$

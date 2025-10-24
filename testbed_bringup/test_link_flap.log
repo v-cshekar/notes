@@ -1,0 +1,1242 @@
+
+v-cshekar@str-serv-acs-15:~$ docker exec -it sonic_mgmt-v-cshekar bash
+v-cshekar@sonic_mgmt-v-cshekar:~$ cd /data/sonic-mgmt-int/
+
+v-cshekar@sonic_mgmt-v-cshekar:/data/sonic-mgmt-int$ cd test
+test_analyzer/  test_reporting/ tests/
+v-cshekar@sonic_mgmt-v-cshekar:/data/sonic-mgmt-int$ cd tests
+
+
+v-cshekar@sonic_mgmt-v-cshekar:/data/sonic-mgmt-int/tests$ ./run_tests.sh -n vms11-t0-7060-cx32-1 -i ../ansible/str,../ansible/veos -u -m individual -c platform_tests/link_flap/test_link_flap.py -l info
+=== Running tests individually ===
+Running: python3 -m pytest platform_tests/link_flap/test_link_flap.py --inventory ../ansible/str,../ansible/veos --host-pattern str-7060-cx32-1 --dpu-pattern None --testbed vms11-t0-7060-cx32-1 --testbed_file /data/sonic-mgmt-int/ansible/testbed.yaml --log-cli-level info --log-file-level debug --kube_master unset --showlocals --assert plain --show-capture no -rav --allow_recover --ignore=ptftests --ignore=acstests --ignore=saitests --ignore=scripts --ignore=k8s --ignore=sai_qualify --log-file logs/platform_tests/link_flap/test_link_flap.log --junitxml=logs/platform_tests/link_flap/test_link_flap.xml
+
+================================================================== test session starts ===================================================================
+platform linux -- Python 3.8.10, pytest-7.4.0, pluggy-1.5.0
+ansible: 2.13.13
+rootdir: /data/sonic-mgmt-int/tests
+configfile: pytest.ini
+plugins: xdist-1.28.0, metadata-3.1.1, allure-pytest-2.8.22, repeat-0.9.3, html-4.1.1, forked-1.6.0, ansible-4.0.0
+collecting ... 
+------------------------------------------------------------------ live log collection -------------------------------------------------------------------
+14:57:43 testbed.get_testbed_type                 L0263 WARNING| Unsupported testbed type - lt2-o128-d110u14
+14:57:45 testbed.get_testbed_type                 L0263 WARNING| Unsupported testbed type - ft2-64
+14:57:53 __init__.load_dut_basic_facts            L0144 INFO   | Getting dut basic facts
+/usr/local/lib/python3.8/dist-packages/paramiko/transport.py:236: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+14:57:58 __init__.load_minigraph_facts            L0230 INFO   | Getting minigraph basic facts
+/usr/local/lib/python3.8/dist-packages/paramiko/transport.py:236: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+14:58:00 __init__.load_config_facts               L0262 INFO   | Getting config basic facts
+/usr/local/lib/python3.8/dist-packages/paramiko/transport.py:236: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+14:58:03 __init__.load_switch_capabilities_facts  L0299 INFO   | Getting switch capabilities basic facts
+/usr/local/lib/python3.8/dist-packages/paramiko/transport.py:236: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+14:58:05 __init__.load_config_facts               L0262 INFO   | Getting config basic facts
+/usr/local/lib/python3.8/dist-packages/paramiko/transport.py:236: CryptographyDeprecationWarning: Blowfish has been deprecated
+  "class": algorithms.Blowfish,
+collecting 0 items                                                                                                                                       14:58:08 facts_cache.read                         L0099 INFO   | [Cache] Load cache file "/data/sonic-mgmt-int/tests/_cache/vms11-t0-7060-cx32-1/tbinfo.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+14:58:15 testbed.get_testbed_type                 L0263 WARNING| Unsupported testbed type - lt2-o128-d110u14
+14:58:16 testbed.get_testbed_type                 L0263 WARNING| Unsupported testbed type - ft2-64
+14:58:25 facts_cache.write                        L0145 INFO   | [Cache] Create cache dir /data/sonic-mgmt-int/tests/_cache/vms11-t0-7060-cx32-1
+14:58:25 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "vms11-t0-7060-cx32-1.tbinfo" to /data/sonic-mgmt-int/tests/_cache/vms11-t0-7060-cx32-1/tbinfo.pickle
+collecting 1 item                                                                                                                                        14:58:25 __init__.pytest_collection_modifyitems   L0640 INFO   | Available basic facts that can be used in conditional skip:
+{
+  "topo_type": "t0",
+  "topo_name": "t0",
+  "testbed": "vms11-t0-7060-cx32-1",
+  "asic_subtype": "broadcom",
+  "asic_type": "broadcom",
+  "branch": "heads/20241211.18",
+  "build_date": "Mon May 12 12:30:45 UTC 2025",
+  "build_number": 123893917,
+  "build_version": "20241211.18",
+  "built_by": "azureuser@bf78e85fc000000",
+  "commit_id": "0bb8078967",
+  "debian_version": "12.9",
+  "feature_status": {
+    "acms": "enabled",
+    "bgp": "enabled",
+    "bmp": "enabled",
+    "database": "always_enabled",
+    "dhcp_relay": "enabled",
+    "dhcp_server": "disabled",
+    "eventd": "enabled",
+    "frr_bmp": "enabled",
+    "gnmi": "enabled",
+    "lldp": "enabled",
+    "macsec": "disabled",
+    "mux": "always_disabled",
+    "pmon": "enabled",
+    "radv": "enabled",
+    "restapi": "enabled",
+    "snmp": "enabled",
+    "swss": "enabled",
+    "syncd": "enabled",
+    "teamd": "enabled",
+    "telemetry": "enabled"
+  },
+  "hwsku": "Arista-7060CX-32S-D48C8",
+  "is_chassis": false,
+  "is_multi_asic": false,
+  "is_supervisor": false,
+  "kernel_version": "6.1.0",
+  "libswsscommon": "1.0.0",
+  "num_asic": 1,
+  "platform": "x86_64-arista_7060_cx32s",
+  "release": "202412",
+  "secure_boot_image": "no",
+  "sonic_os_version": 12,
+  "sonic_utilities": 1.2,
+  "asic_gen": "th",
+  "minigraph_interfaces": [],
+  "minigraph_portchannels": {
+    "PortChannel101": {
+      "members": [
+        "Ethernet64"
+      ],
+      "name": "PortChannel101",
+      "namespace": ""
+    },
+    "PortChannel102": {
+      "members": [
+        "Ethernet66"
+      ],
+      "name": "PortChannel102",
+      "namespace": ""
+    },
+    "PortChannel103": {
+      "members": [
+        "Ethernet68"
+      ],
+      "name": "PortChannel103",
+      "namespace": ""
+    },
+    "PortChannel104": {
+      "members": [
+        "Ethernet70"
+      ],
+      "name": "PortChannel104",
+      "namespace": ""
+    }
+  },
+  "minigraph_portchannel_interfaces": [
+    {
+      "addr": "10.0.0.56",
+      "attachto": "PortChannel101",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.57",
+      "prefixlen": 31,
+      "subnet": "10.0.0.56/31"
+    },
+    {
+      "addr": "fc00::71",
+      "attachto": "PortChannel101",
+      "mask": "126",
+      "peer_addr": "fc00::72",
+      "prefixlen": 126,
+      "subnet": "fc00::70/126"
+    },
+    {
+      "addr": "10.0.0.58",
+      "attachto": "PortChannel102",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.59",
+      "prefixlen": 31,
+      "subnet": "10.0.0.58/31"
+    },
+    {
+      "addr": "fc00::75",
+      "attachto": "PortChannel102",
+      "mask": "126",
+      "peer_addr": "fc00::76",
+      "prefixlen": 126,
+      "subnet": "fc00::74/126"
+    },
+    {
+      "addr": "10.0.0.60",
+      "attachto": "PortChannel103",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.61",
+      "prefixlen": 31,
+      "subnet": "10.0.0.60/31"
+    },
+    {
+      "addr": "fc00::79",
+      "attachto": "PortChannel103",
+      "mask": "126",
+      "peer_addr": "fc00::7a",
+      "prefixlen": 126,
+      "subnet": "fc00::78/126"
+    },
+    {
+      "addr": "10.0.0.62",
+      "attachto": "PortChannel104",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.63",
+      "prefixlen": 31,
+      "subnet": "10.0.0.62/31"
+    },
+    {
+      "addr": "fc00::7d",
+      "attachto": "PortChannel104",
+      "mask": "126",
+      "peer_addr": "fc00::7e",
+      "prefixlen": 126,
+      "subnet": "fc00::7c/126"
+    }
+  ],
+  "minigraph_neighbors": {
+    "Ethernet10": {
+      "name": "Servers4",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet12": {
+      "name": "Servers5",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet14": {
+      "name": "Servers6",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet16": {
+      "name": "Servers7",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet18": {
+      "name": "Servers8",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet2": {
+      "name": "Servers0",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet20": {
+      "name": "Servers9",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet22": {
+      "name": "Servers10",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet24": {
+      "name": "Servers11",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet28": {
+      "name": "Servers12",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet32": {
+      "name": "Servers13",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet36": {
+      "name": "Servers14",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet4": {
+      "name": "Servers1",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet40": {
+      "name": "Servers15",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet42": {
+      "name": "Servers16",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet44": {
+      "name": "Servers17",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet46": {
+      "name": "Servers18",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet48": {
+      "name": "Servers19",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet50": {
+      "name": "Servers20",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet52": {
+      "name": "Servers21",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet54": {
+      "name": "Servers22",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet56": {
+      "name": "Servers23",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet6": {
+      "name": "Servers2",
+      "namespace": "",
+      "port": "eth0"
+    },
+    "Ethernet64": {
+      "name": "ARISTA01T1",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet66": {
+      "name": "ARISTA02T1",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet68": {
+      "name": "ARISTA03T1",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet70": {
+      "name": "ARISTA04T1",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet8": {
+      "name": "Servers3",
+      "namespace": "",
+      "port": "eth0"
+    }
+  },
+  "VOQ_INBAND_INTERFACE": {},
+  "BGP_VOQ_CHASSIS_NEIGHBOR": {},
+  "INTERFACE": {},
+  "switch_type": "",
+  "switch": {
+    "ACL_ACTION|PACKET_ACTION": "COPY,DROP,FORWARD",
+    "ASIC_SDK_HEALTH_EVENT": "false",
+    "ECMP_HASH_ALGORITHM": "CRC,XOR,CRC_32LO,CRC_32HI,CRC_CCITT,CRC_XOR",
+    "ECMP_HASH_ALGORITHM_CAPABLE": "true",
+    "ECMP_HASH_CAPABLE": "false",
+    "HASH|NATIVE_HASH_FIELD_LIST": "SRC_IP,DST_IP,VLAN_ID,IP_PROTOCOL,ETHERTYPE,L4_SRC_PORT,L4_DST_PORT,SRC_MAC,DST_MAC,IN_PORT",
+    "LAG_HASH_ALGORITHM": "CRC,XOR,CRC_32LO,CRC_32HI,CRC_CCITT,CRC_XOR",
+    "LAG_HASH_ALGORITHM_CAPABLE": "true",
+    "LAG_HASH_CAPABLE": "false",
+    "LAG_TPID_CAPABLE": "false",
+    "MAX_NEXTHOP_GROUP_COUNT": "256",
+    "MIRROR": "true",
+    "MIRRORV6": "true",
+    "ORDERED_ECMP_CAPABLE": "false",
+    "PATH_TRACING_CAPABLE": "false",
+    "PFC_DLR_INIT_CAPABLE": "false",
+    "PORT_EGRESS_SAMPLE_CAPABLE": "false",
+    "PORT_TPID_CAPABLE": "true",
+    "REG_FATAL_ASIC_SDK_HEALTH_CATEGORY": "false",
+    "REG_NOTICE_ASIC_SDK_HEALTH_CATEGORY": "false",
+    "REG_WARNING_ASIC_SDK_HEALTH_CATEGORY": "false"
+  },
+  "macsec_en": false
+}
+collected 1 item                                                                                                                                         
+
+platform_tests/link_flap/test_link_flap.py::test_link_flap 
+--------------------------------------------------------------------- live log setup ---------------------------------------------------------------------
+14:58:25 __init__.set_default                     L0053 INFO   | Completeness level not set during test execution. Setting to default level: CompletenessLevel.basic
+14:58:25 __init__.check_test_completeness         L0151 INFO   | Test has no defined levels. Continue without test completeness checks
+14:58:25 conftest.enhance_inventory               L0307 INFO   | Inventory file: ['../ansible/str', '../ansible/veos']
+14:58:29 facts_cache.read                         L0099 INFO   | [Cache] Load cache file "/data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/basic_facts.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+14:58:36 facts_cache.read                         L0099 INFO   | [Cache] Load cache file "/data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/host_visible_vars.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+14:58:41 facts_cache.write                        L0145 INFO   | [Cache] Create cache dir /data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1
+14:58:41 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "str-7060-cx32-1.host_visible_vars" to /data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/host_visible_vars.pickle
+14:58:41 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "str-7060-cx32-1.basic_facts" to /data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/basic_facts.pickle
+14:58:41 facts_cache.read                         L0099 INFO   | [Cache] Load cache file "/data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/os_version.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+14:58:43 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "str-7060-cx32-1.os_version" to /data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/os_version.pickle
+14:58:43 facts_cache.read                         L0099 INFO   | [Cache] Load cache file "/data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/feature_status.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+14:58:45 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "str-7060-cx32-1.feature_status" to /data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/feature_status.pickle
+14:58:45 facts_cache.read                         L0099 INFO   | [Cache] Load cache file "/data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/sonic_release.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+14:58:46 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "str-7060-cx32-1.sonic_release" to /data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/sonic_release.pickle
+14:58:46 facts_cache.read                         L0099 INFO   | [Cache] Load cache file "/data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/kernel_version.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+14:58:47 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "str-7060-cx32-1.kernel_version" to /data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/kernel_version.pickle
+14:58:55 ptfhost_utils.run_icmp_responder_session L0310 INFO   | Skip running icmp_responder at session level, it is only for dualtor testbed with active-active mux ports.
+14:59:03 dut_utils.creds_on_dut                   L0506 INFO   | dut str-7060-cx32-1 belongs to groups ['sonic', 'sonic_arista_7060c6', 'str', 'fanout']
+14:59:03 dut_utils.creds_on_dut                   L0531 INFO   | skip empty var file /data/sonic-mgmt-int/tests/common/helpers/../../../ansible/group_vars/all/README.yml
+14:59:03 dut_utils.creds_on_dut                   L0531 INFO   | skip empty var file /data/sonic-mgmt-int/tests/common/helpers/../../../ansible/group_vars/all/corefile_uploader.yml
+14:59:03 transport._log                           L1873 INFO   | Connected (version 2.0, client OpenSSH_9.2p1)
+14:59:03 transport._log                           L1873 INFO   | Auth banner: b'Debian GNU/Linux 12 \\n \\l\n\n'
+14:59:03 transport._log                           L1873 INFO   | Authentication (password) successful!
+14:59:20 __init__.sanity_check_full               L0206 INFO   | Prepare sanity check
+14:59:20 __init__.sanity_check_full               L0222 INFO   | Found marker: m.name=disable_loganalyzer, m.args=(), m.kwargs={}
+14:59:20 __init__.sanity_check_full               L0222 INFO   | Found marker: m.name=topology, m.args=('any',), m.kwargs={}
+14:59:20 __init__.sanity_check_full               L0291 INFO   | Sanity check settings: skip_sanity=False, pre_check_items=['check_processes', 'check_interfaces', 'check_bgp', 'check_dbmemory', 'check_monit', 'check_secureboot', 'check_ipv4_mgmt', 'check_ipv6_mgmt', 'check_orchagent_usage'], allow_recover=True, recover_method=adaptive, post_check=False, post_check_items=set()
+14:59:20 __init__.sanity_check_full               L0304 INFO   | Start pre-test sanity checks
+14:59:20 __init__.print_cmds_output_from_duthost  L0087 INFO   | Run commands to print logs
+14:59:51 __init__.print_cmds_output_from_duthost  L0110 INFO   | dut=str-7060-cx32-1, cmd_outputs=[
+    {
+        "cmd": "show version",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "",
+            "SONiC Software Version: SONiC.20241211.18",
+            "SONiC OS Version: 12",
+            "Distribution: Debian 12.9",
+            "Kernel: 6.1.0-29-2-amd64",
+            "Build commit: 0bb8078967",
+            "Build date: Mon May 12 12:30:45 UTC 2025",
+            "Built by: azureuser@bf78e85fc000000",
+            "",
+            "Platform: x86_64-arista_7060_cx32s",
+            "HwSKU: Arista-7060CX-32S-D48C8",
+            "ASIC: broadcom",
+            "ASIC Count: 1",
+            "Serial Number: HBG231701WA",
+            "Model Number: DCS-7060CX-32S",
+            "Hardware Revision: 03.00",
+            "Uptime: 14:59:22 up 22:56,  0 user,  load average: 1.59, 1.28, 1.10",
+            "Date: Tue 17 Jun 2025 14:59:22",
+            "",
+            "Docker images:",
+            "REPOSITORY                 TAG           IMAGE ID       SIZE",
+            "docker-mux                 20241211.18   a521e385dd05   365MB",
+            "docker-mux                 latest        a521e385dd05   365MB",
+            "docker-sonic-telemetry     20241211.18   c91830e051e7   384MB",
+            "docker-sonic-telemetry     latest        c91830e051e7   384MB",
+            "docker-macsec              latest        0773a1b236ad   346MB",
+            "docker-dhcp-server         latest        2f1816523a56   336MB",
+            "docker-eventd              20241211.18   7682ea0775a3   313MB",
+            "docker-eventd              latest        7682ea0775a3   313MB",
+            "docker-sonic-gnmi          20241211.18   3f238209b1ca   383MB",
+            "docker-sonic-gnmi          latest        3f238209b1ca   383MB",
+            "docker-gbsyncd-broncos     20241211.18   a536fd0dbab8   354MB",
+            "docker-gbsyncd-broncos     latest        a536fd0dbab8   354MB",
+            "docker-gbsyncd-credo       20241211.18   2a8241a9cf62   327MB",
+            "docker-gbsyncd-credo       latest        2a8241a9cf62   327MB",
+            "docker-orchagent           20241211.18   a18aa6cc65d6   356MB",
+            "docker-orchagent           latest        a18aa6cc65d6   356MB",
+            "docker-fpm-frr             20241211.18   2a84a4d14914   370MB",
+            "docker-fpm-frr             latest        2a84a4d14914   370MB",
+            "docker-teamd               20241211.18   5de84fe1e67b   343MB",
+            "docker-teamd               latest        5de84fe1e67b   343MB",
+            "docker-sonic-bmp           20241211.18   8f3321d8f514   315MB",
+            "docker-sonic-bmp           latest        8f3321d8f514   315MB",
+            "docker-dhcp-relay          latest        e8883c59cb1b   324MB",
+            "docker-platform-monitor    20241211.18   b9d44b9af2ea   434MB",
+            "docker-platform-monitor    latest        b9d44b9af2ea   434MB",
+            "docker-snmp                20241211.18   76beafd8554a   358MB",
+            "docker-snmp                latest        76beafd8554a   358MB",
+            "docker-acms                20241211.18   8bc5f5f9568d   364MB",
+            "docker-acms                latest        8bc5f5f9568d   364MB",
+            "docker-syncd-brcm          20241211.18   ed84ef209d12   780MB",
+            "docker-syncd-brcm          latest        ed84ef209d12   780MB",
+            "docker-router-advertiser   20241211.18   abcc22086923   314MB",
+            "docker-router-advertiser   latest        abcc22086923   314MB",
+            "docker-sonic-restapi       20241211.18   48512c9dcabc   332MB",
+            "docker-sonic-restapi       latest        48512c9dcabc   332MB",
+            "docker-lldp                20241211.18   0bc115cb3ac2   359MB",
+            "docker-lldp                latest        0bc115cb3ac2   359MB",
+            "docker-database            20241211.18   5510d771d9e4   322MB",
+            "docker-database            latest        5510d771d9e4   322MB",
+            "k8s.gcr.io/pause           3.5           ed210e3e4a5b   683kB",
+            ""
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "sonic_installer list",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "Current: SONiC-OS-20241211.18",
+            "Next: SONiC-OS-20241211.18",
+            "Available: ",
+            "SONiC-OS-20241211.18",
+            "SONiC-OS-20241110.21"
+        ],
+        "stderr_lines": [
+            "Warning: 'sonic_installer' command is deprecated and will be removed in the future",
+            "Please use 'sonic-installer' instead"
+        ],
+        "timeout": 0
+    },
+    {
+        "cmd": "docker ps -a",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS        PORTS     NAMES",
+            "82ab89e7b48a   docker-sonic-bmp:latest           \"/usr/local/bin/supe\u2026\"   23 hours ago   Up 23 hours             bmp",
+            "3e147669cbf9   docker-sonic-telemetry:latest     \"/usr/local/bin/supe\u2026\"   3 days ago     Up 23 hours             telemetry",
+            "f3496b125d0c   docker-snmp:latest                \"/usr/bin/docker-snm\u2026\"   3 days ago     Up 23 hours             snmp",
+            "402b04f25002   docker-platform-monitor:latest    \"/usr/bin/docker_ini\u2026\"   3 days ago     Up 23 hours             pmon",
+            "d3686a75edde   docker-lldp:latest                \"/usr/bin/docker-lld\u2026\"   3 days ago     Up 23 hours             lldp",
+            "0070005ea2ce   docker-sonic-gnmi:latest          \"/usr/local/bin/supe\u2026\"   3 days ago     Up 23 hours             gnmi",
+            "9629c87bb09b   e8883c59cb1b                      \"/usr/bin/docker_ini\u2026\"   3 days ago     Up 23 hours             dhcp_relay",
+            "fb88d8b755ad   docker-router-advertiser:latest   \"/usr/bin/docker-ini\u2026\"   3 days ago     Up 23 hours             radv",
+            "cd01b67b2fd8   docker-eventd:latest              \"/usr/local/bin/supe\u2026\"   3 days ago     Up 23 hours             eventd",
+            "13bd09525df0   docker-syncd-brcm:latest          \"/usr/local/bin/supe\u2026\"   3 days ago     Up 23 hours             syncd",
+            "46a2f9c8c99e   docker-teamd:latest               \"/usr/local/bin/supe\u2026\"   3 days ago     Up 23 hours             teamd",
+            "95e724915fc2   docker-fpm-frr:latest             \"/usr/bin/docker_ini\u2026\"   3 days ago     Up 23 hours             bgp",
+            "cf4578529836   docker-orchagent:latest           \"/usr/bin/docker-ini\u2026\"   3 days ago     Up 23 hours             swss",
+            "121a30ea1e47   docker-sonic-restapi:latest       \"/usr/local/bin/supe\u2026\"   3 days ago     Up 23 hours             restapi",
+            "df325138c541   docker-acms:latest                \"/usr/local/bin/supe\u2026\"   3 days ago     Up 23 hours             acms",
+            "67c359e081f3   docker-database:latest            \"/usr/local/bin/dock\u2026\"   3 days ago     Up 23 hours             database"
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "show interface status",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "     Interface            Lanes    Speed    MTU    FEC         Alias            Vlan    Oper    Admin             Type    Asym PFC",
+            "--------------  ---------------  -------  -----  -----  ------------  --------------  ------  -------  ---------------  ----------",
+            "     Ethernet0            33,34      50G   9100    N/A   Ethernet1/1          routed    down     down  QSFP28 or later         off",
+            "     Ethernet2            35,36      50G   9100    N/A   Ethernet1/3           trunk      up       up  QSFP28 or later         off",
+            "     Ethernet4            37,38      50G   9100    N/A   Ethernet2/1           trunk      up       up  QSFP28 or later         off",
+            "     Ethernet6            39,40      50G   9100    N/A   Ethernet2/3           trunk      up       up  QSFP28 or later         off",
+            "     Ethernet8            41,42      50G   9100    N/A   Ethernet3/1           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet10            43,44      50G   9100    N/A   Ethernet3/3           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet12            45,46      50G   9100    N/A   Ethernet4/1           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet14            47,48      50G   9100    N/A   Ethernet4/3           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet16            49,50      50G   9100    N/A   Ethernet5/1           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet18            51,52      50G   9100    N/A   Ethernet5/3           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet20            53,54      50G   9100    N/A   Ethernet6/1           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet22            55,56      50G   9100    N/A   Ethernet6/3           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet24      57,58,59,60     100G   9100     rs   Ethernet7/1           trunk    down       up  QSFP28 or later         off",
+            "    Ethernet28      61,62,63,64     100G   9100     rs   Ethernet8/1           trunk    down       up  QSFP28 or later         off",
+            "    Ethernet32      65,66,67,68     100G   9100     rs   Ethernet9/1           trunk    down       up  QSFP28 or later         off",
+            "    Ethernet36      69,70,71,72     100G   9100     rs  Ethernet10/1           trunk    down       up  QSFP28 or later         off",
+            "    Ethernet40            73,74      50G   9100    N/A  Ethernet11/1           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet42            75,76      50G   9100    N/A  Ethernet11/3           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet44            77,78      50G   9100    N/A  Ethernet12/1           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet46            79,80      50G   9100    N/A  Ethernet12/3           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet48            81,82      50G   9100    N/A  Ethernet13/1           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet50            83,84      50G   9100    N/A  Ethernet13/3           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet52            85,86      50G   9100    N/A  Ethernet14/1           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet54            87,88      50G   9100    N/A  Ethernet14/3           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet56            89,90      50G   9100    N/A  Ethernet15/1           trunk      up       up  QSFP28 or later         off",
+            "    Ethernet58            91,92      50G   9100    N/A  Ethernet15/3          routed    down     down  QSFP28 or later         off",
+            "    Ethernet60            93,94      50G   9100    N/A  Ethernet16/1          routed    down     down  QSFP28 or later         off",
+            "    Ethernet62            95,96      50G   9100    N/A  Ethernet16/3          routed    down     down  QSFP28 or later         off",
+            "    Ethernet64            97,98      50G   9100    N/A  Ethernet17/1  PortChannel101      up       up  QSFP28 or later         off",
+            "    Ethernet66           99,100      50G   9100    N/A  Ethernet17/3  PortChannel102      up       up  QSFP28 or later         off",
+            "    Ethernet68          101,102      50G   9100    N/A  Ethernet18/1  PortChannel103      up       up  QSFP28 or later         off",
+            "    Ethernet70          103,104      50G   9100    N/A  Ethernet18/3  PortChannel104      up       up  QSFP28 or later         off",
+            "    Ethernet72          105,106      50G   9100    N/A  Ethernet19/1          routed    down     down  QSFP28 or later         off",
+            "    Ethernet74          107,108      50G   9100    N/A  Ethernet19/3          routed    down     down  QSFP28 or later         off",
+            "    Ethernet76          109,110      50G   9100    N/A  Ethernet20/1          routed    down     down  QSFP28 or later         off",
+            "    Ethernet78          111,112      50G   9100    N/A  Ethernet20/3          routed    down     down  QSFP28 or later         off",
+            "    Ethernet80          113,114      50G   9100    N/A  Ethernet21/1          routed    down     down  QSFP28 or later         off",
+            "    Ethernet82          115,116      50G   9100    N/A  Ethernet21/3          routed    down     down  QSFP28 or later         off",
+            "    Ethernet84          117,118      50G   9100    N/A  Ethernet22/1          routed    down     down  QSFP28 or later         off",
+            "    Ethernet86          119,120      50G   9100    N/A  Ethernet22/3          routed    down     down  QSFP28 or later         off",
+            "    Ethernet88  121,122,123,124     100G   9100     rs  Ethernet23/1          routed    down     down  QSFP28 or later         off",
+            "    Ethernet92  125,126,127,128     100G   9100     rs  Ethernet24/1          routed    down     down  QSFP28 or later         off",
+            "    Ethernet96          1,2,3,4     100G   9100     rs  Ethernet25/1          routed    down     down  QSFP28 or later         off",
+            "   Ethernet100          5,6,7,8     100G   9100     rs  Ethernet26/1          routed    down     down  QSFP28 or later         off",
+            "   Ethernet104             9,10      50G   9100    N/A  Ethernet27/1          routed    down     down  QSFP28 or later         off",
+            "   Ethernet106            11,12      50G   9100    N/A  Ethernet27/3          routed    down     down  QSFP28 or later         off",
+            "   Ethernet108            13,14      50G   9100    N/A  Ethernet28/1          routed    down     down  QSFP28 or later         off",
+            "   Ethernet110            15,16      50G   9100    N/A  Ethernet28/3          routed    down     down  QSFP28 or later         off",
+            "   Ethernet112            17,18      50G   9100    N/A  Ethernet29/1          routed    down     down  QSFP28 or later         off",
+            "   Ethernet114            19,20      50G   9100    N/A  Ethernet29/3          routed    down     down  QSFP28 or later         off",
+            "   Ethernet116            21,22      50G   9100    N/A  Ethernet30/1          routed    down     down  QSFP28 or later         off",
+            "   Ethernet118            23,24      50G   9100    N/A  Ethernet30/3          routed    down     down  QSFP28 or later         off",
+            "   Ethernet120            25,26      50G   9100    N/A  Ethernet31/1          routed    down     down  QSFP28 or later         off",
+            "   Ethernet122            27,28      50G   9100    N/A  Ethernet31/3          routed    down     down  QSFP28 or later         off",
+            "   Ethernet124            29,30      50G   9100    N/A  Ethernet32/1          routed    down     down  QSFP28 or later         off",
+            "   Ethernet126            31,32      50G   9100    N/A  Ethernet32/3          routed    down     down  QSFP28 or later         off",
+            "PortChannel101              N/A      50G   9100    N/A           N/A          routed      up       up              N/A         N/A",
+            "PortChannel102              N/A      50G   9100    N/A           N/A          routed      up       up              N/A         N/A",
+            "PortChannel103              N/A      50G   9100    N/A           N/A          routed      up       up              N/A         N/A",
+            "PortChannel104              N/A      50G   9100    N/A           N/A          routed      up       up              N/A         N/A"
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "show ip interface",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "Interface       Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP",
+            "--------------  --------  -------------------  ------------  --------------  -------------",
+            "Loopback0                 10.1.0.32/32         up/up         N/A             N/A",
+            "PortChannel101            10.0.0.56/31         up/up         ARISTA01T1      10.0.0.57",
+            "PortChannel102            10.0.0.58/31         up/up         ARISTA02T1      10.0.0.59",
+            "PortChannel103            10.0.0.60/31         up/up         ARISTA03T1      10.0.0.61",
+            "PortChannel104            10.0.0.62/31         up/up         ARISTA04T1      10.0.0.63",
+            "Vlan1000                  192.168.0.1/21       up/up         N/A             N/A",
+            "docker0                   240.127.1.1/24       up/down       N/A             N/A",
+            "eth0                      10.3.146.165/24      up/up         N/A             N/A",
+            "lo                        127.0.0.1/16         up/up         N/A             N/A"
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "ip neigh",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "10.3.146.2 dev eth0 lladdr 5c:45:27:6b:0a:f0 REACHABLE ",
+            "10.0.0.61 dev PortChannel103 lladdr 02:59:09:2d:99:71 REACHABLE ",
+            "10.0.0.59 dev PortChannel102 lladdr 0e:fd:51:5a:74:42 REACHABLE ",
+            "10.0.0.57 dev PortChannel101 lladdr 1e:a2:28:ca:85:39 REACHABLE ",
+            "10.3.146.1 dev eth0 lladdr 00:00:5e:00:01:64 REACHABLE ",
+            "10.0.0.63 dev PortChannel104 lladdr 2e:3c:ef:fd:c3:ce REACHABLE ",
+            "fe80::cfd:51ff:fe5a:7442 dev PortChannel102 lladdr 0e:fd:51:5a:74:42 router STALE ",
+            "fe80::268a:7ff:fea3:15 dev Vlan1000 lladdr 24:8a:07:a3:00:15 REACHABLE ",
+            "fe80::801:46ff:fef3:401f dev PortChannel104 lladdr 0a:01:46:f3:40:1f REACHABLE ",
+            "fe80::1ca2:28ff:feca:8539 dev PortChannel101 lladdr 1e:a2:28:ca:85:39 router STALE ",
+            "fe80::268a:7ff:fea3:4 dev Vlan1000 lladdr 24:8a:07:a3:00:04 REACHABLE ",
+            "fe80::268a:7ff:fea3:8 dev Vlan1000 lladdr 24:8a:07:a3:00:08 REACHABLE ",
+            "fc00::7a dev PortChannel103 lladdr 02:59:09:2d:99:71 router REACHABLE ",
+            "fe80::268a:7ff:fea3:10 dev Vlan1000 lladdr 24:8a:07:a3:00:10 REACHABLE ",
+            "fe80::268a:7ff:fea3:14 dev Vlan1000 lladdr 24:8a:07:a3:00:14 REACHABLE ",
+            "fe80::268a:7ff:fea3:18 dev Vlan1000 lladdr 24:8a:07:a3:00:18 REACHABLE ",
+            "fe80::bace:f6ff:fe6d:a148 dev eth0 lladdr b8:ce:f6:6d:a1:48 REACHABLE ",
+            "fe80::fe59:c0ff:fe4f:4b84 dev Vlan1000 lladdr fc:59:c0:4f:4b:84 router STALE ",
+            "fe80::2a01:111:e210:3000:3 dev eth0 lladdr a8:d0:e5:0d:ff:f0 router STALE ",
+            "fe80::268a:7ff:fea3:3 dev Vlan1000 lladdr 24:8a:07:a3:00:03 REACHABLE ",
+            "fe80::268a:7ff:fea3:7 dev Vlan1000 lladdr 24:8a:07:a3:00:07 REACHABLE ",
+            "fe80::268a:7ff:fea3:b dev Vlan1000 lladdr 24:8a:07:a3:00:0b REACHABLE ",
+            "fe80::dc79:b9ff:fe3b:801e dev PortChannel103 lladdr de:79:b9:3b:80:1e REACHABLE ",
+            "fe80::268a:7ff:fea3:13 dev Vlan1000 lladdr 24:8a:07:a3:00:13 REACHABLE ",
+            "fe80::268a:7ff:fea3:17 dev Vlan1000 lladdr 24:8a:07:a3:00:17 REACHABLE ",
+            "fe80::2c3c:efff:fefd:c3ce dev PortChannel104 lladdr 2e:3c:ef:fd:c3:ce router REACHABLE ",
+            "fc00::76 dev PortChannel102 lladdr 0e:fd:51:5a:74:42 router REACHABLE ",
+            "fe80::2a01:111:e210:3000:2 dev eth0 lladdr 5c:45:27:6b:0a:f0 router STALE ",
+            "fe80::268a:7ff:fea3:2 dev Vlan1000 lladdr 24:8a:07:a3:00:02 REACHABLE ",
+            "2a01:111:e210:b000::1 dev eth0 FAILED ",
+            "fe80::268a:7ff:fea3:6 dev Vlan1000 lladdr 24:8a:07:a3:00:06 REACHABLE ",
+            "fe80::268a:7ff:fea3:a dev Vlan1000 lladdr 24:8a:07:a3:00:0a REACHABLE ",
+            "fe80::63f:72ff:fed0:6616 dev eth0 lladdr 04:3f:72:d0:66:16 REACHABLE ",
+            "fe80::59:9ff:fe2d:9971 dev PortChannel103 lladdr 02:59:09:2d:99:71 router REACHABLE ",
+            "fe80::268a:7ff:fea3:12 dev Vlan1000 lladdr 24:8a:07:a3:00:12 REACHABLE ",
+            "fe80::4b4:6fff:fe5c:c01c dev PortChannel101 lladdr 06:b4:6f:5c:c0:1c REACHABLE ",
+            "fe80::268a:7ff:fea3:16 dev Vlan1000 lladdr 24:8a:07:a3:00:16 REACHABLE ",
+            "fc00::72 dev PortChannel101 lladdr 1e:a2:28:ca:85:39 router REACHABLE ",
+            "fe80::2a01:111:e210:3000:1 dev eth0 lladdr 00:00:5e:00:02:02 router STALE ",
+            "fe80::268a:7ff:fea3:1 dev Vlan1000 lladdr 24:8a:07:a3:00:01 REACHABLE ",
+            "fc00::7e dev PortChannel104 lladdr 2e:3c:ef:fd:c3:ce router REACHABLE ",
+            "fe80::268a:7ff:fea3:5 dev Vlan1000 lladdr 24:8a:07:a3:00:05 REACHABLE ",
+            "fe80::7044:19ff:fe72:801d dev PortChannel102 lladdr 72:44:19:72:80:1d REACHABLE ",
+            "fe80::268a:7ff:fea3:9 dev Vlan1000 lladdr 24:8a:07:a3:00:09 REACHABLE ",
+            "fe80::268a:7ff:fea3:11 dev Vlan1000 lladdr 24:8a:07:a3:00:11 REACHABLE "
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "show ip bgp summary",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "",
+            "IPv4 Unicast Summary:",
+            "BGP router identifier 10.1.0.32, local AS number 65100 vrf-id 0",
+            "BGP table version 22720",
+            "RIB entries 12807, using 1639296 bytes of memory",
+            "Peers 4, using 82432 KiB of memory",
+            "Peer groups 4, using 256 bytes of memory",
+            "",
+            "",
+            "Neighbhor      V     AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName",
+            "-----------  ---  -----  ---------  ---------  --------  -----  ------  ---------  --------------  --------------",
+            "10.0.0.57      4  64600       4816       4580     22720      0       0  22:48:08             6400  ARISTA01T1",
+            "10.0.0.59      4  64600       4805       4580     22720      0       0  22:48:08             6400  ARISTA02T1",
+            "10.0.0.61      4  64600       4813       4580     22720      0       0  22:48:08             6400  ARISTA03T1",
+            "10.0.0.63      4  64600       4813       4580     22720      0       0  22:48:08             6400  ARISTA04T1",
+            "",
+            "Total number of neighbors 4"
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "show ipv6 bgp summary",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "",
+            "IPv6 Unicast Summary:",
+            "BGP router identifier 10.1.0.32, local AS number 65100 vrf-id 0",
+            "BGP table version 20904",
+            "RIB entries 12807, using 1639296 bytes of memory",
+            "Peers 4, using 82432 KiB of memory",
+            "Peer groups 4, using 256 bytes of memory",
+            "",
+            "",
+            "Neighbhor      V     AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName",
+            "-----------  ---  -----  ---------  ---------  --------  -----  ------  ---------  --------------  --------------",
+            "fc00::7a       4  64600       4811       4575     20904      0       0  22:48:08             6400  ARISTA03T1",
+            "fc00::7e       4  64600       4815       4575     20904      0       0  22:48:07             6400  ARISTA04T1",
+            "fc00::72       4  64600       4810       4575     20904      0       0  22:48:08             6400  ARISTA01T1",
+            "fc00::76       4  64600       4817       4574     20904      0       0  22:48:07             6400  ARISTA02T1",
+            "",
+            "Total number of neighbors 4"
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "ip route | wc -l",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "32006"
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "ping 10.64.247.145 -c 1 -W 3",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "PING 10.64.247.145 (10.64.247.145) 56(84) bytes of data.",
+            "64 bytes from 10.64.247.145: icmp_seq=1 ttl=60 time=1.13 ms",
+            "",
+            "--- 10.64.247.145 ping statistics ---",
+            "1 packets transmitted, 1 received, 0% packet loss, time 0ms",
+            "rtt min/avg/max/mdev = 1.127/1.127/1.127/0.000 ms"
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "traceroute 10.64.247.145",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 0,
+        "stdout_lines": [
+            "traceroute to 10.64.247.145 (10.64.247.145), 30 hops max, 60 byte packets",
+            " 1  10.3.146.2 (10.3.146.2)  0.364 ms  0.278 ms  0.278 ms",
+            " 2  * * *",
+            " 3  10.3.144.171 (10.3.144.171)  1.119 ms  1.081 ms  0.975 ms",
+            " 4  * * *",
+            " 5  10.64.247.145 (10.64.247.145)  1.279 ms  1.238 ms  1.199 ms"
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "ping6 2a01:111:e210:b000::a40:f791 -c 1 -W 3",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 1,
+        "stdout_lines": [
+            "PING 2a01:111:e210:b000::a40:f791(2a01:111:e210:b000::a40:f791) 56 data bytes",
+            "",
+            "--- 2a01:111:e210:b000::a40:f791 ping statistics ---",
+            "1 packets transmitted, 0 received, 100% packet loss, time 0ms",
+            ""
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    },
+    {
+        "cmd": "traceroute6 2a01:111:e210:b000::a40:f791",
+        "cmd_with_timeout": "",
+        "err_msg": "",
+        "rc": 2,
+        "stdout_lines": [
+            "traceroute to 2a01:111:e210:b000::a40:f791 (2a01:111:e210:b000::a40:f791) from 2a01:111:e210:b000::a03:92a5, port 33434, from port 33636, 30 hops max, 60 bytes packets",
+            " 1  2a01:111:e210:b000::a03:92a5 (2a01:111:e210:b000::a03:92a5)  46.040 ms !H  3071.896 ms !H  3071.930 ms !H "
+        ],
+        "stderr_lines": [],
+        "timeout": 0
+    }
+]
+14:59:51 checks._check_processes_on_dut           L0848 INFO   | Checking process status on str-7060-cx32-1...
+14:59:53 checks._check_processes_on_dut           L0853 INFO   | networking_uptime=82166 seconds, timeout=0 seconds, interval=20 seconds
+15:00:04 checks._check_processes_on_dut           L0894 INFO   | Done checking processes status on str-7060-cx32-1
+15:00:04 parallel.on_terminate                    L0096 INFO   | process _check_processes_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:00:04 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:00:04 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_processes_on_dut" in 0:00:13.259071 seconds
+15:00:04 checks._check_interfaces_on_dut          L0109 INFO   | Checking interfaces status on str-7060-cx32-1...
+15:00:06 checks._check_interfaces_on_dut          L0116 INFO   | networking_uptime=82180 seconds, timeout=0 seconds, interval=20 seconds
+15:00:08 checks._check_interfaces_on_dut          L0135 INFO   | [
+    "Ethernet2",
+    "Ethernet4",
+    "Ethernet6",
+    "Ethernet8",
+    "Ethernet10",
+    "Ethernet12",
+    "Ethernet14",
+    "Ethernet16",
+    "Ethernet18",
+    "Ethernet20",
+    "Ethernet22",
+    "Ethernet24",
+    "Ethernet28",
+    "Ethernet32",
+    "Ethernet36",
+    "Ethernet40",
+    "Ethernet42",
+    "Ethernet44",
+    "Ethernet46",
+    "Ethernet48",
+    "Ethernet50",
+    "Ethernet52",
+    "Ethernet54",
+    "Ethernet56",
+    "Ethernet64",
+    "Ethernet66",
+    "Ethernet68",
+    "Ethernet70"
+]
+15:00:08 checks._check_interfaces_on_dut          L0136 INFO   | [
+    "PortChannel101",
+    "PortChannel102",
+    "PortChannel103",
+    "PortChannel104"
+]
+15:00:16 checks._check_interfaces_on_dut          L0158 INFO   | Done checking interfaces status on str-7060-cx32-1
+15:00:16 parallel.on_terminate                    L0096 INFO   | process _check_interfaces_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:00:16 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:00:16 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_interfaces_on_dut" in 0:00:12.066869 seconds
+15:00:16 checks._check_bgp_on_dut                 L0247 INFO   | Checking bgp status on host str-7060-cx32-1 ...
+15:00:23 checks._check_bgp_on_dut                 L0286 INFO   | No BGP neighbors are down or default route missing on str-7060-cx32-1
+15:00:23 facts_cache.read                         L0099 INFO   | [Cache] Load cache file "/data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/mg_facts.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+15:00:25 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "str-7060-cx32-1.mg_facts" to /data/sonic-mgmt-int/tests/_cache/str-7060-cx32-1/mg_facts.pickle
+15:00:26 duthost_utils.check_bgp_router_id        L0618 INFO   | BGP router identifier: 10.1.0.32 == Loopback0 address 10.1.0.32
+15:00:26 checks._check_bgp_on_dut                 L0294 INFO   | Done checking bgp status on str-7060-cx32-1
+15:00:26 parallel.on_terminate                    L0096 INFO   | process _check_bgp_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:00:26 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:00:26 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_bgp_on_dut" in 0:00:09.589233 seconds
+15:00:26 checks._check_dbmemory_on_dut            L0333 INFO   | Checking database memory on str-7060-cx32-1...
+15:00:27 checks._check_dbmemory_on_dut            L0347 INFO   | Done checking database memory on str-7060-cx32-1
+15:00:27 parallel.on_terminate                    L0096 INFO   | process _check_dbmemory_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:00:27 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:00:27 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_dbmemory_on_dut" in 0:00:01.457075 seconds
+15:00:27 checks._check_monit_on_dut               L0777 INFO   | Checking status of each Monit service...
+15:00:29 checks._check_monit_on_dut               L0781 INFO   | networking_uptime = 82203 seconds, timeout = 0 seconds, interval = 20 seconds
+15:00:30 checks._check_monit_on_dut               L0826 INFO   | Checking status of each Monit service was done on str-7060-cx32-1
+15:00:30 parallel.on_terminate                    L0096 INFO   | process _check_monit_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:00:30 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:00:30 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_monit_on_dut" in 0:00:03.074019 seconds
+15:00:31 checks._read_config_by_dut               L0917 INFO   | Skipped to check secure boot for dut str-7060-cx32-1, since the secure boot is not enabled
+15:00:31 facts_cache.write                        L0145 INFO   | [Cache] Create cache dir /data/sonic-mgmt-int/tests/_cache/secureboot_sanity_check
+15:00:31 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "secureboot_sanity_check.tests.platform_tests.link_flap.test_link_flap" to /data/sonic-mgmt-int/tests/_cache/secureboot_sanity_check/tests.platform_tests.link_flap.test_link_flap.pickle
+15:00:31 checks._check_ipv4_mgmt_to_dut           L1066 INFO   | Checking ipv4 mgmt interface reachability on str-7060-cx32-1...
+15:00:32 checks._check_ipv4_mgmt_to_dut           L1077 INFO   | ping output: PING 10.3.146.165 (10.3.146.165) 56(84) bytes of data.
+64 bytes from 10.3.146.165: icmp_seq=1 ttl=59 time=0.957 ms
+64 bytes from 10.3.146.165: icmp_seq=2 ttl=59 time=0.919 ms
+
+--- 10.3.146.165 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 0.919/0.938/0.957/0.019 ms
+15:00:32 checks._check_ipv4_mgmt_to_dut           L1085 INFO   | Done checking ipv4 management reachability on str-7060-cx32-1
+15:00:32 parallel.on_terminate                    L0096 INFO   | process _check_ipv4_mgmt_to_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:00:32 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:00:32 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_ipv4_mgmt_to_dut" in 0:00:01.423533 seconds
+15:00:32 checks._check_ipv6_mgmt_to_dut           L1104 INFO   | Checking ipv6 mgmt interface reachability on str-7060-cx32-1...
+15:00:36 checks._check_ipv6_mgmt_to_dut           L1114 INFO   | Failed to ping ipv6 mgmt interface on str-7060-cx32-1, exception: run module shell failed, Ansible Results =>
+failed = True
+changed = True
+rc = 1
+cmd = ping6 -c 2 -W 2 2a01:111:e210:b000::a03:92a5
+start = 2025-06-17 15:00:33.232330
+end = 2025-06-17 15:00:36.241463
+delta = 0:00:03.009133
+msg = non-zero return code
+invocation = {'module_args': {'_raw_params': 'ping6 -c 2 -W 2 2a01:111:e210:b000::a03:92a5', '_uses_shell': True, 'warn': False, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}
+_ansible_no_log = None
+stdout =
+PING 2a01:111:e210:b000::a03:92a5(2a01:111:e210:b000::a03:92a5) 56 data bytes
+
+--- 2a01:111:e210:b000::a03:92a5 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1001msstderr =
+
+15:00:36 checks._check_ipv6_mgmt_to_dut           L1118 INFO   | Done checking ipv6 management reachability on str-7060-cx32-1
+15:00:36 parallel.on_terminate                    L0096 INFO   | process _check_ipv6_mgmt_to_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:00:36 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:00:36 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_ipv6_mgmt_to_dut" in 0:00:03.392664 seconds
+15:00:36 checks._check_orchagent_usage_on_dut     L1135 INFO   | Checking orchagent CPU usage on str-7060-cx32-1...
+15:00:38 checks._check_orchagent_usage_on_dut     L1143 INFO   | Done checking orchagent CPU usage on str-7060-cx32-1
+15:00:38 parallel.on_terminate                    L0096 INFO   | process _check_orchagent_usage_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:00:38 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:00:38 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_orchagent_usage_on_dut" in 0:00:02.588937 seconds
+15:00:38 conftest.nbrhosts                        L0788 INFO   | Fixture nbrhosts started
+15:00:38 conftest.initial_neighbor                L0802 INFO   | nbrhosts started: ARISTA01T1_VM11127
+15:00:38 conftest.initial_neighbor                L0802 INFO   | nbrhosts started: ARISTA02T1_VM11128
+15:00:38 conftest.initial_neighbor                L0802 INFO   | nbrhosts started: ARISTA03T1_VM11129
+15:00:38 conftest.initial_neighbor                L0802 INFO   | nbrhosts started: ARISTA04T1_VM11130
+15:01:46 conftest.initial_neighbor                L0844 INFO   | nbrhosts finished: ARISTA03T1_VM11129
+15:01:48 conftest.initial_neighbor                L0844 INFO   | nbrhosts finished: ARISTA04T1_VM11130
+15:01:49 conftest.initial_neighbor                L0844 INFO   | nbrhosts finished: ARISTA02T1_VM11128
+15:01:49 conftest.initial_neighbor                L0844 INFO   | nbrhosts finished: ARISTA01T1_VM11127
+15:01:49 conftest.nbrhosts                        L0870 INFO   | Fixture nbrhosts finished
+15:01:49 recover.recover                          L0241 WARNING| Try to recover str-7060-cx32-1 using method adaptive
+15:01:49 recover._recover_interfaces              L0046 WARNING| Restoring port: Ethernet24
+15:01:55 eos.shutdown                             L0088 INFO   | Shut interface [Ethernet7/1]
+15:02:01 eos.no_shutdown                          L0099 INFO   | No shut interface [Ethernet7/1]
+15:02:01 sonic.no_shutdown                        L1198 INFO   | Starting up Ethernet24
+15:02:04 recover._recover_interfaces              L0046 WARNING| Restoring port: Ethernet28
+15:02:10 eos.shutdown                             L0088 INFO   | Shut interface [Ethernet8/1]
+15:02:16 eos.no_shutdown                          L0099 INFO   | No shut interface [Ethernet8/1]
+15:02:16 sonic.no_shutdown                        L1198 INFO   | Starting up Ethernet28
+15:02:19 recover._recover_interfaces              L0046 WARNING| Restoring port: Ethernet32
+15:02:25 eos.shutdown                             L0088 INFO   | Shut interface [Ethernet9/1]
+15:02:31 eos.no_shutdown                          L0099 INFO   | No shut interface [Ethernet9/1]
+15:02:31 sonic.no_shutdown                        L1198 INFO   | Starting up Ethernet32
+15:02:33 recover._recover_interfaces              L0046 WARNING| Restoring port: Ethernet36
+15:02:39 eos.shutdown                             L0088 INFO   | Shut interface [Ethernet10/1]
+15:02:46 eos.no_shutdown                          L0099 INFO   | No shut interface [Ethernet10/1]
+15:02:46 sonic.no_shutdown                        L1198 INFO   | Starting up Ethernet36
+15:02:48 utilities.wait                           L0118 INFO   | Pause 30 seconds, reason: Wait 30 seconds for interface(s) to restore.
+15:03:18 recover.adaptive_recover                 L0225 WARNING| Restoring {'failed': True, 'check_item': 'interfaces', 'host': 'str-7060-cx32-1', 'down_ports': ['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36']} with proposed action: None, final action: None
+15:03:18 recover.adaptive_recover                 L0225 WARNING| Restoring {'failed': True, 'check_item': 'monit', 'host': 'str-7060-cx32-1', 'services_status': {'root-overlay': 'Resource limit matched', 'var-log': 'Accessible', 'str-7060-cx32-1': 'Running', 'rsyslog': 'Running', 'routeCheck': 'Status ok', 'dualtorNeighborCheck': 'Status ok', 'diskCheck': 'Status ok', 'container_checker': 'Status failed', 'vnetRouteCheck': 'Status ok', 'memory_check': 'Status ok', 'arp_update_checker': 'Status ok', 'controlPlaneDropCheck': 'Status ok', 'container_memory_telemetry': 'Status ok', 'container_memory_snmp': 'Status ok', 'container_memory_gnmi': 'Status ok', 'container_eventd': 'Status ok', 'container_memory_bmp': 'Status ok'}} with proposed action: reboot, final action: reboot
+15:03:18 recover.reboot_dut                       L0019 INFO   | Reboot DUT to recover
+15:03:19 reboot.reboot                            L0339 INFO   | Reboot str-7060-cx32-1: wait[120], timeout[300]
+15:03:19 reboot.reboot                            L0341 INFO   | DUT str-7060-cx32-1 create a file /dev/shm/test_reboot before rebooting
+15:03:20 reboot.reboot                            L0344 INFO   | DUT OS Version: 20241211.18
+15:03:20 reboot.collect_console_log               L0666 INFO   | start: collect console log
+15:03:20 dut_utils.creds_on_dut                   L0506 INFO   | dut str-7060-cx32-1 belongs to groups ['sonic', 'sonic_arista_7060c6', 'str', 'fanout']
+15:03:20 dut_utils.creds_on_dut                   L0531 INFO   | skip empty var file /data/sonic-mgmt-int/tests/common/helpers/../../../ansible/group_vars/all/README.yml
+15:03:20 dut_utils.creds_on_dut                   L0531 INFO   | skip empty var file /data/sonic-mgmt-int/tests/common/helpers/../../../ansible/group_vars/all/corefile_uploader.yml
+15:03:21 transport._log                           L1873 INFO   | Connected (version 2.0, client OpenSSH_9.2p1)
+15:03:21 transport._log                           L1873 INFO   | Auth banner: b'Debian GNU/Linux 12 \\n \\l\n\n'
+15:03:21 transport._log                           L1873 INFO   | Authentication (password) successful!
+15:03:22 reboot.try_create_dut_console            L0659 WARNING| Fail to create dut console. Please check console config or if console works ro not. 'ManagementIp'
+15:03:22 reboot.collect_console_log               L0676 WARNING| dut console is not ready, we cannot get log by console
+15:03:28 reboot.wait_for_shutdown                 L0197 INFO   | waiting for ssh to drop on str-7060-cx32-1
+15:03:28 reboot.execute_reboot_command            L0238 INFO   | rebooting str-7060-cx32-1 with command "reboot"
+15:03:58 reboot.wait_for_startup                  L0218 INFO   | waiting for ssh to startup on str-7060-cx32-1
+15:05:05 reboot.wait_for_startup                  L0230 INFO   | ssh has started up on str-7060-cx32-1
+15:05:05 reboot.reboot                            L0380 INFO   | waiting for switch str-7060-cx32-1 to initialize
+
+15:06:55 processes_utils.wait_critical_processes  L0076 INFO   | Wait until all critical processes are healthy in 300 sec
+15:06:55 processes_utils._all_critical_processes_ L0045 INFO   | Check critical processes status
+15:07:12 processes_utils.get_critical_processes_s L0035 INFO   | The status of checking process in container 'snmp' is: False
+15:07:12 processes_utils.get_critical_processes_s L0037 INFO   | The processes not running in container 'snmp' are: '['snmp-subagent']'
+15:07:32 processes_utils._all_critical_processes_ L0045 INFO   | Check critical processes status
+15:07:48 reboot.reboot                            L0415 INFO   | cold reboot finished on str-7060-cx32-1
+15:07:50 reboot.reboot                            L0418 INFO   | DUT str-7060-cx32-1 up since 2025-06-17 15:04:19.910000
+15:07:50 __init__.recover_on_sanity_check_failure L0405 INFO   | Run sanity check again after recovery
+15:07:50 checks._check_processes_on_dut           L0848 INFO   | Checking process status on str-7060-cx32-1...
+15:07:53 checks._check_processes_on_dut           L0853 INFO   | networking_uptime=159 seconds, timeout=141 seconds, interval=20 seconds
+15:08:04 checks._check_processes_on_dut           L0894 INFO   | Done checking processes status on str-7060-cx32-1
+15:08:04 parallel.on_terminate                    L0096 INFO   | process _check_processes_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:08:04 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:08:04 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_processes_on_dut" in 0:00:13.716616 seconds
+15:08:04 checks._check_interfaces_on_dut          L0109 INFO   | Checking interfaces status on str-7060-cx32-1...
+15:08:06 checks._check_interfaces_on_dut          L0116 INFO   | networking_uptime=173 seconds, timeout=127 seconds, interval=20 seconds
+15:08:09 checks._check_interfaces_on_dut          L0135 INFO   | [
+    "Ethernet2",
+    "Ethernet4",
+    "Ethernet6",
+    "Ethernet8",
+    "Ethernet10",
+    "Ethernet12",
+    "Ethernet14",
+    "Ethernet16",
+    "Ethernet18",
+    "Ethernet20",
+    "Ethernet22",
+    "Ethernet24",
+    "Ethernet28",
+    "Ethernet32",
+    "Ethernet36",
+    "Ethernet40",
+    "Ethernet42",
+    "Ethernet44",
+    "Ethernet46",
+    "Ethernet48",
+    "Ethernet50",
+    "Ethernet52",
+    "Ethernet54",
+    "Ethernet56",
+    "Ethernet64",
+    "Ethernet66",
+    "Ethernet68",
+    "Ethernet70"
+]
+15:08:09 checks._check_interfaces_on_dut          L0136 INFO   | [
+    "PortChannel101",
+    "PortChannel102",
+    "PortChannel103",
+    "PortChannel104"
+]
+15:08:18 utilities.wait                           L0118 INFO   | Pause 20 seconds, reason: Found down ports, wait 20 seconds to retry. Remaining time: 127, down_ports=['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36']
+15:08:45 utilities.wait                           L0118 INFO   | Pause 20 seconds, reason: Found down ports, wait 20 seconds to retry. Remaining time: 98, down_ports=['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36']
+15:09:12 utilities.wait                           L0118 INFO   | Pause 20 seconds, reason: Found down ports, wait 20 seconds to retry. Remaining time: 71, down_ports=['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36']
+15:09:39 utilities.wait                           L0118 INFO   | Pause 20 seconds, reason: Found down ports, wait 20 seconds to retry. Remaining time: 44, down_ports=['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36']
+15:10:06 utilities.wait                           L0118 INFO   | Pause 20 seconds, reason: Found down ports, wait 20 seconds to retry. Remaining time: 17, down_ports=['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36']
+15:10:26 checks._check_interfaces_on_dut          L0158 INFO   | Done checking interfaces status on str-7060-cx32-1
+15:10:26 parallel.on_terminate                    L0096 INFO   | process _check_interfaces_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:10:26 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:10:26 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_interfaces_on_dut" in 0:02:22.246965 seconds
+15:10:27 checks._check_bgp_on_dut                 L0247 INFO   | Checking bgp status on host str-7060-cx32-1 ...
+15:10:34 checks._check_bgp_on_dut                 L0286 INFO   | No BGP neighbors are down or default route missing on str-7060-cx32-1
+15:10:35 duthost_utils.check_bgp_router_id        L0618 INFO   | BGP router identifier: 10.1.0.32 == Loopback0 address 10.1.0.32
+15:10:35 checks._check_bgp_on_dut                 L0294 INFO   | Done checking bgp status on str-7060-cx32-1
+15:10:35 parallel.on_terminate                    L0096 INFO   | process _check_bgp_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:10:35 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:10:35 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_bgp_on_dut" in 0:00:08.712464 seconds
+15:10:35 checks._check_dbmemory_on_dut            L0333 INFO   | Checking database memory on str-7060-cx32-1...
+15:10:37 checks._check_dbmemory_on_dut            L0347 INFO   | Done checking database memory on str-7060-cx32-1
+15:10:37 parallel.on_terminate                    L0096 INFO   | process _check_dbmemory_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:10:37 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:10:37 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_dbmemory_on_dut" in 0:00:01.663923 seconds
+15:10:37 checks._check_monit_on_dut               L0777 INFO   | Checking status of each Monit service...
+15:10:39 checks._check_monit_on_dut               L0781 INFO   | networking_uptime = 326 seconds, timeout = 174 seconds, interval = 20 seconds
+15:10:40 utilities.wait                           L0118 INFO   | Pause 20 seconds, reason: Services were not monitored and wait 20 seconds to retry.                              Remaining time: 174. Services status: {'root-overlay': 'Accessible', 'var-log': 'Accessible', 'str-7060-cx32-1': 'Running', 'rsyslog': 'Running', 'routeCheck': 'Initializing', 'dualtorNeighborCheck': 'Initializing', 'diskCheck': 'Initializing', 'container_checker': 'Initializing', 'vnetRouteCheck': 'Initializing', 'memory_check': 'Initializing', 'arp_update_checker': 'Initializing', 'controlPlaneDropCheck': 'Initializing', 'container_memory_telemetry': 'Initializing', 'container_memory_snmp': 'Initializing', 'container_memory_gnmi': 'Initializing', 'container_eventd': 'Initializing', 'container_memory_bmp': 'Initializing'}
+15:11:01 checks._check_monit_on_dut               L0826 INFO   | Checking status of each Monit service was done on str-7060-cx32-1
+15:11:01 parallel.on_terminate                    L0096 INFO   | process _check_monit_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:11:01 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:11:01 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_monit_on_dut" in 0:00:24.356233 seconds
+15:11:02 checks._read_config_by_dut               L0917 INFO   | Skipped to check secure boot for dut str-7060-cx32-1, since the secure boot is not enabled
+15:11:02 facts_cache.write                        L0151 INFO   | [Cache] Cached facts "secureboot_sanity_check.tests.platform_tests.link_flap.test_link_flap" to /data/sonic-mgmt-int/tests/_cache/secureboot_sanity_check/tests.platform_tests.link_flap.test_link_flap.pickle
+15:11:02 checks._check_ipv4_mgmt_to_dut           L1066 INFO   | Checking ipv4 mgmt interface reachability on str-7060-cx32-1...
+15:11:04 checks._check_ipv4_mgmt_to_dut           L1077 INFO   | ping output: PING 10.3.146.165 (10.3.146.165) 56(84) bytes of data.
+64 bytes from 10.3.146.165: icmp_seq=1 ttl=59 time=0.880 ms
+64 bytes from 10.3.146.165: icmp_seq=2 ttl=59 time=0.871 ms
+
+--- 10.3.146.165 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 0.871/0.875/0.880/0.004 ms
+15:11:04 checks._check_ipv4_mgmt_to_dut           L1085 INFO   | Done checking ipv4 management reachability on str-7060-cx32-1
+15:11:04 parallel.on_terminate                    L0096 INFO   | process _check_ipv4_mgmt_to_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:11:04 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:11:04 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_ipv4_mgmt_to_dut" in 0:00:01.468381 seconds
+15:11:04 checks._check_ipv6_mgmt_to_dut           L1104 INFO   | Checking ipv6 mgmt interface reachability on str-7060-cx32-1...
+15:11:07 checks._check_ipv6_mgmt_to_dut           L1114 INFO   | Failed to ping ipv6 mgmt interface on str-7060-cx32-1, exception: run module shell failed, Ansible Results =>
+failed = True
+changed = True
+rc = 1
+cmd = ping6 -c 2 -W 2 2a01:111:e210:b000::a03:92a5
+start = 2025-06-17 15:11:04.435396
+end = 2025-06-17 15:11:07.466153
+delta = 0:00:03.030757
+msg = non-zero return code
+invocation = {'module_args': {'_raw_params': 'ping6 -c 2 -W 2 2a01:111:e210:b000::a03:92a5', '_uses_shell': True, 'warn': False, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'chdir': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}
+_ansible_no_log = None
+stdout =
+PING 2a01:111:e210:b000::a03:92a5(2a01:111:e210:b000::a03:92a5) 56 data bytes
+
+--- 2a01:111:e210:b000::a03:92a5 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1023msstderr =
+
+15:11:07 checks._check_ipv6_mgmt_to_dut           L1118 INFO   | Done checking ipv6 management reachability on str-7060-cx32-1
+15:11:07 parallel.on_terminate                    L0096 INFO   | process _check_ipv6_mgmt_to_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:11:07 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:11:07 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_ipv6_mgmt_to_dut" in 0:00:03.467302 seconds
+15:11:07 checks._check_orchagent_usage_on_dut     L1135 INFO   | Checking orchagent CPU usage on str-7060-cx32-1...
+15:11:10 checks._check_orchagent_usage_on_dut     L1143 INFO   | Done checking orchagent CPU usage on str-7060-cx32-1
+15:11:10 parallel.on_terminate                    L0096 INFO   | process _check_orchagent_usage_on_dut--<MultiAsicSonicHost str-7060-cx32-1> terminated with exit code None
+15:11:10 parallel.parallel_run                    L0179 INFO   | Force read exception regardless of whether the process exited normally.
+15:11:10 parallel.parallel_run                    L0241 INFO   | Completed running processes for target "_check_orchagent_usage_on_dut" in 0:00:02.794591 seconds
+ERROR                                                                                                                                              [100%]
+
+========================================================================= ERRORS =========================================================================
+____________________________________________________________ ERROR at setup of test_link_flap ____________________________________________________________
+
+request = <SubRequest 'sanity_check' for <Function test_link_flap>>, parallel_run_context = (False, None, False, 0, None)
+
+    @pytest.fixture(scope="module", autouse=True)
+    def sanity_check(request, parallel_run_context):
+>       with contextmanager(_sanity_check)(request, parallel_run_context) as result:
+
+parallel_run_context = (False, None, False, 0, None)
+request    = <SubRequest 'sanity_check' for <Function test_link_flap>>
+
+common/plugins/sanity_check/__init__.py:455: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.8/contextlib.py:113: in __enter__
+    return next(self.gen)
+        self       = <contextlib._GeneratorContextManager object at 0x7ff74219d550>
+common/plugins/sanity_check/__init__.py:450: in _sanity_check
+    yield request.getfixturevalue('sanity_check_full')
+        initial_check_state = None
+        is_par_leader = False
+        is_par_run = False
+        par_followers = 0
+        par_state_file = None
+        parallel_run_context = (False, None, False, 0, None)
+        request    = <SubRequest 'sanity_check' for <Function test_link_flap>>
+        target_hostname = None
+common/plugins/sanity_check/__init__.py:325: in sanity_check_full
+    recover_on_sanity_check_failure(ptfhost, duthosts, failed_results, fanouthosts, localhost, nbr_hosts,
+        allow_recover = True
+        check_results = [{'check_item': 'processes', 'failed': False, 'host': 'str-7060-cx32-1', 'processes_status': {'bgp': {'exited_critical...r_eventd': 'Status ok', 'container_memory_bmp': 'Status ok', ...}}, {'check_item': 'secureboot', 'failed': False}, ...]
+        cli_check_items = False
+        cli_post_check_items = False
+        customized_sanity_check = None
+        dual_tor   = False
+        duthosts   = [<MultiAsicSonicHost str-7060-cx32-1>]
+        failed_results = [{'check_item': 'interfaces', 'down_ports': ['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36'], 'failed': True, ...ok', 'container_checker': 'Status failed', 'container_eventd': 'Status ok', 'container_memory_bmp': 'Status ok', ...}}]
+        fanouthosts = {'str-7260cx3-fan-06': { os: 'eos', hostname: 'str-7260cx3-fan-06', device_type: 'FanoutLeaf' }}
+        item       = 'check_processes'
+        localhost  = <tests.common.devices.local.Localhost object at 0x7ff742a85040>
+        m          = Mark(name='topology', args=('any',), kwargs={})
+        nbr_hosts  = {'ARISTA01T1': <EosHost VM11127>, 'ARISTA02T1': <EosHost VM11128>, 'ARISTA03T1': <EosHost VM11129>, 'ARISTA04T1': <EosHost VM11130>}
+        post_check = False
+        post_check_items = set()
+        pre_check_items = ['check_processes', 'check_interfaces', 'check_bgp', 'check_dbmemory', 'check_monit', 'check_secureboot', ...]
+        pre_post_check_items = ['check_processes', 'check_interfaces', 'check_bgp', 'check_dbmemory', 'check_monit', 'check_secureboot', ...]
+        prepare_parallel_run = False
+        ptfhost    = <tests.common.devices.ptf.PTFHost object at 0x7ff741fe91f0>
+        recover_method = 'adaptive'
+        request    = <SubRequest 'sanity_check_full' for <Function test_link_flap>>
+        should_skip_sanity = False
+        skip_sanity = False
+        tbinfo     = {'auto_recover': 'True', 'comment': 'v-cshekar', 'conf-name': 'vms11-t0-7060-cx32-1', 'duts': ['str-7060-cx32-1'], ...}
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ptfhost = <tests.common.devices.ptf.PTFHost object at 0x7ff741fe91f0>, duthosts = [<MultiAsicSonicHost str-7060-cx32-1>]
+failed_results = [{'check_item': 'interfaces', 'down_ports': ['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36'], 'failed': True, ...ok', 'container_checker': 'Status failed', 'container_eventd': 'Status ok', 'container_memory_bmp': 'Status ok', ...}}]
+fanouthosts = {'str-7260cx3-fan-06': { os: 'eos', hostname: 'str-7260cx3-fan-06', device_type: 'FanoutLeaf' }}
+localhost = <tests.common.devices.local.Localhost object at 0x7ff742a85040>
+nbrhosts = {'ARISTA01T1': <EosHost VM11127>, 'ARISTA02T1': <EosHost VM11128>, 'ARISTA03T1': <EosHost VM11129>, 'ARISTA04T1': <EosHost VM11130>}
+check_items = ['check_processes', 'check_interfaces', 'check_bgp', 'check_dbmemory', 'check_monit', 'check_secureboot', ...], recover_method = 'adaptive'
+request = <SubRequest 'sanity_check_full' for <Function test_link_flap>>
+tbinfo = {'auto_recover': 'True', 'comment': 'v-cshekar', 'conf-name': 'vms11-t0-7060-cx32-1', 'duts': ['str-7060-cx32-1'], ...}
+sanity_check_stage = 'stage_pre_test'
+
+    def recover_on_sanity_check_failure(ptfhost, duthosts, failed_results, fanouthosts, localhost, nbrhosts, check_items,
+                                        recover_method, request, tbinfo, sanity_check_stage: str):
+        sanity_failed_cache_key = "pre_sanity_check_failed"
+        recovery_failed_cache_key = "pre_sanity_recovery_failed"
+        if sanity_check_stage == STAGE_POST_TEST:
+            sanity_failed_cache_key = "post_sanity_check_failed"
+            recovery_failed_cache_key = "post_sanity_recovery_failed"
+    
+        try:
+            dut_failed_results = defaultdict(list)
+            infra_recovery_actions = []
+            for failed_result in failed_results:
+                if 'host' in failed_result:
+                    dut_failed_results[failed_result['host']].append(failed_result)
+                if 'hosts' in failed_result:
+                    for hostname in failed_result['hosts']:
+                        dut_failed_results[hostname].append(failed_result)
+                if failed_result['check_item'] in constants.INFRA_CHECK_ITEMS:
+                    if 'action' in failed_result and failed_result['action'] is not None \
+                            and callable(failed_result['action']):
+                        infra_recovery_actions.append(failed_result['action'])
+            for action in infra_recovery_actions:
+                action()
+    
+            is_modular_chassis = duthosts[0].get_facts().get("modular_chassis")
+            if is_modular_chassis:
+                recover_chassis(duthosts)
+            else:
+                for dut_name, dut_results in list(dut_failed_results.items()):
+                    # Attempt to restore DUT state
+                    recover(ptfhost, duthosts[dut_name], localhost, fanouthosts, nbrhosts, tbinfo, dut_results,
+                            recover_method)
+    
+        except BaseException as e:
+            request.config.cache.set(sanity_failed_cache_key, True)
+            add_custom_msg(request, f"{DUT_CHECK_NAMESPACE}.{recovery_failed_cache_key}", True)
+    
+            logger.error(f"Recovery of sanity check failed with exception: {repr(e)}")
+            pt_assert(
+                False,
+                f"!!!!!!!!!!!!!!!! Recovery of sanity check failed !!!!!!!!!!!!!!!!"
+                f"Exception: {repr(e)}"
+            )
+        logger.info("Run sanity check again after recovery")
+        new_check_results = do_checks(request, check_items, stage=sanity_check_stage, after_recovery=True)
+        logger.debug(f"{sanity_check_stage} sanity check after recovery results: \n%s" %
+                     json.dumps(new_check_results, indent=4, default=fallback_serializer))
+        new_failed_results = [result for result in new_check_results if result['failed']]
+        if new_failed_results:
+            request.config.cache.set(sanity_failed_cache_key, True)
+            add_custom_msg(request, f"{DUT_CHECK_NAMESPACE}.{recovery_failed_cache_key}", True)
+>           pt_assert(False,
+                      f"!!!!!!!!!!!!!!!! {sanity_check_stage} sanity check after recovery failed: !!!!!!!!!!!!!!!!\n"
+                      f"{json.dumps(new_failed_results, indent=4, default=fallback_serializer)}")
+E           Failed: !!!!!!!!!!!!!!!! stage_pre_test sanity check after recovery failed: !!!!!!!!!!!!!!!!
+E           [
+E               {
+E                   "failed": true,
+E                   "check_item": "interfaces",
+E                   "host": "str-7060-cx32-1",
+E                   "down_ports": [
+E                       "Ethernet24",
+E                       "Ethernet28",
+E                       "Ethernet32",
+E                       "Ethernet36"
+E                   ]
+E               }
+E           ]
+
+check_items = ['check_processes', 'check_interfaces', 'check_bgp', 'check_dbmemory', 'check_monit', 'check_secureboot', ...]
+dut_failed_results = defaultdict(<class 'list'>, {'str-7060-cx32-1': [{'failed': True, 'check_item': 'interfaces', 'host': 'str-7060-cx32-1...us ok', 'container_memory_gnmi': 'Status ok', 'container_eventd': 'Status ok', 'container_memory_bmp': 'Status ok'}}]})
+dut_name   = 'str-7060-cx32-1'
+dut_results = [{'check_item': 'interfaces', 'down_ports': ['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36'], 'failed': True, ...ok', 'container_checker': 'Status failed', 'container_eventd': 'Status ok', 'container_memory_bmp': 'Status ok', ...}}]
+duthosts   = [<MultiAsicSonicHost str-7060-cx32-1>]
+failed_result = {'check_item': 'monit', 'failed': True, 'host': 'str-7060-cx32-1', 'services_status': {'arp_update_checker': 'Status ok', 'container_checker': 'Status failed', 'container_eventd': 'Status ok', 'container_memory_bmp': 'Status ok', ...}}
+failed_results = [{'check_item': 'interfaces', 'down_ports': ['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36'], 'failed': True, ...ok', 'container_checker': 'Status failed', 'container_eventd': 'Status ok', 'container_memory_bmp': 'Status ok', ...}}]
+fanouthosts = {'str-7260cx3-fan-06': { os: 'eos', hostname: 'str-7260cx3-fan-06', device_type: 'FanoutLeaf' }}
+infra_recovery_actions = []
+is_modular_chassis = False
+localhost  = <tests.common.devices.local.Localhost object at 0x7ff742a85040>
+nbrhosts   = {'ARISTA01T1': <EosHost VM11127>, 'ARISTA02T1': <EosHost VM11128>, 'ARISTA03T1': <EosHost VM11129>, 'ARISTA04T1': <EosHost VM11130>}
+new_check_results = [{'check_item': 'processes', 'failed': False, 'host': 'str-7060-cx32-1', 'processes_status': {'bgp': {'exited_critical...r_eventd': 'Status ok', 'container_memory_bmp': 'Status ok', ...}}, {'check_item': 'secureboot', 'failed': False}, ...]
+new_failed_results = [{'check_item': 'interfaces', 'down_ports': ['Ethernet24', 'Ethernet28', 'Ethernet32', 'Ethernet36'], 'failed': True, 'host': 'str-7060-cx32-1'}]
+ptfhost    = <tests.common.devices.ptf.PTFHost object at 0x7ff741fe91f0>
+recover_method = 'adaptive'
+recovery_failed_cache_key = 'pre_sanity_recovery_failed'
+request    = <SubRequest 'sanity_check_full' for <Function test_link_flap>>
+sanity_check_stage = 'stage_pre_test'
+sanity_failed_cache_key = 'pre_sanity_check_failed'
+tbinfo     = {'auto_recover': 'True', 'comment': 'v-cshekar', 'conf-name': 'vms11-t0-7060-cx32-1', 'duts': ['str-7060-cx32-1'], ...}
+
+common/plugins/sanity_check/__init__.py:413: Failed
+==================================================================== warnings summary ====================================================================
+../../../usr/local/lib/python3.8/dist-packages/paramiko/transport.py:236
+  /usr/local/lib/python3.8/dist-packages/paramiko/transport.py:236: CryptographyDeprecationWarning: Blowfish has been deprecated
+    "class": algorithms.Blowfish,
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+---------------------------- generated xml file: /data/sonic-mgmt-int/tests/logs/platform_tests/link_flap/test_link_flap.xml -----------------------------
+----------------------------------------------------------------- live log sessionfinish -----------------------------------------------------------------
+15:11:10 __init__.pytest_terminal_summary         L0067 INFO   | Can not get Allure report URL. Please check logs
+================================================================ short test summary info =================================================================
+ERROR platform_tests/link_flap/test_link_flap.py::test_link_flap - Failed: !!!!!!!!!!!!!!!! stage_pre_test sanity check after recovery failed: !!!!!!!!!!!!!!!!
+======================================================== 1 warning, 1 error in 815.25s (0:13:35) =========================================================
+DEBUG:tests.conftest:[log_custom_msg] item: <Function test_link_flap>
+DEBUG:tests.conftest:append custom_msg: {'dut_check_result': {'pre_sanity_check_failed': True, 'pre_sanity_recovery_failed': True}}
+INFO:root:Can not get Allure report URL. Please check logs
+=== Sanity check failed for platform_tests/link_flap/test_link_flap.py. Skip rest of the scripts if there is any. ===
+v-cshekar@sonic_mgmt-v-cshekar:/data/sonic-mgmt-int/tests$ 
+v-cshekar@sonic_mgmt-v-cshekar:/data/sonic-mgmt-int/tests$ 
+v-cshekar@sonic_mgmt-v-cshekar:/data/sonic-mgmt-int/tests$

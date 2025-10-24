@@ -1,0 +1,287 @@
+ Multi-hop PipeLine:
+https://dev.azure.com/mssonic/internal/_build/results?buildId=876340&view=results
+
+Incident reports tickets:
+https://portal.microsofticm.com/imp/v3/incidents/omnisearch?searchString=%22LAG%20flapped%22
+
+
+
+internal_20411
+
+
+# Deploy minigraph error:
+-----------------------
+Run the below commands when deploy minigraph errors are seen:
+
+sudo config load_minigraph -y
+sudo config save -y
+sudo reboot
+# Access tbtk5 testbeds
+
+SecureCRT: 10.41.28.36 (netdev1 central India server) (gme password)
+ssh v-cshekar@2603:10e2:140:3000::102 (7bog..password)  (use azure for first time, lab password)
+ssh admin@10.212.69.35 (lab password)
+
+*Access Using Console:*
+ssh -l v-cshekar@xpme.gbl:5 -p 22 10.212.68.11 (use xpme Password)
+
+Device: tbtk5-t0-7260-01
+    IP: 10.212.69.35
+    Console: 10.212.68.9/27
+    Port: 4
+
+
+--------------------------------------
+
+--------------------------------------
+# 2700 test beds to use
+vms2-2-t0-2700
+https://dev.azure.com/mssonic/internal/_build?definitionId=1475&_a=summary
+
+tbtk5-t0-2700-1
+
+[XiN$<=o[RuZ={$1HKe]!s}ST
+
+-----------------------------------
+# Access Normal test beds
+
+**Step 1: Initial Login**
+1. Log into the system with IP address 10.20.0.118
+
+**Step 2: Connect to Netdev1 Server**
+1. Use SSH to connect to v-cshekar@10.18.78.235
+2. Command: ssh v-cshekar@10.18.78.235
+3. Use your GME Password when prompted
+
+**Step 3: Access Server 15**
+
+1. From Netdev1, SSH to v-cshekar@10.64.247.31
+2. Command: ssh v-cshekar@10.64.247.31
+3. Use the password:7bog..
+
+**Step 4: Accessing the Testbed Console**
+1. Once on Server 15, you can access the testbed console
+2. ssh -l v-cshekar:29 -p 22 10.3.145.196 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+
+Use password as <7bog..>
+
+NOTE: when logged in using 10.41.28.36
+V-CSHEKAR@netdev1-centralindia-v6:~$ ssh v-cshekar@10.18.78.235 (GME pwd)
+V-CSHEKAR@netdev1-westus2-v2:~$ ssh_s15
+
+Then follow step 4 above
+
+
+
+--------------------------------------------------
+# Set Management IP (mgmt ip) on switch
+admin@sonic:~$ sudo config interface ip add eth0 10.64.247.235/24
+admin@sonic:~$ sudo ip route add default via 10.64.247.1
+admin@sonic:~$ sudo config save -y
+
+vms20-t0-7060
+admin@sonic:~$ sudo config interface ip add eth0 10.3.146.57/24
+admin@sonic:~$ sudo ip route add default via 10.3.146.1
+admin@sonic:~$ sudo config save -y
+
+-------------------------------------------------
+# Install image
+sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202012/tagged/sonic-aboot-broadcom-20201231.97.swi
+
+sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi
+
+7050/7260 image
+sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom.swi
+
+sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom-slim-20241110.22.swi
+
+
+sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/mellanox/internal-202311/tagged/sonic-mellanox-20231110.30.bin
+
+tbtk5-t0-7260-7:
+sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202311/tagged/sonic-aboot-broadcom-20231110.30.swi
+
+
+sudo reboot
+
+For slim image:
+http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202405/tagged/sonic-aboot-broadcom-slim.swi
+
+http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom.swi
+
+
+Use slim images
+Cold reboot to 202411
+Install 202505 (sonic installer)
+Warm-reboot (sudo warm-reboot -vvv) from 202411 to 202505.
+Please share the syslog, sairedis of this experiment.
+ 
+You could use pipeline to do this too, if there is a way to disable CPA on the pipeline.
+
+
+# Upgrade Warm reboot test from A->B
+
+1. Make sure device is stable
+admin@strtk5-7260-01:~$ show ip bgp sum
+admin@strtk5-7260-01:~$ show ip int
+admin@strtk5-7260-01:~$ show int portchannel
+docker ps -a
+
+2. Install verstion A image and perform cold reboot
+
+sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom.swi
+
+admin@strtk5-7260-01:~$ sudo reboot
+
+3. After system comes up, check and upgrade image B, perform warm reboot
+
+admin@strtk5-7260-01:~$ sudo sonic_installer list
+admin@strtk5-7260-01:~$ show ip bgp sum
+admin@strtk5-7260-01:~$ show ip int
+admin@strtk5-7260-01:~$ show int portchannel
+df -h
+sudo zramctl
+free -h
+
+sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi
+admin@strtk5-7260-01:~$ sudo warm-reboot -vvv
+
+4. When system comes up, check status
+admin@strtk5-7260-01:~$ show version
+admin@strtk5-7260-01:~$ show ip bgp sum
+admin@strtk5-7260-01:~$ show ip int
+admin@strtk5-7260-01:~$ show int portchannel
+
+# Copy syslogs and sairedis
+admin@str-7060-cx32-1:~$ sudo scp /var/log/syslog* v-cshekar@10.64.247.31:/tmp/7060_logs
+admin@str-7060-cx32-1:~$ sudo scp /var/log/swss/sairedis* v-cshekar@10.64.247.31:/tmp/7060_logs
+
+----------------------------
+Pipelines:
+
+SONiC-Metadata (A to B upgrade_path test)
+https://dev.azure.com/mssonic/internal/_build?definitionId=312&_a=summary
+
+Redeploy pipeline:
+https://dev.azure.com/mssonic/internal/_build?definitionId=320
+
+
+---------------------------------
+Find free available IP's
+
+
+
+./allocate_device_ip.py -r 10.64.246.0/23 -n 10 -p
+
+-------------------------------------------------------------------
+# How to Create an XPME Password
+
+
+### 1. Log in to xOneIdentity
+
+Use your **AME credentials** to sign in to the xOneIdentity portal.
+
+### 2. Submit Your Account Creation Request
+
+- Navigate to **User > Create/Modify**.
+- Select the domain as https://xoneidentity.core.windows.net/
+- Enter your **alias**.
+- **Make sure to select "Unix enabled" and de-select "Passwordless".**
+- Click **Create** to submit your request.
+
+### 3. Wait for Manager Approval
+
+Your line manager must approve the account creation request.
+
+### 4. Create Your Password
+
+Once your request is approved:
+- Go back to **User > Create/Modify**.
+- Enter the **XPME** domain and your alias.
+- Select the **Reset Password** option.
+
+**Note:** You might have to wait up to **24 hours** after approval before you can reset the password.
+
+### 5. Password Storage
+
+Your newly created password will be stored in the buildout **Keyvault**. You can retrieve it from there whenever you need it.
+
+
+
+# To disable CPA
+
+Edit file:
+upgrade_sonic_metadata.yml
+-2+2
+/.azure-pipelines/sonic-metadata/upgrade_sonic_metadata.yml
+
+# Remove --enable_cpa option in 2 places
+
+echo To URL is $to_url
+EXTRA_PARAMS="--showlocals --assert plain -rav --enable_cpa --upgrade_type=$UPGRADE_TYPE --skip_sanity
+EXTRA_PARAMS="--showlocals --assert plain -rav --upgrade_type=$UPGRADE_TYPE --skip_sanity
+
+
+EXTRA_PARAMS="--showlocals --assert plain -rav --enable_cpa --upgrade_type=warm --skip_sanity --multi_hop_upgrade_path=$hop_upgrade_image_urls --sad_case_list=$select_sad_cases $skip_postupgrade_actions_option $metadata_process_option $tcam_hole_option $ceos_lacp_multiplier_option $CONSISTENCY_CHECKER_ARGS"
+EXTRA_PARAMS="--showlocals --assert plain -rav --upgrade_type=warm --skip_sanity --multi_hop_upgrade_path=$hop_upgrade_image_urls --sad_case_list=$select_sad_cases $skip_postupgrade_actions_option $metadata_process_option $tcam_hole_option $ceos_lacp_multiplier_option $CONSISTENCY_CHECKER_ARGS"
+
+
+18/09/2025 21:28:54 test_metadata_upgrade_path.setup_upgrade L0099 INFO   | 
+
+Test upgrade path from http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom-20241110.22.swi to http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi on str2-7260cx3-acs-9
+
+
+# Server 14/15 export commands
+
+export http_proxy=http://10.201.148.40:8080
+export https_proxy=http://10.201.148.40:8080
+
+
+## PTF server login:
+user: root/root
+
+
+
+-------------
+# To check upgrade path version:
+
+search for "Test upgrade path from"
+
+22/09/2025 13:36:27 test_metadata_upgrade_path.setup_upgrade L0099 INFO   | Test upgrade path from http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom-20241110.22.swi to http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi on str2-7260cx3-acs-9
+
+
+Mellanox:
++ echo ======== Upgrading to 24 ========
++ from_url=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/mellanox/internal-202311/tagged/sonic-mellanox-20231110.30.bin
++ to_url=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/mellanox/internal-202505/tagged/sonic-mellanox-20250510.24.bin
+
+
+
+29/09/2025 16:53:53 test_metadata_upgrade_path.setup_upgrade L0099 INFO   | Test upgrade path from http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom-20241110.22.swi to http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi on strtk5-7260-7
+
+
+
+# other testbeds to use
+ tbtk5-t0-2700-4
+ vms20-t0-7050cx3-2
+ tbtk5-t0-7260-2 (10.212.69.141)
+
+
+# Checkout Networking-Metadata repo
+Repo: https://msazure.visualstudio.com/One/_git/Networking-Metadata?path=%2Fsrc%2Fdata%2FNetwork%2FSONiC%2Fscripts&version=GBmaster&_a=contents
+
+git clone --filter=blob:none --no-checkout  https://msazure.visualstudio.com/DefaultCollection/One/_git/Networking-Metadata
+cd Networking-Metadata/
+git sparse-checkout init --cone
+git sparse-checkout set src/data/Network/SONiC/scripts
+git checkout
+
+
+query ADO's:
+--------------
+https://msazure.visualstudio.com/One/_queries/query-edit/b2ec9922-b2f3-4432-b77e-47981d182e6e/
+
+
+
+# Lab Power Cycle ADO
+https://msazure.visualstudio.com/Standards/_workitems/edit/35696464

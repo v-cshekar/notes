@@ -1,0 +1,582 @@
+sudo sonic_installer install -y  http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/rgarthwaite/experiment/fix-portchannel-down-wb/sonic-aboot-broadcom.swi
++ [ crow = rook ]
++ [ crow = sprucefish ]
++ return 1
++ in_array crow rook
++ local value=crow
++ shift
++ [ crow = rook ]
++ return 1
++ in_array crow crow magpie
++ local value=crow
++ shift
++ [ crow = crow ]
++ return 0
++ cmdline_add amd_iommu=off
++ echo amd_iommu=off
++ cmdline_add modprobe.blacklist=snd_hda_intel,hdaudio
++ echo modprobe.blacklist=snd_hda_intel,hdaudio
++ cmdline_add sdhci.append_quirks2=0x40
++ echo sdhci.append_quirks2=0x40
++ read_system_eeprom
++ read_eeprom /tmp/.system-prefdl
++ [ -x /bin/readprefdl ]
++ [ -f /etc/prefdl ]
++ in_array crow woodpecker puffin skylark
++ local value=crow
++ shift
++ [ crow = woodpecker ]
++ [ crow = puffin ]
++ [ crow = skylark ]
++ return 1
++ in_array crow lorikeet hedgehog
++ local value=crow
++ shift
++ [ crow = lorikeet ]
++ [ crow = hedgehog ]
++ return 1
++ in_array crow prairieisland
++ local value=crow
++ shift
++ [ crow = prairieisland ]
++ return 1
++ in_array crow shearwater redstart
++ local value=crow
++ shift
++ [ crow = shearwater ]
++ [ crow = redstart ]
++ return 1
++ in_array Upperlake Moby RedstartFixed8CNMoby
++ local value=Upperlake
++ shift
++ [ Upperlake = Moby ]
++ [ Upperlake = RedstartFixed8CNMoby ]
++ return 1
++ [ 0 -eq 0 ]
++ [ 3700 -ge 28000 ]
++ [ 3700 -gt 4000 ]
++ varlog_size=256
++ cmdline_add logs_inram=on
++ echo logs_inram=on
++ cmdline_add docker_inram=on
++ echo docker_inram=on
++ cmdline_add docker_inram_algo=zstd
++ echo docker_inram_algo=zstd
++ [ 3700 -le 2000 ]
++ cmdline_add varlog_size=256
++ echo varlog_size=256
++ cmdline_add sonic.mode=fixed
++ echo sonic.mode=fixed
++ write_image_specific_cmdline
++ cmdline_add security=apparmor
++ echo security=apparmor
++ cmdline_add apparmor=1
++ echo apparmor=1
++ cmdline_add rw
++ echo rw
++ cmdline_add net.ifnames=0
++ echo net.ifnames=0
++ cmdline_add systemd.unified_cgroup_hierarchy=0
++ echo systemd.unified_cgroup_hierarchy=0
++ cmdline_add log_buf_len=1M
++ echo log_buf_len=1M
++ cmdline_add quiet
++ echo quiet
++ cmdline_add systemd.show_status=auto
++ echo systemd.show_status=auto
++ [ -f /sys/class/net/ma1/address ]
++ [ -f /sys/class/net/eth0/address ]
++ cat /sys/class/net/eth0/address
++ cmdline_add hwaddr_ma1=fc:59:c0:4f:4b:84
++ echo hwaddr_ma1=fc:59:c0:4f:4b:84
++ + mount
+grep  /host 
++ local mountstr=/dev/mmcblk0p1 on /host type ext4 (rw,relatime)
++ echo /dev/mmcblk0p1 on /host type ext4 (rw,relatime)
++ cut -f1 -d 
++ local rootdev=/dev/mmcblk0p1
++ echo /dev/mmcblk0p1 on /host type ext4 (rw,relatime)
++ cut -f5 -d 
++ local rootfstype=ext4
++ get_uuid_for /dev/mmcblk0p1
++ local dev=/dev/mmcblk0p1
++ type lsblk
++ lsblk /dev/mmcblk0p1 -n --output UUID
++ local rootuuid=f198bd2d-a5de-4842-9fd3-5ad4ac596124
++ [ -z f198bd2d-a5de-4842-9fd3-5ad4ac596124 ]
++ [ ext4 = vfat ]
++ cmdline_add root=UUID=f198bd2d-a5de-4842-9fd3-5ad4ac596124
++ echo root=UUID=f198bd2d-a5de-4842-9fd3-5ad4ac596124
++ write_machine_config
++ cmdline_get Aboot
++ sed s/^.*norcal.-//+ tail -n 1
++ sed -nr s/.*Aboot=([^ ]+).*/\1/p /tmp/append
+
++ aboot_version=6.1.10-14653765
++ [ -x /bin/sysinit ]
++ aboot_build_date=unknown
++ cat
++ chmod a+r /host/machine.conf
++ cmdline_add loop=image-fix-portchannel-down-wb.130424094-d5d4f36882/fs.squashfs
++ echo loop=image-fix-portchannel-down-wb.130424094-d5d4f36882/fs.squashfs
++ cmdline_add loopfstype=squashfs
++ echo loopfstype=squashfs
++ write_cmdline
++ [ -f /host/kernel-params ]
++ [ -f /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline ]
++ [ -f /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline-append ]
++ cmdline_echo
++ cat /tmp/append
++ tr \n  
++ echo reboot=p console=ttyS0 acpi=on Aboot=Aboot-norcal6-6.1.10-14653765 block_flash=pci0000:00/0000:00:14.7/mmc_host/.*$ block_usb1=pci0000:00/0000:00:12.0/usb1/1-1/1-1.1/.*$ block_usb2=pci0000:00/0000:00:12.0/usb1/1-1/1-1.4/.*$ block_drive=pci0000:00/0000:00:11.0/.*host./target.:0:0/.*$ net_ma1=pci0000:00/0000:00:02.4/.*$ platform=crow sid=Upperlake cmdline-aboot-end modprobe.blacklist=radeon,sp5100_tco processor.max_cstate=1 amd_iommu=off modprobe.blacklist=snd_hda_intel,hdaudio sdhci.append_quirks2=0x40 logs_inram=on docker_inram=on docker_inram_algo=zstd varlog_size=256 sonic.mode=fixed security=apparmor apparmor=1 rw net.ifnames=0 systemd.unified_cgroup_hierarchy=0 log_buf_len=1M quiet systemd.show_status=auto hwaddr_ma1=fc:59:c0:4f:4b:84 root=UUID=f198bd2d-a5de-4842-9fd3-5ad4ac596124 loop=image-fix-portchannel-down-wb.130424094-d5d4f36882/fs.squashfs loopfstype=squashfs
++ cmdline_echo
++ sed s/ cmdline-aboot-end.*$//
++ + cat /tmp/append
+tr \n  
++ echo reboot=p console=ttyS0 acpi=on Aboot=Aboot-norcal6-6.1.10-14653765 block_flash=pci0000:00/0000:00:14.7/mmc_host/.*$ block_usb1=pci0000:00/0000:00:12.0/usb1/1-1/1-1.1/.*$ block_usb2=pci0000:00/0000:00:12.0/usb1/1-1/1-1.4/.*$ block_drive=pci0000:00/0000:00:11.0/.*host./target.:0:0/.*$ net_ma1=pci0000:00/0000:00:02.4/.*$ platform=crow sid=Upperlake cmdline-aboot-end modprobe.blacklist=radeon,sp5100_tco processor.max_cstate=1 amd_iommu=off modprobe.blacklist=snd_hda_intel,hdaudio sdhci.append_quirks2=0x40 logs_inram=on docker_inram=on docker_inram_algo=zstd varlog_size=256 sonic.mode=fixed security=apparmor apparmor=1 rw net.ifnames=0 systemd.unified_cgroup_hierarchy=0 log_buf_len=1M quiet systemd.show_status=auto hwaddr_ma1=fc:59:c0:4f:4b:84 root=UUID=f198bd2d-a5de-4842-9fd3-5ad4ac596124 loop=image-fix-portchannel-down-wb.130424094-d5d4f36882/fs.squashfs loopfstype=squashfs
++ info Installing image under /host/image-fix-portchannel-down-wb.130424094-d5d4f36882
++ cut -f1 -d  /proc/uptime
++ printf %04.2f: Installing image under /host/image-fix-portchannel-down-wb.130424094-d5d4f36882\n 438.53
++ extract_image
++ info Moving swi to a tmpfs
++ cut -f1 -d  /proc/uptime
++ printf %04.2f: Moving swi to a tmpfs\n 438.54
++ move_swi_to_tmpfs /tmp/sonic_image.swi
++ local oldswi=/tmp/sonic_image.swi
++ is_file_in_memory /tmp/sonic_image.swi
++ local file=/tmp/sonic_image.swi
++ mountpoint_for_file /tmp/sonic_image.swi
++ local file=/tmp/sonic_image.swi
++ df /tmp/sonic_image.swi
++ tr+ cut -d   -f6
+ -s  
++ tail -1
++ local filemnt=/
++ mount
++ + cutgrep  / 
+ -f5 -d 
++ local filemntfs=overlay
++ return 1
++ get_tmpfs
++ mktemp -d
++ local tmpfs=/tmp/tmp.CeigoiGOdV
++ mkdir -p /tmp/tmp.CeigoiGOdV
++ false
++ mount
++ grep -q  /tmp type tmpfs
++ dirname /tmp/tmp.CeigoiGOdV
++ mount -t tmpfs /tmp /tmp/tmp.CeigoiGOdV
++ echo /tmp/tmp.CeigoiGOdV
++ local tmpfs=/tmp/tmp.CeigoiGOdV
++ basename /tmp/sonic_image.swi
++ local newswi=/tmp/tmp.CeigoiGOdV/sonic_image.swi
++ mv /tmp/sonic_image.swi /tmp/tmp.CeigoiGOdV/sonic_image.swi
++ echo /tmp/tmp.CeigoiGOdV/sonic_image.swi
++ swipath=/tmp/tmp.CeigoiGOdV/sonic_image.swi
++ info Extracting swi content
++ cut -f1 -d  /proc/uptime
++ printf %04.2f: Extracting swi content\n 447.89
++ unzip -oq /tmp/tmp.CeigoiGOdV/sonic_image.swi -x boot0 dockerfs.tar.gz platform.tar.gz -d /host/image-fix-portchannel-down-wb.130424094-d5d4f36882
++ info Extracting platform.tar.gz
++ cut -f1 -d  /proc/uptime
++ printf %04.2f: Extracting platform.tar.gz\n 453.22
++ mkdir -p /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/platform
++ unzip -oqp /tmp/tmp.CeigoiGOdV/sonic_image.swi platform.tar.gz
++ tar xzf - -C /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/platform
++ grep  /host  /proc/mounts
++ local mountstr=/dev/mmcblk0p1 /host ext4 rw,relatime 0 0
++ echo /dev/mmcblk0p1 /host ext4 rw,relatime 0 0
++ cut -f1 -d 
++ local rootdev=/dev/mmcblk0p1
++ echo /dev/mmcblk0p1 /host ext4 rw,relatime 0 0
++ cut -d  -f3
++ rootfs_type=ext4
++ info Extracting dockerfs.tar.gz from swi
++ cut -f1 -d  /proc/uptime
++ printf %04.2f: Extracting dockerfs.tar.gz from swi\n 453.30
++ [ ext4 != vfat ]
++ cmdline_has docker_inram=on
++ grep -q docker_inram=on /tmp/append
++ unzip -oq /tmp/tmp.CeigoiGOdV/sonic_image.swi dockerfs.tar.gz -d /host/image-fix-portchannel-down-wb.130424094-d5d4f36882
++ info Unpacking dockerfs.tar.gz delayed to initrd because /host is ext4 or docker_inram is on
++ cut -f1 -d  /proc/uptime
++ printf %04.2f: Unpacking dockerfs.tar.gz delayed to initrd because /host is ext4 or docker_inram is on\n 474.60
++ false
++ info Remove installer
++ cut -f1 -d  /proc/uptime
++ printf %04.2f: Remove installer\n 474.60
++ cleanup_swi_tmpfs /tmp/tmp.CeigoiGOdV/sonic_image.swi
++ rm -f /tmp/tmp.CeigoiGOdV/sonic_image.swi
++ mountpoint_for_file /tmp/tmp.CeigoiGOdV/sonic_image.swi
++ local file=/tmp/tmp.CeigoiGOdV/sonic_image.swi
++ df /tmp/tmp.CeigoiGOdV/sonic_image.swi
++ + tr -s  
++ cut -d   -f6
+tail -1
++ clean_tmpfs 
++ local tmpfs=
++ return 0
++ local swi_boot_path=flash:image-fix-portchannel-down-wb.130424094-d5d4f36882/.sonic-boot.swi
++ update_boot_config SWI flash:image-fix-portchannel-down-wb.130424094-d5d4f36882/.sonic-boot.swi
++ local key=SWI
++ local value=flash:image-fix-portchannel-down-wb.130424094-d5d4f36882/.sonic-boot.swi
++ grep SWI /host/boot-config
++ sed -i s#^SWI=.*$#SWI=flash:image-fix-portchannel-down-wb.130424094-d5d4f36882/.sonic-boot.swi# /host/boot-config
++ update_boot_config SWI_DEFAULT flash:image-fix-portchannel-down-wb.130424094-d5d4f36882/.sonic-boot.swi
++ local key=SWI_DEFAULT
++ local value=flash:image-fix-portchannel-down-wb.130424094-d5d4f36882/.sonic-boot.swi
++ grep SWI_DEFAULT /host/boot-config
++ sed -i s#^SWI_DEFAULT=.*$#SWI_DEFAULT=flash:image-fix-portchannel-down-wb.130424094-d5d4f36882/.sonic-boot.swi# /host/boot-config
++ sync
++ write_cmdline
++ [ -f /host/kernel-params ]
++ [ -f /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline ]
++ cat /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline
++ tr   \n
++ grep -E crashkernel
++ cmdline_append
++ cat
++ tail -n 1
++ cat /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline
++ tr   \n
++ grep -E hwaddr_ma1
++ tail -n 1
++ cmdline_append
++ cat
++ cat /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline
++ tr   \n
++ grep -E sonic_fips
++ tail -n 1
++ cmdline_append
++ cat
++ cat /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline
++ tr   \n
++ grep -E docker_inram
++ cmdline_append
++ + cat
+tail -n 1
++ [ -f /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline-append ]
++ cat /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline-append
++ tr   \n
++ tail -n 1
++ cmdline_append
++ cat
++ grep -E crashkernel
++ cat /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline-append
++ tr   \n
++ grep -E hwaddr_ma1
++ tail -n 1
++ cmdline_append
++ cat
++ cat /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline-append
++ tr   \n
++ tail -n 1
++ cmdline_append
++ cat
++ grep -E sonic_fips
++ cat /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/kernel-cmdline-append
++ grep -E docker_inram+ + cmdline_append
+tr   \n+ cat
+
+
++ tail -n 1
++ cmdline_echo
++ + cat /tmp/append
+tr \n  
++ echo reboot=p console=ttyS0 acpi=on Aboot=Aboot-norcal6-6.1.10-14653765 block_flash=pci0000:00/0000:00:14.7/mmc_host/.*$ block_usb1=pci0000:00/0000:00:12.0/usb1/1-1/1-1.1/.*$ block_usb2=pci0000:00/0000:00:12.0/usb1/1-1/1-1.4/.*$ block_drive=pci0000:00/0000:00:11.0/.*host./target.:0:0/.*$ net_ma1=pci0000:00/0000:00:02.4/.*$ platform=crow sid=Upperlake cmdline-aboot-end modprobe.blacklist=radeon,sp5100_tco processor.max_cstate=1 amd_iommu=off modprobe.blacklist=snd_hda_intel,hdaudio sdhci.append_quirks2=0x40 logs_inram=on docker_inram=on docker_inram_algo=zstd varlog_size=256 sonic.mode=fixed security=apparmor apparmor=1 rw net.ifnames=0 systemd.unified_cgroup_hierarchy=0 log_buf_len=1M quiet systemd.show_status=auto hwaddr_ma1=fc:59:c0:4f:4b:84 root=UUID=f198bd2d-a5de-4842-9fd3-5ad4ac596124 loop=image-fix-portchannel-down-wb.130424094-d5d4f36882/fs.squashfs loopfstype=squashfs hwaddr_ma1=fc:59:c0:4f:4b:84 docker_inram_algo=zstd sonic_fips=1
++ sed s/ cmdline-aboot-end.*$//
++ cmdline_echo
++ cat /tmp/append
++ tr \n  
++ echo reboot=p console=ttyS0 acpi=on Aboot=Aboot-norcal6-6.1.10-14653765 block_flash=pci0000:00/0000:00:14.7/mmc_host/.*$ block_usb1=pci0000:00/0000:00:12.0/usb1/1-1/1-1.1/.*$ block_usb2=pci0000:00/0000:00:12.0/usb1/1-1/1-1.4/.*$ block_drive=pci0000:00/0000:00:11.0/.*host./target.:0:0/.*$ net_ma1=pci0000:00/0000:00:02.4/.*$ platform=crow sid=Upperlake cmdline-aboot-end modprobe.blacklist=radeon,sp5100_tco processor.max_cstate=1 amd_iommu=off modprobe.blacklist=snd_hda_intel,hdaudio sdhci.append_quirks2=0x40 logs_inram=on docker_inram=on docker_inram_algo=zstd varlog_size=256 sonic.mode=fixed security=apparmor apparmor=1 rw net.ifnames=0 systemd.unified_cgroup_hierarchy=0 log_buf_len=1M quiet systemd.show_status=auto hwaddr_ma1=fc:59:c0:4f:4b:84 root=UUID=f198bd2d-a5de-4842-9fd3-5ad4ac596124 loop=image-fix-portchannel-down-wb.130424094-d5d4f36882/fs.squashfs loopfstype=squashfs hwaddr_ma1=fc:59:c0:4f:4b:84 docker_inram_algo=zstd sonic_fips=1
++ run_hooks post-install
++ [ -d /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/platform/hooks/post-install ]
++ false
+438.35: Generating boot-config, machine.conf and cmdline
+438.53: Installing image under /host/image-fix-portchannel-down-wb.130424094-d5d4f36882
+438.54: Moving swi to a tmpfs
+447.89: Extracting swi content
+453.22: Extracting platform.tar.gz
+453.30: Extracting dockerfs.tar.gz from swi
+474.60: Unpacking dockerfs.tar.gz delayed to initrd because /host is ext4 or docker_inram is on
+474.60: Remove installer
+
+Command: config-setup backup
+Taking backup of current configuration
+
+Command: mkdir -p /tmp/image-fix-portchannel-down-wb.130424094-d5d4f36882-fs
+Command: mount -t squashfs /host/image-fix-portchannel-down-wb.130424094-d5d4f36882/fs.squashfs /tmp/image-fix-portchannel-down-wb.130424094-d5d4f36882-fs
+Command: sonic-cfggen -d -y /tmp/image-fix-portchannel-down-wb.130424094-d5d4f36882-fs/etc/sonic/sonic_version.yml -t /tmp/image-fix-portchannel-down-wb.130424094-d5d4f36882-fs/usr/share/sonic/templates/sonic-environment.j2
+Command: umount -r -f /tmp/image-fix-portchannel-down-wb.130424094-d5d4f36882-fs
+Command: rm -rf /tmp/image-fix-portchannel-down-wb.130424094-d5d4f36882-fs
+Warning: SONiC package migration is not supported for this bootloader/image
+Command: sync
+
+Command: sync
+
+Command: sync
+
+Command: sleep 3
+
+Done
+admin@str-7060-cx32-1:~$ sudo sonic_installer list
+Warning: 'sonic_installer' command is deprecated and will be removed in the future
+Please use 'sonic-installer' instead
+Current: SONiC-OS-20241110.25
+Next: SONiC-OS-fix-portchannel-down-wb.130424094-d5d4f36882
+Available:
+SONiC-OS-20241110.25
+SONiC-OS-fix-portchannel-down-wb.130424094-d5d4f36882
+SONiC-OS-20230531.22
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ df -h 
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3.9G     0  3.9G   0% /dev
+tmpfs           792M   12M  781M   2% /run
+root-overlay    3.7G  3.4G  291M  93% /
+/dev/mmcblk0p1  3.7G  3.4G  291M  93% /host
+/dev/zram0      2.4G  1.8G  605M  76% /var/lib/docker
+tmpfs           395M  8.5M  387M   3% /var/log
+tmpfs           3.9G   76K  3.9G   1% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           4.0M     0  4.0M   0% /sys/fs/cgroup
+/tmp            3.9G     0  3.9G   0% /tmp/tmp.CeigoiGOdV
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ free -h 
+               total        used        free      shared  buff/cache   available
+Mem:           7.7Gi       4.0Gi       1.1Gi        86Mi       3.0Gi       3.8Gi
+Swap:             0B          0B          0B
+admin@str-7060-cx32-1:~$ sudo zramctl 
+NAME       ALGORITHM DISKSIZE  DATA  COMPR  TOTAL STREAMS MOUNTPOINT
+/dev/zram0 zstd          2.4G  1.8G 662.5M 696.6M       4 /var/lib/docker
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ show ip bgp sum 
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 65100 vrf-id 0
+BGP table version 12804
+RIB entries 12807, using 1639296 bytes of memory
+Peers 4, using 82368 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V     AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  -----  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.57      4  64600       3213       3255     12804      0       0  00:06:42             6400  ARISTA01T1
+10.0.0.59      4  64600       3212       3212     12804      0       0  00:06:38             6400  ARISTA02T1
+10.0.0.61      4  64600       3212       3212     12804      0       0  00:06:40             6400  ARISTA03T1
+10.0.0.63      4  64600       3212       3255     12804      0       0  00:06:40             6400  ARISTA04T1
+
+Total number of neighbors 4
+admin@str-7060-cx32-1:~$ docker ps -a
+CONTAINER ID   IMAGE                             COMMAND                  CREATED         STATUS         PORTS     NAMES
+04d0b3ba92b8   docker-sonic-telemetry:latest     "/usr/local/bin/supe…"   6 minutes ago   Up 6 minutes             telemetry
+630a7e2a0f13   docker-snmp:latest                "/usr/bin/docker-snm…"   7 minutes ago   Up 7 minutes             snmp
+b8f86d90151a   docker-platform-monitor:latest    "/usr/bin/docker_ini…"   7 minutes ago   Up 7 minutes             pmon
+b900e00b9779   docker-lldp:latest                "/usr/bin/docker-lld…"   7 minutes ago   Up 7 minutes             lldp
+2dfe648c8c62   docker-sonic-gnmi:latest          "/usr/local/bin/supe…"   7 minutes ago   Up 7 minutes             gnmi
+362d39a540d7   2fcf83d3dd17                      "/usr/bin/docker_ini…"   8 minutes ago   Up 7 minutes             dhcp_relay
+16b6daa32193   docker-router-advertiser:latest   "/usr/bin/docker-ini…"   8 minutes ago   Up 7 minutes             radv
+0f0e78dd245c   docker-eventd:latest              "/usr/local/bin/supe…"   8 minutes ago   Up 7 minutes             eventd
+4a8bb9cd2415   docker-fpm-frr:latest             "/usr/bin/docker_ini…"   8 minutes ago   Up 8 minutes             bgp
+86f77e6ee9de   docker-syncd-brcm:latest          "/usr/local/bin/supe…"   8 minutes ago   Up 8 minutes             syncd
+d779faf1731d   docker-teamd:latest               "/usr/local/bin/supe…"   8 minutes ago   Up 8 minutes             teamd
+f815bbdb50ad   docker-orchagent:latest           "/usr/bin/docker-ini…"   8 minutes ago   Up 8 minutes             swss
+33b77958eb0c   docker-sonic-restapi:latest       "/usr/local/bin/supe…"   8 minutes ago   Up 8 minutes             restapi
+86b3db26bfae   docker-acms:latest                "/usr/local/bin/supe…"   8 minutes ago   Up 8 minutes             acms
+7766d0be6b56   docker-database:latest            "/usr/local/bin/dock…"   8 minutes ago   Up 8 minutes             database
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ sudo warm-reboot -vvv
+Thu Jul 17 01:42:36 AM UTC 2025 Starting warm-reboot
+Thu Jul 17 01:42:38 AM UTC 2025 Saving counters folder before warmboot...
+Thu Jul 17 01:42:49 AM UTC 2025 Loading kernel without secure boot
+ERROR: There are port channels/peer devices that failed the probe: ['PortChannel104', 'PortChannel101', 'PortChannel102', 'PortChannel103']
+Thu Jul 17 01:42:55 AM UTC 2025 Warning: Retry count feature support unknown for one or more neighbor devices; assuming that it's not available
+Thu Jul 17 01:42:55 AM UTC 2025 Pausing orchagent ...
+Thu Jul 17 01:42:55 AM UTC 2025 Starting lag_keepalive to send LACPDUs ...
+/usr/local/lib/python3.11/dist-packages/scapy/layers/ipsec.py:471: CryptographyDeprecationWarning: Blowfish has been deprecated
+  cipher=algorithms.Blowfish,
+/usr/local/lib/python3.11/dist-packages/scapy/layers/ipsec.py:485: CryptographyDeprecationWarning: CAST5 has been deprecated
+  cipher=algorithms.CAST5,
+Thu Jul 17 01:43:55 AM UTC 2025 Collecting logs to check ssd health before warm-reboot...
+Thu Jul 17 01:43:56 AM UTC 2025 Stopping lldp ...
+Thu Jul 17 01:43:58 AM UTC 2025 Stopped lldp
+Thu Jul 17 01:43:58 AM UTC 2025 Stopping radv ...
+Thu Jul 17 01:43:59 AM UTC 2025 Stopped radv
+Thu Jul 17 01:43:59 AM UTC 2025 Stopping bgp ...
+Thu Jul 17 01:44:11 AM UTC 2025 Stopped bgp
+Thu Jul 17 01:44:11 AM UTC 2025 Stopping swss ...
+Thu Jul 17 01:44:13 AM UTC 2025 Stopped swss
+Thu Jul 17 01:44:13 AM UTC 2025 Initialize pre-shutdown ...
+Thu Jul 17 01:44:13 AM UTC 2025 Requesting pre-shutdown ...
+Thu Jul 17 01:44:13 AM UTC 2025 Waiting for pre-shutdown ...
+Thu Jul 17 01:44:13 AM UTC 2025 Pre-shutdown succeeded, state: pre-shutdown-succeeded ...
+Thu Jul 17 01:44:13 AM UTC 2025 Stopping teamd ...
+Thu Jul 17 01:44:14 AM UTC 2025 Stopped teamd
+Thu Jul 17 01:44:14 AM UTC 2025 Stopping syncd ...
+Thu Jul 17 01:44:31 AM UTC 2025 Stopped syncd
+Thu Jul 17 01:44:31 AM UTC 2025 Backing up database ...
+                                               Successfully copied 7.23MB to /host/warmboot
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+Thu Jul 17 01:44:43 AM UTC 2025 Enabling Watchdog before warm-reboot
+Watchdog armed for 180 seconds
+Thu Jul 17 01:44:44 AM UTC 2025 Rebooting with /sbin/kexec -e to SONiC-OS-fix-portchannel-down-wb.130424094-d5d4f36882 ...
+1
+Thu Jul 17 01:44:44 AM UTC 2025 Backup shutdown logs to /host/logs_before_reboot
+packet_write_wait: Connection to 10.3.146.165 port 22: Broken pipe
+V-CSHEKAR@netdev1-westus2-v2:~$ 
+V-CSHEKAR@netdev1-westus2-v2:~$ 
+V-CSHEKAR@netdev1-westus2-v2:~$ ssh admin@10.3.146.165
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the RSA key sent by the remote host is
+SHA256:dc1tjD97Qep8MBHQh0k25DEOJZJHYoz3JvNmFbX418I.
+Please contact your system administrator.
+Add correct host key in /home/V-CSHEKAR/.ssh/known_hosts to get rid of this message.
+Offending RSA key in /home/V-CSHEKAR/.ssh/known_hosts:14
+  remove with:
+  ssh-keygen -f "/home/V-CSHEKAR/.ssh/known_hosts" -R "10.3.146.165"
+RSA host key for 10.3.146.165 has changed and you have requested strict checking.
+Host key verification failed.
+V-CSHEKAR@netdev1-westus2-v2:~$  ssh-keygen -f "/home/V-CSHEKAR/.ssh/known_hosts" -R "10.3.146.165"
+# Host 10.3.146.165 found: line 14
+/home/V-CSHEKAR/.ssh/known_hosts updated.
+Original contents retained as /home/V-CSHEKAR/.ssh/known_hosts.old
+V-CSHEKAR@netdev1-westus2-v2:~$ 
+V-CSHEKAR@netdev1-westus2-v2:~$ ssh admin@10.3.146.165
+The authenticity of host '10.3.146.165 (10.3.146.165)' can't be established.
+RSA key fingerprint is SHA256:dc1tjD97Qep8MBHQh0k25DEOJZJHYoz3JvNmFbX418I.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.3.146.165' (RSA) to the list of known hosts.
+Debian GNU/Linux 12 \n \l
+
+admin@10.3.146.165's password: 
+Linux str-7060-cx32-1 6.1.0-29-2-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.123-1 (2025-01-02) x86_64
+You are on
+  ____   ___  _   _ _  ____
+ / ___| / _ \| \ | (_)/ ___|
+ \___ \| | | |  \| | | |
+  ___) | |_| | |\  | | |___
+ |____/ \___/|_| \_|_|\____|
+
+-- Software for Open Networking in the Cloud --
+
+Unauthorized access and/or use are prohibited.
+All access and/or use are subject to monitoring.
+
+Help:      https://sonic-net.github.io/SONiC/
+Wiki:      https://microsoft.sharepoint.com/teams/WAG/AzureNetworking/Wiki/SONiC.aspx
+On-Call:   https://portal.microsofticm.com/imp/v3/oncall/current?serviceId=10045&teamIds=26162
+Dashboard: https://aka.ms/sonic-dri
+Contact:   sonicdev@microsoft.com
+
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3.9G     0  3.9G   0% /dev
+tmpfs           792M  8.6M  784M   2% /run
+root-overlay    3.7G  3.5G  186M  96% /
+/dev/mmcblk0p1  3.7G  3.5G  186M  96% /host
+/dev/zram0      2.4G  1.6G  850M  66% /var/lib/docker
+tmpfs           2.0G   12K  2.0G   1% /tmp
+tmpfs           395M  7.0M  389M   2% /var/log
+tmpfs           3.9G  4.0K  3.9G   1% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           4.0M     0  4.0M   0% /sys/fs/cgroup
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ sudo zramctl
+NAME       ALGORITHM DISKSIZE  DATA  COMPR  TOTAL STREAMS MOUNTPOINT
+/dev/zram0 zstd          2.4G  1.6G 553.6M 582.5M       4 /var/lib/docker
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           7.7Gi       3.1Gi       2.1Gi       102Mi       2.9Gi       4.6Gi
+Swap:             0B          0B          0B
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ show ip bgp sum 
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 65100 vrf-id 0
+BGP table version 6405
+RIB entries 12807, using 1639296 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V     AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  -----  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.57      4  64600       3205       3205      6405      0       0  00:00:20             6400  ARISTA01T1
+10.0.0.59      4  64600       3205       3207      6405      0       0  00:00:20             6400  ARISTA02T1
+10.0.0.61      4  64600       3205       3205      6405      0       0  00:00:20             6400  ARISTA03T1
+10.0.0.63      4  64600       3205       3205      6405      0       0  00:00:20             6400  ARISTA04T1
+
+Total number of neighbors 4
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ docker ps -a
+CONTAINER ID   IMAGE                             COMMAND                  CREATED         STATUS              PORTS     NAMES
+6f7eee1c36ee   docker-router-advertiser:latest   "/usr/bin/docker-ini…"   2 minutes ago   Up About a minute             radv
+a1846a961ee3   docker-syncd-brcm:latest          "/usr/local/bin/supe…"   2 minutes ago   Up 2 minutes                  syncd
+b456b8094ec2   docker-teamd:latest               "/usr/local/bin/supe…"   2 minutes ago   Up 2 minutes                  teamd
+c90480acb1a1   docker-fpm-frr:latest             "/usr/bin/docker_ini…"   2 minutes ago   Up 2 minutes                  bgp
+87e7905aa326   docker-sysmgr:latest              "/usr/local/bin/supe…"   2 minutes ago   Up 2 minutes                  sysmgr
+876bf72c89a1   docker-eventd:latest              "/usr/local/bin/supe…"   2 minutes ago   Up 2 minutes                  eventd
+4e45ba871af1   docker-orchagent:latest           "/usr/bin/docker-ini…"   2 minutes ago   Up 2 minutes                  swss
+edfd95708a3a   docker-sonic-restapi:latest       "/usr/local/bin/supe…"   2 minutes ago   Up 2 minutes                  restapi
+a801a92dbc38   docker-acms:latest                "/usr/local/bin/supe…"   2 minutes ago   Up 2 minutes                  acms
+8b292dedc112   docker-database:latest            "/usr/local/bin/dock…"   2 minutes ago   Up 2 minutes                  database
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ sudo scp /var/log/syslog* v-cshekar@10.18.78.235:/tmp/7060_logs/
+^Cadmin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ ping 10.18.78.235
+PING 10.18.78.235 (10.18.78.235) 56(84) bytes of data.
+^C
+--- 10.18.78.235 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2001ms
+
+admin@str-7060-cx32-1:~$ ping 10.64.247.31
+PING 10.64.247.31 (10.64.247.31) 56(84) bytes of data.
+64 bytes from 10.64.247.31: icmp_seq=1 ttl=60 time=0.856 ms
+64 bytes from 10.64.247.31: icmp_seq=2 ttl=60 time=0.903 ms
+^C
+--- 10.64.247.31 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 0.856/0.879/0.903/0.023 ms
+admin@str-7060-cx32-1:~$ sudo scp /var/log/syslog* v-cshekar@10.64.247.31:/tmp/7060_logs
+The authenticity of host '10.64.247.31 (10.64.247.31)' can't be established.
+ED25519 key fingerprint is SHA256:CWuPKf2eciFdfQH2Lg94xYTAlDXJurp3ft4CfK6jocY.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.64.247.31' (ED25519) to the list of known hosts.
+v-cshekar@10.64.247.31's password: 
+syslog                                                                                                                                                                                                                        100%  154KB   8.5MB/s   00:00    
+syslog.1                                                                                                                                                                                                                      100% 5065KB  10.9MB/s   00:00    
+admin@str-7060-cx32-1:~$ sudo scp /var/log/swss/sairedis* v-cshekar@10.64.247.31:/tmp/7060_logs
+v-cshekar@10.64.247.31's password: 
+sairedis.rec                                                                                                                                                                                                                  100% 7069     2.7MB/s   00:00    
+sairedis.rec.1                                                                                                                                                                                                                100% 4588KB  10.7MB/s   00:00    
+admin@str-7060-cx32-1:~$

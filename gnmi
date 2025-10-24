@@ -1,0 +1,85 @@
+
+# Github:
+https://github.com/hdwhdw/sonic-gnmi/tree/upgrade-mops-client
+
+# Build deploy script
+https://github.com/hdwhdw/sonic-gnmi/blob/upgrade-mops-client/upgrade-service/docker/build_deploy.sh
+
+
+# Cloning the Repo
+git clone https://github.com/hdwhdw/sonic-gnmi.git
+
+
+Document:
+https://m365.cloud.microsoft/chat/pages/eyJ1IjoiaHR0cHM6Ly9taWNyb3NvZnQuc2hhcmVwb2ludC5jb20vY29udGVudHN0b3JhZ2UveDhGTk8teHRza3VDUlgyX2ZNVEhMZEx5bjM2NzBIbEpxdTkycF9OSVRVcz9uYXY9Y3owbE1rWmpiMjUwWlc1MGMzUnZjbUZuWlNVeVJuZzRSazVQTFhoMGMydDFRMUpZTWw5bVRWUklUR1JNZVc0ek5qY3dTR3hLY1hVNU1uQmZUa2xVVlhNbVpEMWlKVEl4YlhKUWQwcEpUMmxXTURJdExXaFllWGRQV1ZSa1VWUm5VazgzYkZKWWVFSm5iSHBWU1ZkbGJrMU9WR0p1Y3paMlpFbHpZMUppVjNZNE9XeHZPWGx4VmlabVBUQXhObGxKTTBoSVdrdFRXRWhhTlZaWlNGWkNRak5HVTBGTlZ6SmFUVFZaV2xBbVl6MGxNa1ltWVQxTWIyOXdRWEJ3Sm5BOUpUUXdabXgxYVdSNEpUSkdiRzl2Y0Mxd1lXZGxMV052Ym5SaGFXNWxjaVo0UFNVM1FpVXlNbmNsTWpJbE0wRWxNakpVTUZKVVZVaDRkR0ZYVG5saU0wNTJXbTVSZFdNeWFHaGpiVlozWWpKc2RXUkROV3BpTWpFNFdXbEdkR05zUWpOVGEyeFFZVlpaZDAxcE1IUmhSbWcxWkRBNVdsWkhVbEpXUjJSVFZIcGtjMVZzYURSUmJXUnpaV3hXU2xZeVZuVlVWVFZWV1cwMWVrNXVXbXRUV0U1cVZXMUtXR1JxWnpWaVJ6ZzFaVmhHVjJaRVFYaE9iR3hLVFRCb1NWZFdSa05TYkdSS1ZWWlZlbGRXU2t0UlZtc3lUbXhHUkUweFVURk9NVmt4VVd0UkpUTkVKVEl5SlRKREpUSXlhU1V5TWlVelFTVXlNamxtTURGaE1tWTFMVGt4Tm1VdE5EQmhNQzFoTmpobUxUQmxNalpqTkdReE5qVm1NaVV5TWlVM1JBPT0ifQ?auth=2&ct=1752856155728&or=Teams-HL
+
+
+
+10.3.146.165
+
+
+Study gnmi openconfig
+
+Need to build on top of it: (Upgrade mops gnmi diskspace)
+https://github.com/sonic-net/sonic-gnmi/pull/462/files
+
+https://github.com/sonic-net/sonic-gnmi/pull/459
+Entry point is server->main.go (no need to change it)
+
+For file remove
+
+EnableGNOISystem() --> Existing
+EnableGNOIFile()  --> create this new function
+
+
+In file: sonic-gnmi-standalone/pkg/server/builder.go
+
+Existing:
+	// Register gNOI System service
+	if b.services["gnoi.system"] {
+		systemServer := gnoiSystem.NewServer(rootFS)
+		system.RegisterSystemServer(srv.grpcServer, systemServer)
+		glog.Info("Registered gNOI System service")
+		serviceCount++
+	}
+
+New:
+if b.services["gnoi.file"]
+
+
+The main entry point is: sonic-gnmi-standalone/pkg/server/gnoi/system/system.go
+Copy this file
+
+
+After this PR https://github.com/sonic-net/sonic-gnmi/pull/462/files is merged:
+you need to change only: sonic-gnmi-standalone/pkg/server/gnmi/path_utils.go
+
+
+Will have to create one similar to this:
+sonic-gnmi-standalone/pkg/workflow/steps/check_disk_space.go
+
+type CheckDiskSpaceStep struct {
+
+
+Add the implementation here:
+sonic-gnmi-standalone/pkg/server/gnmi/get.go
+
+To invoke you can use loopback test or actual function
+
+
+
+
+
+---
+Testing:
+
+chandra@lenova:~/wipr/sonic-gnmi/sonic-gnmi-standalone$ make build
+go build -tags "" -o bin/sonic-gnmi-standalone cmd/server/main.go
+go build -tags "" -o bin/sonic-gnmi cmd/sonic-gnmi/main.go
+go build -tags "" -o bin/upgrade-agent ./cmd/upgrade-agent/
+
+
+chandra@lenova:~/wipr/sonic-gnmi/sonic-gnmi-standalone$
+go test -v ./tests/loopback -run TestGNMISonicImageLoopback/list_all_sonic_image_files -args -v=3 -logtostderr
+
+

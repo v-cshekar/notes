@@ -1,0 +1,39 @@
+tbtk5-t0-7260-1 : 20 Runs
+
+tbtk5-t0-7260-7: 1
+
+https://dev.azure.com/mssonic/internal/_build/results?buildId=948458&view=logs&j=76acabad-01e9-5c52-6fe6-d396d63e85d2&t=55864d99-7fe9-5504-0078-bfbb010fc228
+
+19/09/2025 16:46:04 sonic_asic.check_bgp_session_state       L0727 INFO   | bgp neighbors that match the state: [] on namespace None
+19/09/2025 16:46:04 sonic_asic.check_bgp_session_state       L0728 INFO   | bgp neighbors to be checked on the state: ['10.0.0.33', '10.0.0.35', '10.0.0.37', '10.0.0.39', 'fc00::22', 'fc00::26', 'fc00::2a', 'fc00::2e'] on namespace None
+19/09/2025 16:46:17 sonic_asic.check_bgp_session_state       L0727 INFO   | bgp neighbors that match the state: [] on namespace None
+19/09/2025 16:46:17 sonic_asic.check_bgp_session_state       L0728 INFO   | bgp neighbors to be checked on the state: ['10.0.0.33', '10.0.0.35', '10.0.0.37', '10.0.0.39', 'fc00::22', 'fc00::26', 'fc00::2a', 'fc00::2e'] on namespace None
+19/09/2025 16:46:27 device_utils._wrapper                    L0246 ERROR  | Health check check_neighbors failed with BGP session not established
+
+
+vms11-t0-7060-cx32-1: 0
+
+https://dev.azure.com/mssonic/internal/_build/results?buildId=947761&view=logs&j=76acabad-01e9-5c52-6fe6-d396d63e85d2&t=55864d99-7fe9-5504-0078-bfbb010fc228&l=13999
+
+2025-09-18 16:38:01 : No LAG flaps seen on 172.16.130.159 after warm boot
+2025-09-18 16:38:04 : No LAG flaps seen on 172.16.130.160 after warm boot
+2025-09-18 16:38:06 : No LAG flaps seen on 172.16.130.161 after warm boot
+2025-09-18 16:38:09 : No LAG flaps seen on 172.16.130.162 after warm boot
+2025-09-18 16:38:23 : ==================================================
+2025-09-18 16:38:23 : Report:
+2025-09-18 16:38:23 : ==================================================
+2025-09-18 16:38:23 : LACP/BGP were down for (extracted from cli):
+2025-09-18 16:38:23 : --------------------------------------------------
+2025-09-18 16:38:23 :     172.16.130.159 - lacp:   0.000 (0) po_events: (1) bgp v4:   0.000 (0) bgp v6:   0.000 (0)
+2025-09-18 16:38:23 :     172.16.130.160 - lacp:   0.000 (0) po_events: (1) bgp v4:   0.000 (0) bgp v6:   0.000 (0)
+2025-09-18 16:38:23 :     172.16.130.161 - lacp:   0.000 (0) po_events: (1) bgp v4:   0.000 (0) bgp v6:   0.000 (0)
+2025-09-18 16:38:23 :     172.16.130.162 - lacp:   0.000 (0) po_events: (1) bgp v4:   0.000 (0) bgp v6:   0.000 (0)
+
+vms24-t0-7260-2: 27
+
+
+
+tbtk5-t0-7260-1 : 20
+vms24-t0-7260-2: 27
+tbtk5-t0-7260-7: 1
+vms11-t0-7060-cx32-1: 0

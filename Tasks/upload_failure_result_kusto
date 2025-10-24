@@ -1,0 +1,18 @@
+
+Pipeline:
+https://dev.azure.com/mssonic/internal/_build/results?buildId=933916&view=results
+
+
+Changes:
+https://dev.azure.com/mssonic/internal/_git/sonic-metadata/commit/58bebf0721aa3ae446a34c4b376a617459f6a3ae?refName=refs/heads/upload_result_new&path=/scripts/upload_test_failures_to_kusto.py
+
+Branch:
+https://dev.azure.com/mssonic/internal/_git/sonic-metadata?version=GBupload_result_new
+
+
+To querry:
+
+https://dataexplorer.azure.com/clusters/sonicrepodatadev.westus/databases/SonicTestData
+
+cluster('sonicrepodatadev.westus').database('SonicTestData').SonicMetadataTestData
+

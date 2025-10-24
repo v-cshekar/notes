@@ -1,0 +1,23 @@
+
+Check this errors:
+
+2025-06-12T21:20:41.6120164Z 2025-06-12 21:20:33 : --------------------------------------------------
+2025-06-12T21:20:41.6120988Z 2025-06-12 21:20:33 : --------------------------------------------------
+2025-06-12T21:20:41.6121701Z 2025-06-12 21:20:33 : Fails:
+2025-06-12T21:20:41.6122429Z 2025-06-12 21:20:33 : --------------------------------------------------
+2025-06-12T21:20:41.6123629Z 2025-06-12 21:20:33 : FAILED:172.16.130.162:Exception occured when parsing logs from VM: msg='>' not supported between instances of 'datetime.datetime' and 'int' type=<class 'TypeError'>
+2025-06-12T21:20:41.6124795Z 2025-06-12 21:20:33 : FAILED:172.16.130.162:LAG flapped 2 times on 172.16.130.162 after warm boot
+2025-06-12T21:20:41.6125962Z 2025-06-12 21:20:33 : FAILED:172.16.130.161:LAG flapped 2 times on 172.16.130.161 after warm boot
+2025-06-12T21:20:41.6127177Z 2025-06-12 21:20:33 : FAILED:172.16.130.161:Exception occured when parsing logs from VM: msg='>' not supported between instances of 'datetime.datetime' and 'int' type=<class 'TypeError'>
+2025-06-12T21:20:41.6128525Z 2025-06-12 21:20:33 : FAILED:172.16.130.160:Exception occured when parsing logs from VM: msg='>' not supported between instances of 'datetime.datetime' and 'int' type=<class 'TypeError'>
+2025-06-12T21:20:41.6129703Z 2025-06-12 21:20:33 : FAILED:172.16.130.160:LAG flapped 2 times on 172.16.130.160 after warm boot
+2025-06-12T21:20:41.6130691Z 2025-06-12 21:20:33 : FAILED:172.16.130.159:LAG flapped 2 times on 172.16.130.159 after warm boot
+2025-06-12T21:20:41.6131989Z 2025-06-12 21:20:33 : FAILED:172.16.130.159:Exception occured when parsing logs from VM: msg='>' not supported between instances of 'datetime.datetime' and 'int' type=<class 'TypeError'>
+2025-06-12T21:20:41.6133085Z 2025-06-12 21:20:33 : ==================================================
+2025-06-12T21:20:41.6133899Z 2025-06-12 21:20:33 : Disabling arp_responder
+2025-06-12T21:20:41.6134188Z 
+2025-06-12T21:20:41.6134819Z ******************************************
+2025-06-12T21:20:41.6135536Z ATTENTION: SOME TESTS DID NOT PASS!!!
+2025-06-12T21:20:41.6135807Z 
+2025-06-12T21:20:41.6136506Z The following tests failed:
+2025-06-12T21:20:41.6137211Z ReloadTest

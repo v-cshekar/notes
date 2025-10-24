@@ -1,0 +1,67 @@
+Connection ADO:
+https://msazure.visualstudio.com/Standards/_workitems/edit/33981700
+
+Old ticket:
+https://msazure.visualstudio.com/Standards/_workitems/edit/32860675
+
+
+
+Free Mgmt IP:
+10.3.146.210
+
+
+
+<Seed TargetedFolders="STR3">
+ <Devices Action="Add">
+   <Device Hostname="STR3-7260-D04-U6-FAN" Type="LeafRouter" DcCode="STR3" HwSku="Arista-7260CX3" DeploymentType="Fabric" Asn="65533">
+     <Property Name="Location">D04-U07</Property>
+     <Property Name="FirmwareProfile">SONiC-Cisco-8102-LeafRouter</Property>
+     <LoopbackIPInterface Name="HostIP" AttachTo="Loopback0" Prefix="10.3.146.157/32" />
+     <ManagementIPInterface Name="ManagementIP" AttachTo="mgmt0" Prefix="10.3.146.210/24" />
+   </Device>
+ </Devices>
+</Seed>
+
+
+<Seed TargetedFolders="STR43">
+ <Devices Action="Add">
+   <Device Hostname="STR3-7260-D04-U6-FAN" Type="LeafRouter" DcCode="str43" HwSku="Arista-7260CX3" DeploymentType="Fabric" Asn="65533">
+     <Property Name="Location">D04-U07</Property>
+     <Property Name="FirmwareProfile">SONiC-Arista-7260-LeafRouter</Property>
+     <LoopbackIPInterface Name="HostIP" AttachTo="Loopback0" Prefix="10.3.146.157/32" />
+     <ManagementIPInterface Name="ManagementIP" AttachTo="mgmt0" Prefix="10.3.146.210/24" />
+   </Device>
+ </Devices>
+</Seed>
+
+
+Hostname: STR3-7260-D04-U6-FAN
+Device Role: Fanout
+DcCode: STR3
+HwSku: Arista-7260CX3
+Deployment Type: Fabric
+ASN Number: 65533
+Location: D04-U07
+Management IP: 10.3.158.19
+
+
+----------
+seedfile incident:
+https://portal.microsofticm.com/imp/v5/incidents/details/669986219/summary
+
+Group Link:
+https://teams.microsoft.com/l/message/19:c3cb2f5ba2fc41fc8edeba2c62d8a852@thread.tacv2/1755140515765?tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47&groupId=eeb14784-31d3-4f74-b74a-d4d4771494c6&parentMessageId=1755140515765&teamName=ANP%20Support&channelName=Monkey%20and%20NBaaS%20support&createdTime=1755140515765
+
+Seed Validation:
+https://monkeyservice.core.windows.net/SeedGroup/Details/V_CSHEKAR_UNIVERSAL_NONE_250813031135_0@B9818649-969B-45E3-AAE6-ED60F638D799
+
+
+Monkey Service Incident Notification:
+https://portal.microsofticm.com/imp/v3/incidents/details/669986219/home
+
+
+Graph Manipulation document:
+------------------------------
+
+https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fmsazure.visualstudio.com%2FAzureWiki%2F_wiki%2Fwikis%2FAzureWiki.wiki%2F442882%2F-NBaaS-TSG-StarLab-folders-(STR43-STRTK5-STR43AzSet2)-Metadata-Graph-Manipulations%3Fanchor%3Dupdate-management-connections&data=05%7C02%7Cv-cshekar%40microsoft.com%7C8ca5f7793a62436e583308dde1c03d10%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638914937947490576%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=6ZodLwzgXvfjPGYeAnoM3xW0CAhGQWdATdzVDzF6r%2BI%3D&reserved=0
+

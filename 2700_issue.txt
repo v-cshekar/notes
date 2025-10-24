@@ -1,0 +1,28 @@
+ ryanzhu/2700_test_branch
+
+ 96d556a0a59cde37deb2aa59ea675a62c71c2d9f
+
+Testbed: tbtk5-t0-2700-1
+
+check_issue-202405
+
+ Multi-hop PipeLine:
+ https://dev.azure.com/mssonic/internal/_build/results?buildId=876340&view=results
+
+
+
+rgarthwaite/test/extend-warmboot-finalizer-for-202405
+
+From: SONiC.20231110.30
+To: SONiC.20240510.33
+
+
+
+
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/commits?itemVersion=GBryanzhu%2F2700_test_branch
+
+
+One on Arista:
+tbtk5-t0-7260-01
+
+ryanzhu/2700_test_branch_no_cpa

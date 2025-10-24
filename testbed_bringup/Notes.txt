@@ -1,0 +1,29 @@
+# Running Link_Falp_test:
+----------------------
+v-cshekar@str-serv-acs-15:~$ docker exec -it sonic_mgmt-v-cshekar bash
+v-cshekar@sonic_mgmt-v-cshekar:~$ cd /data/sonic-mgmt-int/
+v-cshekar@sonic_mgmt-v-cshekar:/data/sonic-mgmt-int$ cd tests
+v-cshekar@sonic_mgmt-v-cshekar:/data/sonic-mgmt-int/tests$ ./run_tests.sh -n vms11-t0-7060-cx32-1 -i ../ansible/str,../ansible/veos -u -m individual -c platform_tests/link_flap/test_link_flap.py -l info
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Running ansible
+v-cshekar@sonic_mgmt-v-cshekar:/data/sonic-mgmt-int/ansible$
+ansible-playbook fanout.yml -i str --limit str-7260cx3-fan-06 -b --vault-password-file password.txt
+
+
+* Note *
+Alwarys run deploy-mg when any change is made.
+----------------------------------------------------------------------
+
+
+
+# command to show the target build version that is Running
+target_version:
+
+"20250
+
+show reboot-cause history
+
+7060: Ryan G
+Mellanox: Ryan Z

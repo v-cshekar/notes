@@ -1,0 +1,156 @@
+
+# July 7 to July 11
+
+https://msazure.visualstudio.com/One/_workitems/edit/33695035 (add tb to pipeline)- Done
+
+
+# July 21 to July 25
+https://msazure.visualstudio.com/One/_workitems/edit/33826964
+PR: https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/14237
+
+
+https://msazure.visualstudio.com/One/_workitems/edit/31060301
+PR: https://dev.azure.com/mssonic/internal/_git/sonic-metadata/commit/ca3a664b057039d51ba4dc4a0df456cf3d3cdad5?refName=refs/heads/master&tab=details
+
+
+This week:
+Disable failing tests:
+https://msazure.visualstudio.com/One/_workitems/edit/33971170
+https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/14632?path=/scripts/tests/test_cmis_fwutil.py
+
+https://msazure.visualstudio.com/One/_workitems/edit/33963749 -Done
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/14630
+
+--
+Add testbed to pipeline:
+https://msazure.visualstudio.com/One/_workitems/edit/33992049
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/14673
+
+
+This Week:
+[Revert pipelines to Standard image](https://msazure.visualstudio.com/One/_workitems/edit/34102182)
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/14850
+
+
+Create ADO for bumping the iteration numbers from 22
+
+---------------------------------------
+https://msazure.visualstudio.com/One/_workitems/edit/34497589/
+
+
+Fix UT
+------
+https://msazure.visualstudio.com/One/_workitems/edit/34528942
+https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/15557?_a=files
+
+Patch analysis
+https://msazure.visualstudio.com/One/_workitems/edit/34579660
+
+Weekly Triage:
+https://msazure.visualstudio.com/One/_workitems/edit/34579675
+
+
+-------
+https://msazure.visualstudio.com/One/_workitems/edit/34598447
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/15682
+
+
+--------  Sep 8th ---------
+Create the ADO for this:
+
+Done:
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/15948
+https://msazure.visualstudio.com/One/_workitems/edit/34912636
+
+
+Done:
+https://msazure.visualstudio.com/One/_workitems/edit/34912680
+- No PR
+
+
+In Progress:
+Exit return code for 202012
+https://msazure.visualstudio.com/One/_workitems/edit/34912705
+https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/16132
+
+
+
+-----------------
+Done
+https://msazure.visualstudio.com/One/_workitems/edit/35036871
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/16346
+
+https://msazure.visualstudio.com/One/_workitems/edit/35113538
+
+-----
+
+https://msazure.visualstudio.com/One/_workitems/edit/34488679
+https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/16130?path=/scripts/upload_test_results_to_kusto.py
+
+https://msazure.visualstudio.com/One/_workitems/edit/35186111
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/16414
+
+https://msazure.visualstudio.com/One/_workitems/edit/35370340
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/16463?path=/.azure-pipelines/sonic-metadata/mellanox/tbtk5-t0-2700-1.yml
+
+https://msazure.visualstudio.com/One/_workitems/edit/35423143
+- No PR
+
+--
+
+
+https://github.com/sonic-net/sonic-gnmi/pull/523
+
+snmp_loopback:
+https://msazure.visualstudio.com/One/_workitems/edit/35435305
+https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/16508?path=/scripts/postupgrade_actions
+
+Power cycle:
+https://msazure.visualstudio.com/Standards/_workitems/edit/35443124
+
+Power cycle fanout:
+https://msazure.visualstudio.com/Standards/_workitems/edit/35447600
+
+
+Lab Debug ticket
+https://msazure.visualstudio.com/Standards/_workitems/edit/35443124
+
+Redeploy Fanout device:
+https://msazure.visualstudio.com/Standards/_workitems/edit/35443124
+
+
+Rebooted fanout device:
+    Need to run remove-topo, add-topo and deploy-mg on this
+vms28-t0-7050-14
+
+This testbed is recovered, but need to run redeploy.
+vms28-t0-7050-12
+
+
+https://msazure.visualstudio.com/Standards/_workitems/edit/35592263
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/16721
+
+
+
+------
+Copy this for newer hop
+
+update_firmware
+
+if isSONiCImageFrom20220531Upgrade; then
+    # copy teamd_increase_retry_count script - used to increase teamd retry count on supported neighbors
+    copy_teamd_increase_retry_count_script
+    replace_fast_warm_reboot_script fast_reboot_202205
+fi
+
+1. Extension
+2. Replacement
+3. WHat is it need to be replace
+
+Create new file teamd_increase_retry_count_202411.py
+- copy contents from public repo (202411 branch)
+- extended the Extended_retry_count
+
+
+
+https://msazure.visualstudio.com/One/_workitems/edit/35646901

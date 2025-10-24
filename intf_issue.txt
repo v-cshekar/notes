@@ -1,0 +1,38 @@
+7060/7260 (from lab)
+Reserve the device
+
+Load 202012 OS version on it - SONiC.20201231.97
+  sonic_installer install
+  Cold reboot ("sudo reboot")
+
+Check that device is running .97, and is cold reboot "show reboot"
+
+-----------------------------
+
+Load SONiC.20230531.22 on the device
+  "sonic_installer"
+  Verify that the current os version is 202012, and next is 202305 (sonic_installer list)
+  Do warm-reboot -- "warm-reboot -vvv"
+
+--------------
+
+After reboot -
+  Check that device is running SONiC.20230531.22 , and is warm reboot ("show reboot")
+
+-------------
+
+Repro the issue:
+  Run "show interfaces counters -a -p 30"
+
+  Failure to expect:
+
+      Traceback (most recent call last):
+        File "/usr/local/bin/portxxxx", line 675, in <xxxxle>
+        main()
+        File "/usr/local/bin/portxxxx", line 614, in main
+        cache = Userxxxxe(tag=tag_xxxx)
+        File "/usr/local/lib/python3.9/dist-packages/utilities_common/cli.py", line 696, in __init__
+        os.makedirs(self.xxxxe_dirxxxxry_app, exist_ok=True)
+        File "/usr/lib/python3.9/os.py", line 225, in makedirs
+        mkdir(xxxx, mode)
+      PermissionError: [Errno 13] Permission denied: '/tmp/xxxxe/portxxxx'

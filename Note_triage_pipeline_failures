@@ -1,0 +1,42 @@
+Session with Ryan:
+-----------------
+Search of **sub-case** in the pipeline log:
+indicator where it failed.
+Multiple testcases might have failed, look for the first one
+
+Take a note which sub-case failed.
+
+TimeoutError -> indicates the device did not perform the warm-reboot
+
+
+Next go to artifacts, it look for the logs with the sub-case.
+before_reboot->syslog.99
+    - search for "Rebooting with /sbin/kexec -e to SONIC-OS-..."
+    check what this command was run
+    - then in pipeline verify that the time is what we want
+
+In the testcase log (syslog_routing_add_50) search for "VIEW"
+
+Filter by error:
+    "ERR, CRIT, synd, view, portsyncd, found key, PortChannel101"
+
+For text power tools: "Filter lines including a string"
+
+To look for src code:
+
+github.com/sonic-net/sonic-buildimage
+
+search: org:sonic-net "error string"
+
+
+Testcode: sonic-mgmt-int
+
+
+
+# All the test code is in :
+github.com/sonic-mgmt/
+
+
+--------------------------
+
+def setup_upgrade_test
