@@ -152,5 +152,26 @@ Create new file teamd_increase_retry_count_202411.py
 - extended the Extended_retry_count
 
 
-
+ADO's in progress:
+Increase teamd retry count:
 https://msazure.visualstudio.com/One/_workitems/edit/35646901
+PR: https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/16811
+
+Create Script to check the exit return code
+https://msazure.visualstudio.com/One/_workitems/edit/34912705/
+PR: https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/16132
+
+Cleanup telemetry on 202411 7060 before 202505 pilot
+https://msazure.visualstudio.com/One/_workitems/edit/35677732
+NO PR yet
+
+https://msazure.visualstudio.com/One/_workitems/edit/34598447/
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/pullrequest/15682
+
+ADOs Done:
+Create graphing for new device:
+https://msazure.visualstudio.com/One/_workitems/edit/34400098/
+
+gnmi listing ADO
+https://msazure.visualstudio.com/One/_workitems/edit/34438735/
+https://github.com/sonic-net/sonic-gnmi/pull/523
