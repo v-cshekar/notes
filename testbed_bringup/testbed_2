@@ -5,6 +5,12 @@ Old ticket:
 https://msazure.visualstudio.com/Standards/_workitems/edit/32860675
 
 
+Fanout login details:
+--------------------
+
+v-cshekar@str-serv-acs-14:~$ ssh -l v-cshekar:28 -p 22 10.3.145.178 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+
+
 
 Free Mgmt IP:
 10.3.146.210
