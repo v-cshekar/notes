@@ -1,0 +1,64 @@
+admin@str-7060-cx32-1:~/scritps$ ^C
+admin@str-7060-cx32-1:~/scritps$ ./exit_check_201811.sh
+[DEBUG] 2025-10-28 06:07:16 UTC Main function called with 0 arguments: 
+[DEBUG] 2025-10-28 06:07:16 UTC Starting comprehensive exit check validation...
+[DEBUG] 2025-10-28 06:07:16 UTC Starting general system health validation...
+[DEBUG] 2025-10-28 06:07:17 UTC General system health validation completed successfully
+[DEBUG] 2025-10-28 06:07:17 UTC Starting file system space validation...
+touch: cannot touch '/host/test-20251028-060717': Permission denied
+rm: cannot remove '/host/test-20251028-060717': No such file or directory
+[DEBUG] 2025-10-28 06:07:17 UTC File system space validation completed successfully
+[DEBUG] 2025-10-28 06:07:17 UTC Starting router MAC learned validation...
+[DEBUG] 2025-10-28 06:07:19 UTC Router MAC learned validation completed successfully
+[DEBUG] 2025-10-28 06:07:19 UTC Starting loopback IP assignment validation...
+[DEBUG] 2025-10-28 06:07:19 UTC Loopback IP assignment validation completed successfully
+[DEBUG] 2025-10-28 06:07:19 UTC Validation results written to JSON file: /tmp/exit_check_validation_results.json
+[DEBUG] 2025-10-28 06:07:19 UTC All validations passed successfully
+admin@str-7060-cx32-1:~/scritps$ 
+admin@str-7060-cx32-1:~/scritps$ 
+admin@str-7060-cx32-1:~/scritps$ 
+admin@str-7060-cx32-1:~/scritps$ 
+admin@str-7060-cx32-1:~/scritps$ cat  /tmp/exit_check_validation_results.json
+{
+  "timestamp": "2025-10-28 06:07:19 UTC"
+  "overall_status": "PASSED",
+  "total_failures": 0,
+  "failed_exit_codes": [],
+  "failed_validations": []
+}
+
+
+
+
+admin@str-7060-cx32-1:~/scritps$ ./exit_check_202305.sh 
+[DEBUG] 2025-10-28 06:04:41 UTC Main function called with 0 arguments: 
+[DEBUG] 2025-10-28 06:04:41 UTC Starting comprehensive exit check validation...
+[DEBUG] 2025-10-28 06:04:41 UTC Starting file system space validation...
+[DEBUG] 2025-10-28 06:04:41 UTC File system space validation completed successfully
+[DEBUG] 2025-10-28 06:04:42 UTC PFC active storm not detected. Safe to proceed w/ warm-reboot...
+Root privileges required for this operation
+[ERROR] 2025-10-28 06:04:44 UTC Could not confirm that all neighbor devices are running SONiC with the retry count feature
+[DEBUG] 2025-10-28 06:04:44 UTC Starting leftover CPA tunnel validation...
+[DEBUG] 2025-10-28 06:04:46 UTC Leftover CPA tunnel validation completed successfully
+[DEBUG] 2025-10-28 06:04:46 UTC Starting ASIC DB IP consistency validation...
+./exit_check_202305.sh: line 93: asic-db-ip-consistency-check.py: command not found
+[ERROR] 2025-10-28 06:04:50 UTC Inconsistent ASIC_DB IP check failed with exit code 127
+[RESULT] Failed exit codes: 23 31
+[RESULT] Failed validations:
+[RESULT]   23: Teamd retry count validation failed
+[RESULT]   31: Inconsistent ASIC database IP entries detected
+[DEBUG] 2025-10-28 06:04:50 UTC Validation results written to JSON file: /tmp/exit_check_validation_results.json
+[ERROR] 2025-10-28 06:04:50 UTC Validation completed with 2 failure(s)
+admin@str-7060-cx32-1:~/scritps$ 
+admin@str-7060-cx32-1:~/scritps$ 
+admin@str-7060-cx32-1:~/scritps$ cat  /tmp/exit_check_validation_results.json
+{
+  "timestamp": "2025-10-28 06:04:50 UTC"
+  "overall_status": "FAILED",
+  "total_failures": 2,
+  "failed_exit_codes": [23 31],
+  "failed_validations": [
+    {"exit_code": 23, "message": "Teamd retry count validation failed"},
+    {"exit_code": 31, "message": "Inconsistent ASIC database IP entries detected"}
+  ]
+}
