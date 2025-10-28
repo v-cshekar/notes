@@ -1,3 +1,7 @@
+Unit test:
+make -f pure.mk ci
+make -f pure.mk quick  
+
 Testing:
 ---------
 
