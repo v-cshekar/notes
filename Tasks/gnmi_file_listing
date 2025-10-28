@@ -1,0 +1,84 @@
+Testing:
+---------
+
+Add these entries to gnmi container:
+admin@str3-7260cx3-acs-14:~$ echo "test content" > /tmp/test-firmware.bin
+admin@str3-7260cx3-acs-14:~$ echo "another test" > /tmp/test-config.bin
+admin@str3-7260cx3-acs-14:~$ echo "thried file" > /tmp/sample.img
+
+DUT=10.3.146.94
+v-cshekar@str-serv-acs-14:~$ gnmic -a $DUT:8080 --insecure  get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/tmp]/files/count" --log
+2025/10/27 19:11:53.018042 [gnmic] version=0.42.1, commit=6b35566f, date=2025-10-20T17:04:55Z, gitURL=https://github.com/openconfig/gnmic, docs=https://gnmic.openconfig.net
+2025/10/27 19:11:53.018106 [gnmic] using config file ""
+2025/10/27 19:11:53.018429 [gnmic] sending gNMI GetRequest: prefix='target:"OPERATIONAL"', path='[elem:{name:"sonic"} elem:{name:"system"} elem:{name:"filesystem" key:{key:"path" value:"/tmp"}} elem:{name:"files"} elem:{name:"count"}]', type='ALL', encoding='JSON', models='[]', extension='[]' to 10.3.146.94:8080
+2025/10/27 19:11:53.019212 [gnmic] creating gRPC client for target "10.3.146.94:8080"
+[
+  {
+    "source": "10.3.146.94:8080",
+    "timestamp": 1761592312795735053,
+    "time": "2025-10-27T19:11:52.795735053Z",
+    "target": "OPERATIONAL",
+    "updates": [
+      {
+        "Path": "sonic/system/filesystem[path=/tmp]/files/count",
+        "values": {
+          "sonic/system/filesystem/files/count": 3
+        }
+      }
+    ]
+  }
+]
+v-cshekar@str-serv-acs-14:~$ gnmic -a $DUT:8080 --insecure  get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/tmp]/files/list" --log
+2025/10/27 19:12:12.653181 [gnmic] version=0.42.1, commit=6b35566f, date=2025-10-20T17:04:55Z, gitURL=https://github.com/openconfig/gnmic, docs=https://gnmic.openconfig.net
+2025/10/27 19:12:12.653245 [gnmic] using config file ""
+2025/10/27 19:12:12.653643 [gnmic] sending gNMI GetRequest: prefix='target:"OPERATIONAL"', path='[elem:{name:"sonic"} elem:{name:"system"} elem:{name:"filesystem" key:{key:"path" value:"/tmp"}} elem:{name:"files"} elem:{name:"list"}]', type='ALL', encoding='JSON', models='[]', extension='[]' to 10.3.146.94:8080
+2025/10/27 19:12:12.658569 [gnmic] creating gRPC client for target "10.3.146.94:8080"
+[
+  {
+    "source": "10.3.146.94:8080",
+    "timestamp": 1761592332435626085,
+    "time": "2025-10-27T19:12:12.435626085Z",
+    "target": "OPERATIONAL",
+    "updates": [
+      {
+        "Path": "sonic/system/filesystem[path=/tmp]/files/list",
+        "values": {
+          "sonic/system/filesystem/files/list": {
+            "file_count": 3,
+            "files": [
+              {
+                "is_directory": false,
+                "md5sum": "cdfabc69193d88821ee8b02c7fd3b29a",
+                "mod_time": "2025-10-27T19:10:57Z",
+                "name": "sample.img",
+                "permissions": "-rw-r--r--",
+                "size": 12,
+                "type": "firmware"
+              },
+              {
+                "is_directory": false,
+                "md5sum": "7d980e6be82dd33893f39d652d8a99a1",
+                "mod_time": "2025-10-27T19:10:51Z",
+                "name": "test-config.bin",
+                "permissions": "-rw-r--r--",
+                "size": 13,
+                "type": "firmware"
+              },
+              {
+                "is_directory": false,
+                "md5sum": "d6eb32081c822ed572b70567826d9d9d",
+                "mod_time": "2025-10-27T19:10:33Z",
+                "name": "test-firmware.bin",
+                "permissions": "-rw-r--r--",
+                "size": 13,
+                "type": "firmware"
+              }
+            ],
+            "path": "/tmp",
+            "pattern": "*"
+          }
+        }
+      }
+    ]
+  }
+]
