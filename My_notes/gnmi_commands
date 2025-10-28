@@ -1,0 +1,235 @@
+
+V-CSHEKAR@netdev1-centralindia-v6
+scp sonic-gnmi_0.1_amd64_516.deb v-cshekar@10.18.78.235:~/
+ssh_vms
+
+V-CSHEKAR@netdev1-westus2-v2:~$ scp grpcurl sonic-gnmi_0.1_amd64_516.deb dut:~/
+
+V-CSHEKAR@netdev1-westus2-v2:~$ scp /usr/local/bin/gnmic dut:/tmp/
+
+ssh dut
+
+
+V-CSHEKAR@netdev1-westus2-v2:~$ scp sonic-gnmi_0.1_amd64.deb admin@10.3.146.165:~/
+V-CSHEKAR@netdev1-westus2-v2:~$ ssh admin@10.3.146.165
+
+admin@str-7060-cx32-1:~$ ls
+sonic-gnmi_0.1_amd64.deb
+
+admin@str-7060-cx32-1:~$ docker cp sonic-gnmi_0.1_amd64.deb gnmi:/root/
+admin@str-7060-cx32-1:~$ docker exec -ti gnmi bash
+root@str-7060-cx32-1:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  sonic  srv  sys  tmp  usr  var
+root@str-7060-cx32-1:/# pwd
+/
+root@str-7060-cx32-1:/# cd /root/
+root@str-7060-cx32-1:~# ls
+sonic-gnmi_0.1_amd64.deb
+
+root@str-7060-cx32-1:~# dpkg -i sonic-gnmi_0.1_amd64.deb 
+(Reading database ... 11193 files and directories currently installed.)
+Preparing to unpack sonic-gnmi_0.1_amd64.deb ...
+Unpacking sonic-gnmi (0.1) over (0.1) ...
+dpkg: dependency problems prevent configuration of sonic-gnmi:
+ sonic-gnmi depends on libc6 (>= 2.34); however:
+  Version of libc6:amd64 on system is 2.31-13+deb11u7.
+ sonic-gnmi depends on libpython3.11 (>= 3.11.0); however:
+  Package libpython3.11 is not installed.
+ sonic-gnmi depends on libstdc++6 (>= 11); however:
+  Version of libstdc++6:amd64 on system is 10.2.1-6.
+
+dpkg: error processing package sonic-gnmi (--install):
+ dependency problems - leaving unconfigured
+Errors were encountered while processing:
+ sonic-gnmi
+ 
+ 
+ Different errors:
+ root@str2-7215-acs-3:~# dpkg -i sonic-gnmi_0.1_amd64.deb
+dpkg: error processing archive sonic-gnmi_0.1_amd64.deb (--install):
+ package architecture (amd64) does not match system (armhf)
+Errors were encountered while processing:
+ sonic-gnmi_0.1_amd64.deb
+ 
+ 
+ 
+root@str-7060-cx32-1:~#exit
+
+root@str-7060-cx32-1:~$  sudo systemctl restart gnmi
+
+# check if the telemetry process is running
+root@str-7060-cx32-1:~$ gnmi docker exec gnmi ps aux 
+
+
+# Copy the grpcurl from the server
+which grpcurl 
+scp /home/.../grpcurl $DUT:~/
+
+root@str-7060-cx32-1:$./grpcurl -vv -plaintext localhost:50052 list
+
+
+
+
+
+For testing we do not need auth:
+
+
+admin@str4-7060x6-512-9:~$ docker exec gnmi ps aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.1  43672 38476 pts/0    Ss+  05:23   0:04 /usr/bin/python3 /usr/local/bin/supervisord
+root          14  0.0  0.1 133296 34788 pts/0    Sl   05:23   0:01 python3 /usr/bin/supervisor-proc-exit-listener --container-name gnmi
+root          17  0.0  0.0 221828  3956 pts/0    Sl   05:23   0:00 /usr/sbin/rsyslogd -n -iNONE
+root          24  0.3  0.2 2466228 92420 pts/0   Sl   05:23   1:33 /usr/sbin/telemetry -logtostderr --server_crt /etc/sonic/telemetry/streamingtelemetryserver.cer --server_key /etc/sonic/telemetry/streamingtelemetryserver.key --ca_crt /etc/sonic/telemetry/dsmsroot.cer --port 50052 -v=2 --threshold 100 --idle_conn_duration 5
+root        2468 16.6  0.0   8088  3856 ?        Rs   11:53   0:00 ps aux
+
+
+
+
+
+admin@str-7060-cx32-1:~$ sonic-db-cli CONFIG_DB hgetall "GNMI|gnmi"
+{'client_auth': 'true', 'log_level': '2', 'port': '50052'}
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ sonic-db-cli CONFIG_DB hgetall "GNMI|certs"
+{'ca_crt': '/etc/sonic/telemetry/dsmsroot.cer', 'server_crt': '/etc/sonic/telemetry/streamingtelemetryserver.cer', 'server_key': '/etc/sonic/telemetry/streamingtelemetryserver.key'}
+
+admin@str-7060-cx32-1:~$ sonic-db-cli CONFIG_DB hset "GNMI|gnmi" "client_auth" "false"
+admin@str-7060-cx32-1:~$ sonic-db-cli CONFIG_DB del "GNMI|certs"
+
+admin@str-7060-cx32-1:~$ sudo systemctl restart gnmi  	
+
+
+
+scp 
+
+
+
+
+
+-------------------------------
+admin@str-7060-cx32-1:~$ docker ps -a
+CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS       PORTS     NAMES
+79b0d50baea6   docker-sonic-bmp:latest           "/usr/local/bin/supe…"   13 hours ago   Up 2 hours             bmp
+269ceb77ecf7   docker-sonic-telemetry:latest     "/usr/local/bin/supe…"   3 days ago     Up 2 hours             telemetry
+1bff638b5f85   docker-snmp:latest                "/usr/bin/docker-snm…"   3 days ago     Up 2 hours             snmp
+f654219c9239   docker-platform-monitor:latest    "/usr/bin/docker_ini…"   3 days ago     Up 2 hours             pmon
+ddbcea7659a0   docker-lldp:latest                "/usr/bin/docker-lld…"   3 days ago     Up 2 hours             lldp
+633c314c532d   docker-sonic-gnmi:latest          "/usr/local/bin/supe…"   3 days ago     Up 2 hours             gnmi
+a7db7e81c5c0   docker-dhcp-relay:latest          "/usr/bin/docker_ini…"   3 days ago     Up 2 hours             dhcp_relay
+70eddda6da12   docker-router-advertiser:latest   "/usr/bin/docker-ini…"   3 days ago     Up 2 hours             radv
+f13deee9d8fb   docker-syncd-brcm:latest          "/usr/local/bin/supe…"   3 days ago     Up 2 hours             syncd
+9b937157d540   docker-eventd:latest              "/usr/local/bin/supe…"   3 days ago     Up 2 hours             eventd
+0fd1ba775519   docker-fpm-frr:latest             "/usr/bin/docker_ini…"   3 days ago     Up 2 hours             bgp
+c4b44185638b   docker-teamd:latest               "/usr/local/bin/supe…"   3 days ago     Up 2 hours             teamd
+decef1823377   docker-sysmgr:latest              "/usr/local/bin/supe…"   3 days ago     Up 2 hours             sysmgr
+e5f08b080b4f   docker-orchagent:latest           "/usr/bin/docker-ini…"   3 days ago     Up 2 hours             swss
+dd0c32595bd1   docker-sonic-restapi:latest       "/usr/local/bin/supe…"   3 days ago     Up 2 hours             restapi
+426559ec3d8f   docker-acms:latest                "/usr/local/bin/supe…"   3 days ago     Up 2 hours             acms
+db525064c367   docker-database:latest            "/usr/local/bin/dock…"   3 days ago     Up 2 hours             database
+admin@str-7060-cx32-1:~$ docker exec -ti gnmai bash
+Error response from daemon: No such container: gnmai
+admin@str-7060-cx32-1:~$ docker exec -ti gnmi bash
+
+
+
+Edit sudo vi /usr/bin/gnmi.sh
+
+And add -v /:/mnt/host:rw
+
+
+docker create -t -v /etc/sonic:/etc/sonic:ro -v /etc/localtime:/etc/localtime:ro -v /var/run/dbus:/var/run/dbus:rw -v /:/mnt/host:rw \
+
+admin@str-7060-cx32-1:~$ sudo docker stop gnmi && docker rm gnmi
+
+admin@str-7060-cx32-1:~$ sudo systemctl restart gnmi
+
+
+
+
+
+To test:
+
+admin@str-7060-cx32-1:/$ cd /
+admin@str-7060-cx32-1:/$ cat test.txt 
+hellooo world
+
+admin@str-7060-cx32-1:/$ docker exec -ti gnmi bash 
+root@str-7060-cx32-1:/# 
+root@str-7060-cx32-1:/# 
+root@str-7060-cx32-1:/# 
+root@str-7060-cx32-1:/# 
+root@str-7060-cx32-1:/# ls
+
+root@str-7060-cx32-1:/# cd /mnt/host/
+root@str-7060-cx32-1:/mnt/host# ls
+bin   cache.tgz  etc   host        initrd.img.old  lib64  mnt  proc  run   sonic  sys       tmp  var      vmlinuz.old
+boot  dev        home  initrd.img  lib             media  opt  root  sbin  srv    test.txt  usr  vmlinuz
+root@str-7060-cx32-1:/mnt/host# cat test.txt 
+hellooo
+
+
+
+admin@str-7060-cx32-1:~$ sonic-db-cli CONFIG_DB hgetall "GNMI|gnmi"
+{'client_auth': 'false', 'log_level': '2', 'port': '50052'}
+admin@str-7060-cx32-1:~$ 
+admin@str-7060-cx32-1:~$ sudo /tmp/gnmic -a localhost:50052 -e json_ietf --insecure get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/]/disk-space"
+[
+  {
+    "source": "localhost:50052",
+    "time": "1970-01-01T00:00:00Z",
+    "target": "OPERATIONAL",
+    "updates": [
+      {
+        "Path": "sonic/system/filesystem[path=/]/disk-space",
+        "values": {
+          "sonic/system/filesystem/disk-space": {
+            "available-mb": 1542,
+            "path": "/",
+            "total-mb": 3765
+          }
+        }
+      }
+    ]
+  }
+]
+
+
+
+# Test root filesystem
+gnmic -a localhost:50052 -e json_ietf --insecure get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/]/disk-space"
+gnmic -a localhost:8080 -e json_ietf --insecure get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/]/disk-space"
+
+# Expected response:
+[
+  {
+    "source": "<device>:8080",
+    "target": "OPERATIONAL",
+    "updates": [
+      {
+        "Path": "sonic/system/filesystem[path=/]/disk-space",
+        "values": {
+          "sonic/system/filesystem/disk-space": {
+            "available-mb": 2187,
+            "path": "/",
+            "total-mb": 15826
+          }
+        }
+      }
+    ]
+  }
+]
+
+# Test other directories
+/tmp/gnmic -a localhost:50052 -e json_ietf --insecure get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/tmp]/disk-space"
+/tmp/gnmic -a localhost:50052 -e json_ietf --insecure get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/var]/disk-space"
+
+# Test error handling
+gnmic -a <device>:8080 -e json_ietf --insecure get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/nonexistent]/disk-space"
+# Should return: "no such file or directory"
+
+
+
+
+
+
+admin@str-7060-cx32-1:~$
+ sudo /tmp/gnmic -a localhost:50052 -e json_ietf --insecure get --target "OPERATIONAL" --path "sonic/system/firmware[directory=/lib/firware]/files"
