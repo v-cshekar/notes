@@ -75,15 +75,18 @@ Then follow step 4 above
 
 --------------------------------------------------
 # Set Management IP (mgmt ip) on switch
+admin@sonic:~$ sudo ip link set eth0 up
 admin@sonic:~$ sudo config interface ip add eth0 10.64.247.235/24
 admin@sonic:~$ sudo ip route add default via 10.64.247.1
 admin@sonic:~$ sudo config save -y
 
 vms20-t0-7060
+admin@sonic:~$ sudo ip link set eth0 up
 admin@sonic:~$ sudo config interface ip add eth0 10.3.146.57/24
 admin@sonic:~$ sudo ip route add default via 10.3.146.1
 admin@sonic:~$ sudo config save -y
 
+admin@sonic:~$ ip link show eth0
 -------------------------------------------------
 # Install image
 sudo sonic_installer install -y http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202012/tagged/sonic-aboot-broadcom-20201231.97.swi
