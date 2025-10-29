@@ -5,9 +5,21 @@ Old ticket:
 https://msazure.visualstudio.com/Standards/_workitems/edit/32860675
 
 
+
+
+Testbed 2 details:
+------------------
+str3-7060-d04-05
+Management IP: 10.3.146.164/24
+
+Console IP:
+ssh -l v-cshekar:30 -p 22 10.3.145.196
+10.3.146.165
+
+https://microsoft.sharepoint.com/teams/AzureNetworkingSTaRLab/Lists/STaR%20Lab%20Inventory/DispForm.aspx?ID=4544
+
 Fanout login details:
 --------------------
-
 v-cshekar@str-serv-acs-14:~$ ssh -l v-cshekar:28 -p 22 10.3.145.178 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
 
 
