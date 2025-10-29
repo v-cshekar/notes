@@ -20,6 +20,7 @@ https://microsoft.sharepoint.com/teams/AzureNetworkingSTaRLab/Lists/STaR%20Lab%2
 
 Fanout login details:
 --------------------
+MGMT IP: 10.64.246.98
 v-cshekar@str-serv-acs-14:~$ ssh -l v-cshekar:28 -p 22 10.3.145.178 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
 
 
