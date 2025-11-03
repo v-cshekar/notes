@@ -175,3 +175,18 @@ https://msazure.visualstudio.com/One/_workitems/edit/34400098/
 gnmi listing ADO
 https://msazure.visualstudio.com/One/_workitems/edit/34438735/
 https://github.com/sonic-net/sonic-gnmi/pull/523
+
+
+-------------------
+
+Cleanup telemetry on 202411 7060 before 202505 pilot:
+https://msazure.visualstudio.com/One/_workitems/edit/35677732
+PR: https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/16877
+
+Done
+Create Script to check the exit return code
+https://msazure.visualstudio.com/One/_workitems/edit/34912705/
+PR: https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/16132
+
+
+
