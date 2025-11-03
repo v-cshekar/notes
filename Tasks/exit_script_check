@@ -62,3 +62,11 @@ admin@str-7060-cx32-1:~/scritps$ cat  /tmp/exit_check_validation_results.json
     {"exit_code": 31, "message": "Inconsistent ASIC database IP entries detected"}
   ]
 }
+
+
+
+
+---------------------------------
+Sample PR:
+https://msazure.visualstudio.com/DefaultCollection/One/_git/Networking-scripts-lib/commit/f5cda6bb0f2b477933304238b7b75a042669e01c?path=/approved-internal-libraries/lib/python/packages/net-task-contrib/setup.py
+
