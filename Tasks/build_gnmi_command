@@ -1,0 +1,119 @@
+Here are the complete build instructions for sonic-gnmi:
+
+  Sonic-GNMI Build Instructions
+
+  Prerequisites
+
+  - Docker installed and running
+  - At least 25GB free disk space
+  - Internet connection for downloading dependencies
+
+  Step-by-Step Build Process
+
+  1. Setup Workspace
+
+  export WORKSPACE=/home/chandra/wipr
+
+  2. Create Docker Container
+
+  docker run -dit \
+    --name sonic-gnmi-build \
+    --mount type=bind,source=$WORKSPACE,target=/workspace \
+    -w /workspace/sonic-gnmi \
+    sonicdev-microsoft.azurecr.io:443/sonic-slave-bookworm:latest \
+    bash
+
+  3. Download and Extract Sonic Buildimage
+
+  cd $WORKSPACE
+  wget -O sonic-buildimage.vs.tar.gz "https://artprodcus3.artifacts.visualstudio.com/Af91412a5-a9
+  06-4990-9d7c-f697b81fc04d/be1b070f-be15-4154-aade-b1d3bfb17054/_apis/artifact/cGlwZWxpbmVhcnRpZ
+  mFjdDovL21zc29uaWMvcHJvamVjdElkL2JlMWIwNzBmLWJlMTUtNDE1NC1hYWRlLWIxZDNiZmIxNzA1NC9idWlsZElkLzk3
+  MzU3My9hcnRpZmFjdE5hbWUvc29uaWMtYnVpbGRpbWFnZS52cw2/content?format=zip"
+
+  unzip sonic-buildimage.vs.tar.gz
+  ln -s sonic-buildimage.vs/target target
+
+  4. Install System Dependencies
+
+  docker exec sonic-gnmi-build bash -c "apt-get update && apt-get install -y redis-server
+  protobuf-compiler"
+
+  5. Install Sonic Dependencies
+
+  # Install libyang packages
+  docker exec sonic-gnmi-build bash -c "dpkg -i \
+    /workspace/target/debs/bookworm/libyang_1.0.73_amd64.deb \
+    /workspace/target/debs/bookworm/libyang-dev_1.0.73_amd64.deb \
+    /workspace/target/debs/bookworm/libyang-cpp_1.0.73_amd64.deb"
+
+  # Install libnl packages
+  docker exec sonic-gnmi-build bash -c "dpkg -i \
+    /workspace/target/debs/bookworm/libnl-3-200_3.5.0-1_amd64.deb \
+    /workspace/target/debs/bookworm/libnl-3-dev_3.5.0-1_amd64.deb \
+    /workspace/target/debs/bookworm/libnl-genl-3-200_3.5.0-1_amd64.deb \
+    /workspace/target/debs/bookworm/libnl-genl-3-dev_3.5.0-1_amd64.deb \
+    /workspace/target/debs/bookworm/libnl-nf-3-200_3.5.0-1_amd64.deb \
+    /workspace/target/debs/bookworm/libnl-nf-3-dev_3.5.0-1_amd64.deb \
+    /workspace/target/debs/bookworm/libnl-route-3-200_3.5.0-1_amd64.deb \
+    /workspace/target/debs/bookworm/libnl-route-3-dev_3.5.0-1_amd64.deb"
+
+  # Install libswsscommon packages
+  docker exec sonic-gnmi-build bash -c "dpkg -i \
+    /workspace/target/debs/bookworm/libswsscommon_1.0.0_amd64.deb \
+    /workspace/target/debs/bookworm/libswsscommon-dev_1.0.0_amd64.deb"
+
+  6. Clone Required Repositories
+
+  git clone https://github.com/sonic-net/sonic-mgmt-common.git --depth 1 --branch master
+  git clone https://github.com/sonic-net/sonic-swss-common.git --depth 1 --branch master
+  git clone https://github.com/sonic-net/sonic-gnmi.git --depth 1 --branch master
+
+  7. Upgrade Go Version
+
+  docker exec sonic-gnmi-build bash -c "cd /tmp && wget
+  https://go.dev/dl/go1.21.0.linux-amd64.tar.gz && rm -rf /usr/local/go && tar -C /usr/local -xzf
+   go1.21.0.linux-amd64.tar.gz"
+
+  8. Build sonic-mgmt-common
+
+  docker exec -w /workspace/sonic-mgmt-common sonic-gnmi-build bash -c "export
+  PATH=/usr/local/go/bin:\$PATH && NO_TEST_BINS=1 dpkg-buildpackage -rfakeroot -b -us -uc"
+
+  9. Fix sonic-gnmi Source Code
+
+  docker exec sonic-gnmi-build bash -c "sed -i 's/swsscommon.NewZmqClient(zmqAddress,
+  vrf)/swsscommon.NewZmqClient(zmqAddress)/'
+  /workspace/sonic-gnmi/sonic_data_client/mixed_db_client.go"
+
+  10. Build sonic-gnmi
+
+  docker exec -w /workspace/sonic-gnmi sonic-gnmi-build bash -c "export
+  PATH=/usr/local/go/bin:\$PATH && GOFLAGS='-buildvcs=false' dpkg-buildpackage -rfakeroot -b -us
+  -uc"
+
+  Verification Commands
+
+  # Check generated packages
+  ls -la sonic-gnmi_0.1_amd64.deb sonic-gnmi-dbgsym_0.1_amd64.deb
+
+  # Verify package contents
+  dpkg -c sonic-gnmi_0.1_amd64.deb
+
+  # Check package information
+  dpkg -I sonic-gnmi_0.1_amd64.deb
+
+  # Test binary functionality
+  docker exec sonic-gnmi-build bash -c "/workspace/sonic-gnmi/build/bin/telemetry -h"
+
+  Cleanup (Optional)
+
+  docker stop sonic-gnmi-build
+  docker rm sonic-gnmi-build
+
+  Key Notes
+
+  - Go Version: Upgraded to 1.21.0 to support modern go.mod syntax
+  - Source Fix: Modified NewZmqClient call to match updated API
+  - Artifact URL: Replace with your specific sonic-buildimage artifact URL
+  - Build Output: Creates sonic-gnmi_0.1_amd64.deb package
