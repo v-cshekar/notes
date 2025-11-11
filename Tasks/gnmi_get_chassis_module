@@ -4,7 +4,11 @@ Reference ADO: https://github.com/sonic-net/sonic-gnmi/pull/499/files#diff-b4ff8
 
 sudo config chassis modules startup <module_name>
 module_name can be:
-DPU0, DPU1, DPU2, DPU3
+(choose from DPU0, DPU1, DPU2, DPU3)
+
+
+admin@str3-msn4280-02:~$ sudo config chassis module startup DPU0
+Module DPU0 is already set to up state
 
 
 Testbed:
