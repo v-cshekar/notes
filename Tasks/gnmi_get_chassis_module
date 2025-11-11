@@ -5,3 +5,11 @@ Reference ADO: https://github.com/sonic-net/sonic-gnmi/pull/499/files#diff-b4ff8
 sudo config chassis modules startup <module_name>
 module_name can be:
 DPU0, DPU1, DPU2, DPU3
+
+
+Testbed:
+search for "dpu".
+Select either 
+vms12-t1-smartswitch-4280-02: 10.3.146.230
+vms66-t1-8102-7: 10.3.146.173 
+
