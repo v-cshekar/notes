@@ -1,0 +1,15 @@
+Recovering: vms24-t0-7260-2
+
+str2-7260cx3-acs-9
+Mgmt_IP: 10.3.146.137
+console: 10.3.145.199 port 5
+
+Console access:
+1. Once on Server 15, you can access the testbed console
+
+V-CSHEKAR@netdev1-centralindia-v6:~$ ssh v-cshekar@10.64.247.30
+v-cshekar@10.64.247.30's password:
+
+
+v-cshekar@str-serv-acs-14:~$
+ssh -l v-cshekar:5 -p 22 10.3.145.199 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
