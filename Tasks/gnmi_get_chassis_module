@@ -1,0 +1,7 @@
+ADO: https://msazure.visualstudio.com/One/_workitems/edit/35728514/
+Reference ADO: https://github.com/sonic-net/sonic-gnmi/pull/499/files#diff-b4ff8a7698f09daccba7c1e71db1f3dee178624657b4ba5ffd41424f16d0f9ca
+
+
+sudo config chassis modules startup <module_name>
+module_name can be:
+DPU0, DPU1, DPU2, DPU3
