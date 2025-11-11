@@ -13,3 +13,7 @@ v-cshekar@10.64.247.30's password:
 
 v-cshekar@str-serv-acs-14:~$
 ssh -l v-cshekar:5 -p 22 10.3.145.199 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+
+
+Lab ADO for recovery:
+https://msazure.visualstudio.com/Standards/_workitems/edit/35870737
