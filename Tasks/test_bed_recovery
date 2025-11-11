@@ -15,5 +15,59 @@ v-cshekar@str-serv-acs-14:~$
 ssh -l v-cshekar:5 -p 22 10.3.145.199 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
 
 
+Aboot# cd /mnt/flash
+Aboot# 
+Aboot# 
+Aboot# 
+Aboot# ifconfig ma1 10.3.146.137 netmask 255.255.254.0
+Aboot# ip route add default via 10.3.146.1 dev ma1
+Aboot# ls
+acl.json                        migration
+after-upgrade-device-info.txt   msft-brcm-dbg
+aquota.user                     msft-brcm-dbg.tar.gz
+before-upgrade-device-info      old_config
+before-upgrade-device-info.txt  pmon
+boot-config                     postupgrade-binaries
+disk-img                        reboot-cause
+image-20250510.27               sonic-upgrade-reports
+kernel-params-base              umount.txt
+logs_before_reboot              warm-reboot-c10.64.246.142.log
+logs_before_reboot.tar.gz       warm-reboot.log
+machine.conf                    warmboot
+metadata.tar.gz
+Aboot# wget http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/br
+oadcom/internal-202405/tagged/sonic-aboot-broadcom-20240510.25.swi
+Connecting to 10.201.148.43 (10.201.148.43:80)
+sonic-aboot-broadcom 100% |*******************************|  1024M 00:00:00 ETA
+Aboot# ls
+acl.json                              migration
+after-upgrade-device-info.txt         msft-brcm-dbg
+aquota.user                           msft-brcm-dbg.tar.gz
+before-upgrade-device-info            old_config
+before-upgrade-device-info.txt        pmon
+boot-config                           postupgrade-binaries
+disk-img                              reboot-cause
+image-20250510.27                     sonic-aboot-broadcom-20240510.25.swi
+kernel-params-base                    sonic-upgrade-reports
+logs_before_reboot                    umount.txt
+logs_before_reboot.tar.gz             warm-reboot-c10.64.246.142.log
+machine.conf                          warm-reboot.log
+metadata.tar.gz                       warmboot
+Aboot# echo "SWI=flash:sonic-aboot-broadcom-20240510.25.swi" > boot-config
+Aboot# sync
+Aboot# reboot
+
+
+Command Summary:
+
+ifconfig ma1 10.3.146.137 netmask 255.255.254.0
+ip route add default via 10.3.146.1 dev ma1
+wget http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202405/tagged/sonic-aboot-broadcom-20240510.25.swi
+sync
+reboot
+echo "SWI=flash:sonic-aboot-broadcom-20240510.25.swi" > boot-config
+
+
+
 Lab ADO for recovery:
 https://msazure.visualstudio.com/Standards/_workitems/edit/35870737
