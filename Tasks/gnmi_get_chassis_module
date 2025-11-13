@@ -11,6 +11,23 @@ admin@str3-msn4280-02:~$ sudo config chassis module startup DPU0
 Module DPU0 is already set to up state
 
 
+
+# Check CONFIG_DB
+redis-cli -n 4 HGETALL "CHASSIS_MODULE|DPU0"
+
+# Check via gNMI
+gnmi_get \
+  -xpath /sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU0/admin_status \
+  -target_addr localhost:8080 \
+  -insecure
+
+
+gnmi_set \
+  -xpath /sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU0/admin_status \
+  -val "up" \
+  -update
+
+
 Testbed:
 search for "dpu".
 Select either 
