@@ -1,0 +1,20 @@
+
+
+https://microsoftapc-my.sharepoint.com/:x:/g/personal/chenyangwang_microsoft_com/EU2I0K-RODhKqT6x-xFl2uEBp0hQb7c4z2j_8AXBRfhLsA?e=S0GdiX&nav=MTVfe0Q1ODgzNjkxLTFDMkUtNDVENS1CMjM5LTdBOTU0MjBGRENEOH0&ovuser=72f988bf-86f1-41af-91ab-2d7cd011db47%2Cv-cshekar%40microsoft.com&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTEwMTYxNjUxMCIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D
+
+
+
+
+vms24-t0-7260-2 :
+---------------
+2025-11-11T22:41:50.3010095Z + from_url=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom-20241110.22.swi
+2025-11-11T22:41:50.3012871Z + to_url=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.latest.swi
+
+
+2700: (tbtk5-t0-2700-4)
+-------------------------
+From URL is http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/mellanox/internal-202311/tagged/sonic-mellanox-20231110.30.bin
+To URL is http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/mellanox/internal-202505/tagged/sonic-mellanox.bin
+
+IMAGE_MLNX_202405
+IMAGE_MLNX_202311
