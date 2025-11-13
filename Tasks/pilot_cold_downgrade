@@ -10,6 +10,15 @@ vms24-t0-7260-2 :
 2025-11-11T22:41:50.3010095Z + from_url=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom-20241110.22.swi
 2025-11-11T22:41:50.3012871Z + to_url=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.latest.swi
 
+tbtk5-t0-7260-01
+
+2025-11-11T22:41:50.3010095Z + from_url=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202411/tagged/sonic-aboot-broadcom-20241110.22.swi
+2025-11-11T22:41:50.3012871Z + to_url=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.latest.swi
+
+Type of upgrade: cold
+IMAGE_BRCM_ABOOT_202505, latest
+IMAGE_BRCM_ABOOT_202411, 22
+
 
 2700: (tbtk5-t0-2700-4)
 -------------------------
