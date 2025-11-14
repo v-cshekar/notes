@@ -55,15 +55,19 @@ machine.conf                          warm-reboot.log
 metadata.tar.gz                       warmboot
 Aboot# echo "SWI=flash:sonic-aboot-broadcom-20240510.25.swi" > boot-config
 Aboot# sync
+Aboot# cat boot-config 
+SWI=flash:sonic-aboot-broadcom-20240510.25.swi
 Aboot# reboot
 
 
 Command Summary:
-
+cd /mnt/flash
 ifconfig ma1 10.3.146.137 netmask 255.255.254.0
 ip route add default via 10.3.146.1 dev ma1
 wget http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202405/tagged/sonic-aboot-broadcom-20240510.25.swi
 echo "SWI=flash:sonic-aboot-broadcom-20240510.25.swi" > boot-config
+Aboot# cat boot-config 
+SWI=flash:sonic-aboot-broadcom-20240510.25.swi
 sync
 reboot
 
