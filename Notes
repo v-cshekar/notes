@@ -298,3 +298,6 @@ https://msazure.visualstudio.com/Standards/_workitems/edit/35696464
 10.64.247.31
 
 
+# Copy ssh key
+v-cshekar@str-serv-acs-14:~$ ssh-copy-id admin@10.64.246.217
+
