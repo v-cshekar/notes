@@ -71,3 +71,4 @@ echo "SWI=flash:sonic-aboot-broadcom-20240510.25.swi" > boot-config
 
 Lab ADO for recovery:
 https://msazure.visualstudio.com/Standards/_workitems/edit/35870737
+https://msazure.visualstudio.com/Standards/_workitems/edit/35920817
