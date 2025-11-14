@@ -63,9 +63,9 @@ Command Summary:
 ifconfig ma1 10.3.146.137 netmask 255.255.254.0
 ip route add default via 10.3.146.1 dev ma1
 wget http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202405/tagged/sonic-aboot-broadcom-20240510.25.swi
+echo "SWI=flash:sonic-aboot-broadcom-20240510.25.swi" > boot-config
 sync
 reboot
-echo "SWI=flash:sonic-aboot-broadcom-20240510.25.swi" > boot-config
 
 
 
