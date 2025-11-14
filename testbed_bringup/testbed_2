@@ -169,6 +169,9 @@ https://monkeyservice.core.windows.net/SeedGroup/Details/V_CSHEKAR_UNIVERSAL_NON
 Monkey Service Incident Notification:
 https://portal.microsofticm.com/imp/v3/incidents/details/669986219/home
 
+Other sample PRs:
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/commit/7f28d9b7403c29c02acb42e5d5545c4befca9422?refName=refs/heads/internal&path=/ansible/files/sonic_str3_console_links.csv&_a=contents
+
 
 Graph Manipulation document:
 ------------------------------
