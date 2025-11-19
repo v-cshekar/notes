@@ -80,3 +80,8 @@ parse_exit_check_results
   json_start = json_output.find('{')
   if json_start != -1:
       json_output = json_output[json_start:].strip()
+
+
+
+INFO: On dsm06-0102-0317-03t0 for None: Reading results from /tmp/exit_check_validation_results.json
+ERROR: Failed to parse JSON results: Expecting value: line 1 column 1 (char 0). Raw output: dsm06-0102-0317-03t0# cat /tmp/exit_check_validation_results.json
