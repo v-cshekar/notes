@@ -70,3 +70,13 @@ def parse_exit_check_results(handler, device_name, requestid):
         log_results_err(device_name, requestid, f"Failed to read results file: {e}")
         return False, {}
 
+
+
+parse_exit_check_results
+
+
+
+  # Strip command echo and find actual JSON content
+  json_start = json_output.find('{')
+  if json_start != -1:
+      json_output = json_output[json_start:].strip()
