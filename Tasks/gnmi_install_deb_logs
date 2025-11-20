@@ -1,0 +1,461 @@
+
+
+v-cshekar@str-serv-acs-15:~$ ls -lrt
+total 24
+drwxrwxr-x 4 v-cshekar v-cshekar  4096 Apr  9  2025 projects
+drwxrwxr-x 6 v-cshekar v-cshekar  4096 Aug 29 17:02 workspace
+-rwxr-xr-x 1 v-cshekar v-cshekar 14866 Nov  8 14:14 teamd_increase_retry_count.py
+v-cshekar@str-serv-acs-15:~$ which gnmic
+/usr/local/bin/gnmic
+v-cshekar@str-serv-acs-15:~$ exit
+logout
+Connection to 10.64.247.31 closed.
+V-CSHEKAR@netdev1-centralindia-v6:~$ ls -lrt
+total 151900
+-rw-rw-r-- 1 V-CSHEKAR V-CSHEKAR 31086284 Sep 25 04:56 sonic-gnmi_chandra.deb
+-rw-rw-r-- 1 V-CSHEKAR V-CSHEKAR      591 Sep 30 15:28 wget-log
+-rw-rw-r-- 1 V-CSHEKAR V-CSHEKAR 31084156 Oct 17 23:03 sonic-gnmi_0.1_amd64_dawei.deb
+-rw-rw-r-- 1 V-CSHEKAR V-CSHEKAR 31084912 Oct 20 19:32 sonic-gnmi_0.1_amd64_516.deb
+-rw-rw-r-- 1 V-CSHEKAR V-CSHEKAR 31089280 Oct 21 01:28 sonic-gnmi_0.1_amd64_cp.deb
+-rw-rw-r-- 1 V-CSHEKAR V-CSHEKAR 31087444 Oct 24 17:23 sonic-gnmi_0.1_amd64_529.deb
+-rwxr-xr-x 1 V-CSHEKAR V-CSHEKAR    14866 Nov  9 03:32 teamd_increase_retry_count.py
+-rw-rw-r-- 1 V-CSHEKAR V-CSHEKAR    74752 Nov 15 00:00 scripts.tar
+V-CSHEKAR@netdev1-centralindia-v6:~$ -g_:G;:G)9Z#s4_A^!8{Gw9:!
+-g_:G;:G)9Z#s4_A^ssh v-cshekar@10.18.78.235{Gw9:!
+-bash: syntax error near unexpected token `)'
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ scp sonic-gnmi_0.1_amd64_dawei.deb ssh_s1
+ssh_s14:  ssh_s15:  
+V-CSHEKAR@netdev1-centralindia-v6:~$ scp sonic-gnmi_0.1_amd64_dawei.deb ssh_s1
+ssh_s14:  ssh_s15:  
+V-CSHEKAR@netdev1-centralindia-v6:~$ scp sonic-gnmi_0.1_amd64_dawei.deb ssh_s1
+ssh_s14:  ssh_s15:  
+V-CSHEKAR@netdev1-centralindia-v6:~$ scp sonic-gnmi_0.1_amd64_dawei.deb ssh_s15:~/
+v-cshekar@10.64.247.31's password: 
+sonic-gnmi_0.1_amd64_dawei.deb                                                                                           15% 4752KB   1.3MB/s   00:19 ETA
+
+sonic-gnmi_0.1_amd64_dawei.deb                                                                                           16% 5088KB 977.1KB/s   00:25 ETA^CV-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ scp sonic-gnmi_0.1_amd64_dawei.deb ssh_s15:~/
+v-cshekar@10.64.247.31's password: 
+sonic-gnmi_0.1_amd64_dawei.deb                                                                                          100%   30MB 209.2KB/s   02:25    
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ 
+V-CSHEKAR@netdev1-centralindia-v6:~$ ssh ssh_s15
+v-cshekar@10.64.247.31's password: 
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-157-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Nov 17 10:14:41 AM PST 2025
+
+  System load:                      0.85
+  Usage of /:                       40.6% of 879.11GB
+  Memory usage:                     18%
+  Swap usage:                       0%
+  Temperature:                      46.0 C
+  Processes:                        1128
+  Users logged in:                  0
+  IPv4 address for enx806d970b408c: 10.64.247.31
+  IPv6 address for enx806d970b408c: 2a01:111:e210:b000::a40:f71f
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+37 updates can be applied immediately.
+26 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release '24.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Mon Nov 17 09:55:10 2025 from 10.41.28.36
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ ls -lrt
+total 30380
+drwxrwxr-x 4 v-cshekar v-cshekar     4096 Apr  9  2025 projects
+drwxrwxr-x 6 v-cshekar v-cshekar     4096 Aug 29 17:02 workspace
+-rwxr-xr-x 1 v-cshekar v-cshekar    14866 Nov  8 14:14 teamd_increase_retry_count.py
+-rw-rw-r-- 1 v-cshekar v-cshekar 31084156 Nov 17 10:10 sonic-gnmi_0.1_amd64_dawei.deb
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ ping 10.64.247.80
+PING 10.64.247.80 (10.64.247.80) 56(84) bytes of data.
+64 bytes from 10.64.247.80: icmp_seq=1 ttl=64 time=0.824 ms
+^C
+--- 10.64.247.80 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.824/0.824/0.824/0.000 ms
+v-cshekar@str-serv-acs-15:~$ ssh admin@10.64.247.80
+The authenticity of host '10.64.247.80 (10.64.247.80)' can't be established.
+RSA key fingerprint is SHA256:gMX5g0Jjm3IX0um6buAX+BzOjBSuBQiuxOuyAjJ1pqg.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.64.247.80' (RSA) to the list of known hosts.
+Debian GNU/Linux 12 \n \l
+
+admin@10.64.247.80's password: 
+Linux str-msn4700-02 6.1.0-29-2-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.123-1 (2025-01-02) x86_64
+You are on
+  ____   ___  _   _ _  ____
+ / ___| / _ \| \ | (_)/ ___|
+ \___ \| | | |  \| | | |
+  ___) | |_| | |\  | | |___
+ |____/ \___/|_| \_|_|\____|
+
+-- Software for Open Networking in the Cloud --
+
+Unauthorized access and/or use are prohibited.
+All access and/or use are subject to monitoring.
+
+Help:      https://sonic-net.github.io/SONiC/
+Wiki:      https://microsoft.sharepoint.com/teams/WAG/AzureNetworking/Wiki/SONiC.aspx
+On-Call:   https://portal.microsofticm.com/imp/v3/oncall/current?serviceId=10045&teamIds=26162
+Dashboard: https://aka.ms/sonic-dri
+Contact:   sonicdev@microsoft.com
+
+Last login: Sun Nov 16 05:10:39 2025
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ show version 
+
+SONiC Software Version: SONiC.20250510.29
+SONiC OS Version: 12
+Distribution: Debian 12.12
+Kernel: 6.1.0-29-2-amd64
+Build commit: 38290d501a
+Build date: Tue Nov 11 01:23:27 UTC 2025
+Built by: azureuser@3a339cfcc000002
+
+Platform: x86_64-mlnx_msn4700-r0
+HwSKU: Mellanox-SN4700-O32
+ASIC: mellanox
+ASIC Count: 1
+Serial Number: MT2409XZ00CG
+Model Number: MSN4700-WS2ROS
+Hardware Revision: A2
+Uptime: 18:17:01 up 1 day, 17:50,  1 user,  load average: 1.40, 1.22, 1.11
+Date: Mon 17 Nov 2025 18:17:01
+
+Docker images:
+REPOSITORY                 TAG           IMAGE ID       SIZE
+docker-macsec              20250510.29   ead61d2e4507   371MB
+docker-macsec              latest        ead61d2e4507   371MB
+docker-orchagent           20250510.29   ce4c907d25a2   380MB
+docker-orchagent           latest        ce4c907d25a2   380MB
+docker-teamd               20250510.29   4ad0b0c5a946   368MB
+docker-teamd               latest        4ad0b0c5a946   368MB
+docker-fpm-frr             20250510.29   bc8d65454b6f   410MB
+docker-fpm-frr             latest        bc8d65454b6f   410MB
+docker-dash-ha             20250510.29   231c4fa72675   381MB
+docker-dash-ha             latest        231c4fa72675   381MB
+docker-sonic-telemetry     20250510.29   09b38a8cd268   432MB
+docker-sonic-telemetry     latest        09b38a8cd268   432MB
+docker-dhcp-server         20250510.29   5e6c37bc2bc7   361MB
+docker-dhcp-server         latest        5e6c37bc2bc7   361MB
+docker-sonic-bmp           20250510.29   bc465cdb09eb   339MB
+docker-sonic-bmp           latest        bc465cdb09eb   339MB
+docker-platform-monitor    20250510.29   e74b299c3b91   474MB
+docker-platform-monitor    latest        e74b299c3b91   474MB
+docker-dhcp-relay          20250510.29   4f8adeca020c   349MB
+docker-dhcp-relay          latest        4f8adeca020c   349MB
+docker-snmp                20250510.29   9a7e622b8098   382MB
+docker-snmp                latest        9a7e622b8098   382MB
+docker-mux                 20250510.29   9641a9cec899   390MB
+docker-mux                 latest        9641a9cec899   390MB
+docker-lldp                20250510.29   ec38bdbf6403   384MB
+docker-lldp                latest        ec38bdbf6403   384MB
+docker-gnmi-watchdog       20250510.29   45f80a7101ef   338MB
+docker-gnmi-watchdog       latest        45f80a7101ef   338MB
+docker-sonic-gnmi          20250510.29   9fd7e63521aa   432MB
+docker-sonic-gnmi          latest        9fd7e63521aa   432MB
+docker-eventd              20250510.29   598244414fb7   338MB
+docker-eventd              latest        598244414fb7   338MB
+docker-dummyk8s            20250510.29   58b5c01bddbf   338MB
+docker-dummyk8s            latest        58b5c01bddbf   338MB
+docker-database            20250510.29   587cdb5a04eb   345MB
+docker-database            latest        587cdb5a04eb   345MB
+docker-bmp-watchdog        20250510.29   338835fb1abe   338MB
+docker-bmp-watchdog        latest        338835fb1abe   338MB
+docker-auditd-watchdog     20250510.29   44a6487794e1   338MB
+docker-auditd-watchdog     latest        44a6487794e1   338MB
+docker-auditd              20250510.29   13ebe082fcb8   338MB
+docker-auditd              latest        13ebe082fcb8   338MB
+docker-acms                20250510.29   f2f46fa68d94   390MB
+docker-acms                latest        f2f46fa68d94   390MB
+docker-syncd-mlnx          20250510.29   e5322f802fd7   844MB
+docker-syncd-mlnx          latest        e5322f802fd7   844MB
+docker-vnet-monitor        20250510.29   2d30e1ab401d   346MB
+docker-vnet-monitor        latest        2d30e1ab401d   346MB
+docker-sysmgr              20250510.29   048752ae52b1   350MB
+docker-sysmgr              latest        048752ae52b1   350MB
+docker-router-advertiser   20250510.29   3acc7f2c4848   338MB
+docker-router-advertiser   latest        3acc7f2c4848   338MB
+docker-sonic-restapi       20250510.29   42aa4ace2f2f   357MB
+docker-sonic-restapi       latest        42aa4ace2f2f   357MB
+k8s.gcr.io/pause           3.5           ed210e3e4a5b   683kB
+
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ exit
+logout
+Connection to 10.64.247.80 closed.
+v-cshekar@str-serv-acs-15:~$ DUT=10.64.247.80
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ lsl -lrt
+Command 'lsl' not found, did you mean:
+  command 'gsl' from deb generator-scripting-language (4.1.5-3)
+  command 'wsl' from deb wsl (0.2.1-3)
+  command 'lsm' from deb lsm (1.0.4-2)
+  command 'sl' from deb sl (5.02-1)
+  command 'lsh' from deb lsh-client (2.1-13)
+  command 'lsc' from deb livescript (1.6.1+dfsg-2)
+  command 'lsw' from deb suckless-tools (46-1)
+  command 'psl' from deb psl (0.21.0-1.2build2)
+  command 'ls' from deb coreutils (8.32-4.1ubuntu1.2)
+Try: sudo apt install <deb name>
+v-cshekar@str-serv-acs-15:~$ ls
+projects  sonic-gnmi_0.1_amd64_dawei.deb  teamd_increase_retry_count.py  workspace
+v-cshekar@str-serv-acs-15:~$ scp sonic-gnmi_0.1_amd64_dawei.deb $DUT:~/
+Debian GNU/Linux 12 \n \l
+
+v-cshekar@10.64.247.80's password: 
+Permission denied, please try again.
+v-cshekar@10.64.247.80's password: 
+Permission denied, please try again.
+v-cshekar@10.64.247.80's password: 
+v-cshekar@str-serv-acs-15:~$ scp sonic-gnmi_0.1_amd64_dawei.deb admin@$DUT:~/
+Debian GNU/Linux 12 \n \l
+
+admin@10.64.247.80's password: 
+Permission denied, please try again.
+admin@10.64.247.80's password: 
+sonic-gnmi_0.1_amd64_dawei.deb                                                                                          100%   30MB  11.2MB/s   00:02    
+v-cshekar@str-serv-acs-15:~$ which gnmic
+/usr/local/bin/gnmic
+
+
+v-cshekar@str-serv-acs-15:~$ gnmic version 
+version : 0.42.0
+ commit : 0aa04b57
+   date : 2025-09-19T17:14:34Z
+ gitURL : https://github.com/openconfig/gnmic
+   docs : https://gnmic.openconfig.net
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ which grpcurl 
+v-cshekar@str-serv-acs-15:~$ grpcurl -v
+grpcurl: command not found
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ 
+v-cshekar@str-serv-acs-15:~$ l s-lrt
+ls: cannot access 's-lrt': No such file or directory
+v-cshekar@str-serv-acs-15:~$ ls -lrt 
+total 30380
+drwxrwxr-x 4 v-cshekar v-cshekar     4096 Apr  9  2025 projects
+drwxrwxr-x 6 v-cshekar v-cshekar     4096 Aug 29 17:02 workspace
+-rwxr-xr-x 1 v-cshekar v-cshekar    14866 Nov  8 14:14 teamd_increase_retry_count.py
+-rw-rw-r-- 1 v-cshekar v-cshekar 31084156 Nov 17 10:10 sonic-gnmi_0.1_amd64_dawei.deb
+v-cshekar@str-serv-acs-15:~$ which gnmic
+/usr/local/bin/gnmic
+v-cshekar@str-serv-acs-15:~$ scp ^C
+v-cshekar@str-serv-acs-15:~$ scp /usr/local/bin/gnmic admin@$DUT:~/
+Debian GNU/Linux 12 \n \l
+
+admin@10.64.247.80's password: 
+gnmic                                                                                                                   100%  108MB  11.2MB/s   00:09    
+v-cshekar@str-serv-acs-15:~$ ssh admin@$DUT
+Debian GNU/Linux 12 \n \l
+
+admin@10.64.247.80's password: 
+Linux str-msn4700-02 6.1.0-29-2-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.123-1 (2025-01-02) x86_64
+You are on
+  ____   ___  _   _ _  ____
+ / ___| / _ \| \ | (_)/ ___|
+ \___ \| | | |  \| | | |
+  ___) | |_| | |\  | | |___
+ |____/ \___/|_| \_|_|\____|
+
+-- Software for Open Networking in the Cloud --
+
+Unauthorized access and/or use are prohibited.
+All access and/or use are subject to monitoring.
+
+Help:      https://sonic-net.github.io/SONiC/
+Wiki:      https://microsoft.sharepoint.com/teams/WAG/AzureNetworking/Wiki/SONiC.aspx
+On-Call:   https://portal.microsofticm.com/imp/v3/oncall/current?serviceId=10045&teamIds=26162
+Dashboard: https://aka.ms/sonic-dri
+Contact:   sonicdev@microsoft.com
+
+Last login: Mon Nov 17 18:16:54 2025 from 10.64.247.31
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ ls -lrt
+total 141156
+drwxr-xr-x 15 root  root       4096 Nov 14 20:52 sonic_dump_str-msn4700-02_20251114_205134
+-rw-r--r--  1 root  root       1286 Nov 15 08:20 debug.log
+drwxr-xr-x  3 root  root       4096 Nov 15 17:03 acl_tmp
+drwxr-xr-x  3 root  root       4096 Nov 15 17:07 mirror_tmp
+drwxr-xr-x  3 root  root       4096 Nov 15 20:46 tmp
+-rw-r--r--  1 admin admin  31084156 Nov 17 18:19 sonic-gnmi_0.1_amd64_dawei.deb
+-rwxr-xr-x  1 admin admin 113434808 Nov 17 18:22 gnmic
+admin@str-msn4700-02:~$ docker cp sonic-gnmi_0.1_amd64_dawei.deb gnmi:/root/
+                                             Successfully copied 31.1MB to gnmi:/root/
+admin@str-msn4700-02:~$ docker exec -ti gnmi bash 
+root@str-msn4700-02:/# 
+root@str-msn4700-02:/# 
+root@str-msn4700-02:/# 
+root@str-msn4700-02:/# 
+root@str-msn4700-02:/# 
+root@str-msn4700-02:/# cd /root/
+root@str-msn4700-02:~# ls
+gnmi.log  sonic-gnmi_0.1_amd64_dawei.deb
+root@str-msn4700-02:~# 
+root@str-msn4700-02:~# 
+root@str-msn4700-02:~# 
+root@str-msn4700-02:~# dpkg -i sonic-gnmi_0.1_amd64_dawei.deb 
+(Reading database ... 11332 files and directories currently installed.)
+Preparing to unpack sonic-gnmi_0.1_amd64_dawei.deb ...
+Unpacking sonic-gnmi (0.1) over (0.1) ...
+Setting up sonic-gnmi (0.1) ...
+root@str-msn4700-02:~# sonic-db-cli CONFIG_DB hgetall "GNMI|gnmi"
+{'client_auth': 'true', 'log_level': '2', 'port': '50052'}
+root@str-msn4700-02:~# sonic-db-cli CONFIG_DB hset "GNMI|gnmi" "client_auth" "false"
+0
+root@str-msn4700-02:~# sonic-db-cli CONFIG_DB del "GNMI|certs"
+1
+root@str-msn4700-02:~# 
+root@str-msn4700-02:~# sudo vi /usr/bin/gnmi.sh
+bash: sudo: command not found
+root@str-msn4700-02:~# exit
+exit
+admin@str-msn4700-02:~$ sonic-db-cli CONFIG_DB hgetall "GNMI|gnmi"
+{'client_auth': 'false', 'log_level': '2', 'port': '50052'}
+admin@str-msn4700-02:~$ sonic-db-cli CONFIG_DB del "GNMI|certs"
+0
+admin@str-msn4700-02:~$ sudo vi /usr/bin/gnmi.sh
+    else
+        # This part of code is applicable for Multi-ASIC platforms. Here we mount the namespace specific
+        # redis directory into the docker running in that namespace. Below eg: is for namespace "asic1"
+        # /var/run/redis1 ---> mounted as --> /var/run/redis1
+        # redis_dir_list is a string of form "/var/run/redis0/ /var/run/redis1/ /var/run/redis2/"
+        if [ -n "$redis_dir_list" ]; then 
+            id=`expr $DEV + 1`
+            redis_dir=`echo $redis_dir_list | cut -d " " -f $id`
+            REDIS_MNT=$REDIS_MNT" -v $redis_dir:$redis_dir:rw "
+        fi
+        NET="container:database$DEV"
+        DB_OPT="" 
+    fi 
+        
+    NAMESPACE_ID="$DEV"
+    if [[ $DATABASE_TYPE == "dpudb" ]]; then
+        NAMESPACE_ID="" 
+    fi
+        
+    CAP_ADD="" 
+    # TODO: Mellanox will remove the --tmpfs exception after SDK socket path changed in new SDK version
+    docker create -t -v /etc/sonic:/etc/sonic:ro -v /etc/localtime:/etc/localtime:ro -v /var/run/dbus:/var/run/dbus:rw  -v /:/mnt/host:rw \
+        --net=$NET \
+        -e RUNTIME_OWNER=local \
+        --uts=host \
+        --tmpfs /var/log/supervisor:rw \
+        --log-opt max-size=2M --log-opt max-file=5 \
+        --tmpfs /tmp \
+        -v /var/run/redis-chassis:/var/run/redis-chassis:ro \
+        -v /usr/share/sonic/device/$PLATFORM/$HWSKU/$DEV:/usr/share/sonic/hwsku:ro \
+        $REDIS_MNT \
+        -v /etc/fips/fips_enable:/etc/fips/fips_enable:ro \
+        -v /usr/share/sonic/device/$PLATFORM:/usr/share/sonic/platform:ro \
+        -v /usr/share/sonic/templates/rsyslog-container.conf.j2:/usr/share/sonic/templates/rsyslog-container.conf.j2:ro \
+        --tmpfs /var/tmp \
+        --env "NAMESPACE_ID"="$NAMESPACE_ID" \
+        --env "NAMESPACE_PREFIX"="$NAMESPACE_PREFIX" \
+        --env "NAMESPACE_COUNT"="$NUM_ASIC" \
+        --env "DEV"="$DEV" \
+        --env "CONTAINER_NAME"=$DOCKERNAME \
+        $CAP_ADD \
+        --env "SYSLOG_TARGET_IP"=$SYSLOG_TARGET_IP \
+        --env "PLATFORM"=$PLATFORM \
+        --name=$DOCKERNAME \
+"/usr/bin/gnmi.sh" 252L, 9515B written                                                                                        
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ sudo systemctl restart gnmi
+admin@str-msn4700-02:~$ ls
+acl_tmp  debug.log  gnmic  mirror_tmp  sonic_dump_str-msn4700-02_20251114_205134  sonic-gnmi_0.1_amd64_dawei.deb  tmp
+admin@str-msn4700-02:~$ sudo gnmic -a localhost:50052 -e json_ietf --insecure get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/]/disk-space"
+sudo: gnmic: command not found
+admin@str-msn4700-02:~$ gnmi
+gnmi.sh           gnmi_watchdog.sh  
+admin@str-msn4700-02:~$ gnmi
+gnmi.sh           gnmi_watchdog.sh  
+admin@str-msn4700-02:~$ ls
+acl_tmp  debug.log  gnmic  mirror_tmp  sonic_dump_str-msn4700-02_20251114_205134  sonic-gnmi_0.1_amd64_dawei.deb  tmp
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ cd gnmic
+-bash: cd: gnmic: Not a directory
+admin@str-msn4700-02:~$ ls
+acl_tmp  debug.log  gnmic  mirror_tmp  sonic_dump_str-msn4700-02_20251114_205134  sonic-gnmi_0.1_amd64_dawei.deb  tmp
+
+Use "gnmic [command] --help" for more information about a command.
+admin@str-msn4700-02:~$ sudo ./gnmic -a localhost:50052 -e json_ietf --insecure get --target "OPERATIONAL" --path "sonic/system/filesystem[path=/]/disk-space"
+[
+  {
+    "source": "localhost:50052",
+    "timestamp": 1763404270897683684,
+    "time": "2025-11-17T18:31:10.897683684Z",
+    "target": "OPERATIONAL",
+    "updates": [
+      {
+        "Path": "sonic/system/filesystem[path=/]/disk-space",
+        "values": {
+          "sonic/system/filesystem/disk-space": {
+            "available-mb": 27671,
+            "path": "/",
+            "total-mb": 31949
+          }
+        }
+      }
+    ]
+  }
+]
+admin@str-msn4700-02:~$ 
+admin@str-msn4700-02:~$ 
