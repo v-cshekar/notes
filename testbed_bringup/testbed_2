@@ -11,6 +11,16 @@ Connnect leaf Fanout to root fanout:
 https://msazure.visualstudio.com/Standards/_workitems/edit/35947628
 
 
+# Running ansible playbook for fanout
+-------------------------------------
+v-cshekar@str-serv-acs-14:~$ docker exec --user v-cshekar -ti sonic-mgmt-v-cshekar bash
+v-cshekar@sonic-mgmt-v-cshekar:~$ cd /data/sonic-mgmt-int/
+v-cshekar@sonic-mgmt-v-cshekar:/data/sonic-mgmt-int$ export https_proxy="http://10.201.148.40:8080"
+v-cshekar@sonic-mgmt-v-cshekar:/data/sonic-mgmt-int$ git checkout test_bed_2_bringup_latest
+v-cshekar@sonic-mgmt-v-cshekar:/data/sonic-mgmt-int$ cd ansible/
+v-cshekar@sonic-mgmt-v-cshekar:/data/sonic-mgmt-int$ ansible-playbook fanout.yml -i str3 --limit str3-7260cx3-fanout-98 -b --vault-password-file ./group_vars/all/secrets.json -e "debug_mode=true" -vv
+
+
 
 Testbed 2 details:
 ------------------
