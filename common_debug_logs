@@ -99,52 +99,7 @@ notification: <
 >
 
 
-admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_set -xpath /sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU1/admin_status -val "up" -update -target_addr 127.0.0.1:50052 -notls
-flag provided but not defined: -xpath
-Usage of gnmi_set:
-  -alsologtostderr
-        log to standard error as well as files
-  -ca string
-        CA certificate file.
-  -cert string
-        Certificate file.
-  -delete value
-        xpath to be deleted.
-  -insecure
-        Skip TLS validation.
-  -jwt_token string
-        JWT Token if required
-  -key string
-        Private key file.
-  -log_backtrace_at value
-        when logging hits line file:N, emit a stack trace
-  -log_dir string
-        If non-empty, write log files in this directory
-  -logtostderr
-        log to standard error instead of files
+docker exec -it gnmi gnmi_set \
+  -update /sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU1/admin_status:"up" \
+  -target_addr 127.0.0.1:50052 \
   -notls
-        Disable TLS validation. If true, no need to specify TLS related options.
-  -password string
-        The password matching the provided username.
-  -pretty
-        Shows PROTOs using Pretty package instead of PROTO Text Marshal
-  -replace value
-        xpath:value pair to be replaced. Value can be numeric, boolean, string, or IETF JSON file (. starts with '@').
-  -stderrthreshold value
-        logs at or above this threshold go to stderr
-  -target_addr string
-        The target address in the format of host:port (default "localhost:10161")
-  -target_name string
-        The target name use to verify the hostname returned by TLS handshake (default "hostname.com")
-  -time_out duration
-        Timeout for the Get request, 10 seconds by default (default 10s)
-  -update value
-        xpath:value pair to be updated. Value can be numeric, boolean, string, or IETF JSON file (. starts with '@').
-  -username string
-        If specified, uses username/password credentials.
-  -v value
-        log level for V logs
-  -vmodule value
-        comma-separated list of pattern=N settings for file-filtered logging
-  -xpath_target string
-        name of the target for which the path is a member
