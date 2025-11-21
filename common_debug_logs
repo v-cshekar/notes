@@ -21,3 +21,18 @@ path: <
 encoding: JSON_IETF
 
 F1121 19:23:00.527536  906454 gnmi_get.go:145] Get failed: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:50051: connect: connection refused"
+
+
+docker ps -a | grep gnmi
+docker ps
+docker network ls
+docker inspect gnmi
+docker port gnmi
+netstat -tuln | grep 50051
+docker logs gnmi
+docker-compose ps
+docker ps -a
+netstat -tuln | head -20
+docker exec -it gnmi ping -c 2 127.0.0.1
+docker exec -it gnmi nc -zv 127.0.0.1 50051
+docker inspect gnmi | grep -A 20 "NetworkSettings"
