@@ -97,3 +97,11 @@ notification: <
     >
   >
 >
+
+
+docker exec -it gnmi gnmi_set \
+  -xpath /sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU1/admin_status \
+  -val "up" \
+  -update \
+  -target_addr 127.0.0.1:50052 \
+  -notls
