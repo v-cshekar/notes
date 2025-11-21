@@ -1,0 +1,23 @@
+admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -xpath_target SHOW -xpath chassis/modules/midplane-status[dpu=DPU1] -target_addr 127.0.0.1:50051 -logtostderr -insecure true
+== getRequest:
+prefix: <
+  target: "SHOW"
+>
+path: <
+  elem: <
+    name: "chassis"
+  >
+  elem: <
+    name: "modules"
+  >
+  elem: <
+    name: "midplane-status"
+    key: <
+      key: "dpu"
+      value: "DPU1"
+    >
+  >
+>
+encoding: JSON_IETF
+
+F1121 19:23:00.527536  906454 gnmi_get.go:145] Get failed: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:50051: connect: connection refused"
