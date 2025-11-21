@@ -1,20 +1,32 @@
-# Test SET with xpath_target
-docker exec -it gnmi gnmi_set \
-  -xpath_target CONFIG_DB \
-  -update /CHASSIS_MODULE/DPU1/admin_status:"up" \
-  -target_addr 127.0.0.1:50052 \
-  -notls
+admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_set \
+>   -xpath_target CONFIG_DB \
+>   -update /CHASSIS_MODULE/DPU1/admin_status:"up" \
+>   -target_addr 127.0.0.1:50052 \
+>   -notls
+/CHASSIS_MODULE/DPU1/admin_status
+up
+== setRequest:
+prefix: <
+  target: "CONFIG_DB"
+>
+update: <
+  path: <
+    elem: <
+      name: "CHASSIS_MODULE"
+    >
+    elem: <
+      name: "DPU1"
+    >
+    elem: <
+      name: "admin_status"
+    >
+  >
+  val: <
+    string_val: "up"
+  >
+>
 
-# Verify in Redis
-docker exec -it database redis-cli -n 4 HGETALL "CHASSIS_MODULE|DPU1"
-
-# Verify via SHOW
-docker exec -it gnmi gnmi_get \
-  -xpath_target SHOW \
-  -xpath chassis/modules/status[dpu=DPU1] \
-  -target_addr 127.0.0.1:50052 \
-  -notls
-
+F1121 21:05:12.027766  998162 gnmi_set.go:203] Set failed: rpc error: code = Unknown desc = Node CHASSIS_MODULE not found in the given gnmi path elem:{name:"CHASSIS_MODULE"}  elem:{name:"DPU1"}  elem:{name:"admin_status"}: 
 
 
 admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -xpath_target SHOW -xpath chassis/modules/midplane-status[dpu=DPU1] -target_addr 127.0.0.1:50051 -logtostderr -insecure true
