@@ -140,3 +140,9 @@ update: <
 >
 
 F1121 19:59:59.175956  939477 gnmi_set.go:203] Set failed: rpc error: code = Unimplemented desc = GNMI native write is disabled
+
+
+
+
+admin@str3-msn4280-02:~$ docker exec -it gnmi netstat -tlnp | grep 50052
+tcp6       0      0 :::50052                :::*                    LISTEN      905412/telemetry
