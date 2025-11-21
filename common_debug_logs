@@ -304,3 +304,92 @@ serverurl=unix:///var/run/supervisor.sock  ; use a unix:// URL  for a unix socke
 
 [include]
 files = /etc/supervisor/conf.d/*.conf
+
+
+
+
+
+
+
+
+admin@str3-msn4280-02:~$ docker exec -it gnmi ls -la /etc/supervisor/conf.d/
+total 12
+drwxr-xr-x 1 root root 4096 Nov 12 03:37 .
+drwxr-xr-x 1 root root 4096 Nov 12 03:37 ..
+-rw-rw-r-- 1 root root 1411 Nov 12 02:44 supervisord.conf
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /etc/supervisor/conf.d/gnmi-native.conf
+cat: /etc/supervisor/conf.d/gnmi-native.conf: No such file or directory
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /etc/supervisor/conf.d/*.conf
+cat: '/etc/supervisor/conf.d/*.conf': No such file or directory
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /etc/supervisor/conf.d/supervisord.conf
+[supervisord]
+logfile_maxbytes=1MB
+logfile_backups=2
+nodaemon=true
+
+[eventlistener:dependent-startup]
+command=python3 -m supervisord_dependent_startup
+autostart=true
+autorestart=unexpected
+startretries=0
+exitcodes=0,3
+events=PROCESS_STATE
+buffer_size=1024
+
+[eventlistener:supervisor-proc-exit-listener]
+command=/usr/local/bin/supervisor-proc-exit-listener --container-name gnmi
+events=PROCESS_STATE_EXITED,PROCESS_STATE_RUNNING
+autostart=true
+autorestart=unexpected
+buffer_size=1024
+
+[program:rsyslogd]
+command=/usr/sbin/rsyslogd -n -iNONE
+priority=1
+autostart=false
+autorestart=true
+stdout_logfile=NONE
+stdout_syslog=true
+stderr_logfile=NONE
+stderr_syslog=true
+dependent_startup=true
+
+[program:start]
+command=/usr/bin/start.sh
+priority=2
+autostart=false
+autorestart=false
+startsecs=0
+stdout_logfile=NONE
+stdout_syslog=true
+stderr_logfile=NONE
+stderr_syslog=true
+dependent_startup=true
+dependent_startup_wait_for=rsyslogd:running
+
+[program:gnmi-native]
+command=/usr/bin/gnmi-native.sh
+priority=3
+autostart=false
+autorestart=false
+stdout_logfile=NONE
+stdout_syslog=true
+stderr_logfile=NONE
+stderr_syslog=true
+dependent_startup=true
+dependent_startup_wait_for=start:exited
+
+[program:dialout]
+command=/usr/bin/dialout.sh
+priority=4
+autostart=false
+autorestart=false
+stdout_logfile=NONE
+stdout_syslog=true
+stderr_logfile=NONE
+stderr_syslog=true
+dependent_startup=true
+dependent_startup_wait_for=gnmi-native:running
+admin@str3-msn4280-02:~$ 
