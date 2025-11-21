@@ -46,3 +46,54 @@ admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -help | grep -i plain
 admin@str3-msn4280-02:~$ 
 admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -help | grep -i secure
   -insecure
+
+
+admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -xpath_target SHOW -xpath chassis/modules/midplane-status[dpu=DPU1] -target_addr 127.0.0.1:50052 -notls
+== getRequest:
+prefix: <
+  target: "SHOW"
+>
+path: <
+  elem: <
+    name: "chassis"
+  >
+  elem: <
+    name: "modules"
+  >
+  elem: <
+    name: "midplane-status"
+    key: <
+      key: "dpu"
+      value: "DPU1"
+    >
+  >
+>
+encoding: JSON_IETF
+
+== getResponse:
+notification: <
+  timestamp: 1763754072765120492
+  prefix: <
+    target: "SHOW"
+  >
+  update: <
+    path: <
+      elem: <
+        name: "chassis"
+      >
+      elem: <
+        name: "modules"
+      >
+      elem: <
+        name: "midplane-status"
+        key: <
+          key: "dpu"
+          value: "DPU1"
+        >
+      >
+    >
+    val: <
+      json_ietf_val: "{\n  \"DPU1\": {\n    \"name\": \"DPU1\",\n    \"ip_address\": \"169.254.200.2\",\n    \"reachability\": \"True\"\n  }\n}"
+    >
+  >
+>
