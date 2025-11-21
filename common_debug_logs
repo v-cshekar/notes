@@ -103,3 +103,40 @@ docker exec -it gnmi gnmi_set \
   -update /sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU1/admin_status:"up" \
   -target_addr 127.0.0.1:50052 \
   -notls
+
+
+
+admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_set \
+>   -update /sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU1/admin_status:"up" \
+>   -target_addr 127.0.0.1:50052 \
+>   -notls
+  /sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU1/admin_status
+up
+== setRequest:
+prefix: <
+>
+update: <
+  path: <
+    origin: "sonic-db"
+    elem: <
+      name: "CONFIG_DB"
+    >
+    elem: <
+      name: "localhost"
+    >
+    elem: <
+      name: "CHASSIS_MODULE"
+    >
+    elem: <
+      name: "DPU1"
+    >
+    elem: <
+      name: "admin_status"
+    >
+  >
+  val: <
+    string_val: "up"
+  >
+>
+
+F1121 19:59:59.175956  939477 gnmi_set.go:203] Set failed: rpc error: code = Unimplemented desc = GNMI native write is disabled
