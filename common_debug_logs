@@ -149,15 +149,24 @@ tcp6       0      0 :::50052                :::*                    LISTEN      
 
 
 
-Step 1: Check How Telemetry is Started
-# Check the command line arguments of the running processdocker exec -it gnmi cat /proc/905412/cmdline | tr '\0' ' '# Or use ps to see the full commanddocker exec -it gnmi ps -fp 905412
-This will show you the current flags it's using.
-Step 2: Check Supervisor Configuration
-# Check supervisor configdocker exec -it gnmi cat /etc/supervisor/conf.d/telemetry.conf
-Step 3: Check for Config Files
-# Look for telemetry configurationdocker exec -it gnmi ls -la /etc/sonic/telemetry*docker exec -it gnmi cat /etc/sonic/telemetry_vars.json 2>/dev/null || echo "Not found"
-Most Likely: You Need to Add the Flag
-Once we see the current configuration, we need to add -gnmi_native_write=true to the startup command.
-Can you run those commands above and share the output? Specifically:
-docker exec -it gnmi ps -fp 905412docker exec -it gnmi cat /etc/supervisor/conf.d/telemetry.conf
-That will tell us exactly how to enable native write for your setup.
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /proc/905412/cmdline | tr '\0' '
+> ^C
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /proc/905412/cmdline
+/usr/sbin/telemetry-logtostderr--noTLS--port50052--allow_no_client_auth-v=2-zmq_port=8100--threshold100--idle_conn_duration5--client_authcert--config_table_nameGNMI_CLIENT_CERTadmin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /etc/supervisor/conf.d/telemetry.conf
+cat: /etc/supervisor/conf.d/telemetry.conf: No such file or directory
+admin@str3-msn4280-02:~$ ndocker exec -it gnmi ls -la /etc/sonic/telemetry*docker
+-bash: ndocker: command not found
+admin@str3-msn4280-02:~$ docker exec -it gnmi ls -la /etc/sonic/telemetry*docker
+ls: cannot access '/etc/sonic/telemetry*docker': No such file or directory
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /etc/sonic/telemetry_vars.json 2>/dev/null || echo "Not found"
+cat: /etc/sonic/telemetry_vars.json: No such file or directory
+Not found
+admin@str3-msn4280-02:~$ docker exec -it gnmi ps -fp 905412
+UID          PID    PPID  C STIME TTY          TIME CMD
+root      905412  905240  0 19:22 pts/0    00:00:22 /usr/sbin/telemetry -logtostderr --noTLS --port 50052 --allow_no_client_auth -v=2 -zmq_port=8100 --thr
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /etc/supervisor/conf.d/telemetry.conf
+cat: /etc/supervisor/conf.d/telemetry.conf: No such file or directory
