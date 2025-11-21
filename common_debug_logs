@@ -223,3 +223,49 @@ docker exec -it gnmi cat /etc/supervisor/supervisord.conf | grep -A 20 telemetry
 
 # Or all supervisor configs
 docker exec -it gnmi ls -la /etc/supervisor/conf.d/
+
+
+
+admin@str3-msn4280-02:~$ docker exec -it gnmi systemctl status telemetry 2>/dev/null || echo "Not systemd"
+OCI runtime exec failed: exec failed: unable to start container process: exec: "systemctl": executable file not found in $PATH: unknown
+Not systemd
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi ls -la /etc/init.d/*gnmi* /etc/init.d/*telemetry* 2>/dev/null
+ls: cannot access '/etc/init.d/*gnmi*': No such file or directory
+ls: cannot access '/etc/init.d/*telemetry*': No such file or directory
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /usr/bin/docker_init.sh 2>/dev/null || echo "Not found"
+cat: /usr/bin/docker_init.sh: No such file or directory
+Not found
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /usr/local/bin/supervisord-dependent-startup 2>/dev/null || echo "Not found"
+#!/usr/bin/python3
+import sys
+from supervisord_dependent_startup.supervisord_dependent_startup import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi ls -la /etc/supervisor/
+total 20
+drwxr-xr-x 1 root root 4096 Nov 12 03:37 .
+drwxr-xr-x 1 root root 4096 Nov 19 06:37 ..
+drwxr-xr-x 1 root root 4096 Nov 12 03:37 conf.d
+-rw-rw-r-- 1 root root   20 Nov 12 02:44 critical_processes
+-rw-rw-r-- 1 root root 1201 Nov 12 02:44 supervisord.conf
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi supervisorctl status 2>/dev/null || echo "No supervisor"
+dependent-startup                EXITED    Nov 21 07:22 PM
+dialout                          RUNNING   pid 905500, uptime 1:20:29
+gnmi-native                      RUNNING   pid 905412, uptime 1:20:30
+rsyslogd                         RUNNING   pid 905395, uptime 1:20:34
+start                            EXITED    Nov 21 07:22 PM
+supervisor-proc-exit-listener    RUNNING   pid 905321, uptime 1:20:35
+No supervisor
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi cat /etc/supervisor/supervisord.conf | grep -A 20 telemetry
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ 
