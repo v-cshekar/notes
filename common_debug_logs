@@ -1,3 +1,25 @@
+# 1. Check current value in Redis
+docker exec -it database redis-cli -n 4 HGETALL "CHASSIS_MODULE|DPU1"
+
+# 2. Try SET (Option 1 - most likely to work)
+docker exec -it gnmi gnmi_set \
+  -update /sonic-db:CONFIG_DB/CHASSIS_MODULE/DPU1/admin_status:"up" \
+  -target_addr 127.0.0.1:50052 \
+  -notls
+
+# 3. Verify in Redis
+docker exec -it database redis-cli -n 4 HGETALL "CHASSIS_MODULE|DPU1"
+
+# 4. Verify via SHOW
+docker exec -it gnmi gnmi_get \
+  -xpath_target SHOW \
+  -xpath chassis/modules/status[dpu=DPU1] \
+  -target_addr 127.0.0.1:50052 \
+  -notls
+
+
+
+
 admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -xpath_target SHOW -xpath chassis/modules/midplane-status[dpu=DPU1] -target_addr 127.0.0.1:50051 -logtostderr -insecure true
 == getRequest:
 prefix: <
