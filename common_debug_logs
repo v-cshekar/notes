@@ -170,3 +170,56 @@ UID          PID    PPID  C STIME TTY          TIME CMD
 root      905412  905240  0 19:22 pts/0    00:00:22 /usr/sbin/telemetry -logtostderr --noTLS --port 50052 --allow_no_client_auth -v=2 -zmq_port=8100 --thr
 admin@str3-msn4280-02:~$ docker exec -it gnmi cat /etc/supervisor/conf.d/telemetry.conf
 cat: /etc/supervisor/conf.d/telemetry.conf: No such file or directory
+
+
+
+
+
+
+# Check if there's a systemd service
+docker exec -it gnmi systemctl status telemetry 2>/dev/null || echo "Not systemd"
+
+# Check for startup scripts
+docker exec -it gnmi ls -la /etc/init.d/*gnmi* /etc/init.d/*telemetry* 2>/dev/null
+
+# Check docker entrypoint
+docker exec -it gnmi cat /usr/bin/docker_init.sh 2>/dev/null || echo "Not found"
+docker exec -it gnmi cat /usr/local/bin/supervisord-dependent-startup 2>/dev/null || echo "Not found"
+
+# Check if it's in supervisor (different location)
+docker exec -it gnmi ls -la /etc/supervisor/
+docker exec -it gnmi supervisorctl status 2>/dev/null || echo "No supervisor"
+
+
+
+# Inside the container, kill the current process
+docker exec -it gnmi kill 905412
+
+# Start it again with native write enabled
+docker exec -it gnmi /usr/sbin/telemetry \
+  -logtostderr \
+  --noTLS \
+  --port 50052 \
+  --allow_no_client_auth \
+  -v=2 \
+  -zmq_port=8100 \
+  --threshold 100 \
+  --idle_conn_duration 5 \
+  --client_auth cert \
+  --config_table_name GNMI_CLIENT_CERT \
+  -gnmi_native_write=true &
+
+
+
+# Stop the container
+docker stop gnmi
+
+# Start it with native write enabled via environment variable
+docker start gnmi -e ENABLE_NATIVE_WRITE=true
+
+
+# This should show us the supervisor config
+docker exec -it gnmi cat /etc/supervisor/supervisord.conf | grep -A 20 telemetry
+
+# Or all supervisor configs
+docker exec -it gnmi ls -la /etc/supervisor/conf.d/
