@@ -36,33 +36,13 @@ netstat -tuln | head -20
 docker exec -it gnmi ping -c 2 127.0.0.1
 docker exec -it gnmi nc -zv 127.0.0.1 50051
 docker inspect gnmi | grep -A 20 "NetworkSettings"
-
-
-admin@str3-msn4280-02:~$ docker exec -it gnmi netstat -tuln | grep 50052
-tcp6       0      0 :::50052                :::*                    LISTEN     
+admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -help | grep -i tls
+        Skip TLS validation.
+  -notls
+        Disable TLS validation. If true, no need to specify TLS related options.
+        The target name use to verify the hostname returned by TLS handshake (default "hostname.com")
 admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -help | grep -i plain
 admin@str3-msn4280-02:~$ 
-admin@str3-msn4280-02:~$ 
-admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -xpath_target SHOW -xpath chassis/modules/midplane-status[dpu=DPU1] -target_addr 127.0.0.1:50052 -logtostderr -insecure true
-== getRequest:
-prefix: <
-  target: "SHOW"
->
-path: <
-  elem: <
-    name: "chassis"
-  >
-  elem: <
-    name: "modules"
-  >
-  elem: <
-    name: "midplane-status"
-    key: <
-      key: "dpu"
-      value: "DPU1"
-    >
-  >
->
-encoding: JSON_IETF
-
-F1121 19:37:25.051951  918957 gnmi_get.go:145] Get failed: rpc error: code = Unavailable desc = connection error: desc = "transport: authentication handshake failed: tls: first record does not look like a TLS handshake"
+admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_get -help | grep -i secure
+  -insecure
