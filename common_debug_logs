@@ -413,3 +413,48 @@ docker exec -it gnmi gnmi_set \
 
 
 
+
+
+
+
+admin@str3-msn4280-02:~$ docker exec -it gnmi sed -i '/exec \/usr\/sbin\/telemetry/i TELEMETRY_ARGS+=" -gnmi_native_write=true"' /usr/bin/gnmi-native.sh
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ 
+admin@str3-msn4280-02:~$ docker exec -it gnmi supervisorctl restart gnmi-native
+gnmi-native: stopped
+gnmi-native: started
+admin@str3-msn4280-02:~$ docker exec -it gnmi gnmi_set \
+>   -update /sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU1/admin_status:"up" \
+>   -target_addr 127.0.0.1:50052 \
+>   -notls
+/sonic-db:CONFIG_DB/localhost/CHASSIS_MODULE/DPU1/admin_status
+up
+== setRequest:
+prefix: <
+>
+update: <
+  path: <
+    origin: "sonic-db"
+    elem: <
+      name: "CONFIG_DB"
+    >
+    elem: <
+      name: "localhost"
+    >
+    elem: <
+      name: "CHASSIS_MODULE"
+    >
+    elem: <
+      name: "DPU1"
+    >
+    elem: <
+      name: "admin_status"
+    >
+  >
+  val: <
+    string_val: "up"
+  >
+>
+
+F1121 20:57:31.743491  991151 gnmi_set.go:203] Set failed: rpc error: code = Unknown desc = Fail to parse 
+
