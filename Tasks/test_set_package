@@ -1,0 +1,12 @@
+github.com/openconfig/gnoi/blob/main/system/system.proto
+
+SetPackage
+
+
+message SetPackageRequest
+-> just send only package
+
+In message package:
+  - set filename (local path)
+  - version
+  - activate should be true
