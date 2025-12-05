@@ -1,3 +1,8 @@
+#v-cshekar@str-serv-acs-14:~$ docker exec --user v-cshekar -ti sonic-mgmt-v-cshekar bash
+v-cshekar@str-serv-acs-14:~$ docker exec -it sonic-mgmt-v-cshekar bash
+
+v-cshekar@sonic-mgmt-v-cshekar:/data/sonic-mgmt-int/tests$ ./run_tests.sh -n vms11-t0-7060-cx32-1 -i ../ansible/str,../ansible/veos -u -m individual -c gnmi/test_gnoi_os.py -l info
+
 github.com/openconfig/gnoi/blob/main/system/system.proto
 
 SetPackage
