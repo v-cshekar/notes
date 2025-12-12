@@ -1,0 +1,59 @@
+
+Example 1:
+
+complex_args = {'chdir': '/root'}
+filename   = '/var/src/sonic-mgmt_vms61-t1-8101-05/tests/ptf_runner.py'
+function_name = 'ptf_runner'
+index      = 0
+line_number = 206
+lines      = ['        result = host.shell(cmd, chdir="/root", module_ignore_errors=module_ignore_errors, module_async=async_mode)\n']
+module_args = ["/usr/local/bin/ptf --test-dir ptftests/py3 copp_tests.SNMPTest --qlen=100000 --platform nn -t 'verbose=False;target_...r_miss_trap_supported=False' --device-socket 0-25@tcp://127.0.0.1:10900  --device-socket 1-25@tcp://10.3.146.35:10900"]
+module_async = False
+module_ignore_errors = False
+previous_frame = <frame at 0x1b63f030, file '/var/src/sonic-mgmt_vms61-t1-8101-05/tests/ptf_runner.py', line 225, code ptf_runner>
+res        = {'failed': True, 'changed': True, 'stdout': 'Using packet manipulation module: ptf.packet_scapy\n2025-12-11 16:38:38 :...-----------------------------------------', 'Ran 1 test in 59.810s', '', 'FAILED (errors=1)'], '_ansible_no_log': None}
+self       = <tests.common.devices.ptf.PTFHost object at 0x7f3ed24c4c70>
+verbose    = True
+
+
+Example 2:
+
+11/12/2025 17:41:39 ptf_runner.ptf_runner                    L0224 ERROR  | Exception caught while executing case: sai_qos_tests.PFCXonTest. Error message: Traceback (most recent call last):
+  File "/var/src/sonic-mgmt_testbed-bjw2-can-dual-t0-7050-1/tests/ptf_runner.py", line 206, in ptf_runner
+    result = host.shell(cmd, chdir="/root", module_ignore_errors=module_ignore_errors, module_async=async_mode)
+  File "/var/src/sonic-mgmt_testbed-bjw2-can-dual-t0-7050-1/tests/common/devices/base.py", line 134, in _run
+    raise RunAnsibleModuleFail("run module {} failed".format(self.module_name), res)
+tests.common.errors.RunAnsibleModuleFail: run module shell failed, Ansible Results =>
+failed = True
+changed = True
+rc = 1
+cmd = /usr/local/bin/ptf --test-dir saitests/py3 sai_qos_tests.PFCXonTest --platform-dir ptftests --qlen=10000 --platform remote -t 'router_mac='"'"''"'"';src_server='"'"'10.150.22.95:9092'"'"';port_map_file='"'"'/root/ptf_test_port_map.json'"'"';sonic_asic_type='"'"'broadcom'"'"';sonic_version='"'"'20250510.29'"'"';src_dut_index=1;src_asic_index=0;dst_dut_index=1;dst_asic_index=0;dut_username='"'"'admin'"'"';dut_password='"'"'AzUrES0N1cR0cks!'"'"';platform_asic='"'"'broadcom'"'"';is_dualtor=True;def_vlan_mac='"'"'00:aa:bb:cc:dd:ee'"'"';dst_port_id=1;dst_port_ip='"'"'192.168.0.2'"'"';dst_port_vlan=None;dst_port_2_id=3;dst_port_2_ip='"'"'192.168.0.6'"'"';dst_port_2_vlan=None;dst_port_3_id=4;dst_port_3_ip='"'"'192.168.0.8'"'"';dst_port_3_vlan=None;src_port_id=2;src_port_ip='"'"'192.168.0.4'"'"';src_port_vlan=None;dst_sys_ports={};uplink_port_ids=[];uplink_port_ips=[];uplink_port_names=[];downlink_port_ids=[];downlink_port_ips=[];downlink_port_names=[];testPortIds={1: {0: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]}};testPortIps={1: {0: {1: {'"'"'peer_addr'"'"': '"'"'192.168.0.2'"'"'}, 2: {'"'"'peer_addr'"'"': '"'"'192.168.0.4'"'"'}, 3: {'"'"'peer_addr'"'"': '"'"'192.168.0.6'"'"'}, 4: {'"'"'peer_addr'"'"': '"'"'192.168.0.8'"'"'}, 5: {'"'"'peer_addr'"'"': '"'"'192.168.0.10'"'"'}, 6: {'"'"'peer_addr'"'"': '"'"'192.168.0.12'"'"'}, 7: {'"'"'peer_addr'"'"': '"'"'192.168.0.14'"'"'}, 8: {'"'"'peer_addr'"'"': '"'"'192.168.0.16'"'"'}, 9: {'"'"'peer_addr'"'"': '"'"'192.168.0.18'"'"'}, 10: {'"'"'peer_addr'"'"': '"'"'192.168.0.20'"'"'}, 11: {'"'"'peer_addr'"'"': '"'"'192.168.0.22'"'"'}, 12: {'"'"'peer_addr'"'"': '"'"'192.168.0.24'"'"'}, 13: {'"'"'peer_addr'"'"': '"'"'192.168.0.26'"'"'}, 14: {'"'"'peer_addr'"'"': '"'"'192.168.0.28'"'"'}, 15: {'"'"'peer_addr'"'"': '"'"'192.168.0.30'"'"'}, 16: {'"'"'peer_addr'"'"': '"'"'192.168.0.32'"'"'}, 17: {'"'"'peer_addr'"'"': '"'"'192.168.0.34'"'"'}, 18: {'"'"'peer_addr'"'"': '"'"'192.168.0.36'"'"'}, 19: {'"'"'peer_addr'"'"': '"'"'192.168.0.38'"'"'}, 20: {'"'"'peer_addr'"'"': '"'"'192.168.0.40'"'"'}, 21: {'"'"'peer_addr'"'"': '"'"'192.168.0.42'"'"'}, 22: {'"'"'peer_addr'"'"': '"'"'192.168.0.44'"'"'}, 23: {'"'"'peer_addr'"'"': '"'"'192.168.0.46'"'"'}, 24: {'"'"'peer_addr'"'"': '"'"'192.168.0.48'"'"'}}}};testbed_type='"'"'dualtor-aa'"'"';test_port_ids={1: {0: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]}};dscp=3;ecn=1;pg=3;buffer_max_size='"'"'4608'"'"';pkts_num_trig_pfc=60204;pkts_num_dismiss_pfc=18;pkts_num_leak_out=32;hwsku='"'"'Arista-7050CX3-32S-C32'"'"';pkts_num_egr_mem=None;src_dst_asic_diff=False;dut_asic='"'"'td3'"'"';pkts_num_margin=4' --debug info --log-file /tmp/sai_qos_tests.PFCXonTest.log --socket-recv-size 16384 --test-case-timeout 1850  --disable-ipv6 --disable-vxlan --disable-geneve --disable-erspan --disable-mpls --disable-nvgre
+start = 2025-12-11 17:40:53.437721
+end = 2025-12-11 17:41:38.315750
+delta = 0:00:44.878029
+msg = non-zero return code
+invocation = {'module_args': {'chdir': '/root', '_raw_params': '/usr/local/bin/ptf --test-dir saitests/py3 sai_qos_tests.PFCXonTest --platform-dir ptftests --qlen=10000 --platform remote -t \'router_mac=\'"\'"\'\'"\'"\';src_server=\'"\'"\'10.150.22.95:9092\'"\'"\';port_map_file=\'"\'"\'/root/ptf_test_port_map.json\'"\'"\';sonic_asic_type=\'"\'"\'broadcom\'"\'"\';sonic_version=\'"\'"\'20250510.29\'"\'"\';src_dut_index=1;src_asic_index=0;dst_dut_index=1;dst_asic_index=0;dut_username=\'"\'"\'admin\'"\'"\';dut_password=\'"\'"\'AzUrES0N1cR0cks!\'"\'"\';platform_asic=\'"\'"\'broadcom\'"\'"\';is_dualtor=True;def_vlan_mac=\'"\'"\'00:aa:bb:cc:dd:ee\'"\'"\';dst_port_id=1;dst_port_ip=\'"\'"\'192.168.0.2\'"\'"\';dst_port_vlan=None;dst_port_2_id=3;dst_port_2_ip=\'"\'"\'192.168.0.6\'"\'"\';dst_port_2_vlan=None;dst_port_3_id=4;dst_port_3_ip=\'"\'"\'192.168.0.8\'"\'"\';dst_port_3_vlan=None;src_port_id=2;src_port_ip=\'"\'"\'192.168.0.4\'"\'"\';src_port_vlan=None;dst_sys_ports={};uplink_port_ids=[];uplink_port_ips=[];uplink_port_names=[];downlink_port_ids=[];downlink_port_ips=[];downlink_port_names=[];testPortIds={1: {0: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]}};testPortIps={1: {0: {1: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.2\'"\'"\'}, 2: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.4\'"\'"\'}, 3: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.6\'"\'"\'}, 4: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.8\'"\'"\'}, 5: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.10\'"\'"\'}, 6: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.12\'"\'"\'}, 7: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.14\'"\'"\'}, 8: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.16\'"\'"\'}, 9: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.18\'"\'"\'}, 10: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.20\'"\'"\'}, 11: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.22\'"\'"\'}, 12: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.24\'"\'"\'}, 13: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.26\'"\'"\'}, 14: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.28\'"\'"\'}, 15: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.30\'"\'"\'}, 16: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.32\'"\'"\'}, 17: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.34\'"\'"\'}, 18: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.36\'"\'"\'}, 19: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.38\'"\'"\'}, 20: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.40\'"\'"\'}, 21: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.42\'"\'"\'}, 22: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.44\'"\'"\'}, 23: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.46\'"\'"\'}, 24: {\'"\'"\'peer_addr\'"\'"\': \'"\'"\'192.168.0.48\'"\'"\'}}}};testbed_type=\'"\'"\'dualtor-aa\'"\'"\';test_port_ids={1: {0: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]}};dscp=3;ecn=1;pg=3;buffer_max_size=\'"\'"\'4608\'"\'"\';pkts_num_trig_pfc=60204;pkts_num_dismiss_pfc=18;pkts_num_leak_out=32;hwsku=\'"\'"\'Arista-7050CX3-32S-C32\'"\'"\';pkts_num_egr_mem=None;src_dst_asic_diff=False;dut_asic=\'"\'"\'td3\'"\'"\';pkts_num_margin=4\' --debug info --log-file /tmp/sai_qos_tests.PFCXonTest.log --socket-recv-size 16384 --test-case-timeout 1850  --disable-ipv6 --disable-vxlan --disable-geneve --disable-erspan --disable-mpls --disable-nvgre', '_uses_shell': True, 'warn': False, 'stdin_add_newline': True, 'strip_empty_ends': True, 'argv': None, 'executable': None, 'creates': None, 'removes': None, 'stdin': None}}
+_ansible_no_log = None
+stdout =
+Using packet manipulation module: ptf.packet_scapy
+
+Example 3
+
+04:19:51 ptf_runner.ptf_runner                    L0224 ERROR  | Exception caught while executing case: pfc_wd.PfcWdTest. Error message: Traceback (most recent call last):
+  File "/var/src/sonic-mgmt_vms20-dual-t0-4700-7/tests/ptf_runner.py", line 206, in ptf_runner
+    result = host.shell(cmd, chdir="/root", module_ignore_errors=module_ignore_errors, module_async=async_mode)
+  File "/var/src/sonic-mgmt_vms20-dual-t0-4700-7/tests/common/devices/base.py", line 134, in _run
+    raise RunAnsibleModuleFail("run module {} failed".format(self.module_name), res)
+tests.common.errors.RunAnsibleModuleFail: run module shell failed, Ansible Results =>
+failed = True
+changed = True
+end = 2025-12-12 04:17:39.060207
+cmd = /root/env-python3/bin/ptf --test-dir ptftests/py3 pfc_wd.PfcWdTest --platform-dir ptftests --platform remote -t 'router_mac='"'"'b0:cf:0e:0b:b7:00'"'"';vlan_mac='"'"'00:aa:bb:cc:dd:ee'"'"';queue_index=4;pkt_count=100;port_src=68;port_dst='"'"'[64 65]'"'"';ip_dst='"'"'10.0.0.57'"'"';port_type='"'"'portchannel'"'"';wd_action='"'"'forward'"'"'' --relax --debug info --log-file /tmp/2.pfc_wd.PfcWdTest.2025-12-12-04:19:40.log
+delta = 0:00:09.041572
+rc = 1
+invocation = {'module_args': {'creates': None, 'executable': None, 'chdir': '/root', 'strip_empty_ends': True, '_raw_params': '/root/env-python3/bin/ptf --test-dir ptftests/py3 pfc_wd.PfcWdTest --platform-dir ptftests --platform remote -t \'router_mac=\'"\'"\'b0:cf:0e:0b:b7:00\'"\'"\';vlan_mac=\'"\'"\'00:aa:bb:cc:dd:ee\'"\'"\';queue_index=4;pkt_count=100;port_src=68;port_dst=\'"\'"\'[64 65]\'"\'"\';ip_dst=\'"\'"\'10.0.0.57\'"\'"\';port_type=\'"\'"\'portchannel\'"\'"\';wd_action=\'"\'"\'forward\'"\'"\'\' --relax --debug info --log-file /tmp/2.pfc_wd.PfcWdTest.2025-12-12-04:19:40.log', 'removes': None, 'argv': None, 'warn': False, '_uses_shell': True, 'stdin_add_newline': True, 'stdin': None}}
+start = 2025-12-12 04:17:30.018635
+msg = non-zero return code
+_ansible_no_log = None
+stdout =
+Using packet manipulation module: ptf.packet_scapy
