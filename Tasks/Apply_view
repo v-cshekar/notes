@@ -1,0 +1,8 @@
+Look for particular log
+"Failed to notify syncd APPLY_VIEW"
+
+- when found, add 5 lines before and after this line and add it to the error log
+
+def examine_flow:
+
+
