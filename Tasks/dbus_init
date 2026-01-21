@@ -1,0 +1,11 @@
+Performance issues with CONFIG DB writers via GNMI
+sonic-gnmi/sonic_service_client/dbus_client.go
+
+  GNMI get, GNMI get 
+
+  dbusapplypathchdb
+  
+  dbusapi 
+
+  -> leaking connection 
+  conn, erro = 
