@@ -309,3 +309,9 @@ Qo4hw~gfiqvEO%4)FAnF12LRQ (GME login)
 yYkbwb#Qv0*~X}u]Z0:y>hkSu (AME login)
 
 
+For BJW upgrade link
+
+sudo sonic_installer install -y http://10.150.22.222/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi
+
+
+
