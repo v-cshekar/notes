@@ -1,0 +1,166 @@
+20251110.03 ->  20251110.03 upgrade
+
+admin@bjw2-can-7260-10:~$ show version 
+
+SONiC Software Version: SONiC.20251110.03
+
+admin@bjw2-can-7260-10:~$ show ip bgp sum
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 4200065100 vrf-id 0
+BGP table version 6406
+RIB entries 12808, using 1639424 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V          AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  ----------  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.33      4  4200064600       3213       3214      6406      0       0  00:07:13             6400  ARISTA01T1
+10.0.0.35      4  4200064600       3213       3212      6406      0       0  00:07:13             6400  ARISTA02T1
+10.0.0.37      4  4200064600       3213       3212      6406      0       0  00:07:13             6400  ARISTA03T1
+10.0.0.39      4  4200064600       3213       3212      6406      0       0  00:07:13             6400  ARISTA04T1
+
+Total number of neighbors 4
+admin@bjw2-can-7260-10:~$ show ip int
+Interface       Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP
+--------------  --------  -------------------  ------------  --------------  -------------
+Loopback0                 10.1.0.32/32         up/up         N/A             N/A
+PortChannel101            10.0.0.32/31         up/up         ARISTA01T1      10.0.0.33
+PortChannel102            10.0.0.34/31         up/up         ARISTA02T1      10.0.0.35
+PortChannel103            10.0.0.36/31         up/up         ARISTA03T1      10.0.0.37
+PortChannel104            10.0.0.38/31         up/up         ARISTA04T1      10.0.0.39
+Vlan1000                  192.168.0.1/21       up/up         N/A             N/A
+                          192.169.0.1/22                     N/A             N/A
+docker0                   240.127.1.1/24       up/down       N/A             N/A
+eth0                      10.150.22.70/23      up/up         N/A             N/A
+lo                        127.0.0.1/16         up/up         N/A             N/A
+admin@bjw2-can-7260-10:~$  show int portchannel
+Flags: A - active, I - inactive, Up - up, Dw - Down, N/A - not available,
+       S - selected, D - deselected, * - not synced
+  No.  Team Dev        Protocol     Ports
+-----  --------------  -----------  ---------------------------
+  101  PortChannel101  LACP(A)(Up)  Ethernet52(S) Ethernet48(S)
+  102  PortChannel102  LACP(A)(Up)  Ethernet56(S) Ethernet60(S)
+  103  PortChannel103  LACP(A)(Up)  Ethernet64(S) Ethernet68(S)
+  104  PortChannel104  LACP(A)(Up)  Ethernet76(S) Ethernet72(S)
+
+
+admin@bjw2-can-7260-10:~$ sudo warm-reboot -vvv
+Mon Jan 26 05:42:30 PM UTC 2026 Starting warm-reboot
+Mon Jan 26 05:42:31 PM UTC 2026 Saving counters folder before warmboot...
+Mon Jan 26 05:42:33 PM UTC 2026 Checking for active PFC storms...
+Mon Jan 26 05:42:33 PM UTC 2026 No active PFC storms detected. Safe to proceed with warm-reboot...
+Mon Jan 26 05:42:38 PM UTC 2026 Loading kernel without secure boot
+Mon Jan 26 05:42:39 PM UTC 2026 Starting lag_keepalive to send LACPDUs ...
+/usr/lib/python3/dist-packages/scapy/base_classes.py:402: SyntaxWarning: Packet 'LACPRetryCount' has a duplicated 'reserved' field ! If you are using several ConditionalFields, have a look at MultipleTypeField instead ! This will become a SyntaxError in a future version of Scapy !
+  warnings.warn(war_msg, SyntaxWarning)
+Traceback (most recent call last):
+  File "/usr/local/bin/teamd_increase_retry_count.py", line 31, in <module>
+    class LACPRetryCount(Packet):
+    ...<37 lines>...
+        ]
+  File "/usr/lib/python3/dist-packages/scapy/base_classes.py", line 422, in __new__
+    dct["__signature__"] = inspect.Signature([
+                           ~~~~~~~~~~~~~~~~~^^
+        inspect.Parameter("_pkt", inspect.Parameter.POSITIONAL_ONLY),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        for f in dct["fields_desc"]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ])
+    ^^
+  File "/usr/lib/python3.13/inspect.py", line 3085, in __init__
+    raise ValueError(msg)
+ValueError: duplicate parameter name: 'reserved'
+Mon Jan 26 05:43:06 PM UTC 2026 Warning: Retry count feature support unknown for one or more neighbor devices; assuming that it's not available
+Mon Jan 26 05:43:06 PM UTC 2026 Pausing orchagent ...
+Mon Jan 26 05:43:06 PM UTC 2026 Collecting logs to check ssd health before warm-reboot...
+Mon Jan 26 05:43:06 PM UTC 2026 Stopping aaastatsd.timer ...
+Mon Jan 26 05:43:06 PM UTC 2026 Stopped aaastatsd.timer ...
+Mon Jan 26 05:43:06 PM UTC 2026 Stopping featured.timer ...
+Mon Jan 26 05:43:06 PM UTC 2026 Stopped featured.timer ...
+Mon Jan 26 05:43:06 PM UTC 2026 Stopping hostcfgd.timer ...
+Mon Jan 26 05:43:06 PM UTC 2026 Stopped hostcfgd.timer ...
+Mon Jan 26 05:43:06 PM UTC 2026 Stopping tacacs-config.timer ...
+Mon Jan 26 05:43:06 PM UTC 2026 Stopped tacacs-config.timer ...
+Mon Jan 26 05:43:06 PM UTC 2026 Stopping lldp ...
+Mon Jan 26 05:43:09 PM UTC 2026 Stopped lldp
+Mon Jan 26 05:43:09 PM UTC 2026 Stopping radv ...
+Mon Jan 26 05:43:10 PM UTC 2026 Stopped radv
+Mon Jan 26 05:43:10 PM UTC 2026 Stopping bgp ...
+Mon Jan 26 05:43:16 PM UTC 2026 Stopped bgp
+Mon Jan 26 05:43:16 PM UTC 2026 Stopping swss ...
+Mon Jan 26 05:43:17 PM UTC 2026 Stopped swss
+Mon Jan 26 05:43:17 PM UTC 2026 Initialize pre-shutdown ...
+Mon Jan 26 05:43:17 PM UTC 2026 Requesting pre-shutdown ...
+Mon Jan 26 05:43:17 PM UTC 2026 Waiting for pre-shutdown ...
+Mon Jan 26 05:43:18 PM UTC 2026 Pre-shutdown succeeded, state: pre-shutdown-succeeded ...
+Mon Jan 26 05:43:18 PM UTC 2026 Stopping dash-ha ...
+Mon Jan 26 05:43:18 PM UTC 2026 Stopped dash-ha
+Mon Jan 26 05:43:18 PM UTC 2026 Stopping teamd ...
+Mon Jan 26 05:43:18 PM UTC 2026 Stopped teamd
+Mon Jan 26 05:43:18 PM UTC 2026 Stopping syncd ...
+Mon Jan 26 05:43:30 PM UTC 2026 Stopped syncd
+Mon Jan 26 05:43:30 PM UTC 2026 Backing up database ...
+Successfully copied 11.4MB to /host/warmboot
+5:185mStopping 'docker.service', but its triggering units are still active:
+5:185mdocker.socket
+Mon Jan 26 05:43:40 PM UTC 2026 Enabling Watchdog before warm-reboot
+Watchdog armed for 180 seconds
+Mon Jan 26 05:43:41 PM UTC 2026 Rebooting with /sbin/kexec -e to SONiC-OS-20251110.03 ...
+1
+Mon Jan 26 05:43:41 PM UTC 2026 Backup shutdown logs to /host/logs_before_reboot
+client_loop: send disconnect: Broken pipe
+
+
+
+admin@bjw2-can-7260-10:~$ show version
+
+SONiC Software Version: SONiC.20251110.03
+
+admin@bjw2-can-7260-10:~$ show ip bgp sum
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 4200065100 vrf-id 0
+BGP table version 6406
+RIB entries 12808, using 1639424 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V          AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  ----------  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.33      4  4200064600       3215       3213      6406      0       0  00:08:36             6400  ARISTA01T1
+10.0.0.35      4  4200064600       3214       3213      6406      0       0  00:08:36             6400  ARISTA02T1
+10.0.0.37      4  4200064600       3214       3213      6406      0       0  00:08:36             6400  ARISTA03T1
+10.0.0.39      4  4200064600       3215       3213      6406      0       0  00:08:36             6400  ARISTA04T1
+
+Total number of neighbors 4
+admin@bjw2-can-7260-10:~$ show ip int
+Interface       Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP
+--------------  --------  -------------------  ------------  --------------  -------------
+Loopback0                 10.1.0.32/32         up/up         N/A             N/A
+PortChannel101            10.0.0.32/31         up/up         ARISTA01T1      10.0.0.33
+PortChannel102            10.0.0.34/31         up/up         ARISTA02T1      10.0.0.35
+PortChannel103            10.0.0.36/31         up/up         ARISTA03T1      10.0.0.37
+PortChannel104            10.0.0.38/31         up/up         ARISTA04T1      10.0.0.39
+Vlan1000                  192.168.0.1/21       up/up         N/A             N/A
+                          192.169.0.1/22                     N/A             N/A
+docker0                   240.127.1.1/24       up/down       N/A             N/A
+eth0                      10.150.22.70/23      up/up         N/A             N/A
+lo                        127.0.0.1/16         up/up         N/A             N/A
+admin@bjw2-can-7260-10:~$ show int portchannel
+Flags: A - active, I - inactive, Up - up, Dw - Down, N/A - not available,
+       S - selected, D - deselected, * - not synced
+  No.  Team Dev        Protocol     Ports
+-----  --------------  -----------  ---------------------------
+  101  PortChannel101  LACP(A)(Up)  Ethernet48(S) Ethernet52(S)
+  102  PortChannel102  LACP(A)(Up)  Ethernet60(S) Ethernet56(S)
+  103  PortChannel103  LACP(A)(Up)  Ethernet64(S) Ethernet68(S)
+  104  PortChannel104  LACP(A)(Up)  Ethernet76(S) Ethernet72(S)
+
+
+
+admin@bjw2-can-7260-10:~$ sudo scp /var/log/syslog* azure@10.150.22.225:/home/azure/202511_upgrade/BtoBlogs/
+
