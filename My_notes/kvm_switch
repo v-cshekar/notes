@@ -51,3 +51,8 @@ Topology:
 
 cd /var/src/sonic-mgmt/tests
 ./run_tests.sh -n vms-kvm-t0 -d vlab-01 -c gnxi/test_gnoi_system.py::test_system_time -f vtestbed.yaml -i ../ansible/veos_vtb -e "--skip_sanity"
+
+
+
+Vaibhav also discussed the differences between CLI-based and GNOI-based reboots, highlighting the need for a GNOI-friendly version of the test case.
+Test Case Fixtures: Vaibhav suggested using fixtures to run the test case for both CLI and GNOI reboots without modifying the test case itself. He proposed adding an argument to differentiate between CLI and GNOI reboots, ensuring the test case runs for both types.
