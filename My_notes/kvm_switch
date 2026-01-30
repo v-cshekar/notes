@@ -1,0 +1,50 @@
+chandra@lenova:~/veos-vm/images$ docker ps | grep ceos
+c24b2c2e1890   ceosimage:4.32.5M-1                                   "/sbin/init systemd.…"   2 minutes ago   Up 2 minutes              ceos_vms6-1_VM0101
+29c99324e952   ceosimage:4.32.5M-1                                   "/sbin/init systemd.…"   2 minutes ago   Up 2 minutes              ceos_vms6-1_VM0103
+42b1f4fab93d   ceosimage:4.32.5M-1                                   "/sbin/init systemd.…"   2 minutes ago   Up 2 minutes              ceos_vms6-1_VM0102
+9d09b80813e3   ceosimage:4.32.5M-1                                   "/sbin/init systemd.…"   2 minutes ago   Up 2 minutes              ceos_vms6-1_VM0100
+chandra@lenova:~/veos-vm/images$ virsh list
+ Id   Name      State
+-------------------------
+ 1    vlab-01   running
+
+
+
+   docker exec -it sonic-mgmt-chandra bash
+   cd /var/src/sonic-mgmt/ansible
+
+DUT (POD) IP:
+ssh admin@10.250.0.101
+psswod: "password"
+
+
+DUT running:
+-----------
+chandra@lenova:~$ virsh list
+ Id   Name      State
+-------------------------
+ 1    vlab-01   running
+
+admin@vlab-01:~$ show ip bgp sum
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 65100 vrf-id 0
+BGP table version 6405
+RIB entries 12807, using 1639296 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V     AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  -----  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.57      4  64600       3283       3272      6405      0       0  00:03:22             6400  ARISTA01T1
+10.0.0.59      4  64600       3285       3272      6405      0       0  00:03:22             6400  ARISTA02T1
+10.0.0.61      4  64600       3284       3272      6405      0       0  00:03:22             6400  ARISTA03T1
+10.0.0.63      4  64600       3283       3272      6405      0       0  00:03:22             6400  ARISTA04T1
+
+Total number of neighbors 4
+
+
+Topology:
+./testbed-cli.sh -t vtestbed.yaml -m veos_vtb deploy-mg vms-kvm-t0 veos_vtb password.txt
+
