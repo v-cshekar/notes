@@ -48,3 +48,6 @@ Total number of neighbors 4
 Topology:
 ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb deploy-mg vms-kvm-t0 veos_vtb password.txt
 
+
+cd /var/src/sonic-mgmt/tests
+./run_tests.sh -n vms-kvm-t0 -d vlab-01 -c gnxi/test_gnoi_system.py::test_system_time -f vtestbed.yaml -i ../ansible/veos_vtb -e "--skip_sanity"
