@@ -320,3 +320,18 @@ python3 manifest.py
 
 
 
+BJW server: 
+IP address:  10.150.22.225
+
+Connect with Secure CRT using server 4 ip
+    username - azure
+    password - AzUr>>>>>cks!
+ 
+add user 
+	sudo adduser v-cshekar
+   Add user into an existing group
+	usermod -a -G docker v-cshekar
+	usermod -a -G sudo v-cshekar
+
+
+
