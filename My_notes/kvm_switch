@@ -17,6 +17,13 @@ DUT (POD) IP:
 ssh admin@10.250.0.101
 psswod: "password"
 
+chandra@lenova:~/wipr/sonic-mgmt$ telnet 127.0.0.1 9000
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+
+vlab-01 login:
+vlab-01 login: admin
 
 DUT running:
 -----------
@@ -48,11 +55,94 @@ Total number of neighbors 4
 Topology:
 ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb deploy-mg vms-kvm-t0 veos_vtb password.txt
 
-
+chandra@lenova:~$ docker exec --user chandra -ti sonic-mgmt-chandra bash
 cd /var/src/sonic-mgmt/tests
 ./run_tests.sh -n vms-kvm-t0 -d vlab-01 -c gnxi/test_gnoi_system.py::test_system_time -f vtestbed.yaml -i ../ansible/veos_vtb -e "--skip_sanity"
 
+chandra@lenova:~$ docker exec -it sonic-mgmt-chandra bash
+Error response from daemon: container a029f7509d934aeedf8413e443cc8aba789bc902d5a060f848feeeb70fd58c54 is not running
+chandra@lenova:~$ docker start sonic-mgmt-chandra
+sonic-mgmt-chandra
+chandra@lenova:~$
+chandra@lenova:~$ docker exec -it sonic-mgmt-chandra bash
 
 
-Vaibhav also discussed the differences between CLI-based and GNOI-based reboots, highlighting the need for a GNOI-friendly version of the test case.
-Test Case Fixtures: Vaibhav suggested using fixtures to run the test case for both CLI and GNOI reboots without modifying the test case itself. He proposed adding an argument to differentiate between CLI and GNOI reboots, ensuring the test case runs for both types.
+Recreate the DUT and neighbors after the host reboot :
+----------------------------------------------------
+chandra@lenova:~$ ssh admin@10.250.0.101
+^C
+chandra@lenova:~$ virsh list
+ Id   Name   State
+--------------------
+
+chandra@lenova:~$ docker exec --user chandra -ti sonic-mgmt-chandra bash
+chandra@sonic-mgmt-chandra:~$
+chandra@sonic-mgmt-chandra:~$
+chandra@sonic-mgmt-chandra:~$
+chandra@sonic-mgmt-chandra:~$ cd /var/src/sonic-mgmt/ansible
+chandra@sonic-mgmt-chandra:/var/src/sonic-mgmt/ansible$ ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb add-topo vms-kvm-t0 password.txt
+
+
+
+
+TASK [vm_set : Create network for net ceos container] ***************************************************************************************************************************************
+failed: [STR-ACS-VSERV-01] (item=VM0100) => {"ansible_loop_var": "vm_name", "changed": false, "msg": "ret_code=1, error message: \"bridge br1 does not exist!\n\" cmd: \"brctl addif br1 VM0100-m\"", "vm_name": "VM0100"}
+failed: [STR-ACS-VSERV-01] (item=VM0101) => {"ansible_loop_var": "vm_name", "changed": false, "msg": "ret_code=1, error message: \"bridge br1 does not exist!\n\" cmd: \"brctl addif br1 VM0101-m\"", "vm_name": "VM0101"}
+failed: [STR-ACS-VSERV-01] (item=VM0102) => {"ansible_loop_var": "vm_name", "changed": false, "msg": "ret_code=1, error message: \"bridge br1 does not exist!\n\" cmd: \"brctl addif br1 VM0102-m\"", "vm_name": "VM0102"}
+failed: [STR-ACS-VSERV-01] (item=VM0103) => {"ansible_loop_var": "vm_name", "changed": false, "msg": "ret_code=1, error message: \"bridge br1 does not exist!\n\" cmd: \"brctl addif br1 VM0103-m\"", "vm_name": "VM0103"}
+
+PLAY RECAP **********************************************************************************************************************************************************************************
+STR-ACS-VSERV-01           : ok=300  changed=37   unreachable=0    failed=1    skipped=306  rescued=0    ignored=1
+
+
+
+On the host machine
+-------------------
+chandra@lenova:/home/chandra/wipr/sonic-mgmt
+chandra@lenova:~/wipr/sonic-mgmt/ansible$ sudo -H ./setup-management-network.sh
+
+chandra@lenova:~/wipr/sonic-mgmt/ansible$ brctl show
+bridge name	bridge id		STP enabled	interfaces
+br1		8000.02576bb1e71c	no
+docker0		8000.76a969420b43	no		veth3eb62f5
+virbr0		8000.52540000aa9f	yes
+
+
+Then run this again
+chandra@sonic-mgmt-chandra:~$ cd /var/src/sonic-mgmt/ansible
+chandra@sonic-mgmt-chandra:/var/src/sonic-mgmt/ansible$ ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb add-topo vms-kvm-t0 password.txt
+PLAY RECAP **********************************************************************************************************************************************************************************
+STR-ACS-VSERV-01           : ok=0    changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0
+
+cached_topologies_path file does not exist, the path for cached topologies is mandatory to run this command. exiting...
+Done
+
+To fix this:
+Inside the container, from /var/src/sonic-mgmt/ansible, run:
+echo /var/src/sonic-mgmt/ansible/.topologies_cache > cached_topologies_path
+
+
+If DUT is not reachable:
+chandra@lenova:~/wipr/sonic-mgmt$ virsh list
+ Id   Name   State
+--------------------
+Make sure VM is available, 
+IF VM is not present
+chandra@sonic-mgmt-chandra:/var/src/sonic-mgmt/ansible$ ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb add-topo vms-kvm-t0 password.txt
+
+chandra@sonic-mgmt-chandra:~$ cd /var/src/sonic-mgmt/ansible
+chandra@sonic-mgmt-chandra:/var/src/sonic-mgmt/ansible$ ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb add-topo vms-kvm-t0 password.txt
+
+cd /var/src/sonic-mgmt/ansible
+./testbed-cli.sh -t vtestbed.yaml -m veos_vtb add-topo vms-kvm-t0 password.txt
+
+---------------------------------------
+To Run Reboot test
+cd /var/src/sonic-mgmt/tests
+./run_tests.sh -n vms-kvm-t0 -d vlab-01 -c platform_tests/test_reboot.py::test_cold_reboot -f vtestbed.yaml -i ../ansible/veos_vtb -e "--skip_sanity" -l debug
+./run_tests.sh -n vms-kvm-t0 -d vlab-01 -c platform_tests/test_reboot.py::test_cold_reboot -f vtestbed.yaml -i ../ansible/veos_vtb -e "--skip_sanity" -l info
+
+
+
+
+
