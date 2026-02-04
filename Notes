@@ -334,4 +334,44 @@ add user
 	usermod -a -G sudo v-cshekar
 
 
+Setting up new container:
+
+v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt$ ./setup-container.sh -n sonic-mgmt-chandra
+latest: Pulling from docker-sonic-mgmt
+e93fce65fb9f: Already exists
+38ddc29bb037: Pull complete
+26963a90d020: Pull complete
+a73ed48333f5: Pull complete
+95af26b5fb96: Pull complete
+34a4ddd51117: Pull complete
+aac4f284c0c4: Pull complete
+cd9ca00facce: Pull complete
+dc838e875c3f: Pull complete
+785dde52c77f: Pull complete
+21e937b1c360: Pull complete
+823e769a039c: Pull complete
+2604b4a19545: Pull complete
+5f4b10d2bb5c: Pull complete
+e1e9d061fb18: Pull complete
+e2b7aa600eb9: Pull complete
+4325fbf7e62d: Pull complete
+0b39d165a0be: Pull complete
+72e61d4dfe05: Pull complete
+4f4fb700ef54: Pull complete
+006d350d29e8: Pull complete
+a30df45cc924: Pull complete
+1ad063597f51: Pull complete
+fd1d403e3d06: Pull complete
+Digest: sha256:1f066aae1744467e05c63f55bd3c252c841f614d07da874c67adacc7eeb8802a
+Status: Downloaded newer image for sonicdev-microsoft.azurecr.io:443/docker-sonic-mgmt:latest
+sonicdev-microsoft.azurecr.io:443/docker-sonic-mgmt:latest
+******************************************************************************
+EXEC: docker exec --user v-cshekar -ti sonic-mgmt-chandra bash
+SSH:  ssh -i ~/.ssh/id_rsa_docker_sonic_mgmt v-cshekar@172.17.0.5
+******************************************************************************
+
+
+v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt$ docker exec --user v-cshekar -ti sonic-mgmt-chandra bash
+v-cshekar@sonic-mgmt-chandra:~$ cd /var/src/sonic-mgmt/
+
 
