@@ -1,3 +1,6 @@
+Linux Device IP: 
+ssh chandra@10.0.0.150
+
 chandra@lenova:~/veos-vm/images$ docker ps | grep ceos
 c24b2c2e1890   ceosimage:4.32.5M-1                                   "/sbin/init systemd.…"   2 minutes ago   Up 2 minutes              ceos_vms6-1_VM0101
 29c99324e952   ceosimage:4.32.5M-1                                   "/sbin/init systemd.…"   2 minutes ago   Up 2 minutes              ceos_vms6-1_VM0103
@@ -144,5 +147,28 @@ cd /var/src/sonic-mgmt/tests
 
 
 
+
+-----
+# 1) Generate the CONFIG_DB payload to a temp file
+sudo sonic-cfggen -a '{"MGMT_INTERFACE":{
+  "eth0|10.250.0.101/24":{
+    "forced_mgmt_routes":["172.17.0.1/24"],
+    "gwaddr":"10.250.0.1"
+  },
+  "eth0|fec0::ffff:afa:1/64":{
+    "gwaddr":"fec0::1"
+  }
+}}' --print-data > /tmp/mgmt_ip.json
+
+# 2) Write into CONFIG_DB
+sudo sonic-cfggen -j /tmp/mgmt_ip.json -w
+
+# 3) Persist to /etc/sonic/config_db.json
+sudo config save -y
+
+
+sudo sonic-cfggen -a '{"MGMT_PORT":{"eth0":{"admin_status":"up","alias":"eth0"}}}' --print-data > /tmp/mgmt_port.json
+sudo sonic-cfggen -j /tmp/mgmt_port.json -w
+sudo config save -y
 
 
