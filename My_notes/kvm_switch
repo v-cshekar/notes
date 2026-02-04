@@ -172,3 +172,21 @@ sudo sonic-cfggen -j /tmp/mgmt_port.json -w
 sudo config save -y
 
 
+
+
+, 'syncd': 1.3, 'bgp': 4.1, 'radv': 0.5, 'teamd': 0.6, 'swss': 3.6, 'database': 2.8}, 'frr_bgp': {'used': 69.0}, 'frr_zebra': {'used': 47.0}}}, 'after_test': {'vlab-01': {'monit': {}, 'top': {'zebra': 29.3, 'bgpd': 73.8}, 'free': {'used': 2061}, 'docker': {'snmp': 0.9, 'pmon': 0.7, 'lldp': 0.9, 'gnmi': 2.0, 'syncd': 1.2, 'bgp': 3.5, 'radv': 0.4, 'teamd': 0.6, 'swss': 3.8, 'database': 2.7}, 'frr_bgp': {'used': 69.0}, 'frr_zebra': {'used': 47.0}}}}
+INFO     root:__init__.py:93 -------------------- fixture setup_gnoi_reboot_certs teardown starts --------------------
+INFO     root:__init__.py:102 -------------------- fixture setup_gnoi_reboot_certs teardown ends --------------------
+ tests/platform_tests/test_reboot.py::test_cold_reboot[cli_based-vlab-01] ✓                                                                       50% █████
+------------------------------------------------------------------------ live log setup ------------------------------------------------------------------------
+
+INFO     tests.conftest:conftest.py:3130 Skipping temporarily_disable_route_check fixture
+INFO     tests.conftest:conftest.py:2911 Dumping Disk and Memory Space information after test on vlab-01
+INFO     tests.conftest:conftest.py:2915 Collecting core dumps after test on vlab-01
+INFO     tests.conftest:conftest.py:2926 Collecting running config after test on vlab-01
+INFO     tests.conftest:conftest.py:3072 Core dump and config check passed for test_reboot.py
+ tests/platform_tests/test_reboot.py::test_cold_reboot[gnoi_based-vlab-01] ✓                                                                     100% ██████████
+======================================================================= warnings summary =======================================================================
+
+
+
