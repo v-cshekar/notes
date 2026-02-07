@@ -1,1 +1,355 @@
+BJW Server IP: 10.150.22.225
+
+testbed-bjw3-can-t0-7060-7
+10.150.238.105
+
+user admin@10.150.238.105
+AzUrES0N1cR0cks!
+
+
+
+admin@bjw3-can-7060-7:~$ show ip bgp sum
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 65100 vrf-id 0
+BGP table version 12804
+RIB entries 12807, using 1639296 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V     AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  -----  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.57      4  64600       4384       4241     12804      0       0  16:45:18             6400  ARISTA01T1
+10.0.0.59      4  64600       4390       4217     12804      0       0  16:45:14             6400  ARISTA02T1
+10.0.0.61      4  64600       4391       4243     12804      0       0  16:45:18             6400  ARISTA03T1
+10.0.0.63      4  64600       4389       4217     12804      0       0  16:45:13             6400  ARISTA04T1
+
+Total number of neighbors 4
+admin@bjw3-can-7060-7:~$ show version
+
+SONiC Software Version: SONiC.20250510.34
+SONiC OS Version: 12
+Distribution: Debian 12.12
+Kernel: 6.1.0-29-2-amd64
+Build commit: 6f6830a21f
+Build date: Thu Jan 29 09:57:03 UTC 2026
+Built by: azureuser@56fb2466c000000
+
+Platform: x86_64-arista_7060_cx32s
+HwSKU: Arista-7060CX-32S-C32
+ASIC: broadcom
+ASIC Count: 1
+Serial Number: JPN2506P4BF
+Model Number: DCS-7060CX-32S
+Hardware Revision: 03.01
+Uptime: 16:52:03 up 1 day,  2:19,  1 user,  load average: 0.98, 1.40, 1.42
+Date: Sat 07 Feb 2026 16:52:03
+
+Docker images:
+REPOSITORY                 TAG           IMAGE ID       SIZE
+docker-mux                 20250510.34   edd38082f4d6   366MB
+docker-mux                 latest        edd38082f4d6   366MB
+docker-macsec              20250510.34   135852f275f5   346MB
+docker-macsec              latest        135852f275f5   346MB
+docker-eventd              20250510.34   eaa023e55f33   314MB
+docker-eventd              latest        eaa023e55f33   314MB
+docker-sonic-telemetry     20250510.34   431533661819   408MB
+docker-sonic-telemetry     latest        431533661819   408MB
+docker-dhcp-server         20250510.34   1a105fea32f4   337MB
+docker-dhcp-server         latest        1a105fea32f4   337MB
+docker-gbsyncd-broncos     20250510.34   37c730378e43   367MB
+docker-gbsyncd-broncos     latest        37c730378e43   367MB
+docker-gbsyncd-credo       20250510.34   101831eed152   341MB
+docker-gbsyncd-credo       latest        101831eed152   341MB
+docker-sonic-gnmi          20250510.34   add037adc7d3   408MB
+docker-sonic-gnmi          latest        add037adc7d3   408MB
+docker-orchagent           20250510.34   6f89584ba178   356MB
+docker-orchagent           latest        6f89584ba178   356MB
+docker-dhcp-relay          20250510.34   694ce57f0742   325MB
+docker-dhcp-relay          latest        694ce57f0742   325MB
+docker-fpm-frr             20250510.34   267ee307b01b   386MB
+docker-fpm-frr             latest        267ee307b01b   386MB
+docker-dash-ha             20250510.34   d7287a38e50d   357MB
+docker-dash-ha             latest        d7287a38e50d   357MB
+docker-syncd-brcm          20250510.34   cbd243727a5b   804MB
+docker-syncd-brcm          latest        cbd243727a5b   804MB
+docker-snmp                20250510.34   0138abac8a64   358MB
+docker-snmp                latest        0138abac8a64   358MB
+docker-platform-monitor    20250510.34   448625a1d21e   447MB
+docker-platform-monitor    latest        448625a1d21e   447MB
+docker-sysmgr              20250510.34   bf0def378099   326MB
+docker-sysmgr              latest        bf0def378099   326MB
+docker-teamd               20250510.34   315aa761b522   344MB
+docker-teamd               latest        315aa761b522   344MB
+docker-router-advertiser   20250510.34   b97230e594fa   314MB
+docker-router-advertiser   latest        b97230e594fa   314MB
+docker-sonic-restapi       20250510.34   ef20812409a8   333MB
+docker-sonic-restapi       latest        ef20812409a8   333MB
+docker-lldp                20250510.34   4c46dddcbdab   360MB
+docker-lldp                latest        4c46dddcbdab   360MB
+docker-gnmi-watchdog       20250510.34   affda44dd42f   314MB
+docker-gnmi-watchdog       latest        affda44dd42f   314MB
+docker-database            20250510.34   fdb93230a5dc   321MB
+docker-database            latest        fdb93230a5dc   321MB
+docker-dummyk8s            20250510.34   89b47d580f05   314MB
+docker-dummyk8s            latest        89b47d580f05   314MB
+docker-sonic-bmp           20250510.34   0a71cad33eeb   315MB
+docker-sonic-bmp           latest        0a71cad33eeb   315MB
+docker-bmp-watchdog        20250510.34   7eb626a7b7a1   314MB
+docker-bmp-watchdog        latest        7eb626a7b7a1   314MB
+docker-auditd-watchdog     20250510.34   01d128980a8b   314MB
+docker-auditd-watchdog     latest        01d128980a8b   314MB
+docker-acms                20250510.34   22a83880a641   365MB
+docker-acms                latest        22a83880a641   365MB
+docker-auditd              20250510.34   fa80ce60e75c   314MB
+docker-auditd              latest        fa80ce60e75c   314MB
+k8s.gcr.io/pause           3.5           ed210e3e4a5b   683kB
+
+admin@bjw3-can-7060-7:~$
+admin@bjw3-can-7060-7:~$ show ip int
+Interface       Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP
+--------------  --------  -------------------  ------------  --------------  -------------
+Loopback0                 10.1.0.32/32         up/up         N/A             N/A
+PortChannel101            10.0.0.56/31         up/up         ARISTA01T1      10.0.0.57
+PortChannel102            10.0.0.58/31         up/up         ARISTA02T1      10.0.0.59
+PortChannel103            10.0.0.60/31         up/up         ARISTA03T1      10.0.0.61
+PortChannel104            10.0.0.62/31         up/up         ARISTA04T1      10.0.0.63
+Vlan1000                  192.168.0.1/21       up/up         N/A             N/A
+docker0                   240.127.1.1/24       up/down       N/A             N/A
+eth0                      10.150.238.105/23    up/up         N/A             N/A
+lo                        127.0.0.1/16         up/up         N/A             N/A
+
+
+
+2. Install verstion A image and perform cold reboot
+
+admin@bjw2-can-7260-10:~$ sudo sonic_installer install -y http://10.150.22.222/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi
+admin@bjw2-can-7260-10:~$ sudo reboot
+
+3. After system comes up, check and upgrade image B, perform warm reboot
+admin@bjw3-can-7060-7:~$ sudo sonic_installer list
+Warning: 'sonic_installer' command is deprecated and will be removed in the future
+Please use 'sonic-installer' instead
+Current: SONiC-OS-20250510.30
+Next: SONiC-OS-20250510.30
+Available:
+SONiC-OS-20250510.30
+SONiC-OS-20250510.34
+admin@bjw3-can-7060-7:~$ show ip bgp sum
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 65100 vrf-id 0
+BGP table version 12804
+RIB entries 12807, using 1639296 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V     AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  -----  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.57      4  64600       3209       3209     12804      0       0  00:03:30             6400  ARISTA01T1
+10.0.0.59      4  64600       3209       3211     12804      0       0  00:03:29             6400  ARISTA02T1
+10.0.0.61      4  64600       3208       3209     12804      0       0  00:03:29             6400  ARISTA03T1
+10.0.0.63      4  64600       3209       3209     12804      0       0  00:03:29             6400  ARISTA04T1
+
+Total number of neighbors 4
+admin@bjw3-can-7060-7:~$ show ip int
+Interface       Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP
+--------------  --------  -------------------  ------------  --------------  -------------
+Loopback0                 10.1.0.32/32         up/up         N/A             N/A
+PortChannel101            10.0.0.56/31         up/up         ARISTA01T1      10.0.0.57
+PortChannel102            10.0.0.58/31         up/up         ARISTA02T1      10.0.0.59
+PortChannel103            10.0.0.60/31         up/up         ARISTA03T1      10.0.0.61
+PortChannel104            10.0.0.62/31         up/up         ARISTA04T1      10.0.0.63
+Vlan1000                  192.168.0.1/21       up/up         N/A             N/A
+docker0                   240.127.1.1/24       up/down       N/A             N/A
+eth0                      10.150.238.105/23    up/up         N/A             N/A
+lo                        127.0.0.1/16         up/up         N/A             N/A
+admin@bjw3-can-7060-7:~$ show int portchannel
+Flags: A - active, I - inactive, Up - up, Dw - Down, N/A - not available,
+       S - selected, D - deselected, * - not synced
+  No.  Team Dev        Protocol     Ports
+-----  --------------  -----------  --------------
+  101  PortChannel101  LACP(A)(Up)  Ethernet112(S)
+  102  PortChannel102  LACP(A)(Up)  Ethernet116(S)
+  103  PortChannel103  LACP(A)(Up)  Ethernet120(S)
+  104  PortChannel104  LACP(A)(Up)  Ethernet124(S)
+
+
+admin@bjw3-can-7060-7:~$ sudo sonic_installer install -y http://10.150.22.222/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-20251110.07.swi
+admin@bjw3-can-7060-7:~$ sudo warm-reboot -vvv
+Sat Feb 7 09:05:14 PM UTC 2026 Starting warm-reboot
+Sat Feb 7 09:05:15 PM UTC 2026 Saving counters folder before warmboot...
+Sat Feb 7 09:05:26 PM UTC 2026 Loading kernel without secure boot
+Sat Feb 7 09:05:28 PM UTC 2026 Starting lag_keepalive to send LACPDUs ...
+ERROR: There are port channels/peer devices that failed the probe: ['PortChannel102', 'PortChannel104', 'PortChannel103', 'PortChannel101']
+Sat Feb 7 09:05:41 PM UTC 2026 Warning: Retry count feature support unknown for one or more neighbor devices; assuming that it's not available
+Sat Feb 7 09:05:41 PM UTC 2026 Pausing orchagent ...
+Sat Feb 7 09:05:41 PM UTC 2026 Collecting logs to check ssd health before warm-reboot...
+Sat Feb 7 09:05:41 PM UTC 2026 Stopping lldp ...
+Sat Feb 7 09:05:43 PM UTC 2026 Stopped lldp
+Sat Feb 7 09:05:43 PM UTC 2026 Stopping radv ...
+Sat Feb 7 09:05:44 PM UTC 2026 Stopped radv
+Sat Feb 7 09:05:44 PM UTC 2026 Stopping bgp ...
+Sat Feb 7 09:05:51 PM UTC 2026 Stopped bgp
+Sat Feb 7 09:05:51 PM UTC 2026 Stopping swss ...
+Sat Feb 7 09:05:53 PM UTC 2026 Stopped swss
+Sat Feb 7 09:05:53 PM UTC 2026 Initialize pre-shutdown ...
+Sat Feb 7 09:05:53 PM UTC 2026 Requesting pre-shutdown ...
+Sat Feb 7 09:05:53 PM UTC 2026 Waiting for pre-shutdown ...
+Sat Feb 7 09:05:54 PM UTC 2026 Pre-shutdown succeeded, state: pre-shutdown-succeeded ...
+Sat Feb 7 09:05:54 PM UTC 2026 Stopping teamd ...
+Sat Feb 7 09:05:54 PM UTC 2026 Stopped teamd
+Sat Feb 7 09:05:54 PM UTC 2026 Stopping syncd ...
+Sat Feb 7 09:06:11 PM UTC 2026 Stopped syncd
+Sat Feb 7 09:06:11 PM UTC 2026 Backing up database ...
+Successfully copied 6.16MB to /host/warmboot
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+Sat Feb 7 09:06:23 PM UTC 2026 Enabling Watchdog before warm-reboot
+Watchdog armed for 180 seconds
+Sat Feb 7 09:06:24 PM UTC 2026 Rebooting with /sbin/kexec -e to SONiC-OS-20251110.07 ...
+1
+Sat Feb 7 09:06:24 PM UTC 2026 Backup shutdown logs to /host/logs_before_reboot
+client_loop: send disconnect: Broken pipe
+
+admin@bjw3-can-7060-7:~$ show version
+
+SONiC Software Version: SONiC.20251110.07
+SONiC OS Version: 13
+Distribution: Debian 13.3
+Kernel: 6.12.41+deb13-sonic-amd64
+Build commit: 11b58dc7a5
+Build date: Thu Feb  5 00:48:58 UTC 2026
+Built by: azureuser@54e843bec000000
+
+Platform: x86_64-arista_7060_cx32s
+HwSKU: Arista-7060CX-32S-C32
+ASIC: broadcom
+ASIC Count: 1
+Serial Number: JPN2506P4BF
+Model Number: DCS-7060CX-32S
+Hardware Revision: 03.01
+Uptime: 21:11:46 up 5 min,  1 user,  load average: 5.88, 3.26, 1.44
+Date: Sat 07 Feb 2026 21:11:46
+
+Docker images:
+REPOSITORY                  TAG           IMAGE ID       SIZE
+docker-mux                  20251110.07   39180cfffe85   278MB
+docker-mux                  latest        39180cfffe85   278MB
+docker-telemetry-watchdog   20251110.07   fb9fad3e88ea   363MB
+docker-telemetry-watchdog   latest        fb9fad3e88ea   363MB
+docker-macsec               20251110.07   6f3a9afbe003   302MB
+docker-macsec               latest        6f3a9afbe003   302MB
+docker-dhcp-server          20251110.07   30bd6176d883   288MB
+docker-dhcp-server          latest        30bd6176d883   288MB
+docker-sonic-telemetry      20251110.07   d7ab18b5e43d   362MB
+docker-sonic-telemetry      latest        d7ab18b5e43d   362MB
+docker-eventd               20251110.07   bec539dae878   265MB
+docker-eventd               latest        bec539dae878   265MB
+docker-sonic-gnmi           20251110.07   123f69db5b48   361MB
+docker-sonic-gnmi           latest        123f69db5b48   361MB
+docker-gbsyncd-agera2       20251110.07   2e0fb8818c72   373MB
+docker-gbsyncd-agera2       latest        2e0fb8818c72   373MB
+docker-gbsyncd-broncos      20251110.07   9c510025d957   318MB
+docker-gbsyncd-broncos      latest        9c510025d957   318MB
+docker-gbsyncd-credo        20251110.07   563e8d08d04e   291MB
+docker-gbsyncd-credo        latest        563e8d08d04e   291MB
+docker-telemetry-sidecar    20251110.07   9e926324b1ff   265MB
+docker-telemetry-sidecar    latest        9e926324b1ff   265MB
+docker-dhcp-relay           20251110.07   0543f3f07899   274MB
+docker-dhcp-relay           latest        0543f3f07899   274MB
+docker-sonic-bmp            20251110.07   a2640742d727   269MB
+docker-sonic-bmp            latest        a2640742d727   269MB
+docker-fpm-frr              20251110.07   02e410ba4103   344MB
+docker-fpm-frr              latest        02e410ba4103   344MB
+docker-dash-ha              20251110.07   85d444fcb66b   318MB
+docker-dash-ha              latest        85d444fcb66b   318MB
+docker-teamd                20251110.07   c946b84adf3a   299MB
+docker-teamd                latest        c946b84adf3a   299MB
+docker-syncd-brcm           20251110.07   9c115d448d14   822MB
+docker-syncd-brcm           latest        9c115d448d14   822MB
+docker-sysmgr               20251110.07   f94e0059f720   277MB
+docker-sysmgr               latest        f94e0059f720   277MB
+docker-sonic-restapi        20251110.07   d7151f4fc2c0   284MB
+docker-sonic-restapi        latest        d7151f4fc2c0   284MB
+docker-platform-monitor     20251110.07   382c1e7cba50   398MB
+docker-platform-monitor     latest        382c1e7cba50   398MB
+docker-sonic-otel           20251110.07   93c378f9882c   542MB
+docker-sonic-otel           latest        93c378f9882c   542MB
+docker-snmp                 20251110.07   5fd90dceefc3   290MB
+docker-snmp                 latest        5fd90dceefc3   290MB
+docker-router-advertiser    20251110.07   24ff2cc039a8   266MB
+docker-router-advertiser    latest        24ff2cc039a8   266MB
+docker-orchagent            20251110.07   5140262fc180   312MB
+docker-orchagent            latest        5140262fc180   312MB
+docker-gnmi-watchdog        20251110.07   af2658d3332a   272MB
+docker-gnmi-watchdog        latest        af2658d3332a   272MB
+docker-lldp                 20251110.07   2f45fa8bc032   311MB
+docker-lldp                 latest        2f45fa8bc032   311MB
+docker-dummyk8s             20251110.07   972c33a0df60   313MB
+docker-dummyk8s             latest        972c33a0df60   313MB
+docker-database             20251110.07   78bf52ca4d27   272MB
+docker-database             latest        78bf52ca4d27   272MB
+docker-bmp-watchdog         20251110.07   64011c04dab7   265MB
+docker-bmp-watchdog         latest        64011c04dab7   265MB
+docker-auditd               20251110.07   47debfb7a44b   265MB
+docker-auditd               latest        47debfb7a44b   265MB
+docker-auditd-watchdog      20251110.07   80fad79e4751   268MB
+docker-auditd-watchdog      latest        80fad79e4751   268MB
+docker-acms                 20251110.07   3608aaa87abd   372MB
+docker-acms                 latest        3608aaa87abd   372MB
+docker-acms-watchdog        20251110.07   1d0ef04977c6   313MB
+docker-acms-watchdog        latest        1d0ef04977c6   313MB
+k8s.gcr.io/pause            3.5           ed210e3e4a5b   683kB
+
+admin@bjw3-can-7060-7:~$ show ip bgp sum
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 65100 vrf-id 0
+BGP table version 6405
+RIB entries 12807, using 1639296 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V     AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  -----  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.57      4  64600       3208       3209      6405      0       0  00:02:31             6400  ARISTA01T1
+10.0.0.59      4  64600       3208       3209      6405      0       0  00:02:31             6400  ARISTA02T1
+10.0.0.61      4  64600       3207       3207      6405      0       0  00:02:31             6400  ARISTA03T1
+10.0.0.63      4  64600       3208       3209      6405      0       0  00:02:31             6400  ARISTA04T1
+
+Total number of neighbors 4
+admin@bjw3-can-7060-7:~$  show ip int
+Interface       Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP
+--------------  --------  -------------------  ------------  --------------  -------------
+Loopback0                 10.1.0.32/32         up/up         N/A             N/A
+PortChannel101            10.0.0.56/31         up/up         ARISTA01T1      10.0.0.57
+PortChannel102            10.0.0.58/31         up/up         ARISTA02T1      10.0.0.59
+PortChannel103            10.0.0.60/31         up/up         ARISTA03T1      10.0.0.61
+PortChannel104            10.0.0.62/31         up/up         ARISTA04T1      10.0.0.63
+Vlan1000                  192.168.0.1/21       up/up         N/A             N/A
+docker0                   240.127.1.1/24       up/down       N/A             N/A
+eth0                      10.150.238.105/23    up/up         N/A             N/A
+lo                        127.0.0.1/16         up/up         N/A             N/A
+admin@bjw3-can-7060-7:~$ show int portchannel
+Flags: A - active, I - inactive, Up - up, Dw - Down, N/A - not available,
+       S - selected, D - deselected, * - not synced
+  No.  Team Dev        Protocol     Ports
+-----  --------------  -----------  --------------
+  101  PortChannel101  LACP(A)(Up)  Ethernet112(S)
+  102  PortChannel102  LACP(A)(Up)  Ethernet116(S)
+  103  PortChannel103  LACP(A)(Up)  Ethernet120(S)
+  104  PortChannel104  LACP(A)(Up)  Ethernet124(S)
+admin@bjw3-can-7060-7:~$
+
+
+v-cshekar@bjw-can-serv-4:~/202511_upgrade/feb_7/AtoA_upgrade$ scp admin@10.150.238.105:/tmp/syslog*  /home/v-cshekar/202511_upgrade/feb_7/AtoA_upgrade/
+Debian GNU/Linux 13 \n \l
+
+admin@10.150.238.105's password:
+syslog                                                                                                                                               100%  928KB  88.5MB/s   00:00
+syslog.1  
 
