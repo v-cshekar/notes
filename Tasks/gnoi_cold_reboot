@@ -1,0 +1,7 @@
+
+v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt-int$ docker exec --user v-cshekar -ti sonic-mgmt-chandra bash 
+v-cshekar@sonic-mgmt-chandra:~$
+
+  
+v-cshekar@sonic-mgmt-chandra:~$ cd /var/src/sonic-mgmt-int/tests
+v-cshekar@sonic-mgmt-chandra:/var/src/sonic-mgmt-int/tests$ ./run_tests.sh -n testbed-bjw3-can-t0-7060-7 -i ../ansible/veos,../ansible/bjw3 -u -m individual -c gnxi/test_gnoi_system.py::test_system_time -e "--skip_sanity" -l info
