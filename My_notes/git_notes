@@ -1,0 +1,19 @@
+Creating and Applying Patches Between Two Git Repositories
+
+# 1. Create directory for patch files
+mkdir -p /tmp/patches_gnoi
+
+# 2. Generate patches from commit range (from 5aa984c4..HEAD)
+git format-patch --output-directory /tmp/patches_gnoi \
+  5aa984c47e0ff606def514d51c00c86f166038f7^..HEAD
+
+# 3. Go to destination repository
+cd ../sonic-mgmt-int/
+
+# 4. Create a new branch for applying patches
+git checkout -b import_gnoi_reboot_series
+
+# 5. Apply patches with 3‑way merge fallback
+git am --3way /tmp/patches_gnoi/*.patch
+
+------------------------------------------------------------------
