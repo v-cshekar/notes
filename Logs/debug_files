@@ -1,115 +1,98 @@
-common/cache/facts_cache.py:284: in wrapper
-    facts = target(*args, **kargs)
-            ^^^^^^^^^^^^^^^^^^^^^^
-        _zone_getter = <function _get_default_zone at 0x7f2f4b86a5c0>
-        after_read = None
-        args       = (<SonicHost bjw3-can-7060-7>,)
-        before_write = None
-        cache      = <tests.common.cache.facts_cache.FactsCache object at 0x7f2f4b9fd970>
-        cached_facts = <object object at 0x7f2f4c12fd90>
-        disable_cache = False
-        kargs      = {}
-        name       = 'basic_facts'
-        target     = <function SonicHost._gather_facts at 0x7f2f4ae951c0>
-        zone       = 'bjw3-can-7060-7'
-        zone_getter = None
-common/devices/sonic.py:221: in _gather_facts
-    facts = self._get_platform_info()
-            ^^^^^^^^^^^^^^^^^^^^^^^^^
-        self       = <SonicHost bjw3-can-7060-7>
-common/devices/sonic.py:350: in _get_platform_info
-    platform_info = self.command("show platform summary")["stdout_lines"]
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        self       = <SonicHost bjw3-can-7060-7>
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+common/reboot.py:267: in execute_gnoi_reboot_command
+    ptf_gnoi.system_reboot(
+        hostname   = 'bjw3-can-7060-7'
+        method     = 1
+        params     = {'message': 'gNOI reboot test', 'method': 1}
+        ptf_gnoi   = PtfGnoi(grpc_client=PtfGrpc(target=10.150.238.105:50052, plaintext=False))
+        reboot_ctrl = {'cause': "'reboot'|Non-Hardware \\(reboot|^reboot", 'command': 'reboot', 'gnoi_api': {'method': 'Reboot', 'params': {'message': 'gNOI reboot test', 'method': 1}, 'service': 'gnoi.system.System'}, 'test_reboot_cause_only': False, ...}
+        reboot_type = 'cold'
+common/ptf_gnoi.py:165: in system_reboot
+    response = self.grpc_client.call_unary("gnoi.system.System", "Reboot", request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        delay      = None
+        force      = False
+        message    = 'gNOI reboot test'
+        method     = 1
+        request    = {'message': 'gNOI reboot test', 'method': 1}
+        self       = PtfGnoi(grpc_client=PtfGrpc(target=10.150.238.105:50052, plaintext=False))
+common/ptf_grpc.py:392: in call_unary
+    result = self._execute_grpcurl(cmd, request_data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        cmd        = ['grpcurl', '-cacert', '/etc/ssl/certs/gnmiCA.cer', '-cert', '/etc/ssl/certs/gnmiclient.cer', '-key', ...]
+        method     = 'Reboot'
+        request    = {'message': 'gNOI reboot test', 'method': 1}
+        request_data = '{"method": 1, "message": "gNOI reboot test"}'
+        self       = PtfGrpc(target=10.150.238.105:50052, plaintext=False)
+        service    = 'gnoi.system.System'
+        service_method = 'gnoi.system.System/Reboot'
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-self = <SonicHost bjw3-can-7060-7>, module_args = ['show platform summary'], complex_args = {}
-previous_frame = <frame at 0x7f2f4919b880, file '/var/src/sonic-mgmt-int/tests/common/devices/sonic.py', line 350, code _get_platform_info>
-filename = '/var/src/sonic-mgmt-int/tests/common/devices/sonic.py', line_number = 350, function_name = '_get_platform_info'
-lines = ['        platform_info = self.command("show platform summary")["stdout_lines"]\n'], index = 0, verbose = True, module_ignore_errors = False
-module_async = False
+self = PtfGrpc(target=10.150.238.105:50052, plaintext=False), cmd = ['grpcurl', '-cacert', '/etc/ssl/certs/gnmiCA.cer', '-cert', '/etc/ssl/certs/gnmiclient.cer', '-key', ...]
+input_data = '{"method": 1, "message": "gNOI reboot test"}'
 
-    def _run(self, *module_args, **complex_args):
+    def _execute_grpcurl(self, cmd: List[str], input_data: str = None) -> Dict:
+        """
+        Execute grpcurl command with enhanced error handling.
     
-        previous_frame = inspect.currentframe().f_back
-        filename, line_number, function_name, lines, index = inspect.getframeinfo(previous_frame)
+        Args:
+            cmd: grpcurl command as list
+            input_data: Optional input data to pipe to command
     
-        verbose = complex_args.pop('verbose', True)
+        Returns:
+            Dictionary with result information
     
-        if verbose:
-            logger.debug(
-                "{}::{}#{}: [{}] AnsibleModule::{}, args={}, kwargs={}".format(
-                    filename,
-                    function_name,
-                    line_number,
-                    self.hostname,
-                    self.module_name,
-                    json.dumps(module_args, cls=AnsibleHostBase.CustomEncoder),
-                    json.dumps(complex_args, cls=AnsibleHostBase.CustomEncoder)
-                )
-            )
+        Raises:
+            GrpcConnectionError: Connection-related failures
+            GrpcTimeoutError: Timeout-related failures
+            GrpcCallError: Other gRPC call failures
+        """
+        # Use ansible command module for robust execution
+        # Join command parts into a single command string
+        cmd_str = ' '.join(cmd)
+    
+        if input_data:
+            logger.debug(f"Executing: {cmd_str} (with stdin data)")
+            result = self.ptfhost.command(cmd_str, stdin=input_data, module_ignore_errors=True)
         else:
-            logger.debug(
-                "{}::{}#{}: [{}] AnsibleModule::{} executing...".format(
-                    filename,
-                    function_name,
-                    line_number,
-                    self.hostname,
-                    self.module_name
-                )
-            )
+            logger.debug(f"Executing: {cmd_str}")
+            result = self.ptfhost.command(cmd_str, module_ignore_errors=True)
     
-        module_ignore_errors = complex_args.pop('module_ignore_errors', False)
-        module_async = complex_args.pop('module_async', False)
+        # Analyze errors and provide specific exceptions
+        if result['rc'] != 0:
+            stderr = result['stderr']
     
-        if module_async:
-            def run_module(module_args, complex_args):
-                return self.module(*module_args, **complex_args)[self.hostname]
-            pool = ThreadPool()
-            result = pool.apply_async(run_module, (module_args, complex_args))
-            return pool, result
+            # Connection-related errors
+            if any(term in stderr.lower() for term in [
+                'connection refused', 'no such host', 'network is unreachable',
+                'connect: connection refused', 'dial tcp', 'connection failed'
+            ]):
+                raise GrpcConnectionError(f"Connection failed to {self.target}: {stderr}")
     
-        module_args = json.loads(json.dumps(module_args, cls=AnsibleHostBase.CustomEncoder))
-        complex_args = json.loads(json.dumps(complex_args, cls=AnsibleHostBase.CustomEncoder))
+            # Timeout-related errors
+            if any(term in stderr.lower() for term in [
+                'timeout', 'deadline exceeded', 'context deadline exceeded'
+            ]):
+                raise GrpcTimeoutError(f"Operation timed out after {self.timeout}s: {stderr}")
     
-        adhoc_res: AdHocResult = self.module(*module_args, **complex_args)
+            # Service/method not found
+            if any(term in stderr.lower() for term in [
+                'unknown service', 'unknown method', 'not found',
+                'unimplemented', 'service not found'
+            ]):
+                raise GrpcCallError(f"Service or method not found: {stderr}")
     
-        if self.module_name == "meta":
-            # The meta module is special in Ansible - it doesn't execute on remote hosts, it controls Ansible's behavior
-            # There are no per-host ModuleResults contained within it
-            return
-    
-        hostname_res: ModuleResult = adhoc_res[self.hostname]
-        hostname_res.encoder = AnsibleHostBase.CustomEncoder
-    
-        if verbose:
-            logger.debug(
-                "{}::{}#{}: [{}] AnsibleModule::{} Result => {}".format(
-                    filename,
-                    function_name,
-                    line_number,
-                    self.hostname,
-                    self.module_name, json.dumps(hostname_res, cls=AnsibleHostBase.CustomEncoder)
-                )
-            )
-        else:
-            logger.debug(
-                "{}::{}#{}: [{}] AnsibleModule::{} done, is_failed={}, rc={}".format(
-                    filename,
-                    function_name,
-                    line_number,
-                    self.hostname,
-                    self.module_name,
-                    hostname_res.is_failed,
-                    hostname_res.get('rc', None)
-                )
-            )
-    
-        if (hostname_res.is_failed or 'exception' in hostname_res) and not module_ignore_errors:
->           raise RunAnsibleModuleFail("run module {} failed".format(self.module_name), hostname_res)
-E           tests.common.errors.RunAnsibleModuleFail: run module command failed, Ansible Results =>
-E           failed = True
-E           msg = 'dict object' has no attribute 'altpasswords'
-E           _ansible_no_log = False
-E           stdout =
-E           stderr =
+            # Generic error
+>           raise PtfGrpcError(f"grpcurl failed: {stderr}")
+E           tests.common.ptf_grpc.PtfGrpcError: grpcurl failed: ERROR:
+E             Code: InvalidArgument
+E             Message: Invalid request: reboot method is not supported.
+
+cmd        = ['grpcurl', '-cacert', '/etc/ssl/certs/gnmiCA.cer', '-cert', '/etc/ssl/certs/gnmiclient.cer', '-key', ...]
+cmd_str    = 'grpcurl -cacert /etc/ssl/certs/gnmiCA.cer -cert /etc/ssl/certs/gnmiclient.cer -key /etc/ssl/certs/gnmiclient.key -connect-timeout 10.0 -format json 10.150.238.105:50052 gnoi.system.System/Reboot'
+input_data = '{"method": 1, "message": "gNOI reboot test"}'
+result     = {'failed': True, 'changed': True, 'stdout': '', 'stderr': 'ERROR:\n  Code: InvalidArgument\n  Message: Invalid request...', '  Code: InvalidArgument', '  Message: Invalid request: reboot method is not supported.'], '_ansible_no_log': False}
+self       = PtfGrpc(target=10.150.238.105:50052, plaintext=False)
+stderr     = 'ERROR:\n  Code: InvalidArgument\n  Message: Invalid request: reboot method is not supported.'
+
+common/ptf_grpc.py:192: PtfGrpcError
+
