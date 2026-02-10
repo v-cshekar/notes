@@ -190,3 +190,24 @@ INFO     tests.conftest:conftest.py:3072 Core dump and config check passed for t
 
 
 
+
+admin@sonic:~$ show version
+sudo: unable to resolve host sonic: Temporary failure in name resolution
+
+SONiC Software Version: SONiC.master.1026520-5c0567f38
+SONiC OS Version: 13
+Distribution: Debian 13.3
+Kernel: 6.12.41+deb13-sonic-amd64
+Build commit: 5c0567f38
+Build date: Thu Jan 29 14:32:09 UTC 2026
+Built by: azureuser@8c7d6550c000001
+
+Platform: x86_64-kvm_x86_64-r0
+HwSKU: Force10-S6000
+ASIC: vs
+ASIC Count: 1
+Serial Number: N/A
+Model Number: N/A
+Hardware Revision: N/A
+Uptime: 01:58:00 up 2 days, 20:44,  1 user,  load average: 5.09, 5.00, 5.05
+Date: Tue 10 Feb 2026 01:58:00
