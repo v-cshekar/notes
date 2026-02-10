@@ -1,3 +1,15 @@
+chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/ansible.cfg 
+chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/group_vars/vm_host/creds.yml 
+chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/host_vars/STR-ACS-VSERV-01.yml
+chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/veos_vtb 
+chandra@lenova:~/wipr/sonic-mgmt$ 
+
+To undo:
+git update-index --no-skip-worktree path/to/file
+
+
+---------------------------------------------------------------------------
+
 Linux Device IP: 
 ssh chandra@10.0.0.150
 
