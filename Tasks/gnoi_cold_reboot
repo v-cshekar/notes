@@ -1,3 +1,6 @@
+bjw3-can-7060-7
+ssh admin@10.150.238.105
+
 
 v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt-int$ docker exec --user v-cshekar -ti sonic-mgmt-chandra bash 
 v-cshekar@sonic-mgmt-chandra:~$
@@ -11,3 +14,55 @@ v-cshekar@sonic-mgmt-chandra:/var/src/sonic-mgmt-int/tests$ ./run_tests.sh -n te
 v-cshekar@sonic-mgmt-chandra:/var/src/sonic-mgmt-int/tests$
 ./run_tests.sh -n testbed-bjw3-can-t0-7060-7 -i ../ansible/veos,../ansible/bjw3 -u -m individual -c platform_tests/test_reboot.py::test_cold_reboot -e "--skip_sanity" -l info
 
+
+
+----------------------------------------------------------
+dEBUG iSSUE:
+
+
+ssh daweihuang@str-serv-acs-14 'grpcurl -plaintext \
+  -H "x-sonic-ss-target-type: dpu" \
+  -H "x-sonic-ss-target-index: 0" \
+  -d @ 10.3.146.230:8080 gnoi.system.System/Time <<'"'"'JSON'"'"'
+{}
+JSON'
+
+
+ssh daweihuang@str-serv-acs-14 'grpcurl -plaintext \
+  -H "x-sonic-ss-target-type: dpu" \
+  -H "x-sonic-ss-target-index: 0" \
+  -d @ 10.3.146.230:8080 gnoi.file.File/TransferToRemote <<'"'"'JSON'"'"'
+{
+  "local_path": "/var/tmp/sonic-20250610.05.bin",
+  "remote_download": {
+    "path": "http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/nvidia-bluefield/internal-202506/tagged/sonic-nvidia-bluefield-20250610.05.bin",
+    "protocol": "HTTP"
+  }
+}
+JSON'
+
+
+ssh daweihuang@str-serv-acs-14 'grpcurl -plaintext \
+  -H "x-sonic-ss-target-type: dpu" \
+  -H "x-sonic-ss-target-index: 0" \
+  -d @ 10.3.146.230:8080 gnoi.system.System/SetPackage <<'"'"'JSON'"'"'
+{
+  "package": {
+    "filename": "/var/tmp/sonic-20250610.05.bin",
+    "version": "SONiC-OS-20250610.05",
+    "activate": true
+  }
+}
+
+JSON'
+
+ssh daweihuang@str-serv-acs-14 'grpcurl -plaintext \
+  -H "x-sonic-ss-target-type: dpu" \
+  -H "x-sonic-ss-target-index: 0" \
+  -d @ 10.3.146.230:8080 gnoi.system.System/Reboot <<'"'"'JSON'"'"'
+{
+  "method": "COLD",
+  "delay": 0,
+  "message": "Rebooting DPU for maintenance"
+}
+JSON'
