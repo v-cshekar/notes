@@ -1,84 +1,92 @@
-INFO     tests.common.reboot:reboot.py:266 Rebooting str4-7060x6-512-4 via gNOI System.Reboot
-WARNING  tests.common.helpers.dut_utils:dut_utils.py:482 Issue trying to clear console port: Paramiko: 'No existing session' error: try increasing 'conn_timeout' to 15 seconds or larger.
-INFO     paramiko.transport:transport.py:1938 Connected (version 2.0, client OpenSSH_4.5)
-WARNING  tests.common.helpers.dut_utils:dut_utils.py:498 Attempt 1/3 failed: Paramiko: 'No existing session' error: try increasing 'conn_timeout' to 15 seconds or larger.
-INFO     paramiko.transport:transport.py:1938 Connected (version 2.0, client OpenSSH_4.5)
-WARNING  tests.common.helpers.dut_utils:dut_utils.py:498 Attempt 2/3 failed: Paramiko: 'No existing session' error: try increasing 'conn_timeout' to 15 seconds or larger.
-ERROR    paramiko.transport:transport.py:1938 Exception (client): Error reading SSH protocol banner[Errno 104] Connection reset by peer
-ERROR    paramiko.transport:transport.py:1936 Traceback (most recent call last):
-ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/transport.py", line 2363, in _check_banner
-ERROR    paramiko.transport:transport.py:1936     buf = self.packetizer.readline(timeout)
-ERROR    paramiko.transport:transport.py:1936           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/packet.py", line 395, in readline
-ERROR    paramiko.transport:transport.py:1936     buf += self._read_timeout(timeout)
-ERROR    paramiko.transport:transport.py:1936            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/packet.py", line 663, in _read_timeout
-ERROR    paramiko.transport:transport.py:1936     x = self.__socket.recv(128)
-ERROR    paramiko.transport:transport.py:1936         ^^^^^^^^^^^^^^^^^^^^^^^
-ERROR    paramiko.transport:transport.py:1936 ConnectionResetError: [Errno 104] Connection reset by peer
-ERROR    paramiko.transport:transport.py:1936 
-ERROR    paramiko.transport:transport.py:1936 During handling of the above exception, another exception occurred:
-ERROR    paramiko.transport:transport.py:1936 
-ERROR    paramiko.transport:transport.py:1936 Traceback (most recent call last):
-ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/transport.py", line 2179, in run
-ERROR    paramiko.transport:transport.py:1936     self._check_banner()
-ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/transport.py", line 2367, in _check_banner
-ERROR    paramiko.transport:transport.py:1936     raise SSHException(
-ERROR    paramiko.transport:transport.py:1936 paramiko.ssh_exception.SSHException: Error reading SSH protocol banner[Errno 104] Connection reset by peer
-ERROR    paramiko.transport:transport.py:1936 
-WARNING  tests.common.helpers.dut_utils:dut_utils.py:498 Attempt 3/3 failed: 
-A paramiko SSHException occurred during connection creation:
-
-Error reading SSH protocol banner[Errno 104] Connection reset by peer
-
-
-WARNING  tests.common.reboot:reboot.py:744 Fail to create dut console. Please check console config or if console works ro not. Failed to set up connection to console port. See warning logs for details.
-WARNING  tests.common.reboot:reboot.py:759 dut console is not ready, we cannot get log by console
-ERROR    root:__init__.py:40 Traceback (most recent call last):
-  File "/opt/venv/lib/python3.12/site-packages/_pytest/python.py", line 1720, in runtest
-    self.ihook.pytest_pyfunc_call(pyfuncitem=self)
-  File "/opt/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
-    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
-    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 167, in _multicall
-    raise exception
-  File "/opt/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
-    res = hook_impl.function(*args)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/venv/lib/python3.12/site-packages/_pytest/python.py", line 166, in pytest_pyfunc_call
-    result = testfunction(**testargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/var/src/sonic-mgmt-int/tests/platform_tests/test_reboot.py", line 219, in test_cold_reboot
-    reboot_and_check(localhost, duthost, conn_graph_facts.get("device_conn", {}).get(duthost.hostname, {}),
-  File "/var/src/sonic-mgmt-int/tests/platform_tests/test_reboot.py", line 116, in reboot_and_check
-    reboot(dut, localhost, reboot_type=reboot_type,
-  File "/var/src/sonic-mgmt-int/tests/common/plugins/loganalyzer/utils.py", line 25, in decorated
-    res = func(*args, **kwargs)
-          ^^^^^^^^^^^^^^^^^^^^^
-  File "/var/src/sonic-mgmt-int/tests/common/helpers/parallel_utils.py", line 336, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/var/src/sonic-mgmt-int/tests/common/reboot.py", line 413, in reboot
+common/reboot.py:413: in reboot
     wait_for_shutdown(duthost, localhost, delay, timeout, reboot_res)
-  File "/var/src/sonic-mgmt-int/tests/common/reboot.py", line 218, in wait_for_shutdown
+        check_intf_up_ports = False
+        console_thread_res = <multiprocessing.pool.ApplyResult object at 0x7fbc90adfec0>
+        delay      = 10
+        dut_datetime = datetime.datetime(2026, 2, 13, 21, 6, 39)
+        duthost    = <MultiAsicSonicHost bjw3-can-7060-7>
+        hostname   = 'bjw3-can-7060-7'
+        invocation_type = 'gnoi_based'
+        localhost  = <tests.common.devices.local.Localhost object at 0x7fbc926402f0>
+        plt_reboot_ctrl = {}
+        pool       = <multiprocessing.pool.ThreadPool state=RUN pool_size=56>
+        prev_reboot_cause_history = None
+        ptf_gnoi   = PtfGnoi(grpc_client=PtfGrpc(target=10.150.238.105:50052, plaintext=False))
+        reboot_command = 'reboot'
+        reboot_ctrl = {'cause': "'reboot'|Non-Hardware \\(reboot|^reboot", 'command': 'reboot', 'gnoi_api': {'method': 'Reboot', 'params': {'message': 'gNOI reboot test', 'method': 'COLD'}, 'service': 'gnoi.system.System'}, 'test_reboot_cause_only': False, ...}
+        reboot_helper = None
+        reboot_kwargs = None
+        reboot_res = <multiprocessing.pool.ApplyResult object at 0x7fbc90adf650>
+        reboot_type = 'cold'
+        return_after_reconnect = False
+        safe_reboot = False
+        tc_name    = 'tests/platform_tests/test_reboot.py::test_cold_reboot[gnoi_based-bjw3-can-7060-7]'
+        timeout    = 300
+        wait       = 120
+        wait_conlsole_connection = 5
+        wait_for_bgp = False
+        wait_for_ibgp = True
+        wait_for_ssh = True
+        wait_warmboot_finalizer = False
+        warmboot_finalizer_timeout = 0
+common/reboot.py:218: in wait_for_shutdown
     logger.error('reboot result: {} on {}'.format(reboot_res.get(), hostname))
                                                   ^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/multiprocessing/pool.py", line 774, in get
+        delay      = 10
+        dut_ip     = '10.150.238.105'
+        duthost    = <MultiAsicSonicHost bjw3-can-7060-7>
+        hostname   = 'bjw3-can-7060-7'
+        localhost  = <tests.common.devices.local.Localhost object at 0x7fbc926402f0>
+        reboot_res = <multiprocessing.pool.ApplyResult object at 0x7fbc90adf650>
+        res        = {'failed': True, 'elapsed': 300, 'msg': 'Timeout when waiting for 10.150.238.105:22 to stop.', 'invocation': {'module_...IME_WAIT'], 'sleep': 1, 'path': None, 'exclude_hosts': None, 'msg': None}}, '_ansible_no_log': False, 'changed': False}
+        timeout    = 300
+/usr/lib/python3.12/multiprocessing/pool.py:774: in get
     raise self._value
-  File "/usr/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+        self       = <multiprocessing.pool.ApplyResult object at 0x7fbc90adf650>
+        timeout    = None
+/usr/lib/python3.12/multiprocessing/pool.py:125: in worker
     result = (True, func(*args, **kwds))
                     ^^^^^^^^^^^^^^^^^^^
-  File "/var/src/sonic-mgmt-int/tests/common/reboot.py", line 267, in execute_gnoi_reboot_command
+        args       = None
+        completed  = 1
+        func       = None
+        get        = <built-in method get of _queue.SimpleQueue object at 0x7fbc8f222340>
+        i          = 0
+        initargs   = ()
+        initializer = None
+        inqueue    = <_queue.SimpleQueue object at 0x7fbc8f222340>
+        job        = None
+        kwds       = None
+        maxtasks   = None
+        outqueue   = <_queue.SimpleQueue object at 0x7fbc8f222a20>
+        put        = <built-in method put of _queue.SimpleQueue object at 0x7fbc8f222a20>
+        result     = None
+        task       = None
+        wrap_exception = False
+common/reboot.py:267: in execute_gnoi_reboot_command
     ptf_gnoi.system_reboot(
-  File "/var/src/sonic-mgmt-int/tests/common/ptf_gnoi.py", line 165, in system_reboot
+        hostname   = 'bjw3-can-7060-7'
+        method     = 'COLD'
+        params     = {'message': 'gNOI reboot test', 'method': 'COLD'}
+        ptf_gnoi   = PtfGnoi(grpc_client=PtfGrpc(target=10.150.238.105:50052, plaintext=False))
+        reboot_ctrl = {'cause': "'reboot'|Non-Hardware \\(reboot|^reboot", 'command': 'reboot', 'gnoi_api': {'method': 'Reboot', 'params': {'message': 'gNOI reboot test', 'method': 'COLD'}, 'service': 'gnoi.system.System'}, 'test_reboot_cause_only': False, ...}
+        reboot_type = 'cold'
+common/ptf_gnoi.py:160: in system_reboot
     response = self.grpc_client.call_unary("gnoi.system.System", "Reboot", request)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/var/src/sonic-mgmt-int/tests/common/ptf_grpc.py", line 392, in call_unary
+        delay      = None
+        force      = False
+        message    = 'gNOI reboot test'
+        method     = 'COLD'
+        request    = {'message': 'gNOI reboot test', 'method': 'COLD'}
+        self       = PtfGnoi(grpc_client=PtfGrpc(target=10.150.238.105:50052, plaintext=False))
+common/ptf_grpc.py:392: in call_unary
     result = self._execute_grpcurl(cmd, request_data)
              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/var/src/sonic-mgmt-int/tests/common/ptf_grpc.py", line 192, in _execute_grpcurl
-    raise PtfGrpcError(f"grpcurl failed: {stderr}")
-tests.common.ptf_grpc.PtfGrpcError: grpcurl failed: 
+        cmd        = ['grpcurl', '-cacert', '/etc/ssl/certs/gnmiCA.cer', '-cert', '/etc/ssl/certs/gnmiclient.cer', '-key', ...]
+        method     = 'Reboot'
+        request    = {'message': 'gNOI reboot test', 'method': 'COLD'}
+        request_data = '{"method": "COLD", "message": "gNOI reboot test"}'
+        self       = PtfGrpc(target=10.150.238.105:50052, plaintext=False)
+        service    = 'gnoi.system.System'
+        service_method = 'gnoi.system.System/Reboot'
