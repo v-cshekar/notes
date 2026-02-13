@@ -17,3 +17,7 @@ git checkout -b import_gnoi_reboot_series
 git am --3way /tmp/patches_gnoi/*.patch
 
 ------------------------------------------------------------------
+Applying single patch:
+v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt$ git show 2591a1e38a850ca5c32ca20f80ded11510107fc3 > /tmp/gnoi_reboot.patch 
+v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt$ cd ../sonic-mgmt-int/
+v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt-int$ git apply /tmp/gnoi_reboot.patch
