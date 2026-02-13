@@ -1,4 +1,39 @@
+INFO     tests.common.reboot:reboot.py:266 Rebooting str4-7060x6-512-4 via gNOI System.Reboot
+WARNING  tests.common.helpers.dut_utils:dut_utils.py:482 Issue trying to clear console port: Paramiko: 'No existing session' error: try increasing 'conn_timeout' to 15 seconds or larger.
+INFO     paramiko.transport:transport.py:1938 Connected (version 2.0, client OpenSSH_4.5)
+WARNING  tests.common.helpers.dut_utils:dut_utils.py:498 Attempt 1/3 failed: Paramiko: 'No existing session' error: try increasing 'conn_timeout' to 15 seconds or larger.
+INFO     paramiko.transport:transport.py:1938 Connected (version 2.0, client OpenSSH_4.5)
+WARNING  tests.common.helpers.dut_utils:dut_utils.py:498 Attempt 2/3 failed: Paramiko: 'No existing session' error: try increasing 'conn_timeout' to 15 seconds or larger.
+ERROR    paramiko.transport:transport.py:1938 Exception (client): Error reading SSH protocol banner[Errno 104] Connection reset by peer
+ERROR    paramiko.transport:transport.py:1936 Traceback (most recent call last):
+ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/transport.py", line 2363, in _check_banner
+ERROR    paramiko.transport:transport.py:1936     buf = self.packetizer.readline(timeout)
+ERROR    paramiko.transport:transport.py:1936           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/packet.py", line 395, in readline
+ERROR    paramiko.transport:transport.py:1936     buf += self._read_timeout(timeout)
+ERROR    paramiko.transport:transport.py:1936            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/packet.py", line 663, in _read_timeout
+ERROR    paramiko.transport:transport.py:1936     x = self.__socket.recv(128)
+ERROR    paramiko.transport:transport.py:1936         ^^^^^^^^^^^^^^^^^^^^^^^
+ERROR    paramiko.transport:transport.py:1936 ConnectionResetError: [Errno 104] Connection reset by peer
+ERROR    paramiko.transport:transport.py:1936 
+ERROR    paramiko.transport:transport.py:1936 During handling of the above exception, another exception occurred:
+ERROR    paramiko.transport:transport.py:1936 
+ERROR    paramiko.transport:transport.py:1936 Traceback (most recent call last):
+ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/transport.py", line 2179, in run
+ERROR    paramiko.transport:transport.py:1936     self._check_banner()
+ERROR    paramiko.transport:transport.py:1936   File "/opt/venv/lib/python3.12/site-packages/paramiko/transport.py", line 2367, in _check_banner
+ERROR    paramiko.transport:transport.py:1936     raise SSHException(
+ERROR    paramiko.transport:transport.py:1936 paramiko.ssh_exception.SSHException: Error reading SSH protocol banner[Errno 104] Connection reset by peer
+ERROR    paramiko.transport:transport.py:1936 
+WARNING  tests.common.helpers.dut_utils:dut_utils.py:498 Attempt 3/3 failed: 
+A paramiko SSHException occurred during connection creation:
 
+Error reading SSH protocol banner[Errno 104] Connection reset by peer
+
+
+WARNING  tests.common.reboot:reboot.py:744 Fail to create dut console. Please check console config or if console works ro not. Failed to set up connection to console port. See warning logs for details.
+WARNING  tests.common.reboot:reboot.py:759 dut console is not ready, we cannot get log by console
 ERROR    root:__init__.py:40 Traceback (most recent call last):
   File "/opt/venv/lib/python3.12/site-packages/_pytest/python.py", line 1720, in runtest
     self.ihook.pytest_pyfunc_call(pyfuncitem=self)
@@ -46,6 +81,4 @@ ERROR    root:__init__.py:40 Traceback (most recent call last):
              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/var/src/sonic-mgmt-int/tests/common/ptf_grpc.py", line 192, in _execute_grpcurl
     raise PtfGrpcError(f"grpcurl failed: {stderr}")
-tests.common.ptf_grpc.PtfGrpcError: grpcurl failed: ERROR:
-  Code: InvalidArgument
-  Message: Invalid request: reboot method is not supported.
+tests.common.ptf_grpc.PtfGrpcError: grpcurl failed: 
