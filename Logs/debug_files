@@ -1,3 +1,6 @@
+cmd = self._build_grpcurl_cmd(extra_args=["-d", "@"], service_method=service_method)
+
+
 common/reboot.py:413: in reboot
     wait_for_shutdown(duthost, localhost, delay, timeout, reboot_res)
         check_intf_up_ports = False
