@@ -17,7 +17,21 @@ git checkout -b import_gnoi_reboot_series
 git am --3way /tmp/patches_gnoi/*.patch
 
 ------------------------------------------------------------------
-Applying single patch:
-v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt$ git show 2591a1e38a850ca5c32ca20f80ded11510107fc3 > /tmp/gnoi_reboot.patch 
-v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt$ cd ../sonic-mgmt-int/
-v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt-int$ git apply /tmp/gnoi_reboot.patch
+TO rebase my fork branch
+
+ Add upstream (if not already added) check using git remote -v:
+git remote add upstream https://github.com/sonic-net/sonic-mgmt.git
+Note:
+
+git remote -v
+origin    https://github.com/v-cshekar/sonic-mgmt.git (fetch)
+origin    https://github.com/v-cshekar/sonic-mgmt.git (push)
+upstream  https://github.com/sonic-net/sonic-mgmt.git (fetch)
+upstream  https://github.com/sonic-net/sonic-mgmt.git (push)
+
+
+
+git fetch upstream
+git rebase upstream/master
+
+git push origin v-cshekar/gnoi_reboot_test --force-with-lease
