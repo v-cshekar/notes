@@ -16,3 +16,6 @@ INFO     tests.conftest:conftest.py:3106 Core dump and config check passed for t
  tests/platform_tests/test_reboot.py::test_cold_reboot[cli_based-bjw3-can-7060-7] ✓                                                                                                                                                       100% ██████████
 =================================================================================================================== warnings summary ====================================================================================================================
 <frozen importlib._bootstrap>:488
+
+
+@pytest.mark.usefixtures("setup_gnoi_tls_server")
