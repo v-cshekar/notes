@@ -1,95 +1,18 @@
-cmd = self._build_grpcurl_cmd(extra_args=["-d", "@"], service_method=service_method)
+v-cshekar@sonic-mgmt-chandra:/var/src/sonic-mgmt-int/tests$ ./run_tests.sh -n testbed-bjw3-can-t0-7060-7 -i ../ansible/veos,../ansible/bjw3 -u -m individual -c platform_tests/test_reboot.py::test_cold_reboot -e "--skip_sanity" -l info
+pkill: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pkill -f' option to match against the complete command line.
+
+INFO     tests.common.plugins.memory_utilization:__init__.py:124 After test: collected memory_values {'before_test': {'bjw3-can-7060-7': {'monit': {'memory_usage': 52.5}, 'top': {'zebra': 39.0, 'bgpd': 72.7}, 'free': {'used': 4097}, 'docker': {'snmp': 0.8, 'pmon': 3.4, 'lldp': 0.8, 'gnmi': 0.8, 'radv': 0.4, 'syncd': 8.2, 'bgp': 2.5, 'teamd': 0.5, 'swss': 2.8, 'database': 0.8}, 'frr_bgp': {'used': 64.0}, 'frr_zebra': {'used': 46.0}}}, 'after_test': {'bjw3-can-7060-7': {'monit': {}, 'top': {'zebra': 23.2, 'bgpd': 63.3}, 'free': {'used': 3927}, 'docker': {'snmp': 0.8, 'pmon': 3.4, 'lldp': 0.8, 'gnmi': 0.8, 'radv': 0.4, 'syncd': 7.7, 'teamd': 0.5, 'bgp': 2.1, 'swss': 3.0, 'database': 0.8}, 'frr_bgp': {'used': 64.0}, 'frr_zebra': {'used': 47.0}}}}
+ tests/platform_tests/test_reboot.py::test_cold_reboot[gnoi_based-bjw3-can-7060-7] ✓                                                                                                                                                       50% █████     
+-------------------------------------------------------------------------------------------------------------------- live log setup ---------------------------------------------------------------------------------------------------------------------
+INFO     root:__init__.py:53 Completeness level not set during test execution. Setting to default level: 1
+INFO     root:__init__.py:151 Test has no defined levels. Continue without test completeness checks
 
 
-common/reboot.py:413: in reboot
-    wait_for_shutdown(duthost, localhost, delay, timeout, reboot_res)
-        check_intf_up_ports = False
-        console_thread_res = <multiprocessing.pool.ApplyResult object at 0x7fbc90adfec0>
-        delay      = 10
-        dut_datetime = datetime.datetime(2026, 2, 13, 21, 6, 39)
-        duthost    = <MultiAsicSonicHost bjw3-can-7060-7>
-        hostname   = 'bjw3-can-7060-7'
-        invocation_type = 'gnoi_based'
-        localhost  = <tests.common.devices.local.Localhost object at 0x7fbc926402f0>
-        plt_reboot_ctrl = {}
-        pool       = <multiprocessing.pool.ThreadPool state=RUN pool_size=56>
-        prev_reboot_cause_history = None
-        ptf_gnoi   = PtfGnoi(grpc_client=PtfGrpc(target=10.150.238.105:50052, plaintext=False))
-        reboot_command = 'reboot'
-        reboot_ctrl = {'cause': "'reboot'|Non-Hardware \\(reboot|^reboot", 'command': 'reboot', 'gnoi_api': {'method': 'Reboot', 'params': {'message': 'gNOI reboot test', 'method': 'COLD'}, 'service': 'gnoi.system.System'}, 'test_reboot_cause_only': False, ...}
-        reboot_helper = None
-        reboot_kwargs = None
-        reboot_res = <multiprocessing.pool.ApplyResult object at 0x7fbc90adf650>
-        reboot_type = 'cold'
-        return_after_reconnect = False
-        safe_reboot = False
-        tc_name    = 'tests/platform_tests/test_reboot.py::test_cold_reboot[gnoi_based-bjw3-can-7060-7]'
-        timeout    = 300
-        wait       = 120
-        wait_conlsole_connection = 5
-        wait_for_bgp = False
-        wait_for_ibgp = True
-        wait_for_ssh = True
-        wait_warmboot_finalizer = False
-        warmboot_finalizer_timeout = 0
-common/reboot.py:218: in wait_for_shutdown
-    logger.error('reboot result: {} on {}'.format(reboot_res.get(), hostname))
-                                                  ^^^^^^^^^^^^^^^^
-        delay      = 10
-        dut_ip     = '10.150.238.105'
-        duthost    = <MultiAsicSonicHost bjw3-can-7060-7>
-        hostname   = 'bjw3-can-7060-7'
-        localhost  = <tests.common.devices.local.Localhost object at 0x7fbc926402f0>
-        reboot_res = <multiprocessing.pool.ApplyResult object at 0x7fbc90adf650>
-        res        = {'failed': True, 'elapsed': 300, 'msg': 'Timeout when waiting for 10.150.238.105:22 to stop.', 'invocation': {'module_...IME_WAIT'], 'sleep': 1, 'path': None, 'exclude_hosts': None, 'msg': None}}, '_ansible_no_log': False, 'changed': False}
-        timeout    = 300
-/usr/lib/python3.12/multiprocessing/pool.py:774: in get
-    raise self._value
-        self       = <multiprocessing.pool.ApplyResult object at 0x7fbc90adf650>
-        timeout    = None
-/usr/lib/python3.12/multiprocessing/pool.py:125: in worker
-    result = (True, func(*args, **kwds))
-                    ^^^^^^^^^^^^^^^^^^^
-        args       = None
-        completed  = 1
-        func       = None
-        get        = <built-in method get of _queue.SimpleQueue object at 0x7fbc8f222340>
-        i          = 0
-        initargs   = ()
-        initializer = None
-        inqueue    = <_queue.SimpleQueue object at 0x7fbc8f222340>
-        job        = None
-        kwds       = None
-        maxtasks   = None
-        outqueue   = <_queue.SimpleQueue object at 0x7fbc8f222a20>
-        put        = <built-in method put of _queue.SimpleQueue object at 0x7fbc8f222a20>
-        result     = None
-        task       = None
-        wrap_exception = False
-common/reboot.py:267: in execute_gnoi_reboot_command
-    ptf_gnoi.system_reboot(
-        hostname   = 'bjw3-can-7060-7'
-        method     = 'COLD'
-        params     = {'message': 'gNOI reboot test', 'method': 'COLD'}
-        ptf_gnoi   = PtfGnoi(grpc_client=PtfGrpc(target=10.150.238.105:50052, plaintext=False))
-        reboot_ctrl = {'cause': "'reboot'|Non-Hardware \\(reboot|^reboot", 'command': 'reboot', 'gnoi_api': {'method': 'Reboot', 'params': {'message': 'gNOI reboot test', 'method': 'COLD'}, 'service': 'gnoi.system.System'}, 'test_reboot_cause_only': False, ...}
-        reboot_type = 'cold'
-common/ptf_gnoi.py:160: in system_reboot
-    response = self.grpc_client.call_unary("gnoi.system.System", "Reboot", request)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        delay      = None
-        force      = False
-        message    = 'gNOI reboot test'
-        method     = 'COLD'
-        request    = {'message': 'gNOI reboot test', 'method': 'COLD'}
-        self       = PtfGnoi(grpc_client=PtfGrpc(target=10.150.238.105:50052, plaintext=False))
-common/ptf_grpc.py:392: in call_unary
-    result = self._execute_grpcurl(cmd, request_data)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        cmd        = ['grpcurl', '-cacert', '/etc/ssl/certs/gnmiCA.cer', '-cert', '/etc/ssl/certs/gnmiclient.cer', '-key', ...]
-        method     = 'Reboot'
-        request    = {'message': 'gNOI reboot test', 'method': 'COLD'}
-        request_data = '{"method": "COLD", "message": "gNOI reboot test"}'
-        self       = PtfGrpc(target=10.150.238.105:50052, plaintext=False)
-        service    = 'gnoi.system.System'
-        service_method = 'gnoi.system.System/Reboot'
+INFO     tests.conftest:conftest.py:2945 Dumping Disk and Memory Space information after test on bjw3-can-7060-7
+INFO     tests.conftest:conftest.py:2949 Collecting core dumps after test on bjw3-can-7060-7
+INFO     tests.conftest:conftest.py:2960 Collecting running config after test on bjw3-can-7060-7
+INFO     tests.conftest:conftest.py:3106 Core dump and config check passed for test_reboot.py
+ tests/platform_tests/test_reboot.py::test_cold_reboot[cli_based-bjw3-can-7060-7] ✓                                                                                                                                                       100% ██████████
+=================================================================================================================== warnings summary ====================================================================================================================
+<frozen importlib._bootstrap>:488
