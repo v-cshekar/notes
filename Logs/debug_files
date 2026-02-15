@@ -18,4 +18,5 @@ INFO     tests.conftest:conftest.py:3106 Core dump and config check passed for t
 <frozen importlib._bootstrap>:488
 
 
-@pytest.mark.usefixtures("setup_gnoi_tls_server")
+DUT host unreachable for vms-kvm-t0 on running generic_config_updater/test_srv6.py
+generic_config_updater/test_dns_nameserver.py|||2 failed for RUN_TEST_CASE_FAILED, stop whole test plan
