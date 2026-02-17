@@ -66,3 +66,29 @@ ssh daweihuang@str-serv-acs-14 'grpcurl -plaintext \
   "message": "Rebooting DPU for maintenance"
 }
 JSON'
+
+test_gnoi_system.py
+
+def test_system_reboot(ptf_gnoi):  # noqa: F811
+    """
+    Test System.Reboot RPC via ptf_gnoi.
+
+    Uses delay=60 so the server may return before rebooting.
+    Accepts either a successful response or connection loss (reboot initiated).
+    """
+    try:
+        result = ptf_gnoi.system_reboot(
+            method="COLD",
+            message="gnoi_system_test_reboot",
+            force=False,
+        )
+        # If we get here, server returned before rebooting
+        assert isinstance(result, dict)
+        logger.info("System.Reboot returned: %s", result)
+    except Exception as e:
+        # Connection lost is expected when reboot starts immediately
+        err_str = str(e).lower()
+        if any(x in err_str for x in ["unavailable", "eof", "connection", "reset"]):
+            logger.info("Connection lost (reboot likely initiated): %s", e)
+        else:
+            raise
