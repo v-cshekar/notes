@@ -20,3 +20,84 @@ INFO     tests.conftest:conftest.py:3106 Core dump and config check passed for t
 
 DUT host unreachable for vms-kvm-t0 on running generic_config_updater/test_srv6.py
 generic_config_updater/test_dns_nameserver.py|||2 failed for RUN_TEST_CASE_FAILED, stop whole test plan
+
+
+
+
+---------------------------------------------------------------------------------------------
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int/tests$ ./run_tests.sh -n vms20-t0-7060 -i ../ansible/str2,../ansible/veos -u -m individual -c upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi upgrade_type=cold --base_image_list==http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi --target_image_list==http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi  --target_version=SONiC.20250510.30 -m posttest
+pkill: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pkill -f' option to match against the complete command line.
+=== Clearing pytest cache ===
+=== Running tests individually ===
+Running: python3 -m pytest upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi --inventory ../ansible/str2,../ansible/veos --host-pattern str2-7060cx-32s-29 --dpu-pattern None --testbed vms20-t0-7060 --testbed_file /var/src/sonic-mgmt-int/ansible/testbed.yaml --log-cli-level warning --log-file-level debug --kube_master unset --showlocals --assert plain --show-capture no -rav --allow_recover --ignore=ptftests --ignore=acstests --ignore=saitests --ignore=scripts --ignore=k8s --ignore=sai_qualify --log-file logs/upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi.log --junitxml=logs/upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi.xml
+Test session starts (platform: linux, Python 3.12.3, pytest 9.0.2, pytest-sugar 1.1.1)
+ansible: 2.18.12
+rootdir: /var/src/sonic-mgmt-int
+configfile: pyproject.toml
+plugins: ansible-25.12.0, metadata-3.1.1, cov-7.0.0, stress-1.0.1, xdist-3.8.0, sugar-1.1.1, allure-pytest-2.15.3, repeat-0.9.4, plus-0.8.1, html-4.2.0
+collected 1 item
+
+ tests/upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi s                                                                                                           100% ██████████
+==================================================================================== warnings summary =====================================================================================
+common/helpers/dut_utils.py:416
+  /var/src/sonic-mgmt-int/tests/common/helpers/dut_utils.py:416: SyntaxWarning: invalid escape sequence '\['
+    regexp="(^[^#]*@\[10\.20\.6\.16\]:514)",
+
+common/helpers/dut_utils.py:417
+  /var/src/sonic-mgmt-int/tests/common/helpers/dut_utils.py:417: SyntaxWarning: invalid escape sequence '\g'
+    line="# \g<1>"
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+../../../../opt/venv/lib/python3.12/site-packages/google/protobuf/internal/well_known_types.py:93
+  /opt/venv/lib/python3.12/site-packages/google/protobuf/internal/well_known_types.py:93: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+    _EPOCH_DATETIME_NAIVE = datetime.datetime.utcfromtimestamp(0)
+
+ptf_runner.py:3
+  /var/src/sonic-mgmt-int/tests/ptf_runner.py:3: DeprecationWarning: 'pipes' is deprecated and slated for removal in Python 3.13
+    import pipes
+
+common/helpers/upgrade_helpers.py:195
+  /var/src/sonic-mgmt-int/tests/common/helpers/upgrade_helpers.py:195: SyntaxWarning: invalid escape sequence '\['
+    "bcmcmd -n 0 'dump chg my_station_tcam' | grep -c '\[{}\]'".format(
+
+platform_tests/test_reboot.py:27
+  /var/src/sonic-mgmt-int/tests/platform_tests/test_reboot.py:27: PytestUnknownMarkWarning: Unknown pytest.mark.disable_loganalyzer - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.mark.disable_loganalyzer,
+
+upgrade_path/test_upgrade_path.py:30
+  /var/src/sonic-mgmt-int/tests/upgrade_path/test_upgrade_path.py:30: PytestUnknownMarkWarning: Unknown pytest.mark.sanity_check - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.mark.sanity_check(skip_sanity=True),
+
+upgrade_path/test_upgrade_path.py:31
+  /var/src/sonic-mgmt-int/tests/upgrade_path/test_upgrade_path.py:31: PytestUnknownMarkWarning: Unknown pytest.mark.disable_loganalyzer - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.mark.disable_loganalyzer,
+
+upgrade_path/test_upgrade_path.py:32
+  /var/src/sonic-mgmt-int/tests/upgrade_path/test_upgrade_path.py:32: PytestUnknownMarkWarning: Unknown pytest.mark.skip_check_dut_health - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.mark.skip_check_dut_health
+
+upgrade_path/test_upgrade_gnoi.py:14
+  /var/src/sonic-mgmt-int/tests/upgrade_path/test_upgrade_gnoi.py:14: PytestUnknownMarkWarning: Unknown pytest.mark.disable_loganalyzer - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.mark.disable_loganalyzer,
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+----------------------------------- generated xml file: /var/src/sonic-mgmt-int/tests/logs/upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi.xml -----------------------------------
+================================================================================= short test summary info =================================================================================
+SKIPPED [1] upgrade_path/conftest.py:17: base_image_list or target_image_list is empty
+
+Results (49.91s):
+       1 skipped
+
+
+
+
+
+
+
+
