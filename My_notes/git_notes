@@ -1,4 +1,5 @@
 Creating and Applying Patches Between Two Git Repositories
+----------------------------------------------------------
 
 # 1. Create directory for patch files
 mkdir -p /tmp/patches_gnoi
@@ -15,6 +16,16 @@ git checkout -b import_gnoi_reboot_series
 
 # 5. Apply patches with 3‑way merge fallback
 git am --3way /tmp/patches_gnoi/*.patch
+
+
+To apply a single patch:
+----------------------------
+v-cshekar@str-serv-acs-14:~/projects/sonic-mgmt$ git format-patch -1 57dbf42babb4cbc82fe0b8f0b0371f16c376b5b8 -o /tmp/patches
+/tmp/patches/0001-Added-upgrade-path-via-gnoi-testcases.-22176.patch
+
+Then from dest:
+v-cshekar@str-serv-acs-14:~/projects/sonic-mgmt-int$ git am /tmp/patches/0001-Added-upgrade-path-via-gnoi-testcases.-22176.patch
+Applying: Added upgrade path via gnoi testcases. (#22176)
 
 ------------------------------------------------------------------
 TO rebase my fork branch
