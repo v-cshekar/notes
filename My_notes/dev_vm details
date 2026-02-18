@@ -1,0 +1,4 @@
+IP address: 10.52.6.79
+VM name: v-cshekar-dev-vm
+
+To login: ssh v-cshekar@10.52.6.79
