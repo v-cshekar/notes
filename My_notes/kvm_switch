@@ -1,3 +1,7 @@
+Documentation
+https://github.com/sonic-net/sonic-mgmt/blob/ad115f841f373b0259daee5c62d537aeae036d6e/docs/testbed/README.testbed.VsSetup.md
+
+
 chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/ansible.cfg 
 chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/group_vars/vm_host/creds.yml 
 chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/host_vars/STR-ACS-VSERV-01.yml
