@@ -1,0 +1,6 @@
+To run the test:
+----------------
+
+./run_tests.sh -n vms20-t0-7060 -i ../ansible/str2,../ansible/veos -u -m individual \
+  -c upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi \
+  -e "--upgrade_type=cold --base_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi --target_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi --target_version=SONiC.20250510.30" -l info 
