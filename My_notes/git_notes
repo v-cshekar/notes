@@ -46,3 +46,54 @@ git fetch upstream
 git rebase upstream/master
 
 git push origin v-cshekar/gnoi_reboot_test --force-with-lease
+
+----------------------------------------------------------------------------------
+
+
+
+# Checkout a Branch from Your Fork (sonic-mgmt)
+
+Quick reference for checking out a branch from your fork when your local repo tracks upstream (e.g. `origin` = sonic-net/sonic-mgmt).
+
+## One-time setup: Add your fork as a remote
+
+```bash
+git remote add fork https://github.com/v-cshekar/sonic-mgmt.git
+```
+
+- Remote name `fork` is arbitrary; you can use `myfork`, `v-cshekar`, etc.
+- If you see *"remote 'fork' already exists"*, skip this step.
+
+## Each time you want a branch from the fork
+
+**1. Fetch latest from the fork**
+
+```bash
+git fetch fork
+```
+
+**2. Create and checkout the branch**
+
+```bash
+git checkout -b <branch-name> fork/<branch-name>
+```
+
+Example for branch `v-cshekar/upgrade_reboot`:
+
+```bash
+git checkout -b v-cshekar/upgrade_reboot fork/v-cshekar/upgrade_reboot
+```
+
+## Useful commands
+
+| Task | Command |
+|------|--------|
+| List branches on fork | `git branch -r` (look for `fork/...`) |
+| See remotes | `git remote -v` |
+| Update fork refs later | `git fetch fork` |
+
+## Summary
+
+1. `git remote add fork https://github.com/v-cshekar/sonic-mgmt.git`  *(once)*  
+2. `git fetch fork`  
+3. `git checkout -b <branch> fork/<branch>`
