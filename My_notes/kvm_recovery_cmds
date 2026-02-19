@@ -35,3 +35,64 @@ Why: The DUT is recreated by add-topo, so it has no minigraph. This step reappli
 Short version (copy-paste)
 # 1. Restore bridgecd ~/workspace/sonic-mgmt/ansible && sudo -H ./setup-management-network.sh -d# 2. Start sonic-mgmt containerdocker start sonic-mgmt# 3. Deploy topologydocker exec -it sonic-mgmt bash -c "cd /data/sonic-mgmt/ansible && ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb add-topo vms-kvm-t0 password.txt"# 4. Deploy minigraphdocker exec -it sonic-mgmt bash -c "cd /data/sonic-mgmt/ansible && ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb deploy-mg vms-kvm-t0 veos_vtb password.txt"
 Note: If you only reboot the DUT (vlab-01) and not the host, start the VM with sudo virsh start vlab-01 and wait for it to boot; minigraph is already on disk, so you usually don’t need to run deploy-mg again unless you changed config.
+
+
+
+
+
+
+***
+
+## How to Login to PTF host 
+
+From your host (where Docker runs):
+
+docker exec -it ptf\_vms6-1 bash
+
+You will get a shell inside the PTF container (usually as root).
+No SSH or password is needed when using docker exec.
+
+If you prefer SSH (only if the PTF image has SSH enabled):
+
+ssh root\@10.250.0.102
+
+Note:
+
+*   Password is "root"
+*   Often no password is required if key-based authentication is used
+
+***
+
+## Hosting an HTTP Server on the PTF
+
+Step 1: Enter the PTF container
+
+docker exec -it ptf\_vms6-1 bash
+
+Step 2: Run a simple HTTP server (Python 3)
+
+Serve the current directory on port 8000 (all interfaces):
+
+python3 -m http.server 8000 --bind 0.0.0.0
+
+Serve a specific directory:
+
+cd /path/to/your/files
+python3 -m http.server 8000 --bind 0.0.0.0
+
+***
+
+## Accessing the HTTP Server
+
+From Host:
+<http://10.250.0.102:8000>
+
+From DUT (e.g., SONiC):
+<http://10.250.0.102:8000>
+
+From any device on 10.250.0.0/24:
+<http://10.250.0.102:8000>
+
+***
+
+If you want, I can also give you a **shorter “commands-only” version** for quick reference.
