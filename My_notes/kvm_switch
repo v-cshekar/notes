@@ -2,6 +2,310 @@ Documentation
 https://github.com/sonic-net/sonic-mgmt/blob/ad115f841f373b0259daee5c62d537aeae036d6e/docs/testbed/README.testbed.VsSetup.md
 
 
+v-cshekar@v-cshekar-dev-vm:~$ sudo apt install python3 python3-pip openssh-server
+v-cshekar@v-cshekar-dev-vm:~/workspace$ git clone https://github.com/sonic-net/sonic-mgmt
+
+
+initialize the management bridge network
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt/ansible$cd ~/workspace/sonic-mgmt/ansible
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt/ansible$sudo -H ./setup-management-network.sh
+
+STEP 7: Configuring br1 interface...
+Assigning 10.250.0.1/24 to br1
+Bringing up br1
+
+COMPLETE. Bridge info:
+
+bridge name     bridge id               STP enabled     interfaces
+br1             8000.b638b02e2caf       no
+
+br1: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 10.250.0.1  netmask 255.255.255.0  broadcast 10.250.0.255
+        inet6 fec0::1  prefixlen 64  scopeid 0x40<site>
+        ether b6:38:b0:2e:2c:af  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt/ansible$ sudo apt install docker.io
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt/ansible$ sudo usermod -aG docker $USER
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt/ansible$ newgrp docker
+
+
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt/ansible$ cd ~/workspace/sonic-mgmt
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt$ ./setup-container.sh -n sonic-mgmt -d /data
+
+ERROR: missing Jinja2 templates support: make sure j2cli package is installed
+
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt$ sudo pip install j2cli==0.3.10
+Requirement already satisfied: j2cli==0.3.10 in /root/.local/lib/python3.10/site-packages (0.3.10)
+Requirement already satisfied: jinja2>=2.7.2 in /usr/lib/python3/dist-packages (from j2cli==0.3.10) (3.0.3)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt$ pip install j2cli==0.3.10
+Defaulting to user installation because normal site-packages is not writeable
+Collecting j2cli==0.3.10
+  Downloading j2cli-0.3.10-py2.py3-none-any.whl (8.9 kB)
+Requirement already satisfied: jinja2>=2.7.2 in /usr/lib/python3/dist-packages (from j2cli==0.3.10) (3.0.3)
+Installing collected packages: j2cli
+  WARNING: The script j2 is installed in '/home/v-cshekar/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed j2cli-0.3.10
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt$ export PATH="/home/v-cshekar/.local/bin:$PATH"
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt$ cd ~/workspace/sonic-mgmt
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt$ ./setup-container.sh -n sonic-mgmt -d /data
+latest: Pulling from docker-sonic-mgmt
+e93fce65fb9f: Pull complete
+
+
+
+Now let's prepare the folder for VM image files. First, let's check the current root_path configuration:
+
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt$ cat ~/workspace/sonic-mgmt/ansible/group_vars/vm_host/main.yml | grep -A 2 "root_path"
+root_path: veos-vm
+
+vm_console_base: 7000
+
+The root_path is set to veos-vm, which means images will be stored in ~/veos-vm/images/
+
+Creates the directory structure where VM images will be stored.
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt$ mkdir -p ~/veos-vm/images
+
+Download the image (CEOS option)
+v-cshekar@v-cshekar-dev-vm:~/workspace/sonic-mgmt$ cd ~/veos-vm/images/
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ ls -lt
+total 2480296
+-rw-r--r-- 1 v-cshekar v-cshekar 2539816960 Feb 19 06:01 cEOS64-lab-4.32.5M.tar
+
+
+Verify if we need to edit this (it is fine):
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ cat ~/workspace/sonic-mgmt/ansible/group_vars/vm_host/ceos.yml
+ceos_image_filename: cEOS64-lab-4.32.5M.tar
+ceos_image_orig: ceosimage:4.32.5M
+ceos_image: ceosimage:4.32.5M-1
+# Please update ceos_image_url to the actual URL of the cEOS image file in your environment. If the cEOS image file
+# is not available on test server, the cEOS image file will be downloaded from this URL.
+# The ceos_image_url can be a string as single URL or a list of strings as multiple URLs. If it is a list, the code
+# logic will automatically try each URL in the list
+ceos_image_url:
+  - "http://example1.com/cEOS64-lab-4.32.5M.tar"
+  - "http://example2.com/cEOS64-lab-4.32.5M.tar"
+skip_ceos_image_downloading: false
+
+
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ docker exec -it sonic-mgmt bash
+
+v-cshekar@sonic-mgmt:~$ ls -la ~/.ssh/
+total 24
+drwx------ 1 v-cshekar v-cshekar 4096 Feb 19 05:37 .
+drwxr-x--- 1 v-cshekar v-cshekar 4096 Feb 19 05:37 ..
+-rw------- 1 v-cshekar v-cshekar  580 Feb 19 05:37 authorized_keys
+-rw------- 1 v-cshekar v-cshekar 2610 Feb 19 05:35 id_rsa
+-rw-r--r-- 1 v-cshekar v-cshekar  580 Feb 19 05:35 id_rsa.pub
+
+v-cshekar@sonic-mgmt:~$ cd /data/sonic-mgmt/ansible
+
+v-cshekar@sonic-mgmt:~$ cd /data/sonic-mgmt/ansible
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ grep -A 5 "STR-ACS-VSERV-01:" veos_vtb
+    STR-ACS-VSERV-01:
+      ansible_host: 172.17.0.1
+      ansible_user: use_own_value
+      vm_host_user: use_own_value
+
+vms_1:
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ sed -i 's/ansible_user: use_own_value/ansible_user: v-cshekar/g' veos_vtb
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ grep -A 5 "STR-ACS-VSERV-01:" veos_vtb
+    STR-ACS-VSERV-01:
+      ansible_host: 172.17.0.1
+      ansible_user: v-cshekar
+      vm_host_user: use_own_value
+
+vms_1:
+
+
+#Update the cEOS configuration to skip downloading
+v-cshekar@sonic-mgmt:~$ cat /data/sonic-mgmt/ansible/group_vars/vm_host/ceos.yml
+ceos_image_filename: cEOS64-lab-4.32.5M.tar
+ceos_image_orig: ceosimage:4.32.5M
+ceos_image: ceosimage:4.32.5M-1
+# Please update ceos_image_url to the actual URL of the cEOS image file in your environment. If the cEOS image file
+# is not available on test server, the cEOS image file will be downloaded from this URL.
+# The ceos_image_url can be a string as single URL or a list of strings as multiple URLs. If it is a list, the code
+# logic will automatically try each URL in the list
+ceos_image_url:
+  - "http://example1.com/cEOS64-lab-4.32.5M.tar"
+  - "http://example2.com/cEOS64-lab-4.32.5M.tar"
+skip_ceos_image_downloading: false
+v-cshekar@sonic-mgmt:~$ cd /data/sonic-mgmt/ansible
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ sed -i 's/skip_ceos_image_downloading: false/skip_ceos_image_downloading: true/' group_vars/vm_host/ceos.yml
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ cat group_vars/vm_host/ceos.yml | grep skip_ceos
+skip_ceos_image_downloading: true
+
+
+
+Update the vm_host_user as well:
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ sed -i 's/vm_host_user: use_own_value/vm_host_user: v-cshekar/g' veos_vtb
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ grep -A 5 "STR-ACS-VSERV-01:" veos_vtb
+    STR-ACS-VSERV-01:
+      ansible_host: 172.17.0.1
+      ansible_user: v-cshekar
+      vm_host_user: v-cshekar
+
+vms_1:
+
+# Check the documentation
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ cat ../docs/testbed/README.testbed.cEOS.md
+cEOS
+This document discusses how to use cEOS as DUT neighbor device.
+
+
+# Download the sonic-vs image
+v-cshekar@v-cshekar-dev-vm:~$ cd ~/veos-vm/images
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ wget "https://sonic-build.azurewebsites.net/api/sonic/artifacts?branchName=master&platform=vs&target=target/sonic-vs.img.gz" -O sonic-vs.img.gz
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ ls -lh sonic-vs.img.gz
+-rw-rw-r-- 1 v-cshekar v-cshekar 1.8G Feb 19 06:47 sonic-vs.img.gz
+
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ gzip -d sonic-vs.img.gz
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ ls -lh sonic-vs.img*
+-rw-rw-r-- 1 v-cshekar v-cshekar 6.3G Feb 19 06:47 sonic-vs.im
+g
+#Copy sonic-vs image to sonic-vm/images
+Insteado of copying I have created simlink
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ ls -lh sonic-vs.img*
+-rw-rw-r-- 1 v-cshekar v-cshekar 6.3G Feb 19 06:47 sonic-vs.img
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ mkdir -p ~/sonic-vm/images
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ ln -s ~/veos-vm/images/sonic-vs.img ~/sonic-vm/images/sonic-vs.img
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ ls -lh ~/sonic-vm/images/sonic-vs.img
+lrwxrwxrwx 1 v-cshekar v-cshekar 43 Feb 19 06:52 /home/v-cshekar/sonic-vm/images/sonic-vs.img -> /home/v-cshekar/veos-vm/images/sonic-vs.img
+
+
+#Create a dummy password file
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ cd /data/sonic-mgmt/ansible
+echo "abc" > password.txt
+cat password.txt
+abc
+
+Verify the veos_vtb inventory file
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ grep -A 5 "STR-ACS-VSERV-01:" veos_vtb
+    STR-ACS-VSERV-01:
+      ansible_host: 172.17.0.1
+      ansible_user: v-cshekar
+      vm_host_user: v-cshekar
+
+vms_1:
+
+# Update the credentials file
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ cat > group_vars/vm_host/creds.yml << 'EOF'
+---
+ansible_user: admin
+ansible_password: password
+ansible_become_password: password
+
+# Use the following username/password variables to login to vm hosts
+# instead of the default variables (defined above).
+vm_host_user: admin
+vm_host_password: password
+vm_host_become_password: password
+EOF
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ cat group_vars/vm_host/creds.yml
+---
+# SSH key-based authentication is configured
+# Passwords are not needed when using SSH keys
+
+vm_host_user: v-cshekar
+vm_host_password: ""
+vm_host_become_password: ""
+
+
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ cat group_vars/vm_host/creds.yml
+---
+ansible_user: admin
+ansible_password: password
+ansible_become_password: password
+
+# Use the following username/password variables to login to vm hosts
+# instead of the default variables (defined above).
+vm_host_user: admin
+vm_host_password: password
+vm_host_become_password: password
+
+Update the veos_vtb inventory file to user admin as username instead of v-cshekar
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ sed -i 's/ansible_user: v-cshekar/ansible_user: admin/' veos_vtb
+sed -i 's/vm_host_user: v-cshekar/vm_host_user: admin/' veos_vtb
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ grep -A 5 "STR-ACS-VSERV-01:" veos_vtb
+    STR-ACS-VSERV-01:
+      ansible_host: 172.17.0.1
+      ansible_user: admin
+      vm_host_user: admin
+
+vms_1:
+
+# Verify Ansible configuration file
+Checks that the Ansible privilege escalation (sudo) settings are properly configured so Ansible can run commands with root privileges.
+
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ grep -A 5 "\[privilege_escalation\]" ansible.cfg
+[privilege_escalation]
+#become=True
+become_method=sudo
+become_user='root'
+become_ask_pass=False
+
+# Enable privilege escalation in Ansible config
+What it does: Uncomments the become=True setting so Ansible will use sudo to run privileged commands on the host.
+
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ sed -i 's/#become=True/become=True/' ansible.cfg
+v-cshekar@sonic-mgmt:/data/sonic-mgmt/ansible$ grep -A 5 "\[privilege_escalation\]" ansible.cfg
+[privilege_escalation]
+become=True
+become_method=sudo
+become_user='root'
+become_ask_pass=False
+
+
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo sed -i 's/#PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sudo systemctl restart ssh
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo systemctl restart ssh
+
+
+ Deploy the T0 topology with cEOS
+cd /data/sonic-mgmt/ansible
+./testbed-cli.sh -t vtestbed.yaml -m veos_vtb add-topo vms-kvm-t0 password.txt
+
+TASK [vm_set : Import ceos_image_orig docker image] ***************************************************************************************************************
+fatal: [STR-ACS-VSERV-01]: FAILED! => {"changed": true, "cmd": "docker import /home/v-cshekar/veos-vm/images/cEOS64-lab-4.32.5M.tar ceosimage:4.32.5M", "delta": "0:00:38.170171", "end": "2026-02-19 08:10:27.352767", "msg": "non-zero return code", "rc": 1, "start": "2026-02-19 08:09:49.182596", "stderr": "Error response from daemon: write /usr/bin/dockerd: no space left on device", "stderr_lines": ["Error response from daemon: write /usr/bin/dockerd: no space left on device"], "stdout": "", "stdout_lines": []}
+
+PLAY RECAP ********************************************************************************************************************************************************
+STR-ACS-VSERV-01           : ok=282  changed=32   unreachable=0    failed=1    skipped=320  rescued=0    ignored=1
+
+
+
+To fix the disk issue, move the image to /mnt
+
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ docker stop sonic-mgmt
+sonic-mgmt
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo mkdir -p /mnt/sonic-vm
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo mv /home/v-cshekar/sonic-vm/* /mnt/sonic-vm/
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo rmdir /home/v-cshekar/sonic-vm
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo ln -s /mnt/sonic-vm /home/v-cshekar/sonic-vm
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo chown -R v-cshekar:v-cshekar /mnt/sonic-vm/
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo setfacl -m u:libvirt-qemu:rx /mnt/
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo setfacl -m u:libvirt-qemu:rx /mnt/sonic-vm/
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo setfacl -m u:libvirt-qemu:rx /mnt/sonic-vm/disks/
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ sudo setfacl -m u:libvirt-qemu:r /mnt/sonic-vm/disks/sonic_vlab-01.img
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ ls -la /home/v-cshekar/sonic-vm
+lrwxrwxrwx 1 root root 13 Feb 19 08:18 /home/v-cshekar/sonic-vm -> /mnt/sonic-vm
+v-cshekar@v-cshekar-dev-vm:~/veos-vm/images$ ls -la /mnt/sonic-vm/disks/
+total 6726800
+drwxr-xr-x+ 2 v-cshekar v-cshekar       4096 Feb 19 08:05 .
+drwxr-xr-x+ 4 v-cshekar v-cshekar       4096 Feb 19 08:17 ..
+-rw-r--r--+ 1 v-cshekar v-cshekar 6888226816 Feb 19 08:17 sonic_vlab-01.img
+--------------------------------------------------------------------------------------------------------------------------
+
+
+
 chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/ansible.cfg 
 chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/group_vars/vm_host/creds.yml 
 chandra@lenova:~/wipr/sonic-mgmt$ git update-index --skip-worktree  ansible/host_vars/STR-ACS-VSERV-01.yml
