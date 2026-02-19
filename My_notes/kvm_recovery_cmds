@@ -1,0 +1,37 @@
+Setup summary
+DUT: vlab-01 (SONiC KVM) at 10.250.0.101
+BGP: 4 neighbors (ARISTA01T1–ARISTA04T1) in state Established, each with 6400 prefixes
+Containers: cEOS neighbors (VM0100–VM0103), net containers, and PTF are running
+Optional: run a quick test
+To confirm end-to-end with a pytest (as in the doc):
+docker exec -it sonic-mgmt bash -c "cd /data/sonic-mgmt/tests && ./run_tests.sh -n vms-kvm-t0 -d vlab-01 -c bgp/test_bgp_fact.py -f vtestbed.yaml -i ../ansible/veos_vtb"
+This runs the BGP fact test against your DUT.
+Useful commands
+Action	Command
+SSH to DUT	ssh admin@10.250.0.101 (password: password)
+Enter sonic-mgmt container	docker exec -it sonic-mgmt bash
+Remove topology	From inside container: ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb remove-topo vms-kvm-t0 password.txt
+Your cEOS (container-based) testbed setup is complete.
+
+Thanks.. if the device reboots.. What are commands I need to run to get the setup up and running ? 
+
+After a host reboot, most of the setup does not come back automatically. Use this sequence to bring the testbed back up.
+After-reboot checklist
+Run these on the host (your Ubuntu VM), in order.
+1. Restore management bridge (if needed)
+cd ~/workspace/sonic-mgmt/ansible && sudo -H ./setup-management-network.sh -d
+Why: The br1 bridge (10.250.0.1/24) is usually lost on reboot. This recreates it. If br1 is already up, the script will remove and recreate it (safe to run).
+2. Start the sonic-mgmt container (if stopped)
+docker start sonic-mgmt
+Why: The sonic-mgmt container does not auto-start. This brings it back so you can run Ansible from inside it.
+3. Bring up the topology (cEOS + PTF + KVM DUT)
+docker exec -it sonic-mgmt bash -c "cd /data/sonic-mgmt/ansible && ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb add-topo vms-kvm-t0 password.txt"
+Why: After reboot, cEOS/net/PTF containers and the KVM DUT (vlab-01) are gone. add-topo recreates all of them.
+4. Deploy minigraph on the DUT
+docker exec -it sonic-mgmt bash -c "cd /data/sonic-mgmt/ansible && ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb deploy-mg vms-kvm-t0 veos_vtb password.txt"
+Why: The DUT is recreated by add-topo, so it has no minigraph. This step reapplies the T0 config (interfaces, BGP, etc.).
+5. Quick sanity check
+# Containersdocker ps --format "table {{.Names}}\t{{.Status}}" | grep -E "ceos_|net_|ptf_|sonic-mgmt"# DUT VMsudo virsh list | grep vlab# BGP on DUT (after a minute or two)ssh admin@10.250.0.101 "show ip bgp sum"
+Short version (copy-paste)
+# 1. Restore bridgecd ~/workspace/sonic-mgmt/ansible && sudo -H ./setup-management-network.sh -d# 2. Start sonic-mgmt containerdocker start sonic-mgmt# 3. Deploy topologydocker exec -it sonic-mgmt bash -c "cd /data/sonic-mgmt/ansible && ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb add-topo vms-kvm-t0 password.txt"# 4. Deploy minigraphdocker exec -it sonic-mgmt bash -c "cd /data/sonic-mgmt/ansible && ./testbed-cli.sh -t vtestbed.yaml -m veos_vtb deploy-mg vms-kvm-t0 veos_vtb password.txt"
+Note: If you only reboot the DUT (vlab-01) and not the host, start the VM with sudo virsh start vlab-01 and wait for it to boot; minigraph is already on disk, so you usually don’t need to run deploy-mg again unless you changed config.
