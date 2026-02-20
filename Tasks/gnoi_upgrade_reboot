@@ -6,3 +6,20 @@ v-cshekar@sonic-mgmt-v-cshekar:~$ cd /var/src/sonic-mgmt-int/tests
 
 ./run_tests.sh -n vms20-t0-7060 -i ../ansible/str2,../ansible/veos -u -m individual -c upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi -e "--upgrade_type=cold --base_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi --target_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi --target_version=SONiC.20250510.30" -l info 
 
+
+
+# Using the KVM 
+
+v-cshekar@v-cshekar-dev-vm:~$ docker exec -it sonic-mgmt bash
+v-cshekar@sonic-mgmt:~$ cd /data/sonic-mgmt/tests/
+
+sudo ./run_tests.sh -n vms-kvm-t0 -d vlab-01 -c upgrade_path/test_upgrade_gnoi.py -f vtestbed.yaml -i ../ansible/veos_vtb -e "--upgrade_type=cold --base_image_list=http://10.250.0.102:8000/sonic-vs.bin --target_image_list=http://10.250.0.102:8000/sonic-vs.bin --target_version=SONiC-OS-20251105.01" -e "--skip_sanity" -l info
+
+WARNING  tests.common.reboot:reboot.py:731 Fail to create dut console. Please check console config or if console works ro not. 'device_console_info'
+WARNING  tests.common.reboot:reboot.py:746 dut console is not ready, we cannot get log by console
+
+
+------------------------------------------------------------------------------------ live log teardown ------------------------------------------------------------------------------------
+WARNING  tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:64 Skipping memory check for monit-memory_usage due to zero value
+ tests/upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi ✓                                                                                                           100% ██████████
+==================================================================================== warnings summary =====================================================================================
