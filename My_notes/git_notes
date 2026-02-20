@@ -49,6 +49,14 @@ git push origin v-cshekar/gnoi_reboot_test --force-with-lease
 
 ----------------------------------------------------------------------------------
 
+#To push to Fork
+
+
+git push -u fork v-cshekar/upgrade_reboot
+
+---------------------------------------------------------------------------------
+
+
 
 
 # Checkout a Branch from Your Fork (sonic-mgmt)
