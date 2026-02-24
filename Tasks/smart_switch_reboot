@@ -2,5 +2,7 @@ Testbed to use:
 vms66-t1-8102-7
 10.3.146.173
 
+PTF IP : 10.64.247.87
+
 
 sudo ./run_tests.sh -n vms66-t1-8102-7 -i ../ansible/veos,../ansible/str3 -d str3-8102-07 -H str3-8102-07-dpu-0 -u -m individual -c smartswitch/platform_tests/test_reload_dpu.py::test_cold_reboot_dpus -e "--skip_sanity" -l info
