@@ -6,3 +6,32 @@ PTF IP : 10.64.247.87
 
 
 sudo ./run_tests.sh -n vms66-t1-8102-7 -i ../ansible/veos,../ansible/str3 -d str3-8102-07 -H str3-8102-07-dpu-0 -u -m individual -c smartswitch/platform_tests/test_reload_dpu.py::test_cold_reboot_dpus -e "--skip_sanity" -l info
+
+
+
+admin@str3-8102-07:~$ show chassis module status 
+  Name       Description    Physical-Slot    Oper-Status    Admin-Status         Serial
+------  ----------------  ---------------  -------------  --------------  -------------
+  DPU0  AMD Pensando DSC              N/A         Online              up  FLM29240A5D-0
+  DPU1  AMD Pensando DSC              N/A         Online              up  FLM29240A5D-1
+  DPU2  AMD Pensando DSC              N/A         Online              up  FLM29240A61-0
+  DPU3  AMD Pensando DSC              N/A         Online              up  FLM29240A61-1
+  DPU4  AMD Pensando DSC              N/A         Online              up  FLM29240A56-0
+  DPU5  AMD Pensando DSC              N/A         Online              up  FLM29240A56-1
+  DPU6  AMD Pensando DSC              N/A         Online              up  FLM29240ABE-0
+  DPU7  AMD Pensando DSC              N/A         Online              up  FLM29240ABE-1
+
+
+admin@str3-8102-07:~$ show reboot-cause history
+Name                 Cause    Time                             User    Comment
+-------------------  -------  -------------------------------  ------  ---------
+2026_02_25_01_09_15  reboot   Wed Feb 25 01:03:54 AM UTC 2026  admin   N/A
+2026_02_25_00_25_01  reboot   Wed Feb 25 12:19:44 AM UTC 2026  admin   N/A
+2026_02_24_23_56_49  reboot   Tue Feb 24 11:51:40 PM UTC 2026  admin   N/A
+2026_02_24_23_22_22  reboot   Tue Feb 24 11:17:10 PM UTC 2026  admin   N/A
+2026_02_24_22_58_29  reboot   Tue Feb 24 10:53:06 PM UTC 2026  admin   N/A
+2026_02_24_22_34_22  reboot   Tue Feb 24 10:28:33 PM UTC 2026  admin   N/A
+2026_02_24_22_00_34  reboot   Tue Feb 24 09:55:18 PM UTC 2026  admin   N/A
+2026_02_24_21_35_42  reboot   Tue Feb 24 09:30:27 PM UTC 2026  admin   N/A
+2026_02_24_19_59_10  reboot   Tue Feb 24 07:53:50 PM UTC 2026  admin   N/A
+2026_02_24_19_35_31  reboot   Tue Feb 24 07:30:18 PM UTC 2026  admin   N/A
