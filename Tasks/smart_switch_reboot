@@ -112,3 +112,26 @@ Debian GNU/Linux 12 \n \l
 admin@169.254.200.1's password: 
 Permission denied, please try again.
 admin@169.254.200.1's password: 
+
+
+admin@str3-8102-07:~$ 
+admin@str3-8102-07:~$ ssh admin@169.254.200.1 uptime
+Debian GNU/Linux 12 \n \l
+
+admin@169.254.200.1's password: 
+ 07:26:05 up  6:14,  0 user,  load average: 14.52, 14.68, 14.65
+admin@str3-8102-07:~$ sudo reboot -d DPU0 
+True
+2026-02-25 07:26:14 - User requested rebooting device dpu0 ...
+2026-02-25 07:26:15 - INFO: DPU dpu0 is in 'Online' state before reboot.
+
+
+2026-02-25 07:26:30 - INFO: Rebooting dpu0, ip:169.254.200.1 gnmi_port:50052
+2026-02-25 07:26:31 - ERROR: Failed to send gnoi command to halt services on dpu0
+2026-02-25 07:26:31 - ERROR: proceeding without halting the services
+2026-02-25 07:26:46 - INFO: Rebooting dpu0 with reboot_type:DPU...
+admin@str3-8102-07:~$ ssh admin@169.254.200.1 uptime
+Debian GNU/Linux 12 \n \l
+
+admin@169.254.200.1's password: 
+ 07:27:07 up  6:15,  0 user,  load average: 14.54, 14.63, 14.64
