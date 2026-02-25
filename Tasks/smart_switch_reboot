@@ -35,3 +35,80 @@ Name                 Cause    Time                             User    Comment
 2026_02_24_21_35_42  reboot   Tue Feb 24 09:30:27 PM UTC 2026  admin   N/A
 2026_02_24_19_59_10  reboot   Tue Feb 24 07:53:50 PM UTC 2026  admin   N/A
 2026_02_24_19_35_31  reboot   Tue Feb 24 07:30:18 PM UTC 2026  admin   N/A
+
+
+admin@str3-8102-07:~$ show reboot-cause all
+Device    Name                 Cause                Time                             User
+--------  -------------------  -------------------  -------------------------------  ------
+NPU       2026_02_25_01_09_15  reboot               Wed Feb 25 01:03:54 AM UTC 2026  admin
+DPU7      2026_02_25_01_12_40  Switch rebooted DPU  Wed Feb 25 01:12:40 AM UTC 2026
+DPU6      2026_02_25_01_12_40  Switch rebooted DPU  Wed Feb 25 01:12:40 AM UTC 2026
+DPU5      2026_02_25_01_12_40  Switch rebooted DPU  Wed Feb 25 01:12:40 AM UTC 2026
+DPU4      2026_02_25_01_12_40  Switch rebooted DPU  Wed Feb 25 01:12:40 AM UTC 2026
+DPU3      2026_02_25_01_12_40  Switch rebooted DPU  Wed Feb 25 01:12:40 AM UTC 2026
+DPU2      2026_02_25_01_12_40  Switch rebooted DPU  Wed Feb 25 01:12:40 AM UTC 2026
+DPU1      2026_02_25_01_12_40  Switch rebooted DPU  Wed Feb 25 01:12:40 AM UTC 2026
+DPU0      2026_02_25_01_12_40  Switch rebooted DPU  Wed Feb 25 01:12:40 AM UTC 2026
+
+
+admin@str3-8102-07:~$ show chassis modules midplane-status
+  Name     IP-Address    Reachability
+------  -------------  --------------
+  DPU0  169.254.200.1            True
+  DPU1  169.254.200.2            True
+  DPU2  169.254.200.3            True
+  DPU3  169.254.200.4            True
+  DPU4  169.254.200.5            True
+  DPU5  169.254.200.6            True
+  DPU6  169.254.200.7            True
+  DPU7  169.254.200.8            True
+admin@str3-8102-07:~$ show ip interface
+Interface        Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP
+---------------  --------  -------------------  ------------  --------------  -------------
+Ethernet64                 10.0.0.32/31         up/up         ARISTA01T0      10.0.0.33
+Ethernet72                 10.0.0.34/31         up/up         ARISTA02T0      10.0.0.35
+Ethernet80                 10.0.0.36/31         up/up         ARISTA03T0      10.0.0.37
+Ethernet88                 10.0.0.38/31         up/up         ARISTA04T0      10.0.0.39
+Ethernet96                 10.0.0.40/31         up/up         ARISTA05T0      10.0.0.41
+Ethernet104                10.0.0.42/31         up/up         ARISTA06T0      10.0.0.43
+Ethernet112                10.0.0.44/31         up/up         ARISTA07T0      10.0.0.45
+Ethernet120                10.0.0.46/31         up/up         ARISTA08T0      10.0.0.47
+Ethernet128                10.0.0.48/31         up/up         ARISTA09T0      10.0.0.49
+Ethernet136                10.0.0.50/31         up/up         ARISTA10T0      10.0.0.51
+Ethernet144                10.0.0.52/31         up/up         ARISTA11T0      10.0.0.53
+Ethernet152                10.0.0.54/31         up/up         ARISTA12T0      10.0.0.55
+Ethernet160                10.0.0.56/31         up/up         ARISTA13T0      10.0.0.57
+Ethernet168                10.0.0.58/31         up/up         ARISTA14T0      10.0.0.59
+Ethernet176                10.0.0.60/31         up/up         ARISTA15T0      10.0.0.61
+Ethernet184                10.0.0.62/31         up/up         ARISTA16T0      10.0.0.63
+Ethernet192                10.0.0.64/31         up/up         ARISTA17T0      10.0.0.65
+Ethernet200                10.0.0.66/31         up/up         ARISTA18T0      10.0.0.67
+Ethernet208                10.0.0.68/31         up/up         ARISTA19T0      10.0.0.69
+Ethernet216                10.0.0.70/31         up/up         ARISTA20T0      10.0.0.71
+Ethernet224                18.0.202.0/31        up/up         N/A             N/A
+Ethernet232                18.1.202.0/31        up/up         N/A             N/A
+Ethernet240                18.2.202.0/31        up/up         N/A             N/A
+Ethernet248                18.3.202.0/31        up/up         N/A             N/A
+Ethernet256                18.4.202.0/31        up/up         N/A             N/A
+Ethernet264                18.5.202.0/31        up/up         N/A             N/A
+Ethernet272                18.6.202.0/31        up/up         N/A             N/A
+Ethernet280                18.7.202.0/31        up/up         N/A             N/A
+Loopback0                  10.1.0.32/32         up/up         N/A             N/A
+PortChannel102             10.0.0.0/31          up/up         ARISTA01T2      10.0.0.1
+PortChannel105             10.0.0.4/31          up/up         ARISTA03T2      10.0.0.5
+PortChannel108             10.0.0.8/31          up/up         ARISTA05T2      10.0.0.9
+PortChannel111             10.0.0.12/31         up/up         ARISTA07T2      10.0.0.13
+bridge-midplane            169.254.200.254/24   up/up         N/A             N/A
+docker0                    240.127.1.1/24       up/up         N/A             N/A
+eth0                       10.3.146.173/24      up/up         N/A             N/A
+lo                         127.0.0.1/16         up/up         N/A             N/A
+admin@str3-8102-07:~$ 
+admin@str3-8102-07:~$ 
+admin@str3-8102-07:~$ 
+admin@str3-8102-07:~$ 
+admin@str3-8102-07:~$ ssh admin@169.254.200.1 uptime
+Debian GNU/Linux 12 \n \l
+
+admin@169.254.200.1's password: 
+Permission denied, please try again.
+admin@169.254.200.1's password: 
