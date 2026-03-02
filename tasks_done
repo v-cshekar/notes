@@ -203,3 +203,13 @@ https://msazure.visualstudio.com/One/_queries/query/?tempQueryId=f6de6632-f10e-4
 
 Debug testbed vms24-t0-7260-2 lab ticket 
 https://msazure.visualstudio.com/Standards/_workitems/edit/36544760
+
+Feb last week:
+---------------
+Use gNOI reboot test for smart switch:
+https://msazure.visualstudio.com/One/_workitems/edit/36959237
+https://github.com/sonic-net/sonic-mgmt/pull/22514
+
+Use gNOI reboot function when performing gNOI upgrade:
+https://msazure.visualstudio.com/One/_workitems/edit/36959436
+https://github.com/sonic-net/sonic-mgmt/pull/22507
