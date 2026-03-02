@@ -213,3 +213,10 @@ https://github.com/sonic-net/sonic-mgmt/pull/22514
 Use gNOI reboot function when performing gNOI upgrade:
 https://msazure.visualstudio.com/One/_workitems/edit/36959436
 https://github.com/sonic-net/sonic-mgmt/pull/22507
+
+
+
+Issue created:
+orchaagent failed when issuing Warm-reboot
+https://msazure.visualstudio.com/One/_workitems/edit/36960628
+
