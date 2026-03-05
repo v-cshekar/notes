@@ -1,0 +1,3 @@
+
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int/tests$ sudo ansible -i ../ansible/str3 str3-nvidia-4280-E04-U22 \
+  -m shell -a 'echo HOST=$HOSTNAME PATH=$PATH; command -v grpcurl || echo "grpcurl not found"'
