@@ -375,3 +375,8 @@ v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt$ docker exec --user v-cshekar -t
 v-cshekar@sonic-mgmt-chandra:~$ cd /var/src/sonic-mgmt/
 
 
+To run dependency check:
+------------------------
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int$ python3 ./.azure-pipelines/dependency_check/dependency_check.py tests
+
+
