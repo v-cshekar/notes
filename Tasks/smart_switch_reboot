@@ -146,3 +146,20 @@ Debian GNU/Linux 12 \n \l
 
 admin@169.254.200.1's password: 
  07:27:07 up  6:15,  0 user,  load average: 14.54, 14.63, 14.64
+
+----
+gnmi-native to pick up the CONFIG_DB config: run it on DPU. 
+docker exec gnmi supervisorctl restart gnmi-native
+
+Then verify it started with dsmsroot.cer:
+
+docker exec gnmi ps aux | grep telemetry
+
+
+Manual command to run test:
+-------------
+admin@str3-nvidia-4280-E04-U22:~$ grpcurl -insecure -cert /tmp/ss_gnoi_certs/client.crt -key /tmp/ss_gnoi_certs/client.key -connect-timeout 10 -format json 127.0.0.1:50052 gnoi.system.System/Time
+ERROR:
+  Code: Unauthenticated
+  Message: Unauthenticated
+
