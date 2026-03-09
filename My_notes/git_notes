@@ -54,6 +54,9 @@ git push origin v-cshekar/gnoi_reboot_test --force-with-lease
 
 git push -u fork v-cshekar/upgrade_reboot
 
+REDMOND+v-cshekar@APL-61V6RG3 MINGW64 ~/projects/sonic-mgmt (smart_switch_reboot)
+$  git push fork smart_switch_reboot --force
+
 ---------------------------------------------------------------------------------
 
 
