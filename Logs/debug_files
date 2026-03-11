@@ -1,3 +1,91 @@
+
+⏺ Here are the proposed changes as diffs:
+
+  ---
+  1. tests/common/helpers/upgrade_helpers.py
+
+  -from tests.platform_tests.test_reboot import reboot_and_check
+  +from tests.common.platform.device_utils import reboot_and_check
+
+  ---
+  2. tests/platform_tests/test_reboot.py
+
+  Add import from common (near the existing imports):
+  +from tests.common.platform.device_utils import check_interfaces_and_services, \
+  +    reboot_and_check, MAX_WAIT_TIME_FOR_INTERFACES, MAX_WAIT_TIME_FOR_REBOOT_CAUSE
+
+  Remove the now-redundant constants and functions defined locally:
+  -MAX_WAIT_TIME_FOR_INTERFACES = 300
+  -MAX_WAIT_TIME_FOR_REBOOT_CAUSE = 120
+  -def reboot_and_check(...):
+  -    ...
+  -
+  -def check_interfaces_and_services(...):
+  -    ...
+
+  ---
+  3. tests/common/platform/device_utils.py
+
+  Add the missing imports at the top (not already present):
+  +from tests.common.reboot import sync_reboot_history_queue_with_dut, reboot, check_reboot_cause, \
+  +    check_reboot_cause_history, check_determine_reboot_cause_service, \
+  +    wait_for_startup, REBOOT_TYPE_HISTOYR_QUEUE
+  +from tests.common.platform.transceiver_utils import check_transceiver_basic
+  +from tests.common.platform.interface_utils import check_all_interface_information, get_port_map
+  +from tests.common.platform.daemon_utils import check_pmon_daemon_status
+  +from tests.common.platform.processes_utils import wait_critical_processes
+
+  Append the constants and functions at the end:
+  +MAX_WAIT_TIME_FOR_INTERFACES = 300
+  +MAX_WAIT_TIME_FOR_REBOOT_CAUSE = 120
+  +
+  +
+  +def check_interfaces_and_services(dut, interfaces, xcvr_skip_list,
+  +                                  interfaces_wait_time=None, reboot_type=None):
+  +    # <exact copy of the function body from test_reboot.py>
+  +
+  +
+  +def reboot_and_check(localhost, dut, interfaces, xcvr_skip_list,
+  +                     reboot_type=REBOOT_TYPE_COLD, reboot_helper=None,
+  +                     reboot_kwargs=None, duthosts=None, invocation_type="cli_based", ptf_gnoi=None):
+  +    # <exact copy of the function body from test_reboot.py>
+
+  ---
+  4. The 5 platform_tests files that import check_interfaces_and_services
+
+  # tests/platform_tests/test_chassis_reboot.py
+  -from tests.platform_tests.test_reboot import check_interfaces_and_services
+  +from tests.common.platform.device_utils import check_interfaces_and_services
+
+  # tests/platform_tests/test_power_off_reboot.py
+  -from tests.platform_tests.test_reboot import check_interfaces_and_services, \
+  -    reboot_and_check
+  +from tests.common.platform.device_utils import check_interfaces_and_services, \
+  +    reboot_and_check
+
+  # tests/platform_tests/test_kdump.py
+  -from tests.platform_tests.test_reboot import check_interfaces_and_services
+  +from tests.common.platform.device_utils import check_interfaces_and_services
+
+  # tests/platform_tests/utils.py
+  -from tests.platform_tests.test_reboot import check_interfaces_and_services
+  +from tests.common.platform.device_utils import check_interfaces_and_services
+
+  # tests/platform_tests/test_link_down.py
+  -from tests.platform_tests.test_reboot import check_interfaces_and_services
+  +from tests.common.platform.device_utils import check_interfaces_and_services
+
+  ---
+  Summary: No logic changes anywhere — only moving two functions + two constants from test_reboot.py into device_utils.py, then updating 7 files to point to the new location. Ready to apply
+  when you say so.
+
+
+
+
+
+
+
+
 v-cshekar@sonic-mgmt-chandra:/var/src/sonic-mgmt-int/tests$ ./run_tests.sh -n testbed-bjw3-can-t0-7060-7 -i ../ansible/veos,../ansible/bjw3 -u -m individual -c platform_tests/test_reboot.py::test_cold_reboot -e "--skip_sanity" -l info
 pkill: pattern that searches for process name longer than 15 characters will result in zero matches
 Try `pkill -f' option to match against the complete command line.
