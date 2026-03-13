@@ -1,3 +1,27 @@
+chandra@lenova:~/wipr/sonic-gnmi$ docker pull ghcr.io/sonic-net/sonic-gnmi/dev:latest
+Error response from daemon: Head "https://ghcr.io/v2/sonic-net/sonic-gnmi/dev/manifests/latest": denied
+chandra@lenova:~/wipr/sonic-gnmi$
+
+chandra@lenova:~/wipr/sonic-gnmi$ make -f dev.mk test PKG=sonic_db_config TEST=TestGetDbMultiInstance DEV_IMAGE=sonic-gnmi-dev:merge-1052860
+docker exec sonic-gnmi-dev bash -c \
+	"cd /workspace/sonic-gnmi && \
+	 export CGO_LDFLAGS='-lswsscommon -lhiredis' CGO_CXXFLAGS='-I/usr/include/swss -w -Wall -fpermissive' CGO_CFLAGS='-I/usr/include/swss' && \
+	  sudo -E go test -v -gcflags=all=-l -run 'TestGetDbMultiInstance' github.com/sonic-net/sonic-gnmi/sonic_db_config"
+
+# github.com/sonic-net/sonic-gnmi/swsscommon
+swsscommon_wrap.cxx: In function 'void _wrap_ZmqClient_sendMsg_swsscommon_2432462d295473d6(swss::ZmqClient*, _gostring_, _gostring_, std::vector<std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::vector<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > > >*, std::vector<char>*)':
+swsscommon_wrap.cxx:14757:22: error: no matching function for call to 'swss::ZmqClient::sendMsg(const std::string&, const std::string&, const std::vector<std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::vector<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > > >&, std::vector<char>&)'
+14757 |       (arg1)->sendMsg((std::string const &)*arg2,(std::string const &)*arg3,(std::vector< swss::KeyOpFieldsValuesTuple > const &)*arg4,*arg5);
+      |       ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from swsscommon_wrap.cxx:386:
+/usr/include/swss/zmqclient.h:25:10: note: candidate: 'void swss::ZmqClient::sendMsg(const std::string&, const std::string&, const std::vector<std::tuple<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::vector<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > > >&)'
+   25 |     void sendMsg(const std::string& dbName,
+      |          ^~~~~~~
+/usr/include/swss/zmqclient.h:25:10: note:   candidate expects 3 arguments, 4 provided
+FAIL	github.com/sonic-net/sonic-gnmi/sonic_db_config [build failed]
+FAIL
+
+
 
 ⏺ Here are the proposed changes as diffs:
 
