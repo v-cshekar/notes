@@ -163,3 +163,54 @@ ERROR:
   Code: Unauthenticated
   Message: Unauthenticated
 
+
+================================================================================
+Flow: test_cold_reboot_dpus — invocation_type="gnoi_based"
+================================================================================
+
+1. Pre-test check (pre_test_check)
+   Gathers the current DPU state: IP addresses, which DPUs are on/off.
+
+2. Parallel reboot loop
+   For each DPU in dpu_on_list, a thread is submitted to:
+   perform_reboot(duthost, REBOOT_TYPE_COLD, dpu_name,
+                  invocation_type="gnoi_based", ptf_gnoi=ptf_gnoi)
+
+3. perform_reboot — gNOI branch (reboot.py:124)
+   - Validates dpu_name is not None
+     (otherwise skips — switch-level gNOI reboot not supported).
+   - Validates ptf_gnoi is not None.
+   - Extracts dpu_index (integer) from dpu_name via regex.
+   - Calls perform_gnoi_reboot_dpu(ptf_gnoi, dpu_index, dpu_name).
+   - If it returns False, the test fails immediately.
+
+4. perform_gnoi_reboot_dpu (reboot.py:31)
+   a. Create DPU-targeted gRPC client:
+      ptf_gnoi.grpc_client.with_ss_target("dpu", dpu_index)
+      Injects SmartSwitch routing headers so all calls go to the specific
+      DPU via the NPU.
+   b. Pre-reboot connectivity check:
+      Calls dpu_gnoi.system_time(). If this fails, returns False (test fails).
+   c. Issue reboot:
+      Calls dpu_gnoi.system_reboot(method="COLD", delay=0, message=...).
+      A connection drop here is expected and tolerated.
+   d. Wait for DPU to come back:
+      Polls _check_gnoi_time_ready (via system_time()) every 15s for up to
+      300s. If the DPU doesn't respond within 300s, returns False.
+   e. Marker file check (non-fatal):
+      Checks for /tmp/gnoi_reboot_marker_. Logs an error if it still
+      exists (would suggest reboot didn't actually happen), but does not fail.
+   f. Returns True.
+
+5. Post-test check (post_test_dpus_check)
+   Verifies all DPUs are back in their expected state; checks reboot cause
+   matches "reboot|Non-Hardware".
+
+--------------------------------------------------------------------------------
+Key difference vs cli_based:
+  Instead of running `sudo reboot -d ` over SSH, the gNOI path
+  sends a System.Reboot RPC over gRPC through the NPU to each DPU, then
+  polls System.Time to confirm the DPU is back online.
+================================================================================
+
+
