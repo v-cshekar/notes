@@ -109,3 +109,30 @@ git checkout -b v-cshekar/upgrade_reboot fork/v-cshekar/upgrade_reboot
 1. `git remote add fork https://github.com/v-cshekar/sonic-mgmt.git`  *(once)*  
 2. `git fetch fork`  
 3. `git checkout -b <branch> fork/<branch>`
+
+
+
+
+-----
+  Sync Fork with Upstream
+
+  Remotes:
+  - origin = upstream (sonic-net/sonic-mgmt)
+  - fork = your fork (v-cshekar/sonic-mgmt)
+
+  ---
+  1. Fetch latest changes from upstream:
+  git fetch origin
+
+  2. Checkout local master tracking origin/master:
+  git checkout --track origin/master
+  ▎ Use --track origin/master because both origin and fork have master, so git needs it specified explicitly.
+
+  3. Push updated master to your fork:
+  git push fork master
+
+  4. Create and checkout a new branch:
+  git checkout -b v-cshekar/your-branch-name
+
+  5. Push new branch to your fork:
+  git push fork v-cshekar/your-branch-name
