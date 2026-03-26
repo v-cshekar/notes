@@ -1,0 +1,17 @@
+On the DUT
+
+openssl genrsa -out /tmp/gnmiclient.key 2048
+openssl req -new -key /tmp/gnmiclient.key -out /tmp/gnmiclient.csr -subj "/CN=test.client.gnmi.sonic"
+openssl x509 -req -in /tmp/gnmiclient.csr -CA /etc/sonic/telemetry/gnmiCA.cer -CAkey /etc/sonic/telemetry/gnmiCA.key -CAcreateserial -out /tmp/gnmiclient.cer -days 365
+
+  Then scp to PTF:
+scp /etc/sonic/telemetry/gnmiCA.cer /tmp/gnmiclient.cer /tmp/gnmiclient.key root@10.64.247.87:/etc/ssl/certs/
+
+  sudo rm /tmp/gnmiclient.cer
+  sudo openssl x509 -req -in /tmp/gnmiclient.csr -CA /etc/sonic/telemetry/gnmiCA.cer -CAkey /etc/sonic/telemetry/gnmiCA.key -CAserial /tmp/gnmiCA.srl -CAcreateserial -out /tmp/gnmiclient.cer -days 365
+
+  sudo rm -f /tmp/gnmiclient.csr /tmp/gnmiclient.key /tmp/gnmiclient.cer /tmp/gnmiCA.srl
+  sudo openssl genrsa -out /tmp/gnmiclient.key 2048
+  sudo openssl req -new -key /tmp/gnmiclient.key -out /tmp/gnmiclient.csr -subj "/CN=test.client.gnmi.sonic"
+  sudo openssl x509 -req -in /tmp/gnmiclient.csr -CA /etc/sonic/telemetry/gnmiCA.cer -CAkey /etc/sonic/telemetry/gnmiCA.key -CAserial /tmp/gnmiCA.srl -CAcreateserial -out /tmp/gnmiclient.cer -days 365
+  cat /tmp/gnmiclient.cer
