@@ -1,0 +1,1064 @@
+
+Command Used:
+
+  sudo ./run_tests.sh -i ../ansible/str3,../ansible/veos -n vms66-t1-8102-7 -u -m individual -c upgrade_path/test_upgrade_smart_switch_gnoi.py -u -e "--upgrade_type=cold
+  --base_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/pensando/internal-202506/sonic-pensando.bin
+  --target_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/pensando/internal-202506/sonic-pensando.bin
+  --target_version=SONiC-OS-internal-202506.154741893-16d12968f4 --ss_target_index=3" -d str3-8102-07 -e "--skip_sanity" -l info
+
+
+
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int/tests$
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int/tests$   sudo ./run_tests.sh -i ../ansible/str3,../ansible/veos -n vms66-t1-8102-7 -u -m individual -c upgrade_path/test_upgrade_smart_switch_gnoi.py -u -e "--upgrade_type=cold
+  --base_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/pensando/internal-202506/sonic-pensando.bin
+  --target_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/pensando/internal-202506/sonic-pensando.bin
+  --target_version=SONiC-OS-internal-202506.154741893-16d12968f4 --ss_target_index=3" -d str3-8102-07 -e "--skip_sanity" -l info
+pkill: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pkill -f' option to match against the complete command line.
+=== Clearing pytest cache ===
+=== Running tests individually ===
+Running: python3 -m pytest upgrade_path/test_upgrade_smart_switch_gnoi.py --inventory ../ansible/str3,../ansible/veos --host-pattern str3-8102-07 --dpu-pattern None --testbed vms66-t1-8102-7 --testbed_file /var/src/sonic-mgmt-int/ansible/testbed.yaml --log-cli-level info --log-file-level debug --kube_master unset --showlocals --assert plain --show-capture no -rav --allow_recover --ignore=ptftests --ignore=acstests --ignore=saitests --ignore=scripts --ignore=k8s --ignore=sai_qualify --log-file logs/upgrade_path/test_upgrade_smart_switch_gnoi.log --junitxml=logs/upgrade_path/test_upgrade_smart_switch_gnoi.xml --upgrade_type=cold --base_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/pensando/internal-202506/sonic-pensando.bin --target_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/pensando/internal-202506/sonic-pensando.bin --target_version=SONiC-OS-internal-202506.154741893-16d12968f4 --ss_target_index=3 --skip_sanity
+Test session starts (platform: linux, Python 3.12.3, pytest 9.0.2, pytest-sugar 1.1.1)
+ansible: 2.18.12
+rootdir: /var/src/sonic-mgmt-int
+configfile: pyproject.toml
+plugins: ansible-25.12.0, metadata-3.1.1, cov-7.0.0, stress-1.0.1, xdist-3.8.0, sugar-1.1.1, allure-pytest-2.15.3, repeat-0.9.4, plus-0.8.1, html-4.2.0
+collecting ...
+------------------------------------------------------------------------------ live log collection -------------------------------------------------------------------------------
+INFO     tests.common.plugins.conditional_mark:__init__.py:386 Loading basic facts for DUT: str3-8102-07
+INFO     tests.common.plugins.conditional_mark:__init__.py:156 Getting dut basic facts: str3-8102-07
+[WARNING]: While constructing a mapping from /var/src/sonic-mgmt-
+int/ansible/str3, line 140, column 9, found a duplicate dict key (pdu-85).
+Using last defined value only.
+[WARNING]: Found variable using reserved name: serial
+INFO     tests.common.plugins.conditional_mark:__init__.py:244 Getting minigraph basic facts: str3-8102-07
+[WARNING]: While constructing a mapping from /var/src/sonic-mgmt-
+int/ansible/str3, line 140, column 9, found a duplicate dict key (pdu-85).
+Using last defined value only.
+[WARNING]: Found variable using reserved name: serial
+INFO     tests.common.plugins.conditional_mark:__init__.py:279 Getting config basic facts: str3-8102-07
+[WARNING]: While constructing a mapping from /var/src/sonic-mgmt-
+int/ansible/str3, line 140, column 9, found a duplicate dict key (pdu-85).
+Using last defined value only.
+[WARNING]: Found variable using reserved name: serial
+INFO     tests.common.plugins.conditional_mark:__init__.py:323 Getting switch capabilities basic facts: str3-8102-07
+[WARNING]: While constructing a mapping from /var/src/sonic-mgmt-
+int/ansible/str3, line 140, column 9, found a duplicate dict key (pdu-85).
+Using last defined value only.
+[WARNING]: Found variable using reserved name: serial
+INFO     tests.common.plugins.conditional_mark:__init__.py:279 Getting config basic facts: str3-8102-07
+[WARNING]: While constructing a mapping from /var/src/sonic-mgmt-
+int/ansible/str3, line 140, column 9, found a duplicate dict key (pdu-85).
+Using last defined value only.
+[WARNING]: Found variable using reserved name: serial
+collecting 0 items                                                                                                                                                               INFO     tests.common.cache.facts_cache:facts_cache.py:99 [Cache] Load cache file "/var/src/sonic-mgmt-int/tests/_cache/vms66-t1-8102-7/tbinfo.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+INFO     tests.common.cache.facts_cache:facts_cache.py:145 [Cache] Create cache dir /var/src/sonic-mgmt-int/tests/_cache/vms66-t1-8102-7
+INFO     tests.common.cache.facts_cache:facts_cache.py:151 [Cache] Cached facts "vms66-t1-8102-7.tbinfo" to /var/src/sonic-mgmt-int/tests/_cache/vms66-t1-8102-7/tbinfo.pickle
+INFO     tests.common.cache.facts_cache:facts_cache.py:99 [Cache] Load cache file "/var/src/sonic-mgmt-int/tests/_cache/str3-8102-07/host_visible_vars.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+INFO     tests.common.cache.facts_cache:facts_cache.py:145 [Cache] Create cache dir /var/src/sonic-mgmt-int/tests/_cache/str3-8102-07
+INFO     tests.common.cache.facts_cache:facts_cache.py:151 [Cache] Cached facts "str3-8102-07.host_visible_vars" to /var/src/sonic-mgmt-int/tests/_cache/str3-8102-07/host_visible_vars.pickle
+collecting 2 items                                                                                                                                                               INFO     tests.common.plugins.conditional_mark:__init__.py:689 Available basic facts that can be used in conditional skip:
+{
+  "topo_type": "t1",
+  "topo_name": "t1-28-lag",
+  "testbed": "vms66-t1-8102-7",
+  "asic_subtype": "cisco-8000",
+  "asic_type": "cisco-8000",
+  "branch": "heads/20251110.17",
+  "build_date": "Fri Mar 20 20:55:58 UTC 2026",
+  "build_number": 157629610,
+  "build_version": "20251110.17",
+  "built_by": "azureuser@080a62dac000001",
+  "commit_id": "13bd3ee0c5",
+  "debian_version": "13.3",
+  "feature_status": {
+    "acms": "enabled",
+    "bgp": "enabled",
+    "bmp": "enabled",
+    "database": "always_enabled",
+    "dhcp_relay": "enabled",
+    "dhcp_server": "enabled",
+    "eventd": "enabled",
+    "frr_bmp": "enabled",
+    "gnmi": "enabled",
+    "lldp": "enabled",
+    "macsec": "disabled",
+    "mux": "always_disabled",
+    "otel": "enabled",
+    "pmon": "enabled",
+    "radv": "enabled",
+    "restapi": "enabled",
+    "snmp": "enabled",
+    "swss": "enabled",
+    "syncd": "enabled",
+    "teamd": "enabled",
+    "telemetry": "enabled",
+    "vnet-monitor": "enabled"
+  },
+  "hwsku": "Cisco-8102-28FH-DPU-O",
+  "is_chassis": false,
+  "is_chassis_config_absent": false,
+  "is_dpu": false,
+  "is_mgmt_ipv6_only": false,
+  "is_multi_asic": false,
+  "is_smartswitch": true,
+  "is_supervisor": false,
+  "kernel_version": "6.12.41+deb13",
+  "libswsscommon": "1.0.0",
+  "num_asic": 1,
+  "platform": "x86_64-8102_28fh_dpu_o-r0",
+  "release": "202511",
+  "secure_boot_image": "no",
+  "sonic-ctrmgrd-rs": "1.0.0",
+  "sonic-host-services-rs": "1.0.0",
+  "sonic_os_version": 13,
+  "sonic_utilities": 1.2,
+  "asic_gen": "unknown",
+  "minigraph_interfaces": [
+    {
+      "addr": "10.0.0.42",
+      "attachto": "Ethernet104",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.43",
+      "prefixlen": 31,
+      "subnet": "10.0.0.42/31"
+    },
+    {
+      "addr": "fc00::55",
+      "attachto": "Ethernet104",
+      "mask": "126",
+      "peer_addr": "fc00::56",
+      "prefixlen": 126,
+      "subnet": "fc00::54/126"
+    },
+    {
+      "addr": "10.0.0.44",
+      "attachto": "Ethernet112",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.45",
+      "prefixlen": 31,
+      "subnet": "10.0.0.44/31"
+    },
+    {
+      "addr": "fc00::59",
+      "attachto": "Ethernet112",
+      "mask": "126",
+      "peer_addr": "fc00::5a",
+      "prefixlen": 126,
+      "subnet": "fc00::58/126"
+    },
+    {
+      "addr": "10.0.0.46",
+      "attachto": "Ethernet120",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.47",
+      "prefixlen": 31,
+      "subnet": "10.0.0.46/31"
+    },
+    {
+      "addr": "fc00::5d",
+      "attachto": "Ethernet120",
+      "mask": "126",
+      "peer_addr": "fc00::5e",
+      "prefixlen": 126,
+      "subnet": "fc00::5c/126"
+    },
+    {
+      "addr": "10.0.0.48",
+      "attachto": "Ethernet128",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.49",
+      "prefixlen": 31,
+      "subnet": "10.0.0.48/31"
+    },
+    {
+      "addr": "fc00::61",
+      "attachto": "Ethernet128",
+      "mask": "126",
+      "peer_addr": "fc00::62",
+      "prefixlen": 126,
+      "subnet": "fc00::60/126"
+    },
+    {
+      "addr": "10.0.0.50",
+      "attachto": "Ethernet136",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.51",
+      "prefixlen": 31,
+      "subnet": "10.0.0.50/31"
+    },
+    {
+      "addr": "fc00::65",
+      "attachto": "Ethernet136",
+      "mask": "126",
+      "peer_addr": "fc00::66",
+      "prefixlen": 126,
+      "subnet": "fc00::64/126"
+    },
+    {
+      "addr": "10.0.0.52",
+      "attachto": "Ethernet144",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.53",
+      "prefixlen": 31,
+      "subnet": "10.0.0.52/31"
+    },
+    {
+      "addr": "fc00::69",
+      "attachto": "Ethernet144",
+      "mask": "126",
+      "peer_addr": "fc00::6a",
+      "prefixlen": 126,
+      "subnet": "fc00::68/126"
+    },
+    {
+      "addr": "10.0.0.54",
+      "attachto": "Ethernet152",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.55",
+      "prefixlen": 31,
+      "subnet": "10.0.0.54/31"
+    },
+    {
+      "addr": "fc00::6d",
+      "attachto": "Ethernet152",
+      "mask": "126",
+      "peer_addr": "fc00::6e",
+      "prefixlen": 126,
+      "subnet": "fc00::6c/126"
+    },
+    {
+      "addr": "10.0.0.56",
+      "attachto": "Ethernet160",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.57",
+      "prefixlen": 31,
+      "subnet": "10.0.0.56/31"
+    },
+    {
+      "addr": "fc00::71",
+      "attachto": "Ethernet160",
+      "mask": "126",
+      "peer_addr": "fc00::72",
+      "prefixlen": 126,
+      "subnet": "fc00::70/126"
+    },
+    {
+      "addr": "10.0.0.58",
+      "attachto": "Ethernet168",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.59",
+      "prefixlen": 31,
+      "subnet": "10.0.0.58/31"
+    },
+    {
+      "addr": "fc00::75",
+      "attachto": "Ethernet168",
+      "mask": "126",
+      "peer_addr": "fc00::76",
+      "prefixlen": 126,
+      "subnet": "fc00::74/126"
+    },
+    {
+      "addr": "10.0.0.60",
+      "attachto": "Ethernet176",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.61",
+      "prefixlen": 31,
+      "subnet": "10.0.0.60/31"
+    },
+    {
+      "addr": "fc00::79",
+      "attachto": "Ethernet176",
+      "mask": "126",
+      "peer_addr": "fc00::7a",
+      "prefixlen": 126,
+      "subnet": "fc00::78/126"
+    },
+    {
+      "addr": "10.0.0.62",
+      "attachto": "Ethernet184",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.63",
+      "prefixlen": 31,
+      "subnet": "10.0.0.62/31"
+    },
+    {
+      "addr": "fc00::7d",
+      "attachto": "Ethernet184",
+      "mask": "126",
+      "peer_addr": "fc00::7e",
+      "prefixlen": 126,
+      "subnet": "fc00::7c/126"
+    },
+    {
+      "addr": "10.0.0.64",
+      "attachto": "Ethernet192",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.65",
+      "prefixlen": 31,
+      "subnet": "10.0.0.64/31"
+    },
+    {
+      "addr": "fc00::81",
+      "attachto": "Ethernet192",
+      "mask": "126",
+      "peer_addr": "fc00::82",
+      "prefixlen": 126,
+      "subnet": "fc00::80/126"
+    },
+    {
+      "addr": "10.0.0.66",
+      "attachto": "Ethernet200",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.67",
+      "prefixlen": 31,
+      "subnet": "10.0.0.66/31"
+    },
+    {
+      "addr": "fc00::85",
+      "attachto": "Ethernet200",
+      "mask": "126",
+      "peer_addr": "fc00::86",
+      "prefixlen": 126,
+      "subnet": "fc00::84/126"
+    },
+    {
+      "addr": "10.0.0.68",
+      "attachto": "Ethernet208",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.69",
+      "prefixlen": 31,
+      "subnet": "10.0.0.68/31"
+    },
+    {
+      "addr": "fc00::89",
+      "attachto": "Ethernet208",
+      "mask": "126",
+      "peer_addr": "fc00::8a",
+      "prefixlen": 126,
+      "subnet": "fc00::88/126"
+    },
+    {
+      "addr": "10.0.0.70",
+      "attachto": "Ethernet216",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.71",
+      "prefixlen": 31,
+      "subnet": "10.0.0.70/31"
+    },
+    {
+      "addr": "fc00::8d",
+      "attachto": "Ethernet216",
+      "mask": "126",
+      "peer_addr": "fc00::8e",
+      "prefixlen": 126,
+      "subnet": "fc00::8c/126"
+    },
+    {
+      "addr": "10.0.0.32",
+      "attachto": "Ethernet64",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.33",
+      "prefixlen": 31,
+      "subnet": "10.0.0.32/31"
+    },
+    {
+      "addr": "fc00::41",
+      "attachto": "Ethernet64",
+      "mask": "126",
+      "peer_addr": "fc00::42",
+      "prefixlen": 126,
+      "subnet": "fc00::40/126"
+    },
+    {
+      "addr": "10.0.0.34",
+      "attachto": "Ethernet72",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.35",
+      "prefixlen": 31,
+      "subnet": "10.0.0.34/31"
+    },
+    {
+      "addr": "fc00::45",
+      "attachto": "Ethernet72",
+      "mask": "126",
+      "peer_addr": "fc00::46",
+      "prefixlen": 126,
+      "subnet": "fc00::44/126"
+    },
+    {
+      "addr": "10.0.0.36",
+      "attachto": "Ethernet80",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.37",
+      "prefixlen": 31,
+      "subnet": "10.0.0.36/31"
+    },
+    {
+      "addr": "fc00::49",
+      "attachto": "Ethernet80",
+      "mask": "126",
+      "peer_addr": "fc00::4a",
+      "prefixlen": 126,
+      "subnet": "fc00::48/126"
+    },
+    {
+      "addr": "10.0.0.38",
+      "attachto": "Ethernet88",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.39",
+      "prefixlen": 31,
+      "subnet": "10.0.0.38/31"
+    },
+    {
+      "addr": "fc00::4d",
+      "attachto": "Ethernet88",
+      "mask": "126",
+      "peer_addr": "fc00::4e",
+      "prefixlen": 126,
+      "subnet": "fc00::4c/126"
+    },
+    {
+      "addr": "10.0.0.40",
+      "attachto": "Ethernet96",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.41",
+      "prefixlen": 31,
+      "subnet": "10.0.0.40/31"
+    },
+    {
+      "addr": "fc00::51",
+      "attachto": "Ethernet96",
+      "mask": "126",
+      "peer_addr": "fc00::52",
+      "prefixlen": 126,
+      "subnet": "fc00::50/126"
+    }
+  ],
+  "minigraph_portchannels": {
+    "PortChannel102": {
+      "members": [
+        "Ethernet0",
+        "Ethernet8"
+      ],
+      "name": "PortChannel102",
+      "namespace": ""
+    },
+    "PortChannel105": {
+      "members": [
+        "Ethernet16",
+        "Ethernet24"
+      ],
+      "name": "PortChannel105",
+      "namespace": ""
+    },
+    "PortChannel108": {
+      "members": [
+        "Ethernet32",
+        "Ethernet40"
+      ],
+      "name": "PortChannel108",
+      "namespace": ""
+    },
+    "PortChannel111": {
+      "members": [
+        "Ethernet48",
+        "Ethernet56"
+      ],
+      "name": "PortChannel111",
+      "namespace": ""
+    }
+  },
+  "minigraph_portchannel_interfaces": [
+    {
+      "addr": "10.0.0.0",
+      "attachto": "PortChannel102",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.1",
+      "prefixlen": 31,
+      "subnet": "10.0.0.0/31"
+    },
+    {
+      "addr": "fc00::1",
+      "attachto": "PortChannel102",
+      "mask": "126",
+      "peer_addr": "fc00::2",
+      "prefixlen": 126,
+      "subnet": "fc00::/126"
+    },
+    {
+      "addr": "10.0.0.4",
+      "attachto": "PortChannel105",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.5",
+      "prefixlen": 31,
+      "subnet": "10.0.0.4/31"
+    },
+    {
+      "addr": "fc00::9",
+      "attachto": "PortChannel105",
+      "mask": "126",
+      "peer_addr": "fc00::a",
+      "prefixlen": 126,
+      "subnet": "fc00::8/126"
+    },
+    {
+      "addr": "10.0.0.8",
+      "attachto": "PortChannel108",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.9",
+      "prefixlen": 31,
+      "subnet": "10.0.0.8/31"
+    },
+    {
+      "addr": "fc00::11",
+      "attachto": "PortChannel108",
+      "mask": "126",
+      "peer_addr": "fc00::12",
+      "prefixlen": 126,
+      "subnet": "fc00::10/126"
+    },
+    {
+      "addr": "10.0.0.12",
+      "attachto": "PortChannel111",
+      "mask": "255.255.255.254",
+      "peer_addr": "10.0.0.13",
+      "prefixlen": 31,
+      "subnet": "10.0.0.12/31"
+    },
+    {
+      "addr": "fc00::19",
+      "attachto": "PortChannel111",
+      "mask": "126",
+      "peer_addr": "fc00::1a",
+      "prefixlen": 126,
+      "subnet": "fc00::18/126"
+    }
+  ],
+  "minigraph_neighbors": {
+    "Ethernet0": {
+      "name": "ARISTA01T2",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet104": {
+      "name": "ARISTA06T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet112": {
+      "name": "ARISTA07T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet120": {
+      "name": "ARISTA08T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet128": {
+      "name": "ARISTA09T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet136": {
+      "name": "ARISTA10T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet144": {
+      "name": "ARISTA11T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet152": {
+      "name": "ARISTA12T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet16": {
+      "name": "ARISTA03T2",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet160": {
+      "name": "ARISTA13T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet168": {
+      "name": "ARISTA14T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet176": {
+      "name": "ARISTA15T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet184": {
+      "name": "ARISTA16T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet192": {
+      "name": "ARISTA17T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet200": {
+      "name": "ARISTA18T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet208": {
+      "name": "ARISTA19T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet216": {
+      "name": "ARISTA20T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet24": {
+      "name": "ARISTA03T2",
+      "namespace": "",
+      "port": "Ethernet2"
+    },
+    "Ethernet32": {
+      "name": "ARISTA05T2",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet40": {
+      "name": "ARISTA05T2",
+      "namespace": "",
+      "port": "Ethernet2"
+    },
+    "Ethernet48": {
+      "name": "ARISTA07T2",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet56": {
+      "name": "ARISTA07T2",
+      "namespace": "",
+      "port": "Ethernet2"
+    },
+    "Ethernet64": {
+      "name": "ARISTA01T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet72": {
+      "name": "ARISTA02T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet8": {
+      "name": "ARISTA01T2",
+      "namespace": "",
+      "port": "Ethernet2"
+    },
+    "Ethernet80": {
+      "name": "ARISTA03T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet88": {
+      "name": "ARISTA04T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    },
+    "Ethernet96": {
+      "name": "ARISTA05T0",
+      "namespace": "",
+      "port": "Ethernet1"
+    }
+  },
+  "VOQ_INBAND_INTERFACE": {},
+  "BGP_VOQ_CHASSIS_NEIGHBOR": {},
+  "INTERFACE": {
+    "Ethernet104": {
+      "10.0.0.42/31": {},
+      "FC00::55/126": {}
+    },
+    "Ethernet112": {
+      "10.0.0.44/31": {},
+      "FC00::59/126": {}
+    },
+    "Ethernet120": {
+      "10.0.0.46/31": {},
+      "FC00::5D/126": {}
+    },
+    "Ethernet128": {
+      "10.0.0.48/31": {},
+      "FC00::61/126": {}
+    },
+    "Ethernet136": {
+      "10.0.0.50/31": {},
+      "FC00::65/126": {}
+    },
+    "Ethernet144": {
+      "10.0.0.52/31": {},
+      "FC00::69/126": {}
+    },
+    "Ethernet152": {
+      "10.0.0.54/31": {},
+      "FC00::6D/126": {}
+    },
+    "Ethernet160": {
+      "10.0.0.56/31": {},
+      "FC00::71/126": {}
+    },
+    "Ethernet168": {
+      "10.0.0.58/31": {},
+      "FC00::75/126": {}
+    },
+    "Ethernet176": {
+      "10.0.0.60/31": {},
+      "FC00::79/126": {}
+    },
+    "Ethernet184": {
+      "10.0.0.62/31": {},
+      "FC00::7D/126": {}
+    },
+    "Ethernet192": {
+      "10.0.0.64/31": {},
+      "FC00::81/126": {}
+    },
+    "Ethernet200": {
+      "10.0.0.66/31": {},
+      "FC00::85/126": {}
+    },
+    "Ethernet208": {
+      "10.0.0.68/31": {},
+      "FC00::89/126": {}
+    },
+    "Ethernet216": {
+      "10.0.0.70/31": {},
+      "FC00::8D/126": {}
+    },
+    "Ethernet64": {
+      "10.0.0.32/31": {},
+      "FC00::41/126": {}
+    },
+    "Ethernet72": {
+      "10.0.0.34/31": {},
+      "FC00::45/126": {}
+    },
+    "Ethernet80": {
+      "10.0.0.36/31": {},
+      "FC00::49/126": {}
+    },
+    "Ethernet88": {
+      "10.0.0.38/31": {},
+      "FC00::4D/126": {}
+    },
+    "Ethernet96": {
+      "10.0.0.40/31": {},
+      "FC00::51/126": {}
+    }
+  },
+  "switch_type": "",
+  "type": "LeafRouter",
+  "switch": {
+    "ACL_ACTION|PACKET_ACTION": "COPY,DROP,FORWARD",
+    "ASIC_SDK_HEALTH_EVENT": "true",
+    "ECMP_HASH_ALGORITHM": "CRC,CRC_CCITT",
+    "ECMP_HASH_ALGORITHM_CAPABLE": "true",
+    "ECMP_HASH_CAPABLE": "true",
+    "HASH|NATIVE_HASH_FIELD_LIST": "SRC_IP,DST_IP,VLAN_ID,IP_PROTOCOL,L4_SRC_PORT,L4_DST_PORT,SRC_MAC,DST_MAC,IPV6_FLOW_LABEL",
+    "ICMP_OFFLOAD_CAPABLE": "true",
+    "LAG_HASH_ALGORITHM": "CRC,CRC_CCITT",
+    "LAG_HASH_ALGORITHM_CAPABLE": "true",
+    "LAG_HASH_CAPABLE": "true",
+    "LAG_TPID_CAPABLE": "true",
+    "MAX_NEXTHOP_GROUP_COUNT": "16384",
+    "MIRROR": "true",
+    "MIRRORV6": "true",
+    "ORDERED_ECMP_CAPABLE": "true",
+    "PATH_TRACING_CAPABLE": "false",
+    "PFC_DLR_INIT_CAPABLE": "true",
+    "PORT_EGRESS_MIRROR_CAPABLE": "true",
+    "PORT_EGRESS_SAMPLE_CAPABLE": "true",
+    "PORT_INGRESS_MIRROR_CAPABLE": "true",
+    "PORT_TPID_CAPABLE": "true",
+    "REG_FATAL_ASIC_SDK_HEALTH_CATEGORY": "true",
+    "REG_NOTICE_ASIC_SDK_HEALTH_CATEGORY": "true",
+    "REG_WARNING_ASIC_SDK_HEALTH_CATEGORY": "true",
+    "SWITCH_TRIMMING_CAPABLE": "false",
+    "SWITCH|NUMBER_OF_TRAFFIC_CLASSES": "8",
+    "SWITCH|NUMBER_OF_UNICAST_QUEUES": "8",
+    "SWITCH|PACKET_TRIMMING_DSCP_RESOLUTION_MODE": "N/A",
+    "SWITCH|PACKET_TRIMMING_QUEUE_RESOLUTION_MODE": "N/A"
+  },
+  "macsec_en": false
+}
+collected 2 items
+
+--------------------------------------------------------------------------------- live log setup ---------------------------------------------------------------------------------
+INFO     root:__init__.py:53 Completeness level not set during test execution. Setting to default level: 1
+INFO     root:__init__.py:151 Test has no defined levels. Continue without test completeness checks
+INFO     root:__init__.py:199 [Parallel Fixture] Current worker threads status:
+No alive worker thread found.
+INFO     tests.conftest:conftest.py:466 Inventory file: ['../ansible/str3', '../ansible/veos']
+INFO     tests.common.cache.facts_cache:facts_cache.py:99 [Cache] Load cache file "/var/src/sonic-mgmt-int/tests/_cache/str3-8102-07/basic_facts.pickle" failed with IOError or ValueError: FileNotFoundError(2, 'No such file or directory')
+INFO     tests.common.cache.facts_cache:facts_cache.py:151 [Cache] Cached facts "str3-8102-07.basic_facts" to /var/src/sonic-mgmt-int/tests/_cache/str3-8102-07/basic_facts.pickle
+INFO     tests.common.fixtures.ptfhost_utils:ptfhost_utils.py:326 Skip running icmp_responder at session level, it is only for dualtor testbed with active-active mux ports.
+INFO     tests.common.plugins.sanity_check:__init__.py:455 Skip sanity check according to command line argument
+INFO     tests.conftest:conftest.py:3005 Dumping Disk and Memory Space information before test on str3-8102-07
+INFO     root:__init__.py:199 [Parallel Fixture] Current worker threads status:
+No alive worker thread found.
+INFO     tests.conftest:conftest.py:3009 Collecting core dumps before test on str3-8102-07
+INFO     tests.conftest:conftest.py:3018 Collecting running config before test on str3-8102-07
+INFO     tests.conftest:conftest.py:3744 [restore_golden_config_db] Restored /etc/sonic/golden_config_db.json
+INFO     tests.conftest:conftest.py:3304 Skipping temporarily_disable_route_check fixture
+INFO     tests.common.helpers.yang_utils:yang_utils.py:17 Running YANG validation on str3-8102-07 (pre-test)
+INFO     tests.common.helpers.yang_utils:yang_utils.py:29 YANG validation passed on str3-8102-07 (pre-test)
+INFO     root:__init__.py:81 -------------------- fixture gnmi_tls setup starts --------------------
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:77 Setting up gNOI TLS server environment
+INFO     tests.common.gu_utils:gu_utils.py:292 Commands: config checkpoint gnoi_tls_setup
+INFO     tests.common.gu_utils:gu_utils.py:265 Commands: config list-checkpoints
+INFO     root:__init__.py:199 [Parallel Fixture] Current worker threads status:
+No alive worker thread found.
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:233 Generating gNOI TLS certificates
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:239 Certificates generated in /tmp/gnoi_certs
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:254 Certificate generation and distribution completed
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:259 Configuring gNOI server for TLS mode
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:280 TLS configuration completed
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:285 Restarting gNOI server process
+INFO     root:__init__.py:199 [Parallel Fixture] Current worker threads status:
+No alive worker thread found.
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:307 gNOI server restart completed
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:312 Verifying gNOI TLS connectivity
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:339 TLS connectivity verification completed successfully
+INFO     tests.common.ptf_grpc:ptf_grpc.py:86 Manual PtfGrpc configuration: target=10.3.146.173:50052, plaintext=False
+INFO     tests.common.ptf_grpc:ptf_grpc.py:296 Configured TLS certificates: ca=/etc/ssl/certs/gnmiCA.cer, cert=/etc/ssl/certs/gnmiclient.cer, key=/etc/ssl/certs/gnmiclient.key
+INFO     tests.common.ptf_gnoi:ptf_gnoi.py:40 Initialized PtfGnoi wrapper with PtfGrpc(target=10.3.146.173:50052, plaintext=False)
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:124 gNOI TLS server setup completed successfully
+INFO     root:__init__.py:85 -------------------- fixture gnmi_tls setup ends --------------------
+INFO     root:__init__.py:81 -------------------- fixture setup_gnoi_tls_server setup starts --------------------
+INFO     root:__init__.py:85 -------------------- fixture setup_gnoi_tls_server setup ends --------------------
+INFO     root:__init__.py:69 -------------------- fixture smartswitch_gnoi_upgrade_lists setup starts --------------------
+INFO     root:__init__.py:76 -------------------- fixture smartswitch_gnoi_upgrade_lists setup ends --------------------
+INFO     root:__init__.py:77 Log analyzer is disabled
+INFO     tests.common.plugins.memory_utilization:__init__.py:143 Hostname: str3-8102-07, Hwsku: Cisco-8102-28FH-DPU-O, Platform: x86_64-8102_28fh_dpu_o-r0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:420 Loading memory monitoring commands for hwsku: Cisco-8102-28FH-DPU-O
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=monit, cmd=sudo monit validate, memory_params={'memory_usage': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 10}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 70}}}, memory_check=<function parse_monit_validate_output at 0x7f9dad0aaf20>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=top, cmd=top -b -n 1, memory_params={'bgpd': {'memory_increase_threshold': {'type': 'value', 'value': 128}, 'memory_high_threshold': None}, 'zebra': {'memory_increase_threshold': {'type': 'value', 'value': 128}, 'memory_high_threshold': None}}, memory_check=<function parse_top_output at 0x7f9dad0aa5c0>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=free, cmd=free -m, memory_params={'used': {'memory_increase_threshold': {'type': 'percentage', 'value': '20%'}, 'memory_high_threshold': None}}, memory_check=<function parse_free_output at 0x7f9dad0aae80>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=docker, cmd=docker stats --no-stream, memory_params={'snmp': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 4}}, 'pmon': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 8}}, 'lldp': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 4}}, 'gnmi': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 6}}, 'radv': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 3}}, 'syncd': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 7}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 22}}, 'bgp': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 4}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 14}}, 'teamd': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 5}}, 'swss': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 5}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 10}}, 'database': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 6}}}, memory_check=<function parse_docker_stats_output at 0x7f9dad0aafc0>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=frr_bgp, cmd=vtysh -c "show memory bgp", memory_params={'used': {'memory_increase_threshold': [{'type': 'percentage', 'value': '50%'}, {'type': 'value', 'value': 64}, {'type': 'comparison', 'value': 'max'}], 'memory_high_threshold': {'type': 'value', 'value': 256}}}, memory_check=<function parse_frr_memory_output at 0x7f9dad0ab060>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=frr_zebra, cmd=vtysh -c "show memory zebra", memory_params={'used': {'memory_increase_threshold': [{'type': 'percentage', 'value': '50%'}, {'type': 'value', 'value': 64}, {'type': 'comparison', 'value': 'max'}], 'memory_increase_fail_threshold': {'type': 'value', 'value': 128}, 'memory_high_threshold': {'type': 'value', 'value': 128}}}, memory_check=<function parse_frr_memory_output at 0x7f9dad0ab060>
+INFO     root:__init__.py:69 -------------------- fixture ptf_grpc setup starts --------------------
+INFO     tests.common.helpers.gnmi_utils:gnmi_utils.py:16 Initializing GNMIEnvironment with mode 1
+INFO     tests.common.helpers.gnmi_utils:gnmi_utils.py:108 Found CONFIG_DB GNMI config: port=50052, tls=True
+INFO     tests.common.helpers.gnmi_utils:gnmi_utils.py:29 Successfully generated gnmi config
+INFO     tests.common.ptf_grpc:ptf_grpc.py:296 Configured TLS certificates: ca=/etc/ssl/certs/gnmiCA.cer, cert=/etc/ssl/certs/gnmiclient.cer, key=/etc/ssl/certs/gnmiclient.key
+INFO     tests.common.ptf_grpc:ptf_grpc.py:80 Auto-configured PtfGrpc: target=10.3.146.173:50052, plaintext=False
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:202 Created auto-configured gRPC client: PtfGrpc(target=10.3.146.173:50052, plaintext=False)
+INFO     root:__init__.py:76 -------------------- fixture ptf_grpc setup ends --------------------
+INFO     root:__init__.py:69 -------------------- fixture ptf_gnoi setup starts --------------------
+INFO     tests.common.ptf_gnoi:ptf_gnoi.py:40 Initialized PtfGnoi wrapper with PtfGrpc(target=10.3.146.173:50052, plaintext=False)
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:214 Created gNOI wrapper: PtfGnoi(grpc_client=PtfGrpc(target=10.3.146.173:50052, plaintext=False))
+INFO     root:__init__.py:76 -------------------- fixture ptf_gnoi setup ends --------------------
+INFO     root:conftest.py:3822 skip setup dualtor mux cables on non-dualtor testbed
+INFO     root:__init__.py:199 [Parallel Fixture] Current worker threads status:
+No alive worker thread found.
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:686 Total FRR memory used: 105.0 MB, holding: 39845888.0 bytes, small: 0.0 bytes, ordinary: 70254592.0 bytes
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:686 Total FRR memory used: 49.0 MB, holding: 36700160.0 bytes, small: 0.0 bytes, ordinary: 14680064.0 bytes
+INFO     tests.common.plugins.memory_utilization:__init__.py:64 Before test: collected memory_values {'before_test': {'str3-8102-07': {'monit': {'memory_usage': 5.1}, 'top': {'zebra': 45.6, 'bgpd': 117.1}, 'free': {'used': 6443}, 'docker': {'snmp': 0.0, 'pmon': 0.3, 'lldp': 0.0, 'gnmi': 0.1, 'bgp': 0.2, 'radv': 0.0, 'teamd': 0.0, 'syncd': 0.8, 'swss': 0.2, 'database': 0.0}, 'frr_bgp': {'used': 105.0}, 'frr_zebra': {'used': 49.0}}}, 'after_test': {'str3-8102-07': {}}}
+--------------------------------------------------------------------------------- live log call ----------------------------------------------------------------------------------
+INFO     root:__init__.py:345 [Parallel Fixture] Terminating parallel fixture manager
+INFO     tests.upgrade_path.test_upgrade_smart_switch_gnoi:test_upgrade_smart_switch_gnoi.py:105 SmartSwitch DPU gNOI upgrade: from=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/pensando/internal-202506/sonic-pensando.bin to=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/pensando/internal-202506/sonic-pensando.bin version=SONiC-OS-internal-202506.154741893-16d12968f4 dpu_index=3
+INFO     tests.smartswitch.common.reboot:reboot.py:58 Verifying gNOI connectivity to DPU dpu3 (index=3) before reboot
+INFO     tests.smartswitch.common.reboot:reboot.py:61 gNOI connectivity confirmed for DPU dpu3 (index=3)
+INFO     tests.common.ptf_gnoi:ptf_gnoi.py:363 Reboot request sent: method=COLD delay=0 force=False
+INFO     tests.smartswitch.common.reboot:reboot.py:67 Reboot request accepted cleanly for dpu3
+INFO     tests.smartswitch.common.reboot:reboot.py:71 Waiting for dpu3 (index=3) to come back online (timeout=600s)...
+
+
+
+
+INFO     tests.smartswitch.common.reboot:reboot.py:87 gNOI reboot complete: dpu3 is back online
+
+
+------------------------------------------------------------------------------- live log teardown --------------------------------------------------------------------------------
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:686 Total FRR memory used: 105.0 MB, holding: 39845888.0 bytes, small: 0.0 bytes, ordinary: 70254592.0 bytes
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:686 Total FRR memory used: 49.0 MB, holding: 36700160.0 bytes, small: 0.0 bytes, ordinary: 14680064.0 bytes
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: monit-memory_usage
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:75 Calculated high threshold for monit:memory_usage: 70.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for monit:memory_usage: 10.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: top-bgpd
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for top:bgpd: 128.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: top-zebra
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for top:zebra: 128.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: free-used
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for free:used: 1288.6
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-snmp
+WARNING  tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:64 Skipping memory check for docker-snmp due to zero value
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-pmon
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:75 Calculated high threshold for docker:pmon: 8.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for docker:pmon: 2.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-lldp
+WARNING  tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:64 Skipping memory check for docker-lldp due to zero value
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-gnmi
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:75 Calculated high threshold for docker:gnmi: 6.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for docker:gnmi: 2.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-radv
+WARNING  tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:64 Skipping memory check for docker-radv due to zero value
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-syncd
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:75 Calculated high threshold for docker:syncd: 22.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for docker:syncd: 7.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-bgp
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:75 Calculated high threshold for docker:bgp: 14.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for docker:bgp: 4.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-teamd
+WARNING  tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:64 Skipping memory check for docker-teamd due to zero value
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-swss
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:75 Calculated high threshold for docker:swss: 10.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for docker:swss: 5.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: docker-database
+WARNING  tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:64 Skipping memory check for docker-database due to zero value
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: frr_bgp-used
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:75 Calculated high threshold for frr_bgp:used: 256.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:247 Selected max threshold from list: 64.0 (from values: [52.5, 64.0])
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for frr_bgp:used: 64.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:53 Checking thresholds for command: frr_zebra-used
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:75 Calculated high threshold for frr_zebra:used: 128.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:247 Selected max threshold from list: 64.0 (from values: [24.5, 64.0])
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:97 Calculated increase threshold for frr_zebra:used: 64.0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:102 Calculated increase fail threshold for frr_zebra:used: 128.0
+INFO     tests.common.plugins.memory_utilization:__init__.py:124 After test: collected memory_values {'before_test': {'str3-8102-07': {'monit': {'memory_usage': 5.1}, 'top': {'zebra': 45.6, 'bgpd': 117.1}, 'free': {'used': 6443}, 'docker': {'snmp': 0.0, 'pmon': 0.3, 'lldp': 0.0, 'gnmi': 0.1, 'bgp': 0.2, 'radv': 0.0, 'teamd': 0.0, 'syncd': 0.8, 'swss': 0.2, 'database': 0.0}, 'frr_bgp': {'used': 105.0}, 'frr_zebra': {'used': 49.0}}}, 'after_test': {'str3-8102-07': {'monit': {'memory_usage': 5.1}, 'top': {'zebra': 45.7, 'bgpd': 117.1}, 'free': {'used': 6428}, 'docker': {'snmp': 0.1, 'pmon': 0.3, 'lldp': 0.0, 'gnmi': 0.1, 'bgp': 0.2, 'radv': 0.0, 'teamd': 0.0, 'syncd': 0.8, 'swss': 0.2, 'database': 0.0}, 'frr_bgp': {'used': 105.0}, 'frr_zebra': {'used': 49.0}}}}
+INFO     root:__init__.py:404 [Parallel Fixture] Resetting parallel fixture manager
+INFO     root:__init__.py:199 [Parallel Fixture] Current worker threads status:
+No alive worker thread found.
+------------------------------------------------------------------------------- live log logreport -------------------------------------------------------------------------------
+INFO     root:__init__.py:345 [Parallel Fixture] Terminating parallel fixture manager
+
+--------------------------------------------------------------------------------- live log setup ---------------------------------------------------------------------------------
+INFO     root:__init__.py:53 Completeness level not set during test execution. Setting to default level: 1
+INFO     root:__init__.py:151 Test has no defined levels. Continue without test completeness checks
+INFO     root:__init__.py:77 Log analyzer is disabled
+INFO     tests.common.plugins.memory_utilization:__init__.py:143 Hostname: str3-8102-07, Hwsku: Cisco-8102-28FH-DPU-O, Platform: x86_64-8102_28fh_dpu_o-r0
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:420 Loading memory monitoring commands for hwsku: Cisco-8102-28FH-DPU-O
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=monit, cmd=sudo monit validate, memory_params={'memory_usage': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 10}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 70}}}, memory_check=<function parse_monit_validate_output at 0x7f9dad0aaf20>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=top, cmd=top -b -n 1, memory_params={'bgpd': {'memory_increase_threshold': {'type': 'value', 'value': 128}, 'memory_high_threshold': None}, 'zebra': {'memory_increase_threshold': {'type': 'value', 'value': 128}, 'memory_high_threshold': None}}, memory_check=<function parse_top_output at 0x7f9dad0aa5c0>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=free, cmd=free -m, memory_params={'used': {'memory_increase_threshold': {'type': 'percentage', 'value': '20%'}, 'memory_high_threshold': None}}, memory_check=<function parse_free_output at 0x7f9dad0aae80>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=docker, cmd=docker stats --no-stream, memory_params={'snmp': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 4}}, 'pmon': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 8}}, 'lldp': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 4}}, 'gnmi': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 6}}, 'radv': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 3}}, 'syncd': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 7}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 22}}, 'bgp': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 4}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 14}}, 'teamd': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 5}}, 'swss': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 5}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 10}}, 'database': {'memory_increase_threshold': {'type': 'percentage_points', 'value': 2}, 'memory_high_threshold': {'type': 'percentage_points', 'value': 6}}}, memory_check=<function parse_docker_stats_output at 0x7f9dad0aafc0>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=frr_bgp, cmd=vtysh -c "show memory bgp", memory_params={'used': {'memory_increase_threshold': [{'type': 'percentage', 'value': '50%'}, {'type': 'value', 'value': 64}, {'type': 'comparison', 'value': 'max'}], 'memory_high_threshold': {'type': 'value', 'value': 256}}}, memory_check=<function parse_frr_memory_output at 0x7f9dad0ab060>
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:23 Registering command: name=frr_zebra, cmd=vtysh -c "show memory zebra", memory_params={'used': {'memory_increase_threshold': [{'type': 'percentage', 'value': '50%'}, {'type': 'value', 'value': 64}, {'type': 'comparison', 'value': 'max'}], 'memory_increase_fail_threshold': {'type': 'value', 'value': 128}, 'memory_high_threshold': {'type': 'value', 'value': 128}}}, memory_check=<function parse_frr_memory_output at 0x7f9dad0ab060>
+INFO     root:__init__.py:69 -------------------- fixture ptf_grpc setup starts --------------------
+INFO     tests.common.helpers.gnmi_utils:gnmi_utils.py:16 Initializing GNMIEnvironment with mode 1
+INFO     tests.common.helpers.gnmi_utils:gnmi_utils.py:108 Found CONFIG_DB GNMI config: port=50052, tls=True
+INFO     tests.common.helpers.gnmi_utils:gnmi_utils.py:29 Successfully generated gnmi config
+INFO     tests.common.ptf_grpc:ptf_grpc.py:296 Configured TLS certificates: ca=/etc/ssl/certs/gnmiCA.cer, cert=/etc/ssl/certs/gnmiclient.cer, key=/etc/ssl/certs/gnmiclient.key
+INFO     tests.common.ptf_grpc:ptf_grpc.py:80 Auto-configured PtfGrpc: target=10.3.146.173:50052, plaintext=False
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:202 Created auto-configured gRPC client: PtfGrpc(target=10.3.146.173:50052, plaintext=False)
+INFO     root:__init__.py:76 -------------------- fixture ptf_grpc setup ends --------------------
+INFO     root:__init__.py:69 -------------------- fixture ptf_gnoi setup starts --------------------
+INFO     tests.common.ptf_gnoi:ptf_gnoi.py:40 Initialized PtfGnoi wrapper with PtfGrpc(target=10.3.146.173:50052, plaintext=False)
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:214 Created gNOI wrapper: PtfGnoi(grpc_client=PtfGrpc(target=10.3.146.173:50052, plaintext=False))
+INFO     root:__init__.py:76 -------------------- fixture ptf_gnoi setup ends --------------------
+INFO     root:conftest.py:3822 skip setup dualtor mux cables on non-dualtor testbed
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:686 Total FRR memory used: 105.0 MB, holding: 39845888.0 bytes, small: 0.0 bytes, ordinary: 70254592.0 bytes
+INFO     tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:686 Total FRR memory used: 49.0 MB, holding: 36700160.0 bytes, small: 0.0 bytes, ordinary: 14680064.0 bytes
+INFO     tests.common.plugins.memory_utilization:__init__.py:64 Before test: collected memory_values {'before_test': {'str3-8102-07': {'monit': {'memory_usage': 5.1}, 'top': {'zebra': 45.7, 'bgpd': 117.1}, 'free': {'used': 6612}, 'docker': {'snmp': 0.1, 'pmon': 0.3, 'lldp': 0.0, 'gnmi': 0.1, 'bgp': 0.2, 'radv': 0.0, 'teamd': 0.0, 'syncd': 0.8, 'swss': 0.2, 'database': 0.0}, 'frr_bgp': {'used': 105.0}, 'frr_zebra': {'used': 49.0}}}, 'after_test': {'str3-8102-07': {}}}
+
+
+------------------------------------------------------------------------------- live log teardown --------------------------------------------------------------------------------
+INFO     root:__init__.py:404 [Parallel Fixture] Resetting parallel fixture manager
+INFO     root:__init__.py:199 [Parallel Fixture] Current worker threads status:
+No alive worker thread found.
+INFO     root:__init__.py:93 -------------------- fixture setup_gnoi_tls_server teardown starts --------------------
+INFO     root:__init__.py:102 -------------------- fixture setup_gnoi_tls_server teardown ends --------------------
+INFO     root:__init__.py:93 -------------------- fixture gnmi_tls teardown starts --------------------
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:129 Cleaning up gNOI TLS server environment
+INFO     tests.common.gu_utils:gu_utils.py:335 Commands: config rollback gnoi_tls_setup
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:134 Configuration rollback completed
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:345 Cleaning up certificate files
+INFO     tests.common.fixtures.grpc_fixtures:grpc_fixtures.py:138 Certificate cleanup completed
+INFO     root:__init__.py:102 -------------------- fixture gnmi_tls teardown ends --------------------
+INFO     tests.common.helpers.yang_utils:yang_utils.py:17 Running YANG validation on str3-8102-07 (post-test)
+INFO     root:__init__.py:199 [Parallel Fixture] Current worker threads status:
+No alive worker thread found.
+INFO     tests.common.helpers.yang_utils:yang_utils.py:29 YANG validation passed on str3-8102-07 (post-test)
+INFO     tests.conftest:conftest.py:3306 Skipping temporarily_disable_route_check fixture
+INFO     tests.conftest:conftest.py:3087 Dumping Disk and Memory Space information after test on str3-8102-07
+INFO     tests.conftest:conftest.py:3091 Collecting core dumps after test on str3-8102-07
+INFO     tests.conftest:conftest.py:3102 Collecting running config after test on str3-8102-07
+INFO     tests.conftest:conftest.py:3248 Core dump and config check passed for test_upgrade_smart_switch_gnoi.py
+ tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_multiple_dpus_via_gnoi_parallel[str3-8102-07] s                                                100% ██████████------------------------------------------------------------------------------- live log logreport -------------------------------------------------------------------------------
+INFO     root:__init__.py:345 [Parallel Fixture] Terminating parallel fixture manager
+
+================================================================================ warnings summary ================================================================================
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+../../../../opt/venv/lib/python3.12/site-packages/google/protobuf/internal/well_known_types.py:93
+  /opt/venv/lib/python3.12/site-packages/google/protobuf/internal/well_known_types.py:93: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+    _EPOCH_DATETIME_NAIVE = datetime.datetime.utcfromtimestamp(0)
+
+ptf_runner.py:3
+  /var/src/sonic-mgmt-int/tests/ptf_runner.py:3: DeprecationWarning: 'pipes' is deprecated and slated for removal in Python 3.13
+    import pipes
+
+upgrade_path/test_upgrade_smart_switch_gnoi.py:22
+  /var/src/sonic-mgmt-int/tests/upgrade_path/test_upgrade_smart_switch_gnoi.py:22: PytestUnknownMarkWarning: Unknown pytest.mark.disable_loganalyzer - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.mark.disable_loganalyzer,
+
+tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_one_dpu_via_gnoi[str3-8102-07]
+  /opt/venv/lib/python3.12/site-packages/pytest_ansible/host_manager/v213.py:13: DeprecationWarning: Host management is deprecated and will be removed in a future release
+    class HostManagerV213(BaseHostManager):
+
+tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_one_dpu_via_gnoi[str3-8102-07]
+tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_one_dpu_via_gnoi[str3-8102-07]
+tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_one_dpu_via_gnoi[str3-8102-07]
+tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_one_dpu_via_gnoi[str3-8102-07]
+tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_one_dpu_via_gnoi[str3-8102-07]
+tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_multiple_dpus_via_gnoi_parallel[str3-8102-07]
+  /opt/venv/lib/python3.12/site-packages/ansible/plugins/loader.py:1485: UserWarning: AnsibleCollectionFinder has already been configured
+    warnings.warn('AnsibleCollectionFinder has already been configured')
+
+tests/upgrade_path/test_upgrade_smart_switch_gnoi.py: 77 warnings
+  /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=108323) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_one_dpu_via_gnoi[str3-8102-07]
+  /var/src/sonic-mgmt-int/tests/conftest.py:1460: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    record_testsuite_property("timestamp", datetime.utcnow())
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+------------------------------------- generated xml file: /var/src/sonic-mgmt-int/tests/logs/upgrade_path/test_upgrade_smart_switch_gnoi.xml -------------------------------------
+----------------------------------------------------------------------------- live log sessionfinish -----------------------------------------------------------------------------
+INFO     root:__init__.py:67 Can not get Allure report URL. Please check logs
+============================================================================ short test summary info =============================================================================
+SKIPPED [1] upgrade_path/test_upgrade_smart_switch_gnoi.py:152: --ss-target-indices not set; skipping parallel multi-DPU gNOI upgrade
+
+Results (355.89s (0:05:55)):
+       1 passed
+       1 skipped
+DEBUG:tests.conftest:[log_custom_msg] item: <Function test_upgrade_multiple_dpus_via_gnoi_parallel[str3-8102-07]>
+DEBUG:root:[Parallel Fixture] Terminate parallel manager after teardown
+INFO:root:[Parallel Fixture] Terminating parallel fixture manager
+DEBUG:root:[Parallel Fixture] Running tasks to be terminated: []
+DEBUG:root:[Parallel Fixture] Current worker threads: []
+DEBUG:root:[Parallel Fixture] Current worker threads: []
+DEBUG:root:[Parallel Fixture] The fixture manager is terminated:
+stopped tasks [],
+canceled tasks [],
+pending tasks [],
+done tasks [].
+INFO:root:Can not get Allure report URL. Please check logs
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int/tests$
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int/tests$
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int/tests$ ip r
+default via 172.17.0.1 dev eth0
+172.17.0.0/16 dev eth0 proto kernel scope link src 172.17.0.14
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int/tests$
