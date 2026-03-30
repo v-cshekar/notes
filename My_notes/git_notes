@@ -41,11 +41,25 @@ upstream  https://github.com/sonic-net/sonic-mgmt.git (fetch)
 upstream  https://github.com/sonic-net/sonic-mgmt.git (push)
 
 
-
-git fetch upstream
-git rebase upstream/master
-
-git push origin v-cshekar/gnoi_reboot_test --force-with-lease
+1. Fetch the latest from both remotes:
+ 
+   git fetch origin
+   git fetch fork
+ 
+2. Checkout your fork's master:
+ 
+   git checkout -b master fork/master
+   # or if you already have a local master branch:
+   git checkout master
+   git reset --hard fork/master
+ 
+3. Rebase onto sonic-mgmt's master (origin):
+ 
+   git rebase origin/master
+ 
+4. Push the updated master back to your fork:
+ 
+   git push fork master --force-with-lease
 
 ----------------------------------------------------------------------------------
 
