@@ -16,6 +16,8 @@ sudo ./run_tests.sh -n vms69-t1-smartswitch-4280-22 -i ../ansible/veos,../ansibl
 DPU-3:
 sudo ./run_tests.sh -n vms69-t1-smartswitch-4280-22 -i ../ansible/veos,../ansible/str3 -d str3-nvidia-4280-E04-U22 -H "str3-nvidia-4280-E04-U22-dpu-3" -u -m individual -c smartswitch/platform_tests/test_reload_dpu.py::test_cold_reboot_dpus -e "--skip_sanity" -l info
 
+DPU-2:
+sudo ./run_tests.sh -n vms69-t1-smartswitch-4280-22 -i ../ansible/veos,../ansible/str3 -d str3-nvidia-4280-E04-U22 -H "str3-nvidia-4280-E04-U22-dpu-2" -u -m individual -c smartswitch/platform_tests/test_reload_dpu.py::test_cold_reboot_dpus -e "--skip_sanity" -l info
 
 
 
