@@ -1,12 +1,16 @@
 Installing sonic-gnmi .deb on NPU and DPU0
 
+Download: 
+sonic-gnmi_0.1_amd64.deb  (for NPU)
+sonic-gnmi_0.1_arm64.deb  (for DPU)
+
   ---
   NPU (amd64) — run from your dev VM
   # Copy deb to NPU
-  scp sonic-gnmi_0.1_amd64.deb admin@<NPU_IP>:/tmp/
+  scp sonic-gnmi_0.1_amd64.deb admin@smart:/tmp/
 
   # SSH into NPU
-  ssh admin@<NPU_IP>
+  ssh admin@smart
 
   # Install into gnmi container
   docker cp /tmp/sonic-gnmi_0.1_amd64.deb gnmi:/root/
@@ -16,10 +20,11 @@ Installing sonic-gnmi .deb on NPU and DPU0
   ---
   DPU0 (arm64) — run from your dev VM, then NPU
   # Copy deb to NPU first
-  scp sonic-gnmi_0.1_arm64.deb admin@<NPU_IP>:/tmp/
+  scp sonic-gnmi_0.1_arm64.deb admin@smart:/tmp/
 
   # SSH into NPU, then copy to DPU0
-  ssh admin@<NPU_IP>
+  ssh admin@smart
+  show chassis modules midplane-status
   scp /tmp/sonic-gnmi_0.1_arm64.deb admin@169.254.200.1:/tmp/
 
   # SSH into DPU0
