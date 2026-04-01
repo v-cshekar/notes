@@ -1,0 +1,76 @@
+
+
+
+  python sonic-pre-scs.py \
+    --guid 12345678-1234-5678-9abc-123456789012 \
+    --version 202405 \
+    --checks-dir /tmp/pre_upgrade_check \
+    --report-dir /tmp/test-reports 
+
+
+
+  python /tmp/pre_upgrade_check/sonic-pre-scs.py \
+    --guid 12345678-1234-5678-9abc-123456789012 \
+    --version 202405 \
+    --report-dir /tmp/test-reports
+
+
+admin@str-7060-cx32-1:~$   python /tmp/pre_upgrade_check/sonic-pre-scs.py \
+>     --guid 12345678-1234-5678-9abc-123456789012 \
+>     --version 202405 \
+>     --report-dir /tmp/test-reports
+
+Check exit_check_202405.sh FAILED rc=1 (10.4s)
+pre-SCS result: FAILED (rc=1, 10.4s)
+  [FAIL] exit_code=23: Teamd retry count validation failed
+  [FAIL] exit_code=31: Inconsistent ASIC database IP entries detected
+Report: /tmp/test-reports/pre_scs_202405.12345678-1234-5678-9abc-123456789012.json
+admin@str-7060-cx32-1:~$
+admin@str-7060-cx32-1:~$
+admin@str-7060-cx32-1:~$
+admin@str-7060-cx32-1:~$
+admin@str-7060-cx32-1:~$ cat /tmp/test-reports/pre_scs_202405.12345678-1234-5678-9abc-123456789012.json
+{
+  "sonic_upgrade_summary": {
+    "script_name": "pre-scs-202405",
+    "sonic_upgrade_package_version": "202405",
+    "fault_code": "1",
+    "fault_reason": "Pre-SCS check failed: exit_check_202405.sh",
+    "guid": "12345678-1234-5678-9abc-123456789012"
+  },
+  "sonic_upgrade_actions": {
+    "reputation_impact": true,
+    "retriable": true,
+    "isolate_on_failure": false,
+    "auto_triage": {
+      "status": false,
+      "triage_queue": "",
+      "triage_action": ""
+    }
+  },
+  "sonic_upgrade_report": {
+    "duration": "10",
+    "stages": [
+      {
+        "name": "exit_check_202405.sh",
+        "rc": "1"
+      }
+    ],
+    "health_checks": [
+      {
+        "name": "exit_check_202405.sh",
+        "success": false
+      }
+    ],
+    "errors": [
+      {
+        "name": "EXIT_CODE_23",
+        "message": "Teamd retry count validation failed"
+      },
+      {
+        "name": "EXIT_CODE_31",
+        "message": "Inconsistent ASIC database IP entries detected"
+      }
+    ]
+  }
+}admin@str-7060-cx32-1:~$
