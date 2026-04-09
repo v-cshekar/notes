@@ -5,6 +5,10 @@ ssh admin@10.150.238.105
 v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt-int$ docker exec --user v-cshekar -ti sonic-mgmt-chandra bash 
 v-cshekar@sonic-mgmt-chandra:~$
 
+# warm-reboot 
+./run_tests.sh -n vms-kvm-t0 -d vlab-01 -f vtestbed.yaml -i ../ansible/veos_vtb  -u -m individual -c platform_tests/test_reboot.py::test_warm_reboot -e "--skip_sanity" -l info
+
+
   
 v-cshekar@sonic-mgmt-chandra:~$ cd /var/src/sonic-mgmt-int/tests
 v-cshekar@sonic-mgmt-chandra:/var/src/sonic-mgmt-int/tests$ ./run_tests.sh -n testbed-bjw3-can-t0-7060-7 -i ../ansible/veos,../ansible/bjw3 -u -m individual -c gnxi/test_gnoi_system.py::test_system_time -e "--skip_sanity" -l info
@@ -69,28 +73,3 @@ ssh daweihuang@str-serv-acs-14 'grpcurl -plaintext \
 }
 JSON'
 
-test_gnoi_system.py
-
-def test_system_reboot(ptf_gnoi):  # noqa: F811
-    """
-    Test System.Reboot RPC via ptf_gnoi.
-
-    Uses delay=60 so the server may return before rebooting.
-    Accepts either a successful response or connection loss (reboot initiated).
-    """
-    try:
-        result = ptf_gnoi.system_reboot(
-            method="COLD",
-            message="gnoi_system_test_reboot",
-            force=False,
-        )
-        # If we get here, server returned before rebooting
-        assert isinstance(result, dict)
-        logger.info("System.Reboot returned: %s", result)
-    except Exception as e:
-        # Connection lost is expected when reboot starts immediately
-        err_str = str(e).lower()
-        if any(x in err_str for x in ["unavailable", "eof", "connection", "reset"]):
-            logger.info("Connection lost (reboot likely initiated): %s", e)
-        else:
-            raise
