@@ -69,6 +69,8 @@ upstream  https://github.com/sonic-net/sonic-mgmt.git (push)
 git push -u fork v-cshekar/upgrade_reboot
 git push -u fork v-cshekar/upgrade_reboot --force
 
+ git push -u fork v-cshekar/cold_reboot_test --force
+
 REDMOND+v-cshekar@APL-61V6RG3 MINGW64 ~/projects/sonic-mgmt (smart_switch_reboot)
 $  git push fork smart_switch_reboot --force
 
