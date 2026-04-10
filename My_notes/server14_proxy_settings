@@ -1,0 +1,7 @@
+ export http_proxy=http://10.1.3.5:8080
+ export https_proxy=http://10.1.3.5:8080
+
+v-cshekar@str-acs-serv-14:~/projects/sonic-mgmt-int$ echo $http_proxy
+http://10.1.3.5:8080
+v-cshekar@str-acs-serv-14:~/projects/sonic-mgmt-int$ echo $https_proxy
+http://10.1.3.5:8080
