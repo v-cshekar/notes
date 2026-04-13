@@ -1,0 +1,820 @@
+WEBVTT
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/9-0
+00:00:12.562 --> 00:00:14.122
+<v Vaibhav Hemant Dixit>So everything that you have here.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/10-0
+00:00:14.202 --> 00:00:14.322
+<v Vaibhav Hemant Dixit>Well.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/11-0
+00:00:15.282 --> 00:00:15.322
+<v Chandra Shekar (WIPRO LIMITED)>Oh.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/15-0
+00:00:15.522 --> 00:00:23.122
+<v Vaibhav Hemant Dixit>Is needed and then this is what this is.
+This is not needed. So uh, they ask #1.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/16-0
+00:00:25.402 --> 00:00:25.642
+<v Vaibhav Hemant Dixit>Is.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/18-0
+00:00:27.282 --> 00:00:27.802
+<v Vaibhav Hemant Dixit>Let's see.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/19-0
+00:00:30.122 --> 00:00:30.762
+<v Vaibhav Hemant Dixit>Can I?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/26-0
+00:00:39.522 --> 00:00:47.238
+<v Vaibhav Hemant Dixit>I'll share this on our chat.
+Let's just build up notes, right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/22-0
+00:00:42.042 --> 00:00:42.482
+<v Chandra Shekar (WIPRO LIMITED)>Mhm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/26-1
+00:00:47.238 --> 00:00:55.322
+<v Vaibhav Hemant Dixit>Goal is to add a new step in the upgrade
+process which acts as a.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/28-0
+00:00:58.522 --> 00:01:00.322
+<v Vaibhav Hemant Dixit>Um SSS.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/30-0
+00:01:02.042 --> 00:01:05.442
+<v Vaibhav Hemant Dixit>A prerequisite check.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/32-0
+00:01:06.762 --> 00:01:08.562
+<v Vaibhav Hemant Dixit>Or upgrade.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/33-0
+00:01:10.242 --> 00:01:11.842
+<v Vaibhav Hemant Dixit>Readiness, OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/34-0
+00:01:12.042 --> 00:01:12.522
+<v Chandra Shekar (WIPRO LIMITED)>Mhm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/37-0
+00:01:13.762 --> 00:01:19.202
+<v Vaibhav Hemant Dixit>So add a new step.
+I think that is clear and steps.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/38-0
+00:01:20.682 --> 00:01:21.882
+<v Vaibhav Hemant Dixit>So um.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/40-0
+00:01:23.682 --> 00:01:27.402
+<v Vaibhav Hemant Dixit>The goals breakdown itself is, you know,
+um.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/42-0
+00:01:28.762 --> 00:01:32.802
+<v Vaibhav Hemant Dixit>Is not to evaluate.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/46-0
+00:01:34.882 --> 00:01:45.802
+<v Vaibhav Hemant Dixit>The prerequisites before upgrade starts.
+Of course that is clear. Um fail.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/48-0
+00:01:49.082 --> 00:01:49.162
+<v Vaibhav Hemant Dixit>Um.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/50-0
+00:01:51.202 --> 00:01:53.842
+<v Vaibhav Hemant Dixit>Fail the if if.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/51-0
+00:01:57.002 --> 00:01:58.442
+<v Vaibhav Hemant Dixit>Make a script.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/54-0
+00:02:01.882 --> 00:02:05.362
+<v Vaibhav Hemant Dixit>Find find a script.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/55-0
+00:02:06.842 --> 00:02:08.762
+<v Vaibhav Hemant Dixit>That can be called.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/57-0
+00:02:11.602 --> 00:02:14.242
+<v Vaibhav Hemant Dixit>That that adds us.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/60-0
+00:02:16.002 --> 00:02:20.242
+<v Vaibhav Hemant Dixit>And entry .4 Sonic.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/65-0
+00:02:22.282 --> 00:02:30.271
+<v Vaibhav Hemant Dixit>Pre SCS SCS is called a this this thing
+that I just wrote there. It's called a.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/65-1
+00:02:30.271 --> 00:02:37.162
+<v Vaibhav Hemant Dixit>It's basically a pre SCS step and SCS is
+a safety check service. OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/64-0
+00:02:37.242 --> 00:02:38.162
+<v Chandra Shekar (WIPRO LIMITED)>OK, OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/71-0
+00:02:39.042 --> 00:02:44.725
+<v Vaibhav Hemant Dixit>SCS Safety check service.
+We have a pre SCS. We have post SCS. OK,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/71-1
+00:02:44.725 --> 00:02:50.662
+<v Vaibhav Hemant Dixit>right now this is about pre SCS.
+To evaluate the prerequisites before</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/68-0
+00:02:48.082 --> 00:02:48.562
+<v Chandra Shekar (WIPRO LIMITED)>Mhm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/71-2
+00:02:50.662 --> 00:02:55.326
+<v Vaibhav Hemant Dixit>upgrade starts,
+provide a script that acts as an entry</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/71-3
+00:02:55.326 --> 00:02:57.362
+<v Vaibhav Hemant Dixit>point for Sonic pre SCS.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/76-0
+00:02:58.522 --> 00:03:04.474
+<v Vaibhav Hemant Dixit>Sonic, Uh, PSCS for upgrade.
+OK and you predominantly wrote it for T0</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/73-0
+00:03:02.722 --> 00:03:02.882
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/76-1
+00:03:04.474 --> 00:03:09.746
+<v Vaibhav Hemant Dixit>only like warm reboot,
+but we will not limit it to just that,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/76-2
+00:03:09.746 --> 00:03:11.362
+<v Vaibhav Hemant Dixit>although our first.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/80-0
+00:03:12.362 --> 00:03:18.732
+<v Vaibhav Hemant Dixit>First input will be warm reboot, right?
+First use case will be warm reboot pre</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/80-1
+00:03:18.732 --> 00:03:22.602
+<v Vaibhav Hemant Dixit>SAS,
+but we will write it in a generic way, OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/79-0
+00:03:22.562 --> 00:03:22.682
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/82-0
+00:03:23.842 --> 00:03:26.242
+<v Vaibhav Hemant Dixit>Write this checker.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/85-0
+00:03:27.522 --> 00:03:33.842
+<v Vaibhav Hemant Dixit>Script in a in a.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/87-0
+00:03:35.002 --> 00:03:37.122
+<v Vaibhav Hemant Dixit>In a in an agnostic way.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/89-0
+00:03:38.922 --> 00:03:40.722
+<v Vaibhav Hemant Dixit>Agnostic to.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/95-0
+00:03:43.602 --> 00:03:49.866
+<v Vaibhav Hemant Dixit>Reboot type such as mom reboot or cold
+reboot or device type, right? It does not,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/95-1
+00:03:49.866 --> 00:03:53.762
+<v Vaibhav Hemant Dixit>should not care what it is, right? T0T1,
+etcetera.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/91-0
+00:03:50.162 --> 00:03:50.322
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/93-0
+00:03:53.482 --> 00:03:54.322
+<v Chandra Shekar (WIPRO LIMITED)>Mm-hmm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/97-0
+00:03:55.442 --> 00:04:03.482
+<v Vaibhav Hemant Dixit>Um. Reboot type is self-explanatory,
+but warm, cold, et cetera. Um.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/99-0
+00:04:05.002 --> 00:04:07.482
+<v Vaibhav Hemant Dixit>When script fails.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/100-0
+00:04:09.402 --> 00:04:10.722
+<v Vaibhav Hemant Dixit>We return.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/102-0
+00:04:12.122 --> 00:04:13.602
+<v Vaibhav Hemant Dixit>Hey, Jason.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/105-0
+00:04:15.042 --> 00:04:22.722
+<v Vaibhav Hemant Dixit>That conforms with the EHF JSON schema.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/107-0
+00:04:24.722 --> 00:04:28.282
+<v Vaibhav Hemant Dixit>Basically how Dawei is returning this?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/108-0
+00:04:29.882 --> 00:04:31.522
+<v Vaibhav Hemant Dixit>Um, not this one.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/110-0
+00:04:33.042 --> 00:04:36.082
+<v Vaibhav Hemant Dixit>Come on, this one. Where is it?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/116-0
+00:04:37.522 --> 00:04:43.383
+<v Vaibhav Hemant Dixit>Request here. So take this as a reference.
+I don't think you can access this,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/116-1
+00:04:43.383 --> 00:04:49.319
+<v Vaibhav Hemant Dixit>but you can access Sonic metadata I think.
+Can you access networking metadata?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/116-2
+00:04:49.319 --> 00:04:51.122
+<v Vaibhav Hemant Dixit>I don't think so, right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/115-0
+00:04:51.802 --> 00:04:53.522
+<v Chandra Shekar (WIPRO LIMITED)>Uh, no.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/117-0
+00:04:53.282 --> 00:04:57.682
+<v Vaibhav Hemant Dixit>OK, that's fine. Author the way.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/121-0
+00:05:00.642 --> 00:05:07.802
+<v Vaibhav Hemant Dixit>So you will see here right unified code
+UUID and all that.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/123-0
+00:05:10.482 --> 00:05:16.362
+<v Vaibhav Hemant Dixit>Error reporting flag Sonic transition.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/125-0
+00:05:17.762 --> 00:05:18.722
+<v Vaibhav Hemant Dixit>So let's see.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/129-0
+00:05:23.082 --> 00:05:26.786
+<v Vaibhav Hemant Dixit>So you have access to this file anyway.
+Um,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/127-0
+00:05:26.722 --> 00:05:26.842
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/129-1
+00:05:26.786 --> 00:05:31.922
+<v Vaibhav Hemant Dixit>what Dawei is doing and what I want to
+show you about it is.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/131-0
+00:05:34.642 --> 00:05:34.802
+<v Vaibhav Hemant Dixit>Um.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/132-0
+00:05:36.442 --> 00:05:38.962
+<v Vaibhav Hemant Dixit>Where is he generating this?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/135-0
+00:05:40.122 --> 00:05:43.642
+<v Vaibhav Hemant Dixit>JSON file Sonic reports functions dot SH.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/138-0
+00:05:45.322 --> 00:05:49.277
+<v Vaibhav Hemant Dixit>Yeah, right.
+So this part may have to see when minus E</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/138-1
+00:05:49.277 --> 00:05:51.362
+<v Vaibhav Hemant Dixit>is provided, it generates an.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/137-0
+00:05:50.602 --> 00:05:51.122
+<v Chandra Shekar (WIPRO LIMITED)>Mhm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/142-0
+00:05:56.162 --> 00:06:05.784
+<v Vaibhav Hemant Dixit>It provides a Jason report or whatever
+failed. Install Sonic error report, CP,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/142-1
+00:06:05.784 --> 00:06:07.002
+<v Vaibhav Hemant Dixit>et cetera.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/147-0
+00:06:08.642 --> 00:06:12.867
+<v Vaibhav Hemant Dixit>Error report dot PY.
+So you're recording this right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/144-0
+00:06:12.682 --> 00:06:13.282
+<v Chandra Shekar (WIPRO LIMITED)>Yeah.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/147-1
+00:06:12.867 --> 00:06:19.245
+<v Vaibhav Hemant Dixit>So you will have all these changes also
+on Sonic metadata so you can find so if</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/147-2
+00:06:19.245 --> 00:06:20.282
+<v Vaibhav Hemant Dixit>you see here.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/148-0
+00:06:21.322 --> 00:06:25.282
+<v Vaibhav Hemant Dixit>Here is somewhere he's going to generate
+that Jason.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/151-0
+00:06:26.362 --> 00:06:30.722
+<v Vaibhav Hemant Dixit>Report failure via Jason, right? So here.
+No, not this one.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/152-0
+00:06:31.922 --> 00:06:33.362
+<v Vaibhav Hemant Dixit>No, no, no, no, no, no.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/158-0
+00:06:39.282 --> 00:06:48.187
+<v Vaibhav Hemant Dixit>Right to temporary Jason file,
+Jason dot load or JSO dot dump here right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/156-0
+00:06:46.922 --> 00:06:47.442
+<v Chandra Shekar (WIPRO LIMITED)>Mhm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/158-1
+00:06:48.187 --> 00:06:53.242
+<v Vaibhav Hemant Dixit>So this is what mark failure mark success.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/162-0
+00:06:54.482 --> 00:07:01.655
+<v Vaibhav Hemant Dixit>Main So basically Sonic error report dot
+PY is what you want. Where is it?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/162-1
+00:07:01.655 --> 00:07:07.202
+<v Vaibhav Hemant Dixit>Post upgrade action data,
+post upgrade action data Sonic.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/163-0
+00:07:08.762 --> 00:07:11.562
+<v Vaibhav Hemant Dixit>Sonic error dot VY reference this file.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/165-0
+00:07:12.162 --> 00:07:12.282
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/166-0
+00:07:12.522 --> 00:07:14.882
+<v Vaibhav Hemant Dixit>OK, um can go.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/177-0
+00:07:27.322 --> 00:07:33.077
+<v Vaibhav Hemant Dixit>References one is this right?
+Two are your changes,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/172-0
+00:07:32.002 --> 00:07:32.122
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/177-1
+00:07:33.077 --> 00:07:40.272
+<v Vaibhav Hemant Dixit>Chandra's changes and whatever,
+you know what I'm talking about.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/177-2
+00:07:40.272 --> 00:07:46.802
+<v Vaibhav Hemant Dixit>So so he so this change is to be
+referenced when you want.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/174-0
+00:07:40.762 --> 00:07:42.042
+<v Chandra Shekar (WIPRO LIMITED)>OK. Yeah.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/183-0
+00:07:46.842 --> 00:07:51.710
+<v Vaibhav Hemant Dixit>I want to talk with this right?
+So because you are caching failures and</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/183-1
+00:07:51.710 --> 00:07:57.119
+<v Vaibhav Hemant Dixit>in your change you are caching failures
+and doing just like saying if it failed</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/183-2
+00:07:57.119 --> 00:08:00.973
+<v Vaibhav Hemant Dixit>or not failed right?
+Not much the but but you were doing</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/180-0
+00:07:57.922 --> 00:07:58.402
+<v Chandra Shekar (WIPRO LIMITED)>Mhm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/183-3
+00:08:00.973 --> 00:08:04.962
+<v Vaibhav Hemant Dixit>something useful which is you were
+uploading this data to.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/182-0
+00:08:03.962 --> 00:08:05.362
+<v Chandra Shekar (WIPRO LIMITED)>Uh, customer.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/188-0
+00:08:05.082 --> 00:08:08.831
+<v Vaibhav Hemant Dixit>To Kusto exactly.
+And that's how we were finding it, right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/188-1
+00:08:08.831 --> 00:08:13.392
+<v Vaibhav Hemant Dixit>But that was a very manual process
+because this this engine of scripting</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/188-2
+00:08:13.392 --> 00:08:17.328
+<v Vaibhav Hemant Dixit>framework was supposed to be manual.
+This was an ad hoc thing.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/188-3
+00:08:17.328 --> 00:08:20.202
+<v Vaibhav Hemant Dixit>Now we are making a product out of it,
+right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/187-0
+00:08:19.202 --> 00:08:19.362
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/190-0
+00:08:20.202 --> 00:08:27.202
+<v Vaibhav Hemant Dixit>So when we are trying to productize this,
+we are going to talk about a non manual.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/198-0
+00:08:29.282 --> 00:08:34.226
+<v Vaibhav Hemant Dixit>Non manual procedures to extract the
+errors and stuff right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/198-1
+00:08:34.226 --> 00:08:38.359
+<v Vaibhav Hemant Dixit>So since this will be running on the
+device right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/193-0
+00:08:35.042 --> 00:08:35.722
+<v Chandra Shekar (WIPRO LIMITED)>Mhm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/198-2
+00:08:38.359 --> 00:08:42.573
+<v Vaibhav Hemant Dixit>Your checker was not running on device.
+By the way,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/198-3
+00:08:42.573 --> 00:08:47.922
+<v Vaibhav Hemant Dixit>you were pushing files to the device and
+then running the parent.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/199-0
+00:08:48.602 --> 00:08:50.202
+<v Vaibhav Hemant Dixit>Jump boxes if you remember.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/197-0
+00:08:49.882 --> 00:08:51.082
+<v Chandra Shekar (WIPRO LIMITED)>Yeah, yeah.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/202-0
+00:08:50.922 --> 00:08:53.756
+<v Vaibhav Hemant Dixit>Right.
+And jump boxes have the ability to push</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/202-1
+00:08:53.756 --> 00:08:55.082
+<v Vaibhav Hemant Dixit>to Kusto and all that.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/201-0
+00:08:55.442 --> 00:08:55.562
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/205-0
+00:08:58.002 --> 00:09:01.005
+<v Vaibhav Hemant Dixit>So in in this case,
+the error reporting format,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/205-1
+00:09:01.005 --> 00:09:05.947
+<v Vaibhav Hemant Dixit>whatever errors that you generate will
+use how Dawei is generating in that PR,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/205-2
+00:09:05.947 --> 00:09:06.322
+<v Vaibhav Hemant Dixit>right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/207-0
+00:09:08.282 --> 00:09:12.362
+<v Chandra Shekar (WIPRO LIMITED)>So who will consume this error report?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/213-0
+00:09:12.922 --> 00:09:17.151
+<v Vaibhav Hemant Dixit>Who will consume? Yeah, good question,
+good question.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/213-1
+00:09:17.151 --> 00:09:23.807
+<v Vaibhav Hemant Dixit>So it will be the the entity which or the
+service which performs upgrade on devices,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/213-2
+00:09:23.807 --> 00:09:27.253
+<v Vaibhav Hemant Dixit>right?
+So for example in in in our specific</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/210-0
+00:09:24.482 --> 00:09:24.602
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/213-3
+00:09:27.253 --> 00:09:29.602
+<v Vaibhav Hemant Dixit>example it will be fused team.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/217-0
+00:09:29.882 --> 00:09:34.148
+<v Vaibhav Hemant Dixit>Fuse is a team which has a service called
+a UCM Unified Control Management.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/217-1
+00:09:34.148 --> 00:09:37.740
+<v Vaibhav Hemant Dixit>You don't care, right?
+So it's a it's it's a service that calls</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/215-0
+00:09:35.602 --> 00:09:35.762
+<v Chandra Shekar (WIPRO LIMITED)>Mm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/217-2
+00:09:37.740 --> 00:09:40.042
+<v Vaibhav Hemant Dixit>and performs an upgrade on Sonic devices.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/224-0
+00:09:41.002 --> 00:09:44.538
+<v Vaibhav Hemant Dixit>And when an upgrade fails,
+we return back something.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/224-1
+00:09:44.538 --> 00:09:49.074
+<v Vaibhav Hemant Dixit>That's what that exchange is doing, right?
+So it is returning back.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/219-0
+00:09:46.482 --> 00:09:46.602
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/224-2
+00:09:49.074 --> 00:09:54.144
+<v Vaibhav Hemant Dixit>Now the the ask in your project is we
+should return back sooner rather than</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/224-3
+00:09:54.144 --> 00:09:57.347
+<v Vaibhav Hemant Dixit>later.
+Basically that's the end goal and do not</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/224-4
+00:09:57.347 --> 00:10:00.082
+<v Vaibhav Hemant Dixit>even attempt to do image installation or.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/225-0
+00:10:00.922 --> 00:10:02.682
+<v Vaibhav Hemant Dixit>Would just return back sooner.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/223-0
+00:10:02.722 --> 00:10:02.842
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/228-0
+00:10:03.722 --> 00:10:08.152
+<v Vaibhav Hemant Dixit>OK,
+and you have access to this repository in</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/228-1
+00:10:08.152 --> 00:10:11.042
+<v Vaibhav Hemant Dixit>this Sonic reporting contract.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/233-0
+00:10:12.442 --> 00:10:16.655
+<v Vaibhav Hemant Dixit>Is what you will take a look at.
+So if you see here, right,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/233-1
+00:10:16.655 --> 00:10:21.991
+<v Vaibhav Hemant Dixit>this is our reporting contract and
+reporting contract between Sonic and the</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/233-2
+00:10:21.991 --> 00:10:25.712
+<v Vaibhav Hemant Dixit>client, client such as UCM or Fuse,
+whatever, right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/231-0
+00:10:24.162 --> 00:10:24.642
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/233-3
+00:10:25.712 --> 00:10:29.082
+<v Vaibhav Hemant Dixit>So we fail and we fail with information,
+right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/238-0
+00:10:29.282 --> 00:10:34.493
+<v Vaibhav Hemant Dixit>Data like hey this thing failed but is it
+reputation impacting retriable,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/238-1
+00:10:34.493 --> 00:10:38.859
+<v Vaibhav Hemant Dixit>also load and failure and this will be
+case by case analysis.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/238-2
+00:10:38.859 --> 00:10:44.351
+<v Vaibhav Hemant Dixit>Like per error code we will define a
+mapping which will make our script under</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/238-3
+00:10:44.351 --> 00:10:47.802
+<v Vaibhav Hemant Dixit>your script intelligent enough to
+populate this.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/244-0
+00:10:47.922 --> 00:10:53.784
+<v Vaibhav Hemant Dixit>After gathering failures, gather failure,
+you have the logic right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/239-0
+00:10:51.042 --> 00:10:51.162
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/244-1
+00:10:53.784 --> 00:11:00.078
+<v Vaibhav Hemant Dixit>And then populate this report Jason at
+the end of it and return it back.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/244-2
+00:11:00.078 --> 00:11:05.682
+<v Vaibhav Hemant Dixit>And returning is basically just writing
+to a Jason file on disk.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/242-0
+00:11:00.482 --> 00:11:00.602
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/247-0
+00:11:07.522 --> 00:11:12.469
+<v Chandra Shekar (WIPRO LIMITED)>OK, and who will?
+I mean how the script will be triggered?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/247-1
+00:11:12.469 --> 00:11:14.482
+<v Chandra Shekar (WIPRO LIMITED)>What is the entry point?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/249-0
+00:11:15.682 --> 00:11:19.119
+<v Vaibhav Hemant Dixit>Yeah, no entry point today.
+So once we are ready,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/249-1
+00:11:19.119 --> 00:11:22.762
+<v Vaibhav Hemant Dixit>we ask the client to get ready to to call
+a new API.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/253-0
+00:11:22.682 --> 00:11:29.602
+<v Chandra Shekar (WIPRO LIMITED)>OK so just so I can test it with the
+script main script running the script OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/251-0
+00:11:28.802 --> 00:11:29.322
+<v Vaibhav Hemant Dixit>Yes.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/257-0
+00:11:31.962 --> 00:11:36.414
+<v Chandra Shekar (WIPRO LIMITED)>OK. And OK, yeah,
+I'll do it on this one only, you know,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/254-0
+00:11:32.002 --> 00:11:32.242
+<v Vaibhav Hemant Dixit>Right.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/257-1
+00:11:36.414 --> 00:11:40.242
+<v Chandra Shekar (WIPRO LIMITED)>the internal branch and test it on our
+test pen.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/261-0
+00:11:38.522 --> 00:11:45.033
+<v Vaibhav Hemant Dixit>Yeah, yeah, yeah, yeah, yeah, yeah, yeah.
+So good question, right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/261-1
+00:11:45.033 --> 00:11:50.669
+<v Vaibhav Hemant Dixit>So you are asking about who will call
+this script, right?</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/261-2
+00:11:50.669 --> 00:11:56.402
+<v Vaibhav Hemant Dixit>Short term and long term, long term,
+it will be a new API.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/263-0
+00:11:57.962 --> 00:12:00.962
+<v Vaibhav Hemant Dixit>No, you know, OK on client side, OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/264-0
+00:12:00.322 --> 00:12:00.482
+<v Chandra Shekar (WIPRO LIMITED)>OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/268-0
+00:12:02.042 --> 00:12:09.632
+<v Vaibhav Hemant Dixit>This will require require changes or
+require code changes and on fuses side</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/268-1
+00:12:09.632 --> 00:12:16.223
+<v Vaibhav Hemant Dixit>and on hardware proxy side.
+I don't care about acronyms right but</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/268-2
+00:12:16.223 --> 00:12:17.322
+<v Vaibhav Hemant Dixit>short term.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/275-0
+00:12:17.642 --> 00:12:24.569
+<v Vaibhav Hemant Dixit>We can use preload firmware to to do this
+prereq check. Let's talk about more,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/275-1
+00:12:24.569 --> 00:12:30.795
+<v Vaibhav Hemant Dixit>talk more about this later. Need to drop,
+but digest this information,</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/272-0
+00:12:30.442 --> 00:12:31.722
+<v Chandra Shekar (WIPRO LIMITED)>Mm-hmm.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/275-2
+00:12:30.795 --> 00:12:35.442
+<v Vaibhav Hemant Dixit>come back with more questions and we can
+talk again.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/274-0
+00:12:35.642 --> 00:12:38.162
+<v Chandra Shekar (WIPRO LIMITED)>OK, OK, OK.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/279-0
+00:12:36.642 --> 00:12:43.296
+<v Vaibhav Hemant Dixit>Yeah, um, take a look at Davis changes.
+So take a take a look at the contract and</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/279-1
+00:12:43.296 --> 00:12:45.162
+<v Vaibhav Hemant Dixit>maybe we can reconvene.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/278-0
+00:12:45.362 --> 00:12:45.602
+<v Chandra Shekar (WIPRO LIMITED)>OK, sure.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/280-0
+00:12:46.762 --> 00:12:49.642
+<v Vaibhav Hemant Dixit>All right. Thank you, Chandra. Bye.</v>
+
+499d3e6d-fe5d-43aa-8f39-132e2755f5ea/282-0
+00:12:47.722 --> 00:12:49.882
+<v Chandra Shekar (WIPRO LIMITED)>OK. Yeah. Thanks for everyone.</v>
