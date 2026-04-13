@@ -1,0 +1,72 @@
+ ---
+  GNMI Config (on Switch)
+
+  # Delete GNMI certs entry
+  sonic-db-cli CONFIG_DB del "GNMI|certs"
+
+  # Verify GNMI config entries
+  sonic-db-cli CONFIG_DB hgetall "GNMI|certs"
+  sonic-db-cli CONFIG_DB hgetall "GNMI|gnmi"
+
+  # Restart GNMI service
+  sudo systemctl restart gnmi
+
+  ---
+  gRPC / gNOI Calls (from Switch, targeting DPUs)
+
+  # Get system time from a DPU (change index 0–3)
+  grpcurl -plaintext \
+    -H "x-sonic-ss-target-type: dpu" \
+    -H "x-sonic-ss-target-index: 0" \
+    -d '{}' \
+    10.3.156.98:50052 \
+    gnoi.system.System/Time
+
+  # Transfer image to DPU via HTTP
+  grpcurl -plaintext \
+    -H "x-sonic-ss-target-type: dpu" \
+    -H "x-sonic-ss-target-index: 0" \
+    -d '{
+      "local_path": "/var/tmp/sonic-20250610.05.bin",
+      "remote_download": {
+        "path": "http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/nvidia-bluefield/internal-202506/tagged/sonic-nvidia-bluefield-20250610.05.bin",
+        "protocol": "HTTP"
+      }
+    }' \
+    10.3.156.98:50052 \
+    gnoi.file.File/TransferToRemote
+
+  # Install and activate image on DPU
+  grpcurl -plaintext \
+    -H "x-sonic-ss-target-type: dpu" \
+    -H "x-sonic-ss-target-index: 0" \
+    -d '{
+      "package": {
+        "filename": "/var/tmp/sonic-20250610.05.bin",
+        "version": "SONiC-OS-20250610.05",
+        "activate": true
+      }
+    }' \
+    10.3.156.98:50052 \
+    gnoi.system.System/SetPackage
+
+  ---
+  DPU Access (from Switch)
+
+  # Show DPU midplane reachability
+  show chassis modules midplane-status
+
+  # SSH into a DPU directly
+  ssh admin@169.254.200.1   # DPU0
+  ssh admin@169.254.200.2   # DPU1
+  ssh admin@169.254.200.3   # DPU2
+  ssh admin@169.254.200.4   # DPU3
+
+  ---
+  On DPU: Image Management & Logs
+
+  # List installed images and next boot target
+  sudo sonic-installer list
+
+  # Tail GNMI logs
+  sudo tail /var/log/gnmi.log
