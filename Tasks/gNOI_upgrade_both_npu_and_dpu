@@ -1,0 +1,3 @@
+
+vms66-t1-8102-7
+sudo ./run_tests.sh -i ../ansible/str3,../ansible/veos -n vms66-t1-8102-7 -u -m individual -c upgrade_path/test_upgrade_smart_switch_gnoi.py -e "--upgrade_type=cold --base_image_list=http://10.64.247.87:8080/sonic-pensando.bin --target_image_list=http://10.64.247.87:8080/sonic-pensando.bin --target_version=SONiC-OS-internal-202506.154741893-16d12968f4 --ss_target_index=0" -d str3-8102-07 -e "--skip_sanity" -l info
