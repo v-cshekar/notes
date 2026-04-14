@@ -1,0 +1,6 @@
+
+Device Name: vms66-t1-8102-7
+
+From: v-cshekar@str-acs-serv-14
+
+ssh -l v-cshekar:35 -p 22 10.3.145.197 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
