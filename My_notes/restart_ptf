@@ -1,0 +1,1 @@
+v-cshekar@sonic-mgmt-v-cshekar:/var/src/sonic-mgmt-int/ansible$ ./testbed-cli.sh -t testbed.yaml -m veos restart-ptf vms69-t1-smartswitch-4280-22 password.txt
