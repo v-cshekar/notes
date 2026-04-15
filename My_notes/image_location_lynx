@@ -1,1 +1,7 @@
 lynx http://10.201.148.43/pipelines/
+
+Go to location and then press backspace.  
+http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/nvidia-bluefield/internal-202511/sonic-nvidia-bluefield.bin
+
+
+curl -O http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/nvidia-bluefield/internal-202511/sonic-nvidia-bluefield.bin
