@@ -132,3 +132,47 @@ Something between the gnmi_tls verification and file_transfer_to_remote is resta
   3. file_transfer_to_remote → gnmi-native now using streamingtelemetryserver.cer (no IP SAN) → TLS fails
 
   The fix is to re-apply TLS cert config after the preboot reboot. Let me look at boot_into_base_image:
+
+
+
+
+ Add SmartSwitch full upgrade test: stage all DPUs then reboot NPU
+
+  Adds test_upgrade_smartswitch_all_dpus_then_npu which stages the new image
+  on all DPUs (no reboot), then upgrades the NPU. Since the NPU reboot also
+  reboots all DPUs, everything comes up on the new image in one cycle.
+
+  Key changes:
+  - GnoiUpgradeConfig: add skip_reboot flag for DPU image staging without reboot
+  - ptf_gnoi: set max_time=3600 for TransferToRemote (large image downloads)
+  - conftest: add --ss_npu_target_image and --ss_npu_target_version options
+  - grpc_fixtures: revert configure/restart helpers back to private
+  - Use config save -y before reboots to preserve TLS cert config across reboots
+
+
+  Previously, the only SmartSwitch gNOI upgrade tests were:
+  - Upgrade a single DPU (test_upgrade_one_dpu_via_gnoi)
+  - Upgrade multiple DPUs in parallel (test_upgrade_multiple_dpus_via_gnoi_parallel)
+
+  These tests reboot each DPU individually. But on SmartSwitch, the NPU and all DPUs are tightly coupled — rebooting the NPU also
+  reboots all DPUs. There was no test that validated the full system upgrade as it would happen in production:
+
+  1. Stage new image on all DPUs (no reboot yet)
+  2. Upgrade the NPU — which triggers a system-wide reboot
+  3. Everything (NPU + all DPUs) comes up on the new image together
+
+  This PR covers that scenario end-to-end using gNOI, ensuring the coordinated NPU+DPU upgrade path works correctly.
+
+
+● The implementation reuses existing helpers with one new addition:
+
+  - Added skip_reboot=True to GnoiUpgradeConfig so DPUs can be staged without rebooting
+  - Phase 1 calls the existing parallel DPU upgrade with skip_reboot=True
+  - Phase 2 calls the existing perform_gnoi_upgrade for the NPU (reboot triggers all DPUs to reboot too)
+  - Phase 3 polls gnoi.system_time per DPU to confirm everything came back up
+
+
+
+
+
+
