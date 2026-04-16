@@ -8,7 +8,17 @@ Go to /tmp directory:
 cd /tmp/
 
 Start HTTP server on port 8080:
-python3 -m http.server 8080
+pkill -f http.server && cd /tmp && nohup python3 -m http.server 8080 > /tmp/http.log 2>&1 &
+
+To verify http server is working:
+RUn from dev macine
+v-cshekar@v-cshekar-dev-vm:/tmp$ curl -I http://10.64.247.103:8080/sonic-nvidia-bluefield.bin
+HTTP/1.0 200 OK
+Server: SimpleHTTP/0.6 Python/3.11.2
+Date: Thu, 16 Apr 2026 03:30:02 GMT
+Content-type: application/octet-stream
+Content-Length: 1404448751
+Last-Modified: Wed, 15 Apr 2026 23:30:55 GMT
 
 Verify SONiC image version:
 strings /var/tmp/sonic_image.bin | grep SONiC-OS-internal-202511
