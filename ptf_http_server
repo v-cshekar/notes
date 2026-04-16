@@ -1,0 +1,14 @@
+Copy SONiC image to remote host:
+scp sonic-pensando.bin root@10.64.247.103:/tmp/
+
+SSH to remote host:
+ssh root@10.64.247.103
+
+Go to /tmp directory:
+cd /tmp/
+
+Start HTTP server on port 8080:
+python3 -m http.server 8080
+
+Verify SONiC image version:
+strings /var/tmp/sonic_image.bin | grep SONiC-OS-internal-202511
