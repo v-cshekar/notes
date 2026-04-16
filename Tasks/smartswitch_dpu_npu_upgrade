@@ -35,18 +35,21 @@ sudo ./run_tests.sh \
     -l info
 
 
-sudo ./run_tests.sh \
-    -i ../ansible/str3,../ansible/veos \
-    -n vms69-t1-smartswitch-4280-22 \
-    -u -m individual \
-    -c upgrade_path/test_upgrade_gnoi.py \
-    -d str3-nvidia-4280-E04-U22 \
-    -e "--upgrade_type=cold \
-        --base_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/mellanox/internal-202511/tagged/sonic-mellanox-20251110.18.bin \
-        --target_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/mellanox/internal-202511/tagged/sonic-mellanox-20251110.18.bin \
-        --target_version=SONiC-OS-20251110.18" \
-    -e "--skip_sanity" \
-    -l info
+Upgrade both NPU and DPU:
+  sudo ./run_tests.sh \
+      -i ../ansible/str3,../ansible/veos \
+      -n vms69-t1-smartswitch-4280-22 \
+      -u -m individual \
+      -c upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_smartswitch_all_dpus_then_npu \
+      -d str3-nvidia-4280-E04-U22 \
+      -e "--upgrade_type=cold \
+          --base_image_list=http://10.64.247.103:8080/sonic-mellanox-20251110.18.bin \
+          --target_image_list=http://10.64.247.103:8080/sonic-nvidia-bluefield.bin \
+          --target_version=SONiC-OS-internal-202511.160570752-5ebd28b407 \
+          --ss_npu_target_image=http://10.64.247.103:8080/sonic-mellanox-20251110.18.bin \
+          --ss_npu_target_version=SONiC-OS-20251110.18" \
+      -e "--skip_sanity" \
+      -l info
 
 
 
@@ -72,6 +75,27 @@ admin@str3-nvidia-4280-E04-U22:~$ show chassis modules midplane-status
   DPU3  169.254.200.4            True
 
 
+
+
+
+  To run the new test:
+  pytest tests/upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_smartswitch_all_dpus_then_npu \
+    --upgrade_type=cold \
+    --target_image_list=<DPU image URL> \
+    --target_version=<DPU version> \
+    --ss_npu_target_image=<NPU image URL> \
+    --ss_npu_target_version=<NPU version>
+
+
+
+
+-----------------------------
+flow is clean:
+
+  1. DPUs: TransferToRemote + SetPackage only (stage the new image as "Next")
+  2. NPU: TransferToRemote + SetPackage + Reboot → NPU reboots, which also reboots all DPUs → everything comes up on new images
+
+  After the NPU reboot we also need to wait for all DPUs to come back (since they reboot too). Let me read the current helpers before writing the code:
 
 
 ------------------
