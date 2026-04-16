@@ -52,6 +52,25 @@ Upgrade both NPU and DPU:
       -l info
 
 
+Upgrade NPU and DPU (only index 3)
+----------------------------------
+  sudo ./run_tests.sh \
+      -i ../ansible/str3,../ansible/veos \
+      -n vms69-t1-smartswitch-4280-22 \
+      -u -m individual \
+      -c upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_smartswitch_all_dpus_then_npu \
+      -d str3-nvidia-4280-E04-U22 \
+      -e "--upgrade_type=cold \
+          --base_image_list=http://10.64.247.103:8080/sonic-mellanox-20251110.18.bin \
+          --target_image_list=http://10.64.247.103:8080/sonic-nvidia-bluefield.bin \
+          --target_version=SONiC-OS-internal-202511.160570752-5ebd28b407 \
+          --ss_npu_target_image=http://10.64.247.103:8080/sonic-mellanox-20251110.18.bin \
+          --ss_npu_target_version=SONiC-OS-20251110.18 \
+          --ss_target_indices=3" \
+      -e "--skip_sanity" \
+      -l info
+
+
 
 PTF Host IP
 ------------
