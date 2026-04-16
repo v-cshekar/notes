@@ -1,7 +1,16 @@
 lynx http://10.201.148.43/pipelines/
 
+DPU image
+-----------
 Go to location and then press backspace.  
 http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/nvidia-bluefield/internal-202511/sonic-nvidia-bluefield.bin
 
-
 curl -O http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/nvidia-bluefield/internal-202511/sonic-nvidia-bluefield.bin
+
+
+NPU Image:
+
+http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/mellanox/internal-202511/tagged/sonic-mellanox-20251110.18.bin
+
+
+
