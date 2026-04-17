@@ -32,7 +32,7 @@ Multiple DPU's:
         --base_image_list=http://10.64.247.103:8080/sonic-nvidia-bluefield.bin \
         --target_image_list=http://10.64.247.103:8080/sonic-nvidia-bluefield.bin \
         --target_version=SONiC-OS-internal-202511.160570752-5ebd28b407 \
-        --ss_target_indices=0,1,2,3" \
+        --ss_target_indices=0,3" \
     -e "--skip_sanity" \
     -l info
 
