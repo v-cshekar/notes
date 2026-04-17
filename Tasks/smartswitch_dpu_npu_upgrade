@@ -4,6 +4,8 @@ gnoi_npu_dpu_upgrade
 
 DPU upgrade
 
+Single DPU:
+-----------
   sudo ./run_tests.sh \
     -i ../ansible/str3,../ansible/veos \
     -n vms69-t1-smartswitch-4280-22 \
@@ -15,6 +17,22 @@ DPU upgrade
         --target_image_list=http://10.64.247.103:8080/sonic-nvidia-bluefield.bin \
         --target_version=SONiC-OS-internal-202511.160570752-5ebd28b407 \
         --ss_target_index=3" \
+    -e "--skip_sanity" \
+    -l info
+
+Multiple DPU's:
+-------------
+  sudo ./run_tests.sh \
+    -i ../ansible/str3,../ansible/veos \
+    -n vms69-t1-smartswitch-4280-22 \
+    -u -m individual \
+    -c upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_multiple_dpus_via_gnoi_parallel \
+    -d str3-nvidia-4280-E04-U22 \
+    -e "--upgrade_type=cold \
+        --base_image_list=http://10.64.247.103:8080/sonic-nvidia-bluefield.bin \
+        --target_image_list=http://10.64.247.103:8080/sonic-nvidia-bluefield.bin \
+        --target_version=SONiC-OS-internal-202511.160570752-5ebd28b407 \
+        --ss_target_indices=0,1,2,3" \
     -e "--skip_sanity" \
     -l info
 
