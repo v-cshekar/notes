@@ -6,6 +6,9 @@ v-cshekar@bjw-can-serv-4:~/workspace/sonic-mgmt-int$ docker exec --user v-csheka
 v-cshekar@sonic-mgmt-chandra:~$
 
 # warm-reboot 
+10.3.146.13 (vms28-t0-7050-12)
+sudo ./run_tests.sh -n vms28-t0-7050-12 -i ../ansible/str2,../ansible/veos -u -m individual -c platform_tests/test_reboot.py::test_warm_reboot -e "--skip_sanity" -l info
+
 sudo ./run_tests.sh -n vms28-t0-7050-12 -d str2-7050cx3-acs-12 -f ../ansible/testbed.yaml -i ../ansible/str2 -m individual -c platform_tests/test_reboot.py::test_warm_reboot -e "--skip_sanity" -l info
 
 sudo ./run_tests.sh -n vms11-t0-7060-cx32-1 -i ../ansible/str,../ansible/veos -u -m individual -c platform_tests/test_reboot.py::test_warm_reboot -e "--skip_sanity" -l info
