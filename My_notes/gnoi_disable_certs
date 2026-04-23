@@ -17,10 +17,6 @@ sonic-db-cli CONFIG_DB hgetall "GNMI|certs"
 
 sonic-db-cli CONFIG_DB hgetall "GNMI"
 
-sonic-db-cli CONFIG_DB hgetall "GNMI|GNMI"
-
-sonic-db-cli CONFIG_DB hgetall "GNMI|gmmi"
-
 sonic-db-cli CONFIG_DB hgetall "GNMI|gnmi"
 
 sudo systemctl restart gnmi
