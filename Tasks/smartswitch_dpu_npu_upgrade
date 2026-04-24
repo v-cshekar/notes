@@ -192,5 +192,34 @@ Something between the gnmi_tls verification and file_transfer_to_remote is resta
 
 
 
-
+admin@str3-nvidia-4280-E04-U22:~$ ip r
+default via 10.3.156.97 dev eth0
+10.0.0.0/31 dev PortChannel102 proto kernel scope link src 10.0.0.0 linkdown
+10.0.0.4/31 dev PortChannel105 proto kernel scope link src 10.0.0.4 linkdown
+10.0.0.8/31 dev PortChannel108 proto kernel scope link src 10.0.0.8 linkdown
+10.0.0.12/31 dev PortChannel111 proto kernel scope link src 10.0.0.12 linkdown
+10.0.0.32/31 dev Ethernet64 proto kernel scope link src 10.0.0.32
+10.0.0.34/31 dev Ethernet72 proto kernel scope link src 10.0.0.34
+10.0.0.36/31 dev Ethernet80 proto kernel scope link src 10.0.0.36
+10.0.0.38/31 dev Ethernet88 proto kernel scope link src 10.0.0.38
+10.0.0.40/31 dev Ethernet96 proto kernel scope link src 10.0.0.40
+10.0.0.42/31 dev Ethernet104 proto kernel scope link src 10.0.0.42
+10.0.0.44/31 dev Ethernet112 proto kernel scope link src 10.0.0.44
+10.0.0.46/31 dev Ethernet120 proto kernel scope link src 10.0.0.46
+10.0.0.48/31 dev Ethernet128 proto kernel scope link src 10.0.0.48
+10.0.0.50/31 dev Ethernet136 proto kernel scope link src 10.0.0.50 linkdown
+10.0.0.52/31 dev Ethernet144 proto kernel scope link src 10.0.0.52
+10.0.0.54/31 dev Ethernet152 proto kernel scope link src 10.0.0.54
+10.0.0.56/31 dev Ethernet160 proto kernel scope link src 10.0.0.56
+10.0.0.58/31 dev Ethernet168 proto kernel scope link src 10.0.0.58
+10.0.0.60/31 dev Ethernet176 proto kernel scope link src 10.0.0.60
+10.0.0.62/31 dev Ethernet184 proto kernel scope link src 10.0.0.62
+10.0.0.64/31 dev Ethernet192 proto kernel scope link src 10.0.0.64
+10.0.0.66/31 dev Ethernet200 proto kernel scope link src 10.0.0.66
+10.0.0.68/31 dev Ethernet208 proto kernel scope link src 10.0.0.68
+10.0.0.70/31 dev Ethernet216 proto kernel scope link src 10.0.0.70
+10.3.156.96/27 dev eth0 proto kernel scope link src 10.3.156.98
+20.0.200.0/24 dev Vlan55 proto kernel scope link src 20.0.200.254
+169.254.200.0/24 dev bridge-midplane proto kernel scope link src 169.254.200.254
+240.127.1.0/24 dev docker0 proto kernel scope link src 240.127.1.1
 
