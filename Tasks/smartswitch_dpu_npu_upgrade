@@ -3,6 +3,7 @@ gnoi_npu_dpu_upgrade
 
 With smartswitch:
 vms12-t1-smartswitch-4280-02 : 10.3.152.109
+(Use this for testing)
 =================================================
 PFT: 10.64.247.148
 
