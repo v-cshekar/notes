@@ -1,6 +1,151 @@
 Working branch
 gnoi_npu_dpu_upgrade
 
+With smartswitch:
+vms12-t1-smartswitch-4280-02 : 10.3.152.109
+=================================================
+PFT: 10.64.247.148
+
+
+Setting up http server:
+--------------------
+ssh root@10.64.247.148
+
+ curl -I http://10.64.247.148:8080/sonic-nvidia-bluefield.bin
+
+http://10.64.247.148:8080/sonic-nvidia-bluefield.bin
+
+ssh admin@169.254.200.1
+
+admin@str3-msn4280-02-dpu-0:~$ sudo sonic_installer list
+Warning: 'sonic_installer' command is deprecated and will be removed in the future
+Please use 'sonic-installer' instead
+Current: SONiC-OS-20251110.22
+Next: SONiC-OS-20251110.22
+Available:
+SONiC-OS-20251110.22
+SONiC-OS-internal-202511.160296890-351aad64a3
+
+
+
+  sudo ./run_tests.sh \
+      -i ../ansible/str3,../ansible/veos \
+      -n vms12-t1-smartswitch-4280-02 \
+      -u -m individual \
+      -c upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_smartswitch_all_dpus_then_npu \
+      -d str3-msn4280-02 \
+      -e "--upgrade_type=cold \
+          --base_image_list=http://10.64.247.148:8080/sonic-mellanox-20251110.18.bin \
+          --target_image_list=http://10.64.247.148:8080/sonic-nvidia-bluefield.bin \
+          --target_version=SONiC-OS-internal-202511.161794596-73a019c26a \
+          --ss_npu_target_image=http://10.64.247.148:8080/sonic-mellanox-20251110.19.bin \
+          --ss_npu_target_version=SONiC-OS-20251110.19 \
+          --ss_target_indices=0,1,2,3" \
+      -e "--skip_sanity" \
+      -l info
+
+
+
+
+----------------
+Upgrade both DPU and NPU
+
+  sudo ./run_tests.sh \
+      -i ../ansible/str3,../ansible/veos \
+      -n vms12-t1-smartswitch-4280-02 \
+      -u -m individual \
+      -c upgrade_path/test_upgrade_smart_switch_gnoi.py::test_upgrade_smartswitch_all_dpus_then_npu \
+      -d str3-msn4280-02 \
+      -e "--upgrade_type=cold \
+          --base_image_list=http://10.64.247.148:8080/sonic-mellanox-20251110.18.bin \
+          --target_image_list=http://10.64.247.148:8080/sonic-nvidia-bluefield.bin \
+          --target_version=SONiC-OS-internal-202511.161794596-73a019c26a \
+          --ss_npu_target_image=http://10.64.247.148:8080/sonic-mellanox-20251110.20.bin \
+          --ss_npu_target_version=SONiC-OS-20251110.20 \
+          --ss_target_indices=0,1" \
+      -e "--skip_sanity" \
+      -l info 2>&1 | tee /tmp/gnoi_run3.log
+
+
+
+-----------------------------------------------------------------------------------
+Fix for mount error
+-------------------
+              run_command_or_raise(["chroot", new_image_mount, SONIC_PACKAGE_MANAGER, "migrate",
+                                  os.path.join("/", TMP_DIR, packages_file),
+                                  "--dockerd-socket", os.path.join("/", TMP_DIR, DOCKERD_SOCK),
+                                  "-y"], capture=False)
+
+  with:
+
+              run_command_or_raise(["chroot", new_image_mount,
+                                  "env", "DOCKER_HOST=unix://" + os.path.join("/", TMP_DIR, DOCKERD_SOCK),
+                                  SONIC_PACKAGE_MANAGER, "migrate",
+                                  os.path.join("/", TMP_DIR, packages_file),
+                                  "--dockerd-socket", os.path.join("/", TMP_DIR, DOCKERD_SOCK),
+                                  "-y"], capture=False)
+
+  Then verify, clear cache, and test:
+
+  sudo sed -n '398,408p' /usr/local/lib/python3.13/dist-packages/sonic_installer/main.py
+  sudo rm -rf /usr/local/lib/python3.13/dist-packages/sonic_installer/__pycache__
+
+  sudo curl -fsSL -o /tmp/sonic_20.bin http://10.64.247.148:8080/sonic-mellanox-20251110.20.bin
+  sudo sonic-installer install /tmp/sonic_20.bin -y 2>&1 | tee /tmp/installer_v3.log
+  echo "exit: $?"
+
+  grep -nE "DOCKER_HOST|chroot.*sonic-package-manager" /tmp/installer_v3.log
+  tail -30 /tmp/installer_v3.log
+  sudo sonic-installer list
+
+
+----
+Error seen
+---------
+ Brewed for 1m 15s
+
+❯ admin@str3-msn4280-02:~$ tail -f /var/log/gnmi.log
+  tail: cannot open '/var/log/gnmi.log' for reading: Permission denied
+  tail: no files remaining
+  admin@str3-msn4280-02:~$ sudo !!
+  sudo tail -f /var/log/gnmi.log
+  2026 Apr 26 18:19:27.849968 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native I0426 18:19:27.849827 3134872 proxy.go:364] [DPUProxy] SetPackage client finished sending requests
+  2026 Apr 26 18:20:07.854327 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native 2026/04/26 18:20:07 ERROR: [transport] Client received GoAway with error code ENHANCE_YOUR_CALM and debug
+   data equal to ASCII "too_many_pings".
+  2026 Apr 26 18:20:07.854327 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native 2026/04/26 18:20:07 INFO: [core] [Channel #6 SubChannel #7]Subchannel Connectivity change to IDLE
+  2026 Apr 26 18:20:07.854327 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native 2026/04/26 18:20:07 INFO: [core] [pick-first-lb 0xc0011998c0] Received SubConn state update:
+  0xc0011999e0, {ConnectivityState:IDLE ConnectionError:<nil>}
+  2026 Apr 26 18:20:07.854413 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native 2026/04/26 18:20:07 INFO: [core] [Channel #6]Channel Connectivity change to IDLE
+  2026 Apr 26 18:20:08.855098 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native 2026/04/26 18:20:08 INFO: [transport] [client-transport 0xc000169440] Closing: connection error: desc =
+  "error reading from server: EOF"
+  2026 Apr 26 18:20:08.855098 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native 2026/04/26 18:20:08 INFO: [transport] [client-transport 0xc000169440] loopyWriter exiting with error:
+  connection error: desc = "error reading from server: EOF"
+  2026 Apr 26 18:20:08.855128 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native E0426 18:20:08.854988 3134872 proxy.go:390] [DPUProxy] Error getting SetPackage response from DPU: rpc
+  error: code = Unavailable desc = closing transport due to: connection error: desc = "error reading from server: EOF", received prior goaway: code: ENHANCE_YOUR_CALM, debug data:
+  "too_many_pings"
+  2026 Apr 26 18:20:08.857869 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native 2026/04/26 18:20:08 INFO: [transport] [server-transport 0xc00153e900] Closing: EOF
+  2026 Apr 26 18:20:08.857869 str3-msn4280-02 INFO gnmi#supervisord: gnmi-native 2026/04/26 18:20:08 INFO: [transport] [server-transport 0xc00153e900] loopyWriter exiting with error:
+  transport closed by client
+
+● This confirms it: the NPU's gnmi container (DPUProxy) opens a gRPC client to the DPU and pings too aggressively while waiting for the DPU's SetPackage response. The DPU's gRPC server
+  enforces MinTime and shoots back ENHANCE_YOUR_CALM after 2 pings inside that window.
+
+  Note the timing: the proxy finished sending requests at 18:19:27, then GOAWAY arrives at 18:20:07 — exactly while it's idle waiting for the DPU to install/activate. That's the gap
+  during which it's pinging.
+
+
+
+http://10.64.247.148.103:8080/sonic-mellanox-20251110.18.bin
+admin@str3-msn4280-02:~$ sudo sonic_installer install http://10.64.247.148:8080/sonic-mellanox-20251110.18.bin
+
+
+
+
+
+
+=============================================================================================================================
+
+
 
 DPU upgrade
 
