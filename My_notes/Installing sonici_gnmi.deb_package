@@ -1,5 +1,12 @@
 Installing sonic-gnmi .deb on NPU and DPU0
 
+Getting the deb package:
+----------------------
+https://github.com/sonic-net/sonic-gnmi/pull/660
+https://dev.azure.com/mssonic/build/_build/results?buildId=1099918&view=results
+
+
+
 Download: 
 sonic-gnmi_0.1_amd64.deb  (for NPU)
 sonic-gnmi_0.1_arm64.deb  (for DPU)
