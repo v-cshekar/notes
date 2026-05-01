@@ -1,0 +1,35 @@
+
+
+
+ssh admin@169.254.200.3's password:
+admin@str3-msn4280-02-dpu-2:~$
+admin@str3-msn4280-02-dpu-2:~$ docker cp /tmp/sonic-gnmi_0.1_arm64.deb gnmi:/root/
+Successfully copied 27MB to gnmi:/root/
+admin@str3-msn4280-02-dpu-2:~$ docker exec gnmi dpkg -i /root/sonic-gnmi_0.1_arm64.deb
+(Reading database ... 13661 files and directories currently installed.)
+Preparing to unpack /root/sonic-gnmi_0.1_arm64.deb ...
+Unpacking sonic-gnmi (0.1) over (0.1) ...
+Setting up sonic-gnmi (0.1) ...
+admin@str3-msn4280-02-dpu-2:~$ docker restart gnmi
+
+
+
+
+admin@str3-msn4280-02:~$ show chassis modules midplane-status
+  Name     IP-Address    Reachability
+------  -------------  --------------
+  DPU0  169.254.200.1            True
+  DPU1  169.254.200.2            True
+  DPU2  169.254.200.3            True
+  DPU3  169.254.200.4            True
+
+admin@str3-msn4280-02:~$
+admin@str3-msn4280-02:~$
+  grpcurl -plaintext \
+    -H "x-sonic-ss-target-type: dpu" \
+    -H "x-sonic-ss-target-index: 2" \
+    -d '{}' \
+    10.3.152.109:50052 gnoi.os.OS/Verify
+ERROR:
+  Code: Unimplemented
+  Message: forwarding for method /gnoi.os.OS/Verify not yet implemented
