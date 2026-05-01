@@ -3,6 +3,51 @@
 Installing the deb: https://github.com/v-cshekar/notes/blob/master/My_notes/Installing%20sonici_gnmi.deb_package
 
 
+From NPU:
+admin@str3-msn4280-02:~$ grpcurl -vv -plaintext 10.3.152.109:50052 list
+gnmi.gNMI
+gnoi.containerz.Containerz
+gnoi.debug.Debug
+gnoi.factory_reset.FactoryReset
+gnoi.file.File
+gnoi.healthz.Healthz
+gnoi.os.OS
+gnoi.sonic.Debug
+gnoi.sonic.SonicService
+gnoi.sonic_jwt.SonicJwtService
+gnoi.system.System
+grpc.reflection.v1.ServerReflection
+grpc.reflection.v1alpha.ServerReflection
+Timing Data: 2.417689ms
+  Dial: 937.235µs
+    BlockingDial: 925.574µs
+
+
+
+  grpcurl -plaintext \
+    -H "x-sonic-ss-target-type: dpu" \
+    -H "x-sonic-ss-target-index: 1" \
+    -d '{}' \
+    10.3.152.109:50052  gnoi.os.OS/Verify
+
+
+
+grpcurl -plaintext \
+    -H "x-sonic-ss-target-type: dpu" \
+    -H "x-sonic-ss-target-index: 2" \
+    -d '{"version": "SONiC-OS-20251110.23"}' \
+    10.3.152.109:50052 gnoi.os.OS/Activate
+
+
+
+  grpcurl -plaintext \
+    -H "x-sonic-ss-target-type: dpu" \
+    -H "x-sonic-ss-target-index: 2" \
+    -d '{}' \
+    10.3.152.109:50052 gnoi.system.System/Time
+
+
+
 ssh admin@169.254.200.3's password:
 admin@str3-msn4280-02-dpu-2:~$
 admin@str3-msn4280-02-dpu-2:~$ docker cp /tmp/sonic-gnmi_0.1_arm64.deb gnmi:/root/
