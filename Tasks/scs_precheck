@@ -1,5 +1,11 @@
 
 
+To run the unit test:
+From: ~/projects/sonic-upgrade-scripts 
+cd pre-scs-check && python -m pytest tests/ -v 2>&1
+
+
+
 
   python sonic-pre-scs.py \
     --guid 12345678-1234-5678-9abc-123456789012 \
