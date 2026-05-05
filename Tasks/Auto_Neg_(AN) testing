@@ -1,0 +1,144 @@
+
+Testbed to use:
+---------------
+bjw3-can-7060-8
+10.150.238.107
+
+
+
+admin@bjw3-can-7060-8:~$ show interfaces autoneg status Ethernet0
+  Interface    Auto-Neg Mode    Speed    Adv Speeds    Rmt Adv Speeds    Type    Adv Types    Oper    Admin
+-----------  ---------------  -------  ------------  ----------------  ------  -----------  ------  -------
+  Ethernet0              N/A     100G           N/A               N/A     N/A          N/A    down     down
+admin@bjw3-can-7060-8:~$ show interfaces status Ethernet0
+  Interface        Lanes    Speed    MTU    FEC        Alias    Vlan    Oper    Admin             Type    Asym PFC
+-----------  -----------  -------  -----  -----  -----------  ------  ------  -------  ---------------  ----------
+  Ethernet0  33,34,35,36     100G   9100     rs  Ethernet1/1  routed    down     down  QSFP28 or later         off
+admin@bjw3-can-7060-8:~$ show interfaces status | grep -w up
+     Ethernet4      37,38,39,40     100G   9100     rs   Ethernet2/1           trunk      up       up  QSFP28 or later         off
+     Ethernet8      41,42,43,44     100G   9100     rs   Ethernet3/1           trunk      up       up  QSFP28 or later         off
+    Ethernet12      45,46,47,48     100G   9100     rs   Ethernet4/1           trunk      up       up  QSFP28 or later         off
+    Ethernet16      49,50,51,52     100G   9100     rs   Ethernet5/1           trunk      up       up  QSFP28 or later         off
+    Ethernet20      53,54,55,56     100G   9100     rs   Ethernet6/1           trunk      up       up  QSFP28 or later         off
+    Ethernet24      57,58,59,60     100G   9100     rs   Ethernet7/1           trunk      up       up  QSFP28 or later         off
+    Ethernet28      61,62,63,64     100G   9100     rs   Ethernet8/1           trunk      up       up  QSFP28 or later         off
+    Ethernet32      65,66,67,68     100G   9100     rs   Ethernet9/1           trunk      up       up  QSFP28 or later         off
+    Ethernet36      69,70,71,72     100G   9100     rs  Ethernet10/1           trunk      up       up  QSFP28 or later         off
+    Ethernet40      73,74,75,76     100G   9100     rs  Ethernet11/1           trunk      up       up  QSFP28 or later         off
+    Ethernet44      77,78,79,80     100G   9100     rs  Ethernet12/1           trunk      up       up  QSFP28 or later         off
+    Ethernet48      81,82,83,84     100G   9100     rs  Ethernet13/1           trunk      up       up  QSFP28 or later         off
+    Ethernet52      85,86,87,88     100G   9100     rs  Ethernet14/1           trunk      up       up  QSFP28 or later         off
+    Ethernet56      89,90,91,92     100G   9100     rs  Ethernet15/1           trunk      up       up  QSFP28 or later         off
+    Ethernet60      93,94,95,96     100G   9100     rs  Ethernet16/1           trunk      up       up  QSFP28 or later         off
+    Ethernet64     97,98,99,100     100G   9100     rs  Ethernet17/1           trunk      up       up  QSFP28 or later         off
+    Ethernet68  101,102,103,104     100G   9100     rs  Ethernet18/1           trunk      up       up  QSFP28 or later         off
+    Ethernet72  105,106,107,108     100G   9100     rs  Ethernet19/1           trunk      up       up  QSFP28 or later         off
+    Ethernet76  109,110,111,112     100G   9100     rs  Ethernet20/1           trunk      up       up  QSFP28 or later         off
+    Ethernet80  113,114,115,116     100G   9100     rs  Ethernet21/1           trunk      up       up  QSFP28 or later         off
+    Ethernet84  117,118,119,120     100G   9100     rs  Ethernet22/1           trunk      up       up  QSFP28 or later         off
+    Ethernet88  121,122,123,124     100G   9100     rs  Ethernet23/1           trunk      up       up  QSFP28 or later         off
+    Ethernet92  125,126,127,128     100G   9100     rs  Ethernet24/1           trunk      up       up  QSFP28 or later         off
+    Ethernet96          1,2,3,4     100G   9100     rs  Ethernet25/1           trunk      up       up  QSFP28 or later         off
+   Ethernet112      17,18,19,20     100G   9100     rs  Ethernet29/1  PortChannel101      up       up  QSFP28 or later         off
+   Ethernet116      21,22,23,24     100G   9100     rs  Ethernet30/1  PortChannel102      up       up  QSFP28 or later         off
+   Ethernet120      25,26,27,28     100G   9100     rs  Ethernet31/1  PortChannel103      up       up  QSFP28 or later         off
+   Ethernet124      29,30,31,32     100G   9100     rs  Ethernet32/1  PortChannel104      up       up  QSFP28 or later         off
+PortChannel101              N/A     100G   9100    N/A           N/A          routed      up       up              N/A         N/A
+PortChannel102              N/A     100G   9100    N/A           N/A          routed      up       up              N/A         N/A
+PortChannel103              N/A     100G   9100    N/A           N/A          routed      up       up              N/A         N/A
+PortChannel104              N/A     100G   9100    N/A           N/A          routed      up       up              N/A         N/A
+admin@bjw3-can-7060-8:~$
+admin@bjw3-can-7060-8:~$
+admin@bjw3-can-7060-8:~$ show interfaces status Ethernet4
+  Interface        Lanes    Speed    MTU    FEC        Alias    Vlan    Oper    Admin             Type    Asym PFC
+-----------  -----------  -------  -----  -----  -----------  ------  ------  -------  ---------------  ----------
+  Ethernet4  37,38,39,40     100G   9100     rs  Ethernet2/1   trunk      up       up  QSFP28 or later         off
+
+admin@bjw3-can-7060-8:~$  show interfaces autoneg status Ethernet4
+  Interface    Auto-Neg Mode    Speed    Adv Speeds    Rmt Adv Speeds    Type    Adv Types    Oper    Admin
+-----------  ---------------  -------  ------------  ----------------  ------  -----------  ------  -------
+  Ethernet4              N/A     100G           N/A               N/A     N/A          N/A      up       up
+
+
+admin@bjw3-can-7060-8:~$  show lldp neighbors Ethernet4
+
+admin@bjw3-can-7060-8:~$ show ip bgp summary | head -20
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 65100 vrf-id 0
+BGP table version 23454
+RIB entries 12807, using 1639296 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V     AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  -----  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.57      4  64600       6719       6216     23454      0       0  2d02h05m             6400  ARISTA01T1
+10.0.0.59      4  64600       6735       6216     23454      0       0  2d02h05m             6400  ARISTA02T1
+10.0.0.61      4  64600       6738       6216     23454      0       0  2d02h05m             6400  ARISTA03T1
+10.0.0.63      4  64600       6738       6216     23454      0       0  2d02h05m             6400  ARISTA04T1
+
+
+
+
+
+
+
+ 1. Pick a T1 testbed
+
+  In ansible/testbed.yaml, find a 7260 entry with topo: t1-* (e.g. t1-lag or t1-64-lag). Note the
+  testbed name and DUT hostname.
+
+  2. SSH to the DUT and pick one port
+
+  Pick any single front-panel port (e.g. Ethernet0). Capture its current state for rollback:
+  show interfaces autoneg status Ethernet0
+  show interfaces status Ethernet0
+
+  3. Enable AN on that one port
+
+  On the DUT (matches what tests/platform_tests/test_auto_negotiation.py:203 does):
+  sudo config interface autoneg Ethernet0 enabled
+  sudo config interface advertised-speeds Ethernet0 all
+  sudo config save -y
+  Then verify:
+  show interfaces autoneg status Ethernet0
+  show interfaces status Ethernet0    # should be "up", speed negotiated
+
+  4. Manual warmboot
+
+  On the DUT (matches tests/common/reboot.py:85):
+  sudo warm-reboot
+  Expected: ~300s reboot window, ~90s stabilization, finalizer up to 180s. Don't interrupt.
+
+  5. Post-warmboot verification
+
+  After SSH is back:
+  show warm_restart state            # all components should be "reconciled"
+  show interfaces autoneg status Ethernet0
+  show interfaces status Ethernet0   # link still up, AN still enabled, speed preserved
+  Also sanity-check that the rest of the box came back clean:
+  show interfaces status | grep -i down
+  show ip bgp summary                 # BGP sessions re-established
+
+  6. Rollback
+
+  sudo config interface autoneg Ethernet0 disabled
+  sudo config interface speed Ethernet0 <original-speed>
+  sudo config save -y
+
+  What you're actually proving
+
+  - AN config survives a warmboot (persists in config_db post-reload).
+  - The link renegotiates / stays up across the warmboot data-plane preservation window.
+  - No traffic blackhole on that port during the warmboot finalizer.
+
+  One note on existing coverage
+
+  test_verify_portspeed_configuration_across_reboot (lines 374-408) does port-speed-across-reload, but
+  it's gated to platform x86_64-8101_32fh_o-r0 and uses config_reload, not warm-reboot. So your manual
+  test isn't redundant — it's actually covering a gap.
+
+  Want me to also draft a quick traffic-check step (e.g. ping/iperf across that port during the
+  warmboot) before you run it?
