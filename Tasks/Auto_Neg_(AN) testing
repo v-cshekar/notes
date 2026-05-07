@@ -10,6 +10,11 @@ bjw3-can-7060-7
 Testbeds to use
 https://microsoftapc-my.sharepoint.com/:x:/r/personal/rgarthwaite_microsoft_com/_layouts/15/doc2.aspx?sourcedoc=%7B4D263FDF-A339-4654-8B01-5E68B7C2CE68%7D&file=202511-piloting-readiness-checklist.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1&isSPOFile=1&ovuser=72f988bf-86f1-41af-91ab-2d7cd011db47%2Cv-cshekar%40microsoft.com&CID=a62feb5b-740c-47e3-ab09-8b9d42519627&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNjA0MTYxNzIxMiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D
 
+admin@bjw3-can-7060-8:~$  show interfaces autoneg status Ethernet4
+  Interface    Auto-Neg Mode    Speed    Adv Speeds    Rmt Adv Speeds    Type    Adv Types    Oper    Admin
+-----------  ---------------  -------  ------------  ----------------  ------  -----------  ------  -------
+  Ethernet4              N/A     100G           N/A               N/A     N/A          N/A      up       up
+
 admin@bjw3-can-7060-8:~$  sudo config interface autoneg Ethernet4 enabled
 admin@bjw3-can-7060-8:~$
 admin@bjw3-can-7060-8:~$
