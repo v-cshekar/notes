@@ -4,6 +4,28 @@ To run the test:
 v-cshekar@str-serv-acs-14:~$ docker exec --user v-cshekar -ti sonic-mgmt-v-cshekar bash
 v-cshekar@sonic-mgmt-v-cshekar:~$ cd /var/src/sonic-mgmt-int/tests
 
+  sudo ./run_tests.sh -n vms28-t0-7050-12 -d str2-7050cx3-acs-12 \
+    -f ../ansible/testbed.yaml \
+    -i ../ansible/str2,../ansible/veos \
+    -m individual \
+    -c upgrade_path/test_upgrade_gnoi.py \
+    -e "--upgrade_type=warm --base_image_list=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi
+  --target_image_list=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom.swi " \
+    -l info
+
+# with skip_sanity option
+  sudo ./run_tests.sh -n vms28-t0-7050-12 -d str2-7050cx3-acs-12 \
+    -f ../ansible/testbed.yaml \
+    -i ../ansible/str2,../ansible/veos \
+    -m individual \
+    -c upgrade_path/test_upgrade_gnoi.py \
+    -e "--skip_sanity --upgrade_type=warm --base_image_list=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi
+  --target_image_list=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom.swi " \
+    -l info
+
+
+http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi swi
+
 ./run_tests.sh -n vms20-t0-7060 -i ../ansible/str2,../ansible/veos -u -m individual -c upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi -e "--upgrade_type=cold --base_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi --target_image_list=http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom-20250510.30.swi --target_version=SONiC.20250510.30" -l info 
 
 
