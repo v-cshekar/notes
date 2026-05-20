@@ -1,3 +1,5 @@
+docker exec -it sonic-mgmt-int-v-cshekar bash
+root@sonic-mgmt-int-v-cshekar:/# cd /data/sonic-mgmt-int/tests/
 
 
   ./run_tests.sh \
@@ -11,3 +13,31 @@
   --target_image_list=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/vs/internal-202505/tagged/sonic-vs-20250510.30.bin" \
     -e "--skip_sanity" \
     -l info
+
+
+TO take image from ptf image
+
+  ./run_tests.sh \
+    -n vms-kvm-t0 \
+    -d vlab-01 \
+    -c upgrade_path/test_upgrade_path.py \
+    -f vtestbed.yaml \
+    -i ../ansible/veos_vtb \
+    -S ssh \
+    -e "--upgrade_type=cold --base_image_list=http://10.250.0.102:8080/sonic-vs-20250510.30.bin
+  --target_image_list=http://10.250.0.102:8080/sonic-vs-20250510.30.bin" \
+    -e "--skip_sanity" \
+    -l info
+
+
+
+root@sonic-mgmt-int-v-cshekar:/data/sonic-mgmt-int/tests#   ./run_tests.sh \
+    -n vms-kvm-t0 \
+    -d vlab-01 \
+    -c upgrade_path/test_upgrade_path.py \
+    -f vtestbed.yaml \
+    -i ../ansible/veos_vtb \
+    -S ssh \
+    -e "--upgrade_type=cold --base_image_list=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/vs/internal-202505/tagged/sonic-vs-20250510.30.bin
+  --target_image_list=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/vs/internal-202505/tagged/sonic-vs-20250510.30.bin" \
+    -e "--skip_sanity"
