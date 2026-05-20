@@ -30,6 +30,8 @@ TO take image from ptf image
     -l info
 
 
+curl -I http://10.250.0.102:8080/sonic-vs-20251110.29.bin
+
 
 root@sonic-mgmt-int-v-cshekar:/data/sonic-mgmt-int/tests#   ./run_tests.sh \
     -n vms-kvm-t0 \
