@@ -1,0 +1,13 @@
+
+
+  ./run_tests.sh \
+    -n vms-kvm-t0 \
+    -d vlab-01 \
+    -c upgrade_path/test_upgrade_path.py \
+    -f vtestbed.yaml \
+    -i ../ansible/veos_vtb \
+    -S ssh \
+    -e "--upgrade_type=cold --base_image_list=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/vs/internal-202505/tagged/sonic-vs-20250510.30.bin
+  --target_image_list=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/vs/internal-202505/tagged/sonic-vs-20250510.30.bin" \
+    -e "--skip_sanity" \
+    -l info
