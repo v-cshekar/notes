@@ -25,9 +25,9 @@ TO take image from ptf image
     -i ../ansible/veos_vtb \
     -S ssh \
     -e "--upgrade_type=cold --base_image_list=http://10.250.0.102:8080/sonic-vs-20250510.30.bin
-  --target_image_list=http://10.250.0.102:8080/sonic-vs-20250510.30.bin" \
+  --target_image_list=http://10.250.0.102:8080/sonic-vs-20251110.29.bin" \
     -e "--skip_sanity" \
-    -l info
+    -l info 2>&1 | tee /tmp/upgrade.log
 
 
 curl -I http://10.250.0.102:8080/sonic-vs-20251110.29.bin
