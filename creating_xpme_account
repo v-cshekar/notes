@@ -1,0 +1,5 @@
+Please create your xpme accounts and request membership to group: STR-NETAAA-USER-RW in oneidentity. 
+	1.	Login to https://xoneidentity.core.windows.net/ with your ame/corp credentials
+	2.	Go to user -> Create/Modify -> Choose domain xpme & enter your alias. Select "unix enabled" and de-select "passwordless" and Create. 
+	3.	once the account is created after approval, go to home page again and Groups -> Create/Modify -> select domain xpme & group "STR-NETAAA-USER-RW" 
+	4.	Under members pane, enter your alias and hit add members and submit changes
