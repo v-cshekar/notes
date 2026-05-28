@@ -21,6 +21,8 @@ sonic-db-cli CONFIG_DB hgetall "GNMI|gnmi"
 
 sudo systemctl restart gnmi
 
+grpcurl -vv -plaintext localhost:50052 list
+
 grpcurl -plaintext -H "x-sonic-ss-target-type: dpu" -H "x-sonic-ss-target-index: 3" -d @ 10.3.156.98:50052 gnoi.system.System/Time <<'JSON'
 {}
 JSON
