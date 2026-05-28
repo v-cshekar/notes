@@ -35,3 +35,9 @@ Command: sync
 Command: sleep 3
 
 Done
+
+
+==============
+For BJW device
++++++++++++++
+curl -O http://10.150.22.222/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi 
