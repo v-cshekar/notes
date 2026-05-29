@@ -1,6 +1,0 @@
-cd /home/v-cshekar/workspace/sonic-mgmt-int
-./setup-container.sh -n sonic-mgmt-int-v-cshekar -d /data
-
-docker exec -it sonic-mgmt-int-v-cshekar bash
-cd /data/sonic-mgmt-int/tests
-
