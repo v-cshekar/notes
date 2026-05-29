@@ -79,3 +79,47 @@ SONiC-OS-20250510.37
     Code: Internal                                                                                                                                                                       
     Message: failed to resolve version from image: sonic-installer binary_version failed with exit code 1: Warning: 'binary_version' subcommand is deprecated and will be removed in the future                                                                                                                                                                                 
   Please use 'binary-version' instead  
+
+
+git push -f myfork v-cshekar/setpackage-202511
+
+---
+Final result
+
+Device running SONiC-OS-20251110.30:
+
+admin@bjw3-can-7060-7:/tmp$ sudo sonic-installer list
+Current: SONiC-OS-20251110.30
+Next: SONiC-OS-20251110.30
+Available:
+SONiC-OS-20250510.30
+SONiC-OS-20251110.30
+
+Called SetPackag with no version information
+admin@bjw3-can-7060-7:/tmp$ grpcurl -plaintext -d '{
+>   "package": {
+>     "filename": "/tmp/sonic-aboot-broadcom.swi",
+>     "activate": true
+>   }
+> }' localhost:50052 gnoi.system.System/SetPackage
+{}
+
+Version auto-resolved from imag
+admin@bjw3-can-7060-7:/tmp$ sudo sonic-installer list
+Current: SONiC-OS-20251110.30
+Next: SONiC-OS-20250510.37
+Available:
+SONiC-OS-20250510.30
+SONiC-OS-20250510.37
+SONiC-OS-20251110.30
+
+sudo reboot
+
+Device booted into SONiC-OS-20250510.37
+admin@bjw3-can-7060-7:~$ sudo sonic-installer list
+Current: SONiC-OS-20250510.37
+Next: SONiC-OS-20250510.37
+Available:
+SONiC-OS-20250510.30
+SONiC-OS-20250510.37
+SONiC-OS-20251110.30
