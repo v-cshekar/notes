@@ -1,1 +1,81 @@
+Here you go — clean TXT format with clear section headers (easy to scan in Notepad):
 
+```
+==============================
+SONiC IMAGE + gNMI WORKFLOW
+==============================
+
+
+===== [1] DOWNLOAD IMAGE =====
+curl -O http://10.150.22.222/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202505/tagged/sonic-aboot-broadcom.swi
+
+
+===== [2] INSTALL GNMI PACKAGE =====
+docker cp /tmp/sonic-gnmi_0.1_amd64.deb gnmi:/root/
+docker exec gnmi dpkg -i /root/sonic-gnmi_0.1_amd64.deb
+docker restart gnmi
+
+
+===== [3] RESET / VERIFY GNMI CONFIG DB =====
+sonic-db-cli CONFIG_DB del "GNMI|certs"
+sonic-db-cli CONFIG_DB hgetall "GNMI|certs"
+sonic-db-cli CONFIG_DB hgetall "GNMI"
+sonic-db-cli CONFIG_DB hgetall "GNMI|gnmi"
+
+sudo systemctl restart gnmi
+
+
+===== [4] VERIFY GNMI / GNOI SERVICE =====
+grpcurl -vv -plaintext localhost:50052 list
+
+
+===== [5] GNOI PACKAGE INSTALL TESTS =====
+
+--- Test 1: Install WITHOUT activation (auto version) ---
+grpcurl -plaintext -d '{
+  "package": {
+    "filename": "/tmp/sonic-aboot-broadcom.swi",
+    "activate": false
+  }
+}' localhost:50052 gnoi.system.System/SetPackage
+
+
+--- Test 2: Install WITH activation (auto version) ---
+grpcurl -plaintext -d '{
+  "package": {
+    "filename": "/tmp/sonic-aboot-broadcom.swi",
+    "activate": true
+  }
+}' localhost:50052 gnoi.system.System/SetPackage
+
+
+--- Test 3: Install WITH explicit version ---
+grpcurl -plaintext -d '{
+  "package": {
+    "filename": "/tmp/sonic-aboot-broadcom.swi",
+    "version": "SONiC-OS-202511",
+    "activate": true
+  }
+}' localhost:50052 gnoi.system.System/SetPackage
+```
+
+If you want, I can also make a **compact one-screen version** or a **script-ready (no spacing, execution order optimized)** version for your pipelines.
+
+
+admin@bjw3-can-7060-7:/tmp$  sudo sonic-installer binary_version /tmp/sonic-aboot-broadcom.swi
+Warning: 'binary_version' subcommand is deprecated and will be removed in the future
+Please use 'binary-version' instead
+SONiC-OS-20250510.37
+
+
+❯ I see this error, which the new chagnes and installing new deb image:\                                                                                                                 
+  admin@bjw3-can-7060-7:~$  grpcurl -plaintext -d '{                                                                                                                                     
+  >    "package": {                                                                                                                                                                      
+  >      "filename": "/tmp/sonic-aboot-broadcom.swi",                                                                                                                                    
+  >      "activate": false                                                                                                                                                               
+  >    }                                                                                                                                                                                 
+  >  }' localhost:50052 gnoi.system.System/SetPackage                                                                                                                                    
+  ERROR:                                                                                                                                                                                 
+    Code: Internal                                                                                                                                                                       
+    Message: failed to resolve version from image: sonic-installer binary_version failed with exit code 1: Warning: 'binary_version' subcommand is deprecated and will be removed in the future                                                                                                                                                                                 
+  Please use 'binary-version' instead  
