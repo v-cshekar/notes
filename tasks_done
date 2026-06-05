@@ -247,4 +247,15 @@ SetPackage: use absolute path for sonic-installer
 https://github.com/sonic-net/sonic-gnmi/pull/691
 
 
+---------------
+Remove shell=True from subprocess calls in warm-reboot-gr-fix.py:
+https://msazure.visualstudio.com/One/_workitems/edit/38309979
+https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/23009
+PR: 
+
+ADO:
+https://msazure.visualstudio.com/One/_workitems/edit/38310088
+https://dev.azure.com/mssonic/internal/_git/sonic-metadata/pullrequest/23010
+
+
 
