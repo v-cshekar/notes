@@ -154,3 +154,10 @@ git checkout -b v-cshekar/upgrade_reboot fork/v-cshekar/upgrade_reboot
 
   5. Push new branch to your fork:
   git push fork v-cshekar/your-branch-name
+
+
+
+
+
+To push and get the latest form other device:
+git fetch origin && git reset --hard origin/fix_gnoi_upgrade
