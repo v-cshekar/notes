@@ -1,0 +1,167 @@
+
+
+sudo sonic_installer install -y http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202605/tagged/sonic-aboot-broadcom-20260510.01.swi
+
+
+202505
+
+● Here's the complete version table for 202605:
+
+  ┌──────────────────────────┬──────────────────────┬───────────────────────────────┐
+  │ Feature                  │ 202505               │ 202605                        │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ Linux kernel version     │ linux_6.12.41-1      │ 6.12.41+deb13-sonic-amd64     │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ SAI version              │ SAI v1.17.4          │ SAI v15.2.0.0 (libsaibcm)     │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ FRR                      │ 10.3.0               │ 10.5.4                        │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ LLDPD                    │ 1.0.16-1+deb12u1     │ 1.0.16-1+deb12u1 (unchanged)  │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ TeamD                    │ 1.31-1               │ 1.31-1 (unchanged)            │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ SNMPD                    │ 5.9.4+dfsg           │ 5.9.4+dfsg-2+deb13u1          │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ Python                   │ 3.11.2-6             │ 3.13.5                        │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ syncd                    │ 1.0.0                │ 1.0.0 (unchanged)             │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ swss                     │ 1.0.0                │ 1.0.0 (unchanged)             │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ radvd                    │ 2.19-1+b1            │ 2.20-1+b1                     │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ isc-dhcp                 │ 4.4.3-P1             │ 4.4.3-P1-2                    │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ sonic-telemetry          │ 1.1                  │ sonic-gnmi 0.1 (replaced)     │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ redis-server/redis-tools │ 7.0.15-1~deb12u1     │ 8.0.2                         │
+  ├──────────────────────────┼──────────────────────┼───────────────────────────────┤
+  │ Debian version           │ Bookworm (Debian 12) │ Trixie (Debian 13)            │
+  └──────────────────────────┴──────────────────────┴───────────────────────────────┘
+
+
+  Key changes in 202606:
+
+   - Major Debian upgrade: Bookworm (12) → Trixie (13)
+   - Python: 3.11 → 3.13
+   - Redis: 7.0 → 8.0
+   - FRR: 10.3 → 10.5
+   - sonic-telemetry replaced by sonic-gnmi
+
+   Note on SAI: The libsaibcm package shows 15.2.0.0.0.0.0.0 which is the Broadcom SDK version. If you need the SAI API version specifically, try:
+   
+    docker exec syncd dpkg -l | grep libsaimetadata
+   
+   or check if there's a SAI header version in the syncd container.
+
+
+Linux kernel version      | linux_6.12.41-1 
+
+
+admin@str2-7260cx3-acs-9:~$ uname -r
+6.12.41+deb13-sonic-amd64
+
+FRR:
+admin@str2-7260cx3-acs-9:~$ docker exec bgp vtysh -c "show version" | grep "FRRouting"
+FRRouting 10.5.4 (str2-7260cx3-acs-9) on Linux(6.12.41+deb13-sonic-amd64).
+
+
+# LLDPD version
+admin@str2-7260cx3-acs-9:~$ docker exec lldp lldpd -v 2>&1 || dpkg -l lldpd | grep lldpd
+1.0.16
+
+
+
+
+
+
+ # SAI version (try these)
+ docker exec syncd dpkg -l | grep sai
+ sonic-cfggen -y /etc/sonic/sonic_version.yml -v build_version
+ show version
+ 
+ # SNMPD version
+ docker exec snmp dpkg -l snmpd | grep snmpd
+ 
+ # syncd/swss version (usually 1.0.0 in SONiC)
+ docker exec syncd dpkg -l | grep syncd
+ docker exec swss dpkg -l | grep swss
+ 
+ # radvd (may have moved to a container)
+ docker exec radv dpkg -l | grep radvd 2>/dev/null
+ docker ps | grep radv
+ 
+ # isc-dhcp (may be replaced by kea-dhcp in newer versions)
+ docker exec dhcp_relay dpkg -l | grep -i dhcp
+ dpkg -l | grep -i kea
+ 
+ # sonic-telemetry
+ docker exec gnmi dpkg -l | grep -i telemetry
+ docker exec gnmi dpkg -l | grep -i gnmi
+ 
+ # Redis version
+ docker exec database redis-server --version
+ 
+ # TeamD full debian version
+ docker exec teamd dpkg -l | grep libteam
+ 
+ # LLDPD full debian version string
+ docker exec lldp dpkg -l | grep lldpd
+
+
+
+
+
+
+
+
+
+ --------------------------------------
+ admin@str2-7260cx3-acs-9:~$ sudo sonic_installer list
+Warning: 'sonic_installer' command is deprecated and will be removed in the future
+Please use 'sonic-installer' instead
+Current: SONiC-OS-20251110.29
+Next: SONiC-OS-20251110.29
+Available:
+SONiC-OS-20251110.29
+SONiC-OS-20250510.30
+SONiC-OS-20260510.01
+
+
+ admin@str2-7260cx3-acs-9:~$ show ip bgp summary
+
+IPv4 Unicast Summary:
+BGP router identifier 10.1.0.32, local AS number 4200065100 vrf-id 0
+BGP table version 12805
+RIB entries 12808, using 1639424 bytes of memory
+Peers 4, using 96288 KiB of memory
+Peer groups 4, using 256 bytes of memory
+
+
+Neighbhor      V          AS    MsgRcvd    MsgSent    TblVer    InQ    OutQ  Up/Down      State/PfxRcd  NeighborName
+-----------  ---  ----------  ---------  ---------  --------  -----  ------  ---------  --------------  --------------
+10.0.0.33      4  4200064600       3210       3210     12805      0       0  00:04:38             6400  ARISTA01T1
+10.0.0.35      4  4200064600       3210       3210     12805      0       0  00:04:38             6400  ARISTA02T1
+10.0.0.37      4  4200064600       3210       3210     12805      0       0  00:04:39             6400  ARISTA03T1
+10.0.0.39      4  4200064600       3210       3210     12805      0       0  00:04:39             6400  ARISTA04T1
+
+Total number of neighbors 4
+admin@str2-7260cx3-acs-9:~$
+admin@str2-7260cx3-acs-9:~$
+admin@str2-7260cx3-acs-9:~$
+admin@str2-7260cx3-acs-9:~$
+admin@str2-7260cx3-acs-9:~$ show ip interface
+Interface       Master    IPv4 address/mask    Admin/Oper    BGP Neighbor    Neighbor IP
+--------------  --------  -------------------  ------------  --------------  -------------
+Loopback0                 10.1.0.32/32         up/up         N/A             N/A
+PortChannel101            10.0.0.32/31         up/up         ARISTA01T1      10.0.0.33
+PortChannel102            10.0.0.34/31         up/up         ARISTA02T1      10.0.0.35
+PortChannel103            10.0.0.36/31         up/up         ARISTA03T1      10.0.0.37
+PortChannel104            10.0.0.38/31         up/up         ARISTA04T1      10.0.0.39
+Vlan1000                  192.168.0.1/21       up/up         N/A             N/A
+                          192.169.0.1/22                     N/A             N/A
+docker0                   240.127.1.1/24       up/down       N/A             N/A
+eth0                      10.3.146.137/24      up/up         N/A             N/A
+lo                        127.0.0.1/16         up/up         N/A             N/A
+
+
