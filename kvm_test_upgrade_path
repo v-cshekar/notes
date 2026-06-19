@@ -17,6 +17,22 @@ root@sonic-mgmt-int-v-cshekar:/# cd /data/sonic-mgmt-int/tests/
 
 TO take image from ptf image
 
+Use this on -------------->
+
+    ./run_tests.sh \
+      -n vms-kvm-t0 \
+      -d vlab-01 \
+      -c upgrade_path/test_upgrade_path.py::test_upgrade_path \
+      -f vtestbed.yaml \
+      -i ../ansible/veos_vtb \
+      -S ssh \
+      -e "--upgrade_type=cold --base_image_list=http://10.250.0.102:8080/sonic-vs-20250510.30.bin
+  --target_image_list=http://10.250.0.102:8080/sonic-vs-20251110.29.bin" \
+      -e "--skip_sanity" \
+      -l info 2>&1 | tee /tmp/upgrade.log
+
+
+
   ./run_tests.sh \
     -n vms-kvm-t0 \
     -d vlab-01 \
