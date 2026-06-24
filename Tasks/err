@@ -29,3 +29,23 @@ Wednesday, June 3, 2026 3:30 PM - 4:00 PM
 Original PR:
 https://github.com/sonic-net/sonic-gnmi/pull/692
 
+
+
+To run the code:
+
+
+On your testbed (not this Windows machine):
+
+ # Set the password from Dawei's DM
+ export ORAS_TEST_PASSWORD="<password>"
+ 
+ # Run all ORAS tests
+ cd ~/projects/sonic-mgmt-int
+ pytest tests/gnmi/test_gnoi_oras.py -v
+ 
+ # Run just the happy-path test
+ pytest tests/gnmi/test_gnoi_oras.py::test_gnoi_oras_pull_basic_auth -v
+
+ Note: The DUT must have the ORAS PR (#692) built into its gnmi image, and the DUT must be able to reach ksdatatest.azurecr.io (directly or via proxy).
+
+Would you like me to adjust anything — different registry, different test cases, or help you run it?
