@@ -1,0 +1,9 @@
+Failed to connect to the host via ssh: <error censored due to no log>
+
+fatal: [bjw3-can-7060-7]: UNREACHABLE! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": false}
+
+
+sudo config aaa authentication login local
+sudo config save -y
+echo 'admin:password' | sudo chpasswd
+reboot
