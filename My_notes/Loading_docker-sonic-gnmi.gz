@@ -1,0 +1,47 @@
+==============================================================
+ Loading docker-sonic-gnmi.gz on the device
+==============================================================
+
+--------------------------------------------------------------
+ Step 1: Download the image on the dev VM
+--------------------------------------------------------------
+v-cshekar@v-cshekar-dev-vm:~$ curl -O http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/latest/target/docker-sonic-gnmi.gz
+
+--------------------------------------------------------------
+ Step 2: Verify the downloaded file
+--------------------------------------------------------------
+v-cshekar@v-cshekar-dev-vm:~$ ls -lrt
+-rw-rw-r-- 1 v-cshekar v-cshekar 142872215 Jun 25 05:17 docker-sonic-gnmi.gz
+
+--------------------------------------------------------------
+ Step 3: Copy the image to the target device
+--------------------------------------------------------------
+v-cshekar@v-cshekar-dev-vm:/tmp$ scp docker-sonic-gnmi.gz vms11-t0-7060-cx32-1:/tmp/
+
+--------------------------------------------------------------
+ Step 4: Load the image on the device
+--------------------------------------------------------------
+admin@str-7060-cx32-1:~$ docker load -i /tmp/docker-sonic-gnmi.gz
+91b542912d12: Loading layer  121.3MB/121.3MB
+ffaf792fbe5d: Loading layer  138.3MB/138.3MB
+369a0b880fb9: Loading layer  1.536kB/1.536kB
+2696c42c6a85: Loading layer  64.02MB/64.02MB
+18909de52f6e: Loading layer  1.536kB/1.536kB
+44b84bbf8182: Loading layer  94.29MB/94.29MB
+7f77257a1829: Loading layer  1.536kB/1.536kB
+The image docker-sonic-gnmi:latest already exists, renaming the old one with
+ID sha256:25f93025b2765297129452dbb0ba38e6e04dd55cbf18efb8a850f04724bfd407
+to empty string
+Loaded image: docker-sonic-gnmi:latest
+
+--------------------------------------------------------------
+ Step 5: Remove the existing gnmi container
+--------------------------------------------------------------
+admin@str-7060-cx32-1:~$ docker rm -f gnmi
+gnmi
+
+--------------------------------------------------------------
+ Step 6: Restart the gnmi service
+--------------------------------------------------------------
+admin@str-7060-cx32-1:~$ sudo systemctl restart gnmi
+
