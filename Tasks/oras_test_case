@@ -1,0 +1,33 @@
+Implementation PR: 
+https://github.com/sonic-net/sonic-gnmi/pull/692/changes
+
+Branch: test_oras_gnoi
+
+export ORAS_TEST_PASSWORD='<your-acr-password>'
+
+
+ sudo ./run_tests.sh -n vms11-t0-7060-cx32-1 -i ../ansible/str,../ansible/veos \
+     -u -m individual -c gnmi/test_gnoi_oras.py -l info
+
+
+ ./run_tests.sh -n vms11-t0-7060-cx32-1 -i ../ansible/str,../ansible/veos \
+     -u -m individual -c gnmi/test_gnoi_oras.py -l info \
+     2>&1 | tee oras_test_$(date +%Y%m%d_%H%M%S).log
+
+
+
+
+ ./run_tests.sh -n vms11-t0-7060-cx32-1 -i ../ansible/str,../ansible/veos \
+     -u -m individual -c gnmi/test_gnoi_oras.py \
+     -e "-k test_gnoi_oras_pull_basic_auth" -l info \
+     2>&1 | tee /tmp/oras_test$(date +%H%M%S).log
+
+
+
+FAILED gnmi/test_gnoi_oras.py::test_gnoi_oras_pull_bad_credentials - Failed: Expected auth error, got: grpcurl failed: rc=1 stdout='' stderr='Error invoking method "sonic.gnoi.oras.v1.Ora...
+FAILED gnmi/test_gnoi_oras.py::test_gnoi_oras_pull_anonymous_denied - Failed: Expected auth error for anonymous pull, got: grpcurl failed: rc=1 stdout='' stderr='Error invoking method "son...
+
+Results (1308.71s (0:21:48)):
+       2 failed
+         - tests/gnmi/test_gnoi_oras.py:201 test_gnoi_oras_pull_bad_credentials
+         - tests/gnmi/test_gnoi_oras.py:253 test_gnoi_oras_pull_anonymous_denied
