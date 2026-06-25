@@ -16,7 +16,7 @@ v-cshekar@v-cshekar-dev-vm:~$ ls -lrt
 --------------------------------------------------------------
  Step 3: Copy the image to the target device
 --------------------------------------------------------------
-v-cshekar@v-cshekar-dev-vm:/tmp$ scp docker-sonic-gnmi.gz vms11-t0-7060-cx32-1:/tmp/
+v-cshekar@v-cshekar-dev-vm:/tmp$ scp /tmp/docker-sonic-gnmi.gz vms11-t0-7060-cx32-1:/tmp/
 
 --------------------------------------------------------------
  Step 4: Load the image on the device
