@@ -31,3 +31,8 @@ Results (1308.71s (0:21:48)):
        2 failed
          - tests/gnmi/test_gnoi_oras.py:201 test_gnoi_oras_pull_bad_credentials
          - tests/gnmi/test_gnoi_oras.py:253 test_gnoi_oras_pull_anonymous_denied
+
+
+
+ grpcurl -insecure 10.3.146.165:50052 list
+ grpcurl -insecure 10.3.146.165:50052 list sonic.gnoi.oras.v1.Oras
