@@ -1,5 +1,8 @@
 lynx http://10.201.148.43/pipelines/
 
+New server: 
+lynx http://10.1.3.6/pipelines/
+
 DPU image
 -----------
 Go to location and then press backspace.  
