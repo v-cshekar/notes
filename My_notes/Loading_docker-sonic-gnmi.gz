@@ -5,7 +5,8 @@
 --------------------------------------------------------------
  Step 1: Download the image on the dev VM
 --------------------------------------------------------------
-v-cshekar@v-cshekar-dev-vm:~$ curl -O http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/latest/target/docker-sonic-gnmi.gz
+v-cshekar@v-cshekar-dev-vm:~$ curl -O http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/latest/target/docker-sonic-gnmi.gz
+#curl -O http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/latest/target/docker-sonic-gnmi.gz
 
 --------------------------------------------------------------
  Step 2: Verify the downloaded file
@@ -43,5 +44,5 @@ gnmi
 --------------------------------------------------------------
  Step 6: Restart the gnmi service
 --------------------------------------------------------------
-admin@str-7060-cx32-1:~$ sudo systemctl restart gnmi
+admin@str-7060-cx32-1:~$   
 
