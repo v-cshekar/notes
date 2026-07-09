@@ -1,8 +1,72 @@
 
-vms11
+vms11-t0-7060-cx32-1
  ssh -l v-cshekar:30 -p 22 10.3.145.196 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy-th-20251110.29.swi -y
 
 
 
 vms20-t0-7060
 ssh -l v-cshekar:21 -p 22 10.3.145.196 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+
+sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy-th-20251110.29.swi -y
+
+sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202605/tagged/sonic-aboot-broadcom-legacy-th.swi -y
+sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202605/tagged/sonic-aboot-broadcom-legacy-th-20260510 -y 
+sudo sonic-installer install http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy.swi -y
+
+
+
+
+
+admin@str3-7060x6-64pe-5 9testbed vms20-t0-7060)
+
+admin@str3-7060x6-64pe-5:~$ sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202605/tagged/sonic-aboot-broadcom-legacy-th-20260510 -y
+Downloading image...
+Did not receive a response from remote machine. Aborting...
+Aborted!
+admin@str3-7060x6-64pe-5:~$ sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202605/tagged/sonic-aboot-broadcom-legacy-th-20260510 -y
+Downloading image...
+Did not receive a response from remote machine. Aborting...
+Aborted!
+admin@str3-7060x6-64pe-5:~$ sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy-th-20251110.29.swi -y
+Downloading image...
+...97%, 967 MB, 12534 KB/s, 2 seconds left...
+No errors detected in compressed data of /tmp/sonic_image.swi.
+Image file 'http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy-th-20251110.29.swi' is of a different platform ASIC type than running platform's.
+If you are sure you want to install this image, use --skip-platform-check.
+Aborting...
+Aborted!
+
+
+
+
+
+
+admin@str-7060-cx32-1:~$ sudo reboot
+Traceback (most recent call last):
+  File "/usr/local/bin/sonic-cfggen", line 542, in <module>
+    main()
+    ~~~~^^
+  File "/usr/local/bin/sonic-cfggen", line 437, in main
+    configdb = ConfigDBPipeConnector(use_unix_socket_path=use_unix_sock, **db_kwargs)
+  File "/usr/lib/python3/dist-packages/swsscommon/swsscommon.py", line 2973, in __init__
+    super(ConfigDBPipeConnector, self).__init__(**kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/swsscommon/swsscommon.py", line 2694, in __init__
+    super(ConfigDBConnector, self).__init__(use_unix_socket_path = use_unix_socket_path, namespace = namespace)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/swsscommon/swsscommon.py", line 2263, in __init__
+    for db_name in self.get_db_list():
+                   ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/swsscommon/swsscommon.py", line 2200, in get_db_list
+    return _swsscommon.SonicV2Connector_Native_get_db_list(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+RuntimeError: Sonic database config file doesn't exist at /var/run/redis/sonic-db/database_config.json
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+/var/lib/docker: 632 KiB (647168 bytes) trimmed on /dev/zram0
+/host: 0 B (0 bytes) trimmed on /dev/mmcblk0p1
+Watchdog armed for 180 seconds
+Thu Jul 9 06:21:32 AM UTC 2026 Rebooting with platform x86_64-arista_7060_cx32s specific tool ...
+INFO: Running powercycle script
+[28828.012552] arista: Restarting system
+INFO: Initiating powerc
