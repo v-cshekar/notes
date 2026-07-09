@@ -1,0 +1,8 @@
+
+vms11
+ ssh -l v-cshekar:30 -p 22 10.3.145.196 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+
+
+
+vms20-t0-7060
+ssh -l v-cshekar:21 -p 22 10.3.145.196 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
