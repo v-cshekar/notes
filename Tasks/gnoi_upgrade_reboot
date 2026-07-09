@@ -45,3 +45,36 @@ WARNING  tests.common.reboot:reboot.py:746 dut console is not ready, we cannot g
 WARNING  tests.common.plugins.memory_utilization.memory_utilization:memory_utilization.py:64 Skipping memory check for monit-memory_usage due to zero value
  tests/upgrade_path/test_upgrade_gnoi.py::test_upgrade_via_gnoi ✓                                                                                                           100% ██████████
 ==================================================================================== warnings summary =====================================================================================
+
+
+
+
+
+
+
+
+----------------------------------  Testing on 7/9/2026 ----------------
+Do not use this used for ngihtly
+
+admin@str2-7050cx3-acs-12:~$ sudo sonic-installer list
+Current: SONiC-OS-20251110.29
+Next: SONiC-OS-20251110.29
+Available:
+SONiC-OS-20260510.04
+SONiC-OS-20251110.29
+
+
+ R=http://10.1.3.6/pipelines/Networking-acs-buildimage-Official
+  BASE=$R/broadcom/internal-202511/tagged/sonic-aboot-broadcom.swi
+  TGT=$R/broadcom/internal-202605/tagged/sonic-aboot-broadcom.swi
+  EXTRA="--skip_sanity --upgrade_type=warm"
+  EXTRA="$EXTRA --base_image_list=$BASE"
+  EXTRA="$EXTRA --target_image_list=$TGT"
+  EXTRA="$EXTRA --target_version=SONiC-OS-20251110.34"
+  sudo ./run_tests.sh -n vms28-t0-7050-12 -d str2-7050cx3-acs-12 \
+    -f ../ansible/testbed.yaml \
+    -i ../ansible/str2,../ansible/veos \
+    -m individual \
+    -c upgrade_path/test_upgrade_gnoi.py \
+    -e "$EXTRA" \
+    -l info 2>&1 | sudo tee gnoi_upgrade_$(date +%Y%m%d_%H%M%S).log
