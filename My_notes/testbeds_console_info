@@ -6,14 +6,13 @@ sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage
 
 
 vms20-t0-7060
-ssh -l v-cshekar:21 -p 22 10.3.145.196 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+ssh -l v-cshekar:21 -p 22 10.3.152.33 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
 
 sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy-th-20251110.29.swi -y
 
 sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202605/tagged/sonic-aboot-broadcom-legacy-th.swi -y
 sudo sonic-installer install http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202605/tagged/sonic-aboot-broadcom-legacy-th-20260510 -y 
-sudo sonic-installer install http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy.swi -y
-
+sudo sonic-installer install http://10.201.148.43/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy.swi -
 
 
 
