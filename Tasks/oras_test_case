@@ -1,6 +1,135 @@
 Implementation PR: 
 https://github.com/sonic-net/sonic-gnmi/pull/692/changes
 
+
+
+
+Here's the full step-by-step, based on exactly how I ran it against your existing KVM testbed.
+
+Prerequisites (already satisfied on your box)
+
+• KVM testbed  vms-kvm-t0  is up with DUT  vlab-01  and PTF  ptf_vms6-1  running (confirmed via  virsh list --all  /  docker ps ).
+• The  sonic-mgmt  container has  /data  bind-mounted to your host, so your branch/edits are visible inside it automatically.
+
+1. Enter the sonic-mgmt container
+
+docker exec -it sonic-mgmt bash
+
+2. Set required Ansible env vars
+
+export BASE_PATH="/data/sonic-mgmt"
+export ANSIBLE_CONFIG=${BASE_PATH}/ansible
+export ANSIBLE_HOME=${BASE_PATH}/ansible
+export ANSIBLE_LIBRARY=${BASE_PATH}/ansible/library/
+export ANSIBLE_MODULE_UTILS=${BASE_PATH}/ansible/module_utils
+export ANSIBLE_ACTION_PLUGINS=${BASE_PATH}/ansible/plugins/action
+export ANSIBLE_CONNECTION_PLUGINS=${BASE_PATH}/ansible/plugins/connection
+export ANSIBLE_CLICONF_PLUGINS=${BASE_PATH}/ansible/cliconf_plugins
+export ANSIBLE_TERMINAL_PLUGINS=${BASE_PATH}/ansible/terminal_plugins
+
+3. (One-time) fix git ownership if needed
+
+git config --global --add safe.directory /data/sonic-mgmt
+
+4. Sanity-check the DUT is reachable
+
+cd /data/sonic-mgmt/ansible
+ansible -m ping -i veos_vtb vlab-01
+
+Expect  "ping": "pong" .
+
+5. Run the ORAS tests (default = local self-hosted registry, no creds needed)
+
+cd /data/sonic-mgmt/tests
+
+# Just one test
+python3 -m pytest -q gnmi/test_gnoi_oras.py::test_gnoi_oras_pull_basic_auth \
+  --inventory ../ansible/veos_vtb \
+  --host-pattern all \
+  --testbed_file vtestbed.yaml \
+  --testbed vms-kvm-t0 \
+  --log-cli-level info \
+  --skip_sanity \
+  --disable_loganalyzer \
+  -rav
+
+# Whole file
+python3 -m pytest -q gnmi/test_gnoi_oras.py \
+  --inventory ../ansible/veos_vtb \
+  --host-pattern all \
+  --testbed_file vtestbed.yaml \
+  --testbed vms-kvm-t0 \
+  --log-cli-level info \
+  --skip_sanity \
+  --disable_loganalyzer \
+  -rav
+
+ --skip_sanity  and  --disable_loganalyzer  just speed things up for iterative debugging — drop them for a "real" CI-equivalent run.
+
+6. (Optional) Run against a real external registry instead
+
+python3 -m pytest -q gnmi/test_gnoi_oras.py \
+  --inventory ../ansible/veos_vtb \
+  --host-pattern all \
+  --testbed_file vtestbed.yaml \
+  --testbed vms-kvm-t0 \
+  --oras_test_registry myregistry.azurecr.io \
+  --oras_test_repository sonic-os-images \
+  --oras_test_tag some-tag \
+  --oras_test_username myuser \
+  -rav
+
+Password is never a CLI flag — it must come from the vaulted  oras_registry_password  key in that testbed's Ansible  secrets.yml / secrets.json  (via  creds_on_dut ). If it's missing, external-mode tests skip cleanly.
+
+Notes on what to expect
+
+• Local mode spins up  registry_server.py  on the PTF host, pushes a throwaway 1 MiB artifact, trusts its CA inside the DUT's  gnmi  container, runs the pull, then tears everything down — fully hermetic, no internet/secrets required.
+• You may see a teardown  ERROR  from the unrelated  gnmi_tls  fixture ( Not all critical processes are healthy , caused by  dhcp_relay  being disabled on this KVM DUT) — that's a known pre-existing KVM flake, not related to the ORAS test itself; the actual test result ( PASSED / SKIPPED / FAILED ) is what matters.
+• Collection-only check if you just want to confirm nothing is broken without a full run:
+python3 -m pytest --collect-only -q gnmi/test_gnoi_oras.py \
+  --inventory ../ansible/veos_vtb --host-pattern all \
+  --testbed_file vtestbed.yaml --testbed vms-kvm-t0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------
+
 Branch: test_oras_gnoi
 
 export ORAS_TEST_PASSWORD='<your-acr-password>'
