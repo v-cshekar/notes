@@ -22,3 +22,7 @@ ssh -l v-cshekar:4 -p 22 10.3.145.182 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgori
 
 vms20-t0-7060
 ssh -l v-cshekar:21 -p 22 10.3.152.33 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+
+
+vms24-t0-7260-2
+ssh -l v-cshekar:5 -p 22 10.3.150.244 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
