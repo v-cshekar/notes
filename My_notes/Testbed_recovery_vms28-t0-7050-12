@@ -1,0 +1,19 @@
+vms28-t0-7050-12
+ssh -l v-cshekar:4 -p 22 10.3.145.182 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+
+
+SONiC Aboot Recovery Notes - 10.3.146.13
+
+cd /mnt/flash
+ifconfig ma1 10.3.146.13 netmask 255.255.254.0
+ip route add default via 10.3.146.1 dev ma1
+ping 10.3.146.1
+wget http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy-th-20251110.29.swi
+echo "SWI=flash:sonic-aboot-broadcom-legacy-th-20251110.29.swi" > boot-config
+cat boot-config
+sync
+reboot
+
+After boot:
+sudo sonic-installer set-default SONiC-OS-20251110.29
+sudo sonic-installer list
