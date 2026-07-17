@@ -1,0 +1,39 @@
+SONiC Aboot Recovery for vms11-t0-7060-cx32-1 Notes
+
+
+
+ssh -l v-cshekar:30 -p 22 10.3.145.196 -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1-sha1 -o Ciphers=+aes256-cbc
+
+1. From Aboot, go to flash:
+cd /mnt/flash
+
+2. Configure management IP:
+ifconfig ma1 10.3.146.165 netmask 255.255.254.0
+ip route add default via 10.3.146.1 dev ma1
+
+3. Verify connectivity:
+ifconfig ma1
+ip route
+ping 10.3.146.1
+
+4. Download working SWI image:
+wget http://10.1.3.6/pipelines/Networking-acs-buildimage-Official/broadcom/internal-202511/tagged/sonic-aboot-broadcom-legacy-th-20251110.29.swi
+
+5. Point boot-config to the downloaded SWI:
+echo "SWI=flash:sonic-aboot-broadcom-legacy-th-20251110.29.swi" > boot-config
+cat boot-config
+sync
+reboot
+
+6. After SONiC boots, fix default boot entry:
+sudo sonic-installer set-default SONiC-OS-20251110.29
+
+7. Verify:
+sudo sonic_installer list
+or
+sudo sonic-installer list
+
+Notes:
+- If ping to image server fails but gateway ping works, likely lab/server reachability issue.
+- boot-config must point to the downloaded SWI for recovery boot.
+- After recovery, set default back to the installed SONiC image.
