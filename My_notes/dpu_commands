@@ -1,0 +1,5 @@
+
+
+sudo sonic-installer list      # must run cleanly (no 'encodings' error)
+show version                   # which image it booted
+df -h / /tmp                   # confirm healthy free space
