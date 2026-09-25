@@ -11,3 +11,15 @@ tbtk5-t0-2700-1 [202305-202311][vSONiC]
 https://dev.azure.com/mssonic/internal/_build/results?buildId=839917&view=results
 
 
+
+ETL life cycle:
+https://dev.azure.com/mssonic/internal/_git/sonic-mgmt-int/commit/25b863970c52369820b1614e837f8a06b63c4136?refName=refs%2Fheads%2Fv-cshekar%2Ffirmware-updates-etl
+
+GNOI upgrade:
+https://github.com/sonic-net/sonic-mgmt/pull/28179
+
+Power BI dashboard:
+https://msit.powerbi.com/groups/me/reports/0e158f47-270e-4711-939d-f307b265d088/b7f43ad7c52e4a718920?experience=power-bi
+
+Scan and find TOR devices that are not upgrade-ready:
+https://msazure.visualstudio.com/One/_git/Networking-scripts-lib/pullrequest/17290796
