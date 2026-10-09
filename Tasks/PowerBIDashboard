@@ -1,0 +1,5 @@
+<shellId: pbi-review-open3 completed with exit code 1>
+$env:PBI_DESKTOP_PATH='C:\Program Files\WindowsApps\Microsoft.MicrosoftPowerBIDesktop_2.158.908.0_x64__8wekyb3d8bbwe\bin\pbidesktop.exe'; powerbi-desktop open 'C:\Users\v-cshekar\Documents\CP_powerBI_works\exit_code_dashboard.pbip' --timeout 120
+
+Thought for 4s
+I’m considering that there might be an updated version of the app. I need to find a way to access the WindowsApps folder, which seems inaccessible. I think using PowerShell commands like `Get-ChildItem C:\Program Files\WindowsApps\Microsoft.MicrosoftPowerBIDesktop_*` or `Get-AppxPackage` could help me gain access. I’m curious about whether these commands will lead me in the right direction. Let's see if I can make this work!
