@@ -3,3 +3,13 @@ $env:PBI_DESKTOP_PATH='C:\Program Files\WindowsApps\Microsoft.MicrosoftPowerBIDe
 
 Thought for 4s
 I’m considering that there might be an updated version of the app. I need to find a way to access the WindowsApps folder, which seems inaccessible. I think using PowerShell commands like `Get-ChildItem C:\Program Files\WindowsApps\Microsoft.MicrosoftPowerBIDesktop_*` or `Get-AppxPackage` could help me gain access. I’m curious about whether these commands will lead me in the right direction. Let's see if I can make this work!
+
+
+To publish the dashboard:
+
+
+In Power BI Desktop:
+
+1. Select Publish.
+2. Choose My workspace as the destination.
+3. If prompted that  exit_code_dashboard  already exists, choose Replace to update the existing report and preserve its current link.
