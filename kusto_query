@@ -1,0 +1,9 @@
+cluster("azphynet").database("azdhmds").SyslogData
+| where Device =~ "dsm07-0101-0621-07t0"
+| where TIMESTAMP between (
+    datetime(2026-10-13T06:54:00Z) ..
+    datetime(2026-10-13T07:54:00Z)
+)
+| where tolower(Message) matches regex "pre[-_ ]*scs[-_ ]*check"
+| project TIMESTAMP, Device, Message
+| order by TIMESTAMP asc
