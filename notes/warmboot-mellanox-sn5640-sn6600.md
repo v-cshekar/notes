@@ -41,7 +41,7 @@ Start with the `Mellanox-SN5640` platform and execute warmboot in this order:
 Before pipeline automation, simplify and validate manually:
 
 1. SSH to the device manually.
-2. Set SONiC installer so **next boot = current image**.
+2. Use `sonic-installer` to set **next boot = current image**.
 3. Run warm reboot:
    ```bash
    sudo warm-reboot -vvv
