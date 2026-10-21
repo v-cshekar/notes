@@ -52,3 +52,13 @@ Before pipeline automation, simplify and validate manually:
    - BGP sessions are up
 5. Collect **techsupport** artifacts.
 6. Once manual validation is stable, move the flow into CI/pipeline and identify failure points there.
+
+---
+
+## Testbed Details
+
+- **Testbed / DUT name:** `vms70-t0-sn5640-2` (also referenced as `str4-sn5640-2`)
+- **Management IP:** `10.64.246.168`
+- **SSH jump/connect command:** `ssh -l <username>:25 10.3.150.239`
+- **Vendor:** `mellanox`
+- **SKU / Platform string:** `Mellanox-SN5640-C512S2`
