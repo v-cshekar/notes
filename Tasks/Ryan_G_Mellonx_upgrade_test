@@ -1,0 +1,54 @@
+Here's the full markdown file. Copy everything inside the box:
+
+````markdown
+# Warm-Reboot Validation: str4-sn5640-2
+
+| Field | Value |
+|---|---|
+| **Device** | str4-sn5640-2 |
+| **Mgmt IP** | 10.64.246.168 |
+| **Date** | 2026-11-03 |
+| **Image** | SONiC-OS-20260510.24 → SONiC-OS-20260510.24 (same version) |
+| **Reboot type** | Warm-reboot (`warm-reboot -vvv`) |
+| **Result** | ✅ **PASS**: no crashes, no regressions |
+
+## Steps and results
+
+1. **Set next boot:** `sonic-installer` set the next boot to the current image, SONiC-OS-20260510.24.
+2. **Warm-reboot:** `warm-reboot -vvv` completed cleanly.
+   - kexec ran at 08:13:34.
+   - The device was back up at about 08:19.
+3. **Health after boot:**
+   - All 17 Docker containers are Up.
+   - syncd, swss, bgp, teamd and database have no restarts or crashes.
+   - There are no core dumps.
+   - System health is OK.
+4. **BGP:**
+   - All 34 IPv4 and 34 IPv6 peers are Established.
+   - Prefix counts match the pre-reboot baseline exactly.
+5. **Interfaces:** All 62 routing and trunk interfaces are up/up, an exact match with the pre-reboot baseline.
+6. **Techsupport:** Generated and downloaded (90.6 MB).
+
+## Files
+
+**Location:**
+
+```
+/home/v-cshekar/.copilot/session-state/e54d2fc8-e663-4324-9ffd-fcd8df18c064/files/
+```
+
+| File | Description |
+|---|---|
+| `warmboot_10.64.246.168.log` | Full command output and log |
+| `sonic_dump_str4-sn5640-2_20260510.24-to-20260510.24_warmboot_20261103_083355.tar.gz` | Techsupport bundle (renamed) |
+
+## Techsupport rename
+
+- **Original:** `sonic_dump_str4-sn5640-2_20261103_083355.tar.gz`
+- **Renamed:** `sonic_dump_str4-sn5640-2_20260510.24-to-20260510.24_warmboot_20261103_083355.tar.gz`
+- **Why:** The new name shows the 20260510.24 → 20260510.24 warm-reboot upgrade. The bundle was collected on 2026-11-03 at 08:33:55.
+
+```bash
+cd /home/v-cshekar/.copilot/session-state/e54d2fc8-e663-4324-9ffd-fcd8df18c064/files/ && mv sonic_dump_str4-sn5640-2_20261103_083355.tar.gz sonic_dump_str4-sn5640-2_20260510.24-to-20260510.24_warmboot_20261103_083355.tar.gz
+```
+````
