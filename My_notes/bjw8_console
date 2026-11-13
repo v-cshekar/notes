@@ -1,0 +1,30 @@
+Console access for bjw3-can-7060-8 (console server  bjw3-can-720dt-mc0-2 , 10.150.238.11, line 20). I checked the inventory, and line 20 maps only to this DUT.
+
+1. Hop onto the jump host
+
+ssh v-cshekar@bjw-can-serv-4
+
+2. Check the line is free
+
+ssh admin@10.150.238.11 'show line'
+
+Line 20 should show no PID ( - ). If it shows "busy", wait or clear the stale session first.
+
+3. Connect
+
+ssh -l admin:20 10.150.238.11
+
+• The password is the console-server password you gave me earlier. I'm not repeating it here.
+• Wait for "Successful connection", then press Enter once.
+• Log in as  admin . On the 202505 image the DUT password is stored candidate 2 in  ~/.ssh/device_pass  (read it on the jump host only).
+
+4. Disconnect cleanly
+Press  Ctrl-A  then  Ctrl-X . Then re-run  show line  to confirm line 20 is free.
+
+Notes
+
+• During a reboot, don't press any keys while it could be in U-Boot or ONIE.
+• Only one session can use the line at a time. Close yours before I need it.
+• Scripted access uses  pexpect  on the jump host, wrapped in  timeout .
+
+Now I'll continue with the health checks and the  fast-reboot  patch.
